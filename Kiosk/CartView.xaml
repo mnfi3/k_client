@@ -1,0 +1,133 @@
+﻿<Window x:Class="Kiosk.CartView"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		Background="{x:Null}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized"  AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+    <Grid Background="LightGray" x:Name="grd_main">
+
+
+        <Grid Height="10" VerticalAlignment="Top" Background="#FF0080FF"/>
+        <Grid Height="50" VerticalAlignment="Top"  Background="#ff000000" Margin="0 10 0 0">
+            <materialDesign:PopupBox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
+                <StackPanel Width="150">
+                    <Button Content="مدیریت"/>
+                    <Separator/>
+                    <Button Name="btn_exit" Content="خروج" Click="btn_exit_Click"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                <TextBlock Margin="10 0" Foreground="#FFaaaaaa" Text="powered by www.ezitech.ir" VerticalAlignment="Center"  HorizontalAlignment="Center"  FontSize="22" FontFamily="Sitka Display"  />
+
+                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon  Foreground="#FFaaaaaa" Kind="Telegram" Width="25" Height="25"/>
+                </Button>
+                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Instagram" Width="25" Height="25"/>
+                </Button>
+                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Web" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid  Margin="0 60 0 0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="#FF3A69CD">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="20" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Text="محتویات سبد خرید"/>
+                <TextBlock FontSize="20" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="مبلغ قابل پرداخت"/>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="grd_products" Grid.Column="0">
+                    <Button  FontSize="20" Height="70" x:Name="btn_back_to_restaurants" Click="btn_back_to_restaurants_Click" Foreground="White" Background="#f44336" Content="بازگشت به لیست غذاها"  BorderBrush="{x:Null}" Margin="10 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Button>
+                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  x:Name="lst_cart" Margin="0 10 0 100"  VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both"  ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lst_cart_SelectionChanged">
+                        <!--disable hilight-->
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <ContentPresenter />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <!--disable hilight-->
+                    </ListView>
+                </Grid>
+
+                <Grid 
+                    Grid.Column="1"
+                    Background="White" >
+                    
+                    <Button  x:Name="btn_pay"
+                             Click="btn_pay_Click"
+                             Foreground="White"
+                             Background="#388E3C"
+                             FontSize="20"
+                             Height="70"
+                             Content="پرداخت"
+                             BorderBrush="{x:Null}"
+                             Margin="10 10"
+                             VerticalAlignment="Bottom"
+                             HorizontalAlignment="Stretch"
+                             />
+                    <Grid x:Name="grd_payment" Margin="0 10 0 100"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                        
+                        
+                        
+                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20" Background="LightGray">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Foreground="Black" Margin="10 5" Grid.Row="0" HorizontalAlignment="Right" FontSize="20" Text=" : جمع مبلغ پرداختی"/>
+                            <TextBlock Foreground="#388E3C" Margin="10 5"  Grid.Row="1" HorizontalAlignment="Right" FontSize="20" Text="25,000 تومان" FontWeight="Bold"/>
+                            <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="2" HorizontalAlignment="Right" FontSize="20" Text=""/>
+                            <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="3" HorizontalAlignment="Right" FontSize="20" Text=" : مبلغ پرداختی با تخفیف"/>
+                            <TextBlock Foreground="#388E3C" Margin="10 5"  Grid.Row="4" HorizontalAlignment="Right" FontSize="20" Text="20,000 تومان" FontWeight="Bold"/>
+                            <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="5" HorizontalAlignment="Right" FontSize="20" Text=""/>
+                            <TextBlock Foreground="#FFCF4141" Margin="10 5"  Grid.Row="6" HorizontalAlignment="Right" FontSize="20" Text="در صورت داشتن کد تخفیف آن را وارد کنید"/>
+                            <TextBox x:Name="txt_discount_code" Foreground="Black" Margin="10 5"  Grid.Row="7" Width="200"  HorizontalAlignment="Center" FontSize="20"  Background="AntiqueWhite" PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown"/>
+                            <Button x:Name="btn_discount" Click="btn_discount_Click" Foreground="White" Margin="10 5"   Grid.Row="8" HorizontalAlignment="Center" FontSize="15" Content="اعمال کد تخفیف"/>
+
+                        </Grid>
+
+
+
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</Window>

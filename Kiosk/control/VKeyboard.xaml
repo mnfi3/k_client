@@ -1,0 +1,290 @@
+﻿<Window x:Class="Kiosk.control.VKeyboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		Background="{x:Null}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        WindowStartupLocation="CenterOwner"
+        Width="600" Height="400" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" >
+
+
+    <Grid Background="#55EEEEEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+
+
+
+
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+
+            <!--row0-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="buttonClick" x:Name="btn_a" Tag="a" BorderBrush="{x:Null}" Background="#FF5722"  Grid.Column="0" Height="auto" Width="auto" Margin="5" >
+                    <materialDesign:PackIcon Kind="AlphabetA" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick"  x:Name="btn_b" Tag="b" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="1" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetB" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick"  x:Name="btn_c" Tag="c" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="2" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetC" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_d" Tag="d" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="3" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetD" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_e" Tag="e" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="4" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetE" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_f" Tag="f" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="5" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetF" Width="auto" Height="auto"/>
+                </Button>
+            </Grid>
+
+
+            <!--row1-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="buttonClick" x:Name="btn_g" Tag="g" BorderBrush="{x:Null}" Background="#FF5722"  Grid.Column="0" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetG" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_h" Tag="h" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="1" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetH" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_i" Tag="i" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="2" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetI" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_j" Tag="j" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="3" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetJ" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_k" Tag="k" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="4" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetK" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_l" Tag="l" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="5" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetL" Width="auto" Height="auto"/>
+                </Button>
+            </Grid>
+
+
+            <!--row2-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="buttonClick" x:Name="btn_m" Tag="m" BorderBrush="{x:Null}" Background="#FF5722"  Grid.Column="0" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetM" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_n" Tag="n" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="1" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetN" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_o" Tag="o" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="2" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetO" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_p" Tag="p" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="3" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetP" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_q" Tag="q" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="4" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetQ" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_r" Tag="r" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="5" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetR" Width="auto" Height="auto"/>
+                </Button>
+            </Grid>
+
+
+
+            <!--row3-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="buttonClick" x:Name="btn_s" Tag="s" BorderBrush="{x:Null}" Background="#FF5722"  Grid.Column="0" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetS" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_t" Tag="t" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="1" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetT" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_u" Tag="u" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="2" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetU" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_v" Tag="v" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="3" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetV" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_w" Tag="w" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="4" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetW" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_x" Tag="x" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="5" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetX" Width="auto" Height="auto"/>
+                </Button>
+            </Grid>
+
+
+
+
+            <!--row4-->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="buttonClick" x:Name="btn_y" Tag="y" BorderBrush="{x:Null}" Background="#FF5722"  Grid.Column="0" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetY" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_z" Tag="z" BorderBrush="{x:Null}" Background="#FF5722" Grid.Column="1" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="AlphabetZ" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_0" Tag="0" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="2" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericZero" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_1" Tag="1" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="3" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericOne" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_2" Tag="2" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="4" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericTwo" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_3" Tag="3" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="5" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericThree" Width="auto" Height="auto"/>
+                </Button>
+            </Grid>
+
+
+
+            <!--row5-->
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="buttonClick" x:Name="btn_4" Tag="4" BorderBrush="{x:Null}" Background="#4CAF50"  Grid.Column="0" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericFour" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick"  x:Name="btn_5" Tag="5" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="1" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericFive" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_6" Tag="6" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="2" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericSix" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_7" Tag="7" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="3" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericSeven" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_8" Tag="8" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="4" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericEight" Width="auto" Height="auto"/>
+                </Button>
+                <Button Click="buttonClick" x:Name="btn_9" Tag="9" BorderBrush="{x:Null}" Background="#4CAF50" Grid.Column="5" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="NumericNine" Width="auto" Height="auto"/>
+                </Button>
+            </Grid>
+
+
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Button x:Name="btn_close" BorderBrush="{x:Null}" Background="#64DD17" Grid.Column="0" Margin="10" Width="auto" Height="auto" Click="btn_close_Click"  >
+                <materialDesign:PackIcon Kind="Tick" Width="auto" Height="auto"/>
+            </Button>
+
+            <Button Foreground="#fff" x:Name="btn_capselock" BorderBrush="{x:Null}"  Background="#9575CD" Margin="10" Grid.Column="1" Width="auto" Height="auto" Click="btn_capselock_Click">
+                <materialDesign:PackIcon Kind="CapsLock" Width="auto" Height="auto"/>
+            </Button>
+            <Button x:Name="btn_backspace" BorderBrush="{x:Null}" Background="#9575CD" Margin="10" Grid.Column="2" Width="auto" Height="auto" Click="btn_backspace_Click">
+                <materialDesign:PackIcon Kind="Backspace" Width="auto" Height="auto"/>
+            </Button>
+            
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Kiosk.control.ItemRestaurant"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		     Background="{x:Null}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             mc:Ignorable="d" >
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Image x:Name="img_restaurant" Source="../img/ic_res.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="10">
+            <TextBlock x:Name="txt_restaurant" Text="رستوران ستاره باران" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

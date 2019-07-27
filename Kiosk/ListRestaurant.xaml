@@ -1,0 +1,81 @@
+﻿<Window x:Class="Kiosk.ListRestaurant"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		Background="{x:Null}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None">
+
+
+    <Grid Background="LightGray">
+        
+        
+        
+        <Grid Height="10" VerticalAlignment="Top" Background="#FF0080FF"/>
+        <Grid Height="50" VerticalAlignment="Top"  Background="#ff000000" Margin="0 10 0 0">
+            <materialDesign:PopupBox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
+                <StackPanel Width="150">
+                    <Button x:Name="btn_manage" Click="btn_manage_Click" Content="مدیریت"/>
+                    <Separator/>
+                    <Button Name="btn_exit" Content="خروج" Click="btn_exit_Click"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                <TextBlock Margin="10 0" Foreground="#FFaaaaaa" Text="powered by www.ezitech.ir" VerticalAlignment="Center"  HorizontalAlignment="Center"  FontSize="22" FontFamily="Sitka Display"  />
+
+                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon  Foreground="#FFaaaaaa" Kind="Telegram" Width="25" Height="25"/>
+                </Button>
+                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Instagram" Width="25" Height="25"/>
+                </Button>
+                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Web" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <Grid x:Name="grd_main" Margin="0 60 0 0">
+
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#FF3A69CD">
+                    <TextBlock FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Text="رستوران مورد نظر را انتخاب کنید" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <ListView ScrollViewer.PanningMode="Both" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_restaurants" SelectionChanged="lst_restaurants_SelectionChanged">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="3"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Grid>
+            </Grid>
+            
+            
+        </Grid>
+
+
+
+
+
+    </Grid>
+</Window>
