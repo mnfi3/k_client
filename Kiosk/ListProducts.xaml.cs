@@ -29,22 +29,6 @@ namespace Kiosk
         {
             InitializeComponent();
 
-            foreach (ItemCart i in items)
-            {
-                try
-                {
-                    ItemCartInProducts _cart = new ItemCartInProducts();
-                    _cart.txt_product.Text = i.txt_product.Text;
-                    _cart.txt_product_price.Text = i.txt_product_price.Text;
-                    _cart.img_product.Source = i.img_product.Source;
-                    //lst_cart.Items.Clear();
-                    lst_cart.Items.Add(_cart);
-                }
-                catch (NullReferenceException m)
-                {
-                    //m.ToString();
-                }
-            }
         }
 
 
@@ -66,15 +50,6 @@ namespace Kiosk
         private void btn_cart_Click(object sender, RoutedEventArgs e)
         {
             List<ItemCart> _itemCarts = new List<ItemCart>();
-
-            foreach (ItemCartInProducts c in lst_cart.Items)
-            {
-                ItemCart itemCart = new ItemCart();
-                itemCart.txt_product.Text = c.txt_product.Text;
-                itemCart.txt_product_price.Text = c.txt_product_price.Text;
-                itemCart.img_product.Source = c.img_product.Source;
-                _itemCarts.Add(itemCart);
-            }
 
             CartView _cart = new CartView(_itemCarts);
             _cart.Show();
@@ -190,19 +165,24 @@ namespace Kiosk
 
         private void lst_products_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ItemProduct pr = (ItemProduct)((sender as ListView).SelectedItem);
-            try
+            //ItemProduct pr = (ItemProduct)((sender as ListView).SelectedItem);
+            //try
+            //{
+            //    ItemCartInProducts _cart = new ItemCartInProducts();
+            //    _cart.txt_product.Text = pr.txt_product.Text;
+            //    _cart.txt_product_price.Text = pr.txt_product_price.Text;
+            //    _cart.img_product.Source = pr.img_product.Source;
+            //    //lst_cart.Items.Clear();
+            //    lst_cart.Items.Add(_cart);
+            //}catch(NullReferenceException m){
+            //    //m.ToString();
+            //}
+
+            ProductInfo _info = new ProductInfo();
+            if (_info.ShowDialog() == true)
             {
-                ItemCartInProducts _cart = new ItemCartInProducts();
-                _cart.txt_product.Text = pr.txt_product.Text;
-                _cart.txt_product_price.Text = pr.txt_product_price.Text;
-                _cart.img_product.Source = pr.img_product.Source;
-                //lst_cart.Items.Clear();
-                lst_cart.Items.Add(_cart);
-            }catch(NullReferenceException m){
-                //m.ToString();
+
             }
-           
         }
 
         

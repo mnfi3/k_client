@@ -22,11 +22,11 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBlock x:Name="txt_product" Text="appetizer" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="txt_product" Text="appetizer" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
         </Grid>
 
         <Grid Grid.Row="2">
-            <TextBlock x:Name="txt_product_price" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#FF555555"/>
+            <TextBlock x:Name="txt_product_price" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
         </Grid>
 
         
