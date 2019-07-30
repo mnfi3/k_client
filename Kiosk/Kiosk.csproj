@@ -83,6 +83,12 @@
     <Compile Include="control\DialogPaymentAccept.xaml.cs">
       <DependentUpon>DialogPaymentAccept.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\ItemDessert.xaml.cs">
+      <DependentUpon>ItemDessert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="control\ItemDessertInCart.xaml.cs">
+      <DependentUpon>ItemDessertInCart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\ItemRestaurantInRegister.xaml.cs">
       <DependentUpon>ItemRestaurantInRegister.xaml</DependentUpon>
     </Compile>
@@ -138,6 +144,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\ItemCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\ItemDessert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\ItemDessertInCart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,6 +279,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\ic_card_swipe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\ic_onion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\ic_onion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

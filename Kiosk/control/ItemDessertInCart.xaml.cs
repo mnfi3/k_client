@@ -16,26 +16,13 @@ using System.Windows.Shapes;
 namespace Kiosk.control
 {
     /// <summary>
-    /// Interaction logic for ItemCart.xaml
+    /// Interaction logic for ItemDessertInCart.xaml
     /// </summary>
-    public partial class ItemCart : UserControl
+    public partial class ItemDessertInCart : UserControl
     {
-        public ItemCart()
+        public ItemDessertInCart()
         {
             InitializeComponent();
-
-            ItemDessertInCart _item;
-
-            for (int i = 0; i < 6; i++)
-            {
-                _item = new ItemDessertInCart();
-                lst_desserts.Items.Add(_item);
-            }
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-           
         }
     }
 }

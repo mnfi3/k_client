@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Kiosk.control;
 
 namespace Kiosk
 {
@@ -38,6 +39,31 @@ namespace Kiosk
         {
             //something
             DialogResult = true;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ItemDessert _item;
+            for (int i = 0; i < 30; i++)
+            {
+                _item = new ItemDessert();
+                lst_dessert1.Items.Add(_item);
+                _item = new ItemDessert();
+                lst_dessert2.Items.Add(_item);
+            }
+        }
+
+        private void lst_dessert1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ItemDessert _item = (sender as ItemDessert);
+            //_item.Background = System.Drawing.ColorTranslator.FromHtml("#fcfcfc");
+            MessageBox.Show("selected");
+            if (_item != null)
+            {
+                MessageBox.Show("selected");
+                var bc = new BrushConverter();
+                _item.Background = (Brush)bc.ConvertFrom("#fcfcfc");
+            }
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Kiosk
             InitializeComponent();
             this.carts = carts;
 
+
             toast = new Toast(this);
         }
 
@@ -45,6 +46,13 @@ namespace Kiosk
             foreach (ItemCart i in carts)
             {
                 lst_cart.Items.Add(i);
+            }
+
+            ItemCart _item;
+            for (int i = 0; i < 30; i++)
+            {
+                _item = new ItemCart();
+                lst_cart.Items.Add(_item);
             }
 
             //toast.OnUnloaded();

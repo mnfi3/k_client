@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/ic_card_swipe.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/ic_onion.png")]
 
 

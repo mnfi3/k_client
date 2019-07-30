@@ -4,7 +4,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Height="800" Width="1400" Foreground="White" ResizeMode="NoResize" WindowState="Maximized"  AllowsTransparency="True" WindowStyle="None">
+        Height="800" Width="1400" Foreground="White" ResizeMode="NoResize" WindowState="Maximized"  AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Background="LightGray">
 
 
@@ -84,10 +84,64 @@
 
 
                         <Grid Grid.Column="0" Background="#f5f5f5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="4*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Margin="20 20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="3*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="اندازه مورد نظر را انتخاب کنید" />
+                                <Grid Grid.Row="1">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                                        <Button Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                                        <Button Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                                    </StackPanel >
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="1" Margin="20 20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید"/>
+                                <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" SelectionChanged="lst_dessert1_SelectionChanged" >
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="1"/>
+                                            <!--<StackPanel Orientation="Horizontal" />-->
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Margin="20 20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="دسرهای مورد نظر خود را انتخاب کنید"/>
+                                <ListView x:Name="lst_dessert2" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled"  FlowDirection="RightToLeft" >
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="1"/>
+                                            <!--<StackPanel Orientation="Horizontal"></StackPanel>-->
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>
+                            </Grid>
 
                         </Grid>
 
 
+                        
+                        
                         <Grid Grid.Column="1" Background="#fcfcfc">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="8*"/>
@@ -140,11 +194,11 @@
                                             <RowDefinition Height="16*"/>
                                         </Grid.RowDefinitions>
 
-                                        <Button Width="75" Height="75" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                                        <Button Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
                                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="75"  Kind="KeyboardArrowUp" Foreground="#616161" Margin="0,6"/>
                                         </Button>
-                                        <TextBlock  Foreground="#67aa39" FontSize="20" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
-                                        <Button Width="75" Height="75" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
+                                        <TextBlock  Foreground="#67aa39" FontSize="20" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>
+                                        <Button Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="75" Height="75" Kind="KeyboardArrowDown" Foreground="#616161" Margin="0,6"/>
                                         </Button>
                                     </Grid>
@@ -162,8 +216,8 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Button x:Name="btn_cancel" FontSize="22" Click="btn_cancel_Click" Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#9292c2" Content="لغو"/>
-                                <Button x:Name="btn_add" FontSize="22" Click="btn_add_Click" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#67aa39" Content="افزودن به سبد خرید"/>
+                                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click" Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#7986CB" Content="لغو"/>
+                                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click" FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#67aa39" Content="افزودن به سبد خرید"/>
 
                             </Grid>
 
@@ -171,18 +225,6 @@
 
 
                     </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
 
                 </Grid>
 

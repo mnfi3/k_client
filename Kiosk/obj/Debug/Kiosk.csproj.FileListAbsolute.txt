@@ -85,3 +85,7 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogManageApp.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogManageApp.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\ProductInfo.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\ProductInfo.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessert.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessert.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessertInCart.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessertInCart.g.cs
