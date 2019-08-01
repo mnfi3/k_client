@@ -4,6 +4,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="#eeeeee"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Style="{StaticResource vazir}"
         Title="DialogManageApp" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid Margin="20 20">
 

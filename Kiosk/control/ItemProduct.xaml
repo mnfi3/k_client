@@ -8,6 +8,7 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
              >
+    
     <Grid Margin="20">
 
         <Grid.RowDefinitions>
@@ -17,11 +18,12 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Image x:Name="img_product" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            </Image>
 
 
-            <Border Margin="5" CornerRadius="20" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336" BorderThickness="1">
-                <TextBlock FontWeight="Bold" Foreground="White" FontSize="16" Text="25%" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="30" Margin="-1,9" />
+            <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">
+                <Label  FontWeight="Bold" Foreground="White" FontSize="17" Content="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="45" Width="60"   Margin="0 0 0 0" />
             </Border>
 
 
@@ -33,7 +35,7 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            
+
             <TextBlock x:Name="txt_product_price" Margin="10" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
         </Grid>
 

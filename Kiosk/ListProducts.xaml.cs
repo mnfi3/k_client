@@ -28,6 +28,7 @@ namespace Kiosk
         public ListProducts(List<ItemCart> items)
         {
             InitializeComponent();
+            G.timer.Enabled = true; ;
 
         }
 
@@ -85,6 +86,7 @@ namespace Kiosk
             p4.img_product.Source = new BitmapImage(new Uri(@"/Kiosk;component/img/ic_salads.jpg", UriKind.RelativeOrAbsolute));
 
             lst_products.Items.Clear();
+            lst_products.Items.Refresh();
             lst_products.Items.Add(p1);
             lst_products.Items.Add(p2);
             lst_products.Items.Add(p3);
@@ -174,7 +176,9 @@ namespace Kiosk
             //    _cart.img_product.Source = pr.img_product.Source;
             //    //lst_cart.Items.Clear();
             //    lst_cart.Items.Add(_cart);
-            //}catch(NullReferenceException m){
+            //}
+            //catch (NullReferenceException m)
+            //{
             //    //m.ToString();
             //}
 
@@ -185,6 +189,7 @@ namespace Kiosk
             }
         }
 
+       
         
         
        

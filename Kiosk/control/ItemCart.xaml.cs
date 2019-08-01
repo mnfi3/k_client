@@ -26,7 +26,7 @@ namespace Kiosk.control
 
             ItemDessertInCart _item;
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 2; i++)
             {
                 _item = new ItemDessertInCart();
                 lst_desserts.Items.Add(_item);

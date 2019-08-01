@@ -4,7 +4,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="#eeeeee"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        
+        Style="{StaticResource vazir}"
         Title="DialogPaymentAccept" Height="300" Width="500" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Grid Margin="20 20">
         
@@ -24,11 +24,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="btn_ok" Click="btn_ok_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#388E3C" Grid.Column="1" Content="بله">
+            <Button x:Name="btn_ok" Click="btn_ok_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#67aa39" Grid.Column="1" Content="بله">
                 
             </Button>
 
-            <Button x:Name="btn_cancel" Click="btn_cancel_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#f44336"  Grid.Column="0" Content="خیر">
+            <Button x:Name="btn_cancel" Click="btn_cancel_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#7986CB"  Grid.Column="0" Content="خیر">
 
             </Button>
         </Grid>

@@ -78,6 +78,16 @@ namespace Kiosk
             grd_login.Visibility = Visibility.Visible;
         }
 
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            string user_name = txt_user_name.Text.ToString();
+            string password = txt_password.Password.ToString();
+            string client_key = G.client_key;
+
+        }
+
+       
+
         
 
        

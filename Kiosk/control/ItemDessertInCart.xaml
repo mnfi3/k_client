@@ -22,7 +22,7 @@
                 <materialDesign:PackIcon HorizontalAlignment="Left" Height="30" Width="30" Kind="Close" Foreground="#424242" VerticalAlignment="Center" />
             </Button>
 
-            <TextBlock Grid.Column="1" Text="پیاز " FontSize="18" Foreground="#616161" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" FlowDirection="RightToLeft"/>
+            <TextBlock Grid.Column="1" Text="پیاز      " FontSize="18" Foreground="#616161" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" FlowDirection="RightToLeft" FontFamily="Vazir"/>
 
         </Grid>
     </Grid>

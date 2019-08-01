@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Kiosk.control;
+using Kiosk.api;
 using System.Net;
 using System.IO;
 using System.Timers;
@@ -32,6 +33,35 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadRestaurants();
+            G.timer.Enabled = false;
+
+            //test
+            Request req = new Request();
+
+            req.DataReceivedHandler += client_DataReceivedHandler;
+            req.post("http://localhost:8080/kiosk/api/test1", new Dictionary<string, string> { { "name", "mohsen" }, { "family", "farjami" } }, new Dictionary<string, string>());
+
+            
+        }
+
+
+
+        private void client_DataReceivedHandler(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            MessageBox.Show(res.message);
+            // this event trigger when your web request complete.
+            //throw new NotImplementedException();
+        }
+
+
+
+
+
+
+        private void onReceived()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -82,14 +112,22 @@ namespace Kiosk
             r6.txt_restaurant.Text = "رستوران 6";
             r7.txt_restaurant.Text = "رستوران 7";
 
-            var fullFilePath = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-            bitmap.EndInit();
+
+            CachedImage.FileCache.AppCacheMode = CachedImage.FileCache.CacheMode.WinINet;
+            
+            r1.img_restaurant.ImageUrl = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
+
+
+            //var fullFilePath = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
+            //BitmapImage bitmap = new BitmapImage();
+            //bitmap.BeginInit();
+            //bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+            //bitmap.EndInit();
            
-            r1.img_restaurant.Source =bitmap;
-            r2.img_restaurant.Source =bitmap;
+            ////r1.img_restaurant.Source =bitmap;
+            //r2.img_restaurant.Source = bitmap;
+
+            r2.img_restaurant.ImageUrl = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
 
 
             lst_restaurants.Items.Add(r1);

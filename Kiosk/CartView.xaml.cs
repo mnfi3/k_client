@@ -35,7 +35,7 @@ namespace Kiosk
         {
             InitializeComponent();
             this.carts = carts;
-
+            
 
             toast = new Toast(this);
         }
@@ -43,6 +43,9 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            txt_discount_code.Focus();
+
+
             foreach (ItemCart i in carts)
             {
                 lst_cart.Items.Add(i);
@@ -92,8 +95,6 @@ namespace Kiosk
 
         private void btn_discount_Click(object sender, RoutedEventArgs e)
         {
-
-            toast.ShowInformation("کد تخفیف را وارد کنید");
         }
 
         private void btn_pay_Click(object sender, RoutedEventArgs e) 

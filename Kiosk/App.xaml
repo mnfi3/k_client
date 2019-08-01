@@ -12,6 +12,46 @@
 
                 <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+
+           
+
+            <!--fonts-->
+            <Style x:Key="iransans">
+                <Setter Property="TextElement.FontFamily" Value="IRANSans, /Kiosk;component/fonts/iransans/#IRANSans" />
+            </Style>
+
+            <Style x:Key="vazir">
+                <Setter Property="TextElement.FontFamily" Value="vazir, /Kiosk;component/fonts/vazir/#Vazir" />
+            </Style>
+
+            <Style x:Key="vazir_fd">
+                <Setter Property="TextElement.FontFamily" Value="vazir_fd, /Kiosk;component/fonts/vazir/#Vazir-FD" />
+            </Style>
+            
+
+            <Style x:Key="vazir_thin">
+                <Setter Property="TextElement.FontFamily" Value="vazir_thin, /Kiosk;component/fonts/vazir/#Vazir-Thin" />
+            </Style>
+
+            <Style x:Key="vazir_medium">
+                <Setter Property="TextElement.FontFamily" Value="vazir_medium, /Kiosk;component/fonts/vazir/#Vazir-Medium" />
+            </Style>
+
+            <Style x:Key="vazir_light">
+                <Setter Property="TextElement.FontFamily" Value="vazir_light, /Kiosk;component/fonts/vazir/#Vazir-Light" />
+            </Style>
+
+            <Style x:Key="vazir_thin_fd">
+                <Setter Property="TextElement.FontFamily" Value="vazir_thin_fd, /Kiosk;component/fonts/vazir/#Vazir-Thin-FD" />
+            </Style>
+            <Style x:Key="vazir_thin_fd_wol">
+                <Setter Property="TextElement.FontFamily" Value="vazir_thin_fd_wol, /Kiosk;component/fonts/vazir/#Vazir-Thin-FD-WOL" />
+            </Style>
+            <!--fonts-->
+            
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

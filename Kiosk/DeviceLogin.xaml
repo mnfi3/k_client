@@ -23,7 +23,7 @@
             <TextBox x:Name="txt_user_name" Margin="10 5"  Grid.Row="1"  Background="#FFDED4D4" FontWeight="Bold"  FontSize="25"  PreviewMouseLeftButtonDown="txt_user_name_PreviewMouseLeftButtonDown" />
             <TextBlock Margin="10 5" Grid.Row="2" Text="کلمه عبور" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="#FF0337EA" FontWeight="Bold"/>
             <PasswordBox x:Name="txt_password" Margin="10 5"  Grid.Row="3"  Background="#FFDED4D4" Foreground="Black" FontSize="25" PreviewMouseLeftButtonDown="txt_password_PreviewMouseLeftButtonDown" />
-            <Button  Margin="10 5" Height="auto" Grid.Row="4" Content="ورود"/>
+            <Button x:Name="btn_login"  Margin="10 5" Height="auto" Grid.Row="4" Content="ورود" Click="btn_login_Click"/>
 
 
         </Grid>

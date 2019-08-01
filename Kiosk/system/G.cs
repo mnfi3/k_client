@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Kiosk.model;
-using Kiosk.db;
 using System.Timers;
 using System.Windows;
+using Kiosk.model;
+using Kiosk.db;
 using Kiosk.system;
 
 namespace Kiosk

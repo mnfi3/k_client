@@ -89,3 +89,9 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessert.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessert.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessertInCart.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessertInCart.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\CachedImage.dll
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk.csproj.Kiosk.exe.config
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Net.Http.Formatting.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Web.Http.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Net.Http.Formatting.xml
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Web.Http.xml

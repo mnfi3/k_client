@@ -47,20 +47,35 @@ namespace Kiosk
             for (int i = 0; i < 30; i++)
             {
                 _item = new ItemDessert();
+                _item.txt_name.Text = "پیاز";
+                _item.txt_price.Text = "1,000 تومان";
+                _item.img_dessert.Source = new BitmapImage(new Uri(@"/Kiosk;component/img/ic_onion.png", UriKind.RelativeOrAbsolute));
                 lst_dessert1.Items.Add(_item);
+
+
                 _item = new ItemDessert();
+                _item.txt_name.Text = "دسر اسپانیایی";
+                _item.txt_price.Text = "10,000 تومان";
+                _item.img_dessert.Source = new BitmapImage(new Uri(@"/Kiosk;component/img/ic_dessert.jpg", UriKind.RelativeOrAbsolute));
                 lst_dessert2.Items.Add(_item);
             }
         }
 
         private void lst_dessert1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ItemDessert _item = (sender as ItemDessert);
-            //_item.Background = System.Drawing.ColorTranslator.FromHtml("#fcfcfc");
-            MessageBox.Show("selected");
+            ItemDessert _item = (ItemDessert)(sender as ListView).SelectedItem;
             if (_item != null)
             {
-                MessageBox.Show("selected");
+                var bc = new BrushConverter();
+                _item.Background = (Brush)bc.ConvertFrom("#fcfcfc");
+            }
+        }
+
+        private void lst_dessert2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ItemDessert _item = (ItemDessert)(sender as ListView).SelectedItem;
+            if (_item != null)
+            {
                 var bc = new BrushConverter();
                 _item.Background = (Brush)bc.ConvertFrom("#fcfcfc");
             }
