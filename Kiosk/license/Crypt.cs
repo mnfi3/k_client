@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace Kiosk.system
+namespace Kiosk.license
 {
-    class ClientEncryption
+    class Crypt
     {
         //private const string ClientInitVector = "lab_card_printer";
         private const string ClientInitVector = "e_z_i_t_e_c_h_ir";
@@ -41,5 +41,34 @@ namespace Kiosk.system
             }
 
         }
+
+
+        public static string EncryptString(string plainText, string passPhrase)
+        {
+            try
+            {
+                byte[] initVectorBytes = Encoding.UTF8.GetBytes(ClientInitVector);
+                byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+                PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+                byte[] keyBytes = password.GetBytes(ClientKeysize / 8);
+                RijndaelManaged symmetricKey = new RijndaelManaged();
+                symmetricKey.Mode = CipherMode.CBC;
+                ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
+                MemoryStream memoryStream = new MemoryStream();
+                CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
+                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                cryptoStream.FlushFinalBlock();
+                byte[] cipherTextBytes = memoryStream.ToArray();
+                memoryStream.Close();
+                cryptoStream.Close();
+                return Convert.ToBase64String(cipherTextBytes);
+            }
+            catch
+            {
+                return "encryption failed check your text";
+            }
+        }
+
+       
     }
 }

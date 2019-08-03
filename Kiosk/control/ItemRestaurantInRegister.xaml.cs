@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Kiosk.model;
+using Kiosk.api;
+using ToastNotifications;
+using Kiosk.db;
 
 namespace Kiosk.control
 {
@@ -20,9 +24,49 @@ namespace Kiosk.control
     /// </summary>
     public partial class ItemRestaurantInRegister : UserControl
     {
+
+        public Restaurant restaurant;
         public ItemRestaurantInRegister()
         {
             InitializeComponent();
         }
+
+        public ItemRestaurantInRegister(Restaurant res)
+        {
+            InitializeComponent();
+
+            this.restaurant = res;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            RegisterRestaurant _register = new RegisterRestaurant();
+
+            if (restaurant != null)
+            {
+                txt_name.Text = restaurant.name;
+                img_restaurant.ImageUrl = restaurant.image;
+            }
+        }
+
+        private void btn_remove_Click(object sender, RoutedEventArgs e)
+        {
+            RRestaurant r_res = new RRestaurant();
+            r_res.logout(this.restaurant, logoutCallBack);
+        }
+
+        private void logoutCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            if (res.status == 1)
+            {
+                DBRestaurant db_res = new DBRestaurant();
+                db_res.removeRestaurant(this.restaurant);
+                G.restaurants = G.getRestaurants();
+                this.Visibility = Visibility.Collapsed;
+            }
+        }
+
+       
     }
 }

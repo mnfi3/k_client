@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Kiosk.system;
+using Kiosk.license;
 using Kiosk.model;
 using Kiosk.db;
 using System.Timers;
@@ -28,6 +29,7 @@ namespace Kiosk
             G.restaurants = new DBRestaurant().getRestaurants();
             G.setupTimer();
             G.isLoggedIn = db_device.isLoggedIn();
+            G.X_API_KEY = Crypt.DecryptString("0c8z9sAo7anL6R5dzz3yeib0yHaWEyq4ktqrDaoLGv10JAxWvWh8b2QdCGH8lDV05MdvAyTpGULyPYfy0m42BQ==", G.PUBLIC_KEY);
         }
 
         

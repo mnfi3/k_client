@@ -7,7 +7,7 @@ using System.IO;
 using System.Management;
 using System.Windows;
 
-namespace Kiosk.system
+namespace Kiosk.license
 {
     class Security
     {
@@ -39,13 +39,13 @@ namespace Kiosk.system
             //add to version2
             string client_key = G.client_key;
             client_key = "xxx" + client_key + "yyy";
-            licence = ClientEncryption.DecryptString(licence, client_key);
+            licence = Crypt.DecryptString(licence, client_key);
             //add to version2
 
             String key = licence.Substring(0, 16);
             String encrypted = licence.Substring(16, licence.Length - 16);
 
-            String hashPart = ClientEncryption.DecryptString(encrypted, key);
+            String hashPart = Crypt.DecryptString(encrypted, key);
             if (hashPart == (getHash(G.client_key + key + SALT)) + key)
             {
                 return true;

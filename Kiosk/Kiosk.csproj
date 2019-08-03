@@ -82,9 +82,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="api\ISetOnDataReceived.cs" />
+    <Compile Include="api\RDevice.cs" />
     <Compile Include="api\Request.cs" />
     <Compile Include="api\Response.cs" />
+    <Compile Include="api\RRestaurant.cs" />
+    <Compile Include="api\Urls.cs" />
     <Compile Include="control\DialogCartSwipe.xaml.cs">
       <DependentUpon>DialogCartSwipe.xaml</DependentUpon>
     </Compile>
@@ -125,7 +127,7 @@
     <Compile Include="RegisterRestaurant.xaml.cs">
       <DependentUpon>RegisterRestaurant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="license\ClientEncryption.cs" />
+    <Compile Include="license\Crypt.cs" />
     <Compile Include="license\LicenseManager.xaml.cs">
       <DependentUpon>LicenseManager.xaml</DependentUpon>
     </Compile>

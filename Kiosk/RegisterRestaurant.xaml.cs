@@ -15,6 +15,8 @@ using Kiosk.control;
 using Kiosk.db;
 using Kiosk.model;
 using System.Diagnostics;
+using Kiosk.api;
+using ToastNotifications;
 
 namespace Kiosk
 {
@@ -23,28 +25,16 @@ namespace Kiosk
     /// </summary>
     public partial class RegisterRestaurant : Window
     {
+        Toast toast;
         public RegisterRestaurant()
         {
             InitializeComponent();
+            toast = new Toast(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ItemRestaurantInRegister _item1 = new ItemRestaurantInRegister();
-            ItemRestaurantInRegister _item2 = new ItemRestaurantInRegister();
-            ItemRestaurantInRegister _item3 = new ItemRestaurantInRegister();
-            ItemRestaurantInRegister _item4 = new ItemRestaurantInRegister();
-            lst_restaurants.Items.Add(_item1);
-            lst_restaurants.Items.Add(_item2);
-            lst_restaurants.Items.Add(_item3);
-            lst_restaurants.Items.Add(_item4);
-
-            //DBRestaurant db_restaurant = new DBRestaurant();
-            //db_restaurant.getRestaurants();
-            //foreach (Restaurant rest in db_restaurant.getRestaurants())
-            //{
-            //    ItemRestaurantInRegister _item1 = new ItemRestaurantInRegister();
-            //}
+            loadRests();
 
         }
 
@@ -68,6 +58,50 @@ namespace Kiosk
             Process process = Process.Start(new ProcessStartInfo(
                ((Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\osk.exe"))));
             txt_password.Focus();
+        }
+
+        private void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            DeviceLogin _login = new DeviceLogin();
+            _login.Show();
+            this.Close();
+        }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            string user_name = txt_user_name.Text.ToString();
+            string password = txt_password.Password.ToString();
+
+            RRestaurant r_restaurant = new RRestaurant();
+            r_restaurant.login(user_name, password,loginCompleteCallBack);
+        }
+
+        private void loginCompleteCallBack(object sender, EventArgs e){
+            Restaurant restaurant = sender as Restaurant;
+            if (restaurant.token != null)
+            {
+                DBRestaurant db_rest = new DBRestaurant();
+                MessageBox.Show(db_rest.setRestaurant(restaurant).ToString()) ;
+                toast.ShowSuccess("رستوران با موفقیت ثبت شد");
+                G.restaurants = G.getRestaurants();
+                loadRests();
+            }
+            else
+            {
+                toast.ShowError("عملیات انجام نشد");
+            }
+        }
+
+
+        private void loadRests()
+        {
+            List<Restaurant> restaurants = G.restaurants;
+            lst_restaurants.Items.Clear();
+            foreach (Restaurant res in restaurants)
+            {
+                ItemRestaurantInRegister _item = new ItemRestaurantInRegister(res);
+                lst_restaurants.Items.Add(_item);
+            }
         }
     }
 }

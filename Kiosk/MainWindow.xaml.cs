@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Kiosk.control;
 using Kiosk.system;
+using Kiosk.license;
 using Kiosk.db;
 using System.Data.SqlClient;
 
@@ -34,23 +35,23 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //DBDevice db_device = new DBDevice();
+            DBDevice db_device = new DBDevice();
 
-            //if (!Security.licenceChecker())
-            //{
-            //    LicenseManager _manager = new LicenseManager();
-            //    _manager.Show();
-            //}
-            //else if (!db_device.isLoggedIn())
-            //{
-            //    DeviceLogin _device = new DeviceLogin();
-            //    _device.Show();
-            //}
-            //else
-            //{
+            if (!Security.licenceChecker())
+            {
+                LicenseManager _manager = new LicenseManager();
+                _manager.Show();
+            }
+            else if (!db_device.isLoggedIn())
+            {
+                DeviceLogin _device = new DeviceLogin();
+                _device.Show();
+            }
+            else
+            {
                 ListRestaurant _restaurants = new ListRestaurant();
                 _restaurants.Show();
-            //}
+            }
 
             
 

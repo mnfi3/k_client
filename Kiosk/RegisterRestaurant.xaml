@@ -24,14 +24,27 @@
                 <TextBox x:Name="txt_user_name" Margin="10 5"  Grid.Row="1"  Background="#FFDED4D4" FontWeight="Bold"  FontSize="25" PreviewMouseLeftButtonDown="txt_user_name_PreviewMouseLeftButtonDown"/>
                 <TextBlock Margin="10 5" Grid.Row="2" Text="کلمه عبور" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="#FF0337EA" FontWeight="Bold"/>
                 <PasswordBox x:Name="txt_password" Margin="10 5"  Grid.Row="3"  Background="#FFDED4D4" Foreground="Black" FontSize="25" PreviewMouseLeftButtonDown="txt_password_PreviewMouseLeftButtonDown"/>
-                <Button  Margin="10 5" Height="auto" Grid.Row="4" Content="افزودن"/>
+                <Button x:Name="btn_login" Click="btn_login_Click"  Margin="10 5" Height="auto" Grid.Row="4" Content="افزودن"/>
             </Grid>
-            
-            <Button x:Name="btn_finish" Height="50" VerticalAlignment="Bottom" Content="تمام" Margin="20" Click="btn_finish_Click"/>
+
+
+            <Grid VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" x:Name="btn_finish" Click="btn_finish_Click" Height="50"  Content="تمام" Margin="20" />
+                <Button Grid.Column="1" x:Name="btn_back" Click="btn_back_Click" Content="بازگشت" Height="50" Margin="20"/>
+
+            </Grid>
         </Grid>
         
         <Grid Grid.Column="1" Background="LightGray">
-            <ListView Width="auto"  Height="auto"  x:Name="lst_restaurants" Margin="10" Background="#f00" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+           
+            
+            
+            <ListView  Width="auto"  Height="auto"  x:Name="lst_restaurants" Margin="10" Background="#f00" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                 <!--disable hilight-->
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -47,6 +60,8 @@
                 </ListView.ItemContainerStyle>
                 <!--disable hilight-->
             </ListView>
+            
+           
 
 
         </Grid>

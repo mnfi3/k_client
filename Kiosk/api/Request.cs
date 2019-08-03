@@ -18,7 +18,6 @@ namespace Kiosk.api
     class Request 
     {
 
-        public event EventHandler DataReceivedHandler = null;
 
         private HttpClient client;
 
@@ -28,9 +27,79 @@ namespace Kiosk.api
         }
 
 
-        public async void post(string url, Dictionary<string, string> data, Dictionary<string, string> headers)
+
+
+
+
+
+
+        public async void get(string url, Dictionary<string, string> data, Dictionary<string, string> headers, EventHandler eventHandler)
         {
-           
+            EventHandler dataReceivedHandler = null;
+            dataReceivedHandler += eventHandler;
+
+            url += "?";
+            foreach (KeyValuePair<string, string> d in data)
+            {
+                url += d.Key + "=" + d.Value + "&";
+            }
+
+            foreach (KeyValuePair<string, string> header in headers)
+            {
+                client.DefaultRequestHeaders.Add(header.Key, header.Value);
+            }
+
+            Response res = new Response();
+
+            client.Timeout = TimeSpan.FromMilliseconds(Timeout.Infinite);
+
+            try
+            {
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    try
+                    {
+                        var json = (JObject)JsonConvert.DeserializeObject(responseString);
+                        res.status = json["status"].Value<Int32>();
+                        res.message = json["message"].Value<string>();
+                        res.data = json["data"].Value<JObject>();
+                    }
+                    catch (JsonReaderException e)
+                    {
+                        res.message = "json parsing error";
+                        res.status = -3;
+                        res.data = new JObject();
+                    }
+
+
+                }
+                else
+                {
+                    res.message = "server internal error";
+                    res.status = -1;
+                    res.data = new JObject();
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                res.message = "connection error";
+                res.status = -2;
+                res.data = new JObject();
+            }
+
+            dataReceivedHandler(res, new EventArgs());
+        }
+
+
+
+
+        public async void post(string url, Dictionary<string, string> data, Dictionary<string, string> headers, EventHandler eventHandler)
+        {
+            EventHandler dataReceivedHandler = null;
+            dataReceivedHandler += eventHandler;
+
             foreach (KeyValuePair<string, string> header in headers)
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -48,43 +117,46 @@ namespace Kiosk.api
                 if (response.IsSuccessStatusCode)
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
-                    res.data = responseString;
-                    //DataReceivedHandler(res, new EventArgs());
-
                     try
                     {
                         var json = (JObject)JsonConvert.DeserializeObject(responseString);
                         res.status = json["status"].Value<Int32>();
-                        MessageBox.Show(res.status.ToString());
-
                         res.message = json["message"].Value<string>();
-                        res.data = json["data"].Value<string>();
+                        try
+                        {
+                            res.data = json["data"].Value<JObject>();
+                        }catch(InvalidCastException e){
+
+                        }
                     }
                     catch (JsonReaderException e)
                     {
-                        MessageBox.Show(e.ToString());
+                        res.message = "json parsing error";
+                        res.status = -3;
+                        res.data = new JObject();
                     }
-
-                   
                 }
                 else
                 {
-                    res.message = "error from server";
+                    res.message = "server internal error";
                     res.status = -1;
-                    res.data = "no data";
+                    res.data = new JObject();
                 }
             }
             catch (HttpRequestException e)
             {
                 res.message = "connection error";
                 res.status = -2;
-                res.data = "no data";
+                res.data = new JObject();
             }
 
-            Response res2 = new Response() { status = 50, message = "message from local", data = "data from local"};
-
-            DataReceivedHandler(res2, new EventArgs());
+            dataReceivedHandler(res, new EventArgs());
         }
+
+
+
+
+
 
         
 

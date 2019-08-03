@@ -1,4 +1,5 @@
-﻿using Kiosk.model;
+﻿using Kiosk.license;
+using Kiosk.model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -20,6 +21,7 @@ namespace Kiosk.db
                 while (dataReader.Read())
                 {
                     isLoggedIn = true;
+                    break;
                 }
             }
             db.close();
@@ -45,7 +47,7 @@ namespace Kiosk.db
                     columnIndex = dataReader.GetOrdinal("name");
                     device.name = dataReader.GetString(columnIndex);
                     columnIndex = dataReader.GetOrdinal("token");
-                    device.token = dataReader.GetString(columnIndex);
+                    device.token = Crypt.DecryptString(dataReader.GetString(columnIndex), G.PUBLIC_KEY);
                     columnIndex = dataReader.GetOrdinal("client_key");
                     device.client_key = dataReader.GetString(columnIndex);
                     break;
@@ -64,8 +66,21 @@ namespace Kiosk.db
             values.Add("@id", id.ToString());
             values.Add("@user_name", user_name);
             values.Add("@name", name);
-            values.Add("@token", token);
+            values.Add("@token", Crypt.EncryptString(token, G.PUBLIC_KEY));
             values.Add("@client_key", client_key);
+            return db.insert("insert into device (id,user_name,name,token,client_key) values (@id, @user_name, @name, @token, @client_key)", values);
+        }
+
+        public int saveDevice(Device device)
+        {
+            db.delete("delete from device");
+
+            values.Clear();
+            values.Add("@id", device.id.ToString());
+            values.Add("@user_name", device.user_name);
+            values.Add("@name", device.name);
+            values.Add("@token", Crypt.EncryptString(device.token, G.PUBLIC_KEY));
+            values.Add("@client_key", device.client_key);
             return db.insert("insert into device (id,user_name,name,token,client_key) values (@id, @user_name, @name, @token, @client_key)", values);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace Kiosk.api
 {
     class Response
     {
-        public string data{ set; get; }
         public int status { set; get; }
         public string message { set; get; }
+        public JObject data { set; get; }
     }
 }

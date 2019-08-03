@@ -13,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Kiosk.db;
+using Kiosk.api;
+using Kiosk.model;
+using ToastNotifications;
+using Kiosk.control;
 
 namespace Kiosk
 {
@@ -21,9 +25,15 @@ namespace Kiosk
     /// </summary>
     public partial class DeviceLogin : Window
     {
+
+        private readonly Toast toast;
+
+
         public DeviceLogin()
         {
             InitializeComponent();
+
+            toast = new Toast(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +48,7 @@ namespace Kiosk
                 btn_logout.Visibility = Visibility.Collapsed;
                 grd_login.Visibility = Visibility.Visible;
             }
+
         }
 
 
@@ -72,19 +83,58 @@ namespace Kiosk
 
         private void btn_logout_Click(object sender, RoutedEventArgs e)
         {
-            new DBDevice().logoutDevice();
-            G.isLoggedIn = false;
-            btn_logout.Visibility = Visibility.Collapsed;
-            grd_login.Visibility = Visibility.Visible;
+            RDevice r_device = new RDevice();
+            r_device.logout(logoutCallBack);
+           
         }
+
+
+        private void logoutCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            if (res.status == 1)
+            {
+                new DBDevice().logoutDevice();
+                G.isLoggedIn = false;
+                btn_logout.Visibility = Visibility.Collapsed;
+                grd_login.Visibility = Visibility.Visible;
+                toast.ShowSuccess("با موفقیت خارج شدید");
+
+            }
+            else
+            {
+                toast.ShowError("عملیات شکست خورد");
+            }
+        } 
+
+
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             string user_name = txt_user_name.Text.ToString();
             string password = txt_password.Password.ToString();
-            string client_key = G.client_key;
-
+            RDevice req = new RDevice();
+            req.login(user_name, password, loginCallBack);
         }
+
+        private void loginCallBack(object sender, EventArgs e)
+        {
+            Device device = sender as Device;
+            if (device.token != null)
+            {
+                DBDevice db_device = new DBDevice();
+                db_device.saveDevice(device);
+                toast.ShowSuccess("با موفقیت وارد شدید");
+                G.isLoggedIn = true;
+                G.device = G.getDevice();
+                btn_logout.Visibility = Visibility.Visible;
+                grd_login.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                toast.ShowError("عملیات شکست خورد");
+            }
+        } 
 
        
 
