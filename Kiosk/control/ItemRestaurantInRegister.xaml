@@ -18,8 +18,15 @@
         </Grid.ColumnDefinitions>
         
         <cachedImage:Image Grid.Column="0" x:Name="img_restaurant"  Source="../img/ic_res.jpg" Height="auto" Width="auto" />
-        
-        <TextBlock Grid.Column="1" x:Name="txt_name" Text="رستوران 1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="15"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Foreground="#000"  x:Name="txt_name" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="15"/>
+            <TextBlock Grid.Row="1" Foreground="#000"  x:Name="txt_user_name" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="15"/>
+        </Grid>
 
         <Button x:Name="btn_remove" Click="btn_remove_Click" Grid.Column="3" Background="{x:Null}" BorderBrush="{x:Null}" Height="50" Width="50">
             <materialDesign:PackIcon Kind="Close" Height="40" Width="40" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red"/>

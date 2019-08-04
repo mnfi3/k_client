@@ -7,12 +7,14 @@ using System.Windows;
 using System.Text;
 using System.Threading.Tasks;
 using Kiosk.model;
+using Kiosk.control;
 
 namespace Kiosk.api
 {
     class RDevice
     {
         private EventHandler eventLogin = null;
+        private EventHandler eventLoginCheck = null;
         private EventHandler eventLogout = null;
 
 
@@ -41,13 +43,28 @@ namespace Kiosk.api
             }
             else
             {
-                MessageBox.Show(res.message);
+                MB.Show(res.message);
                 device = new Device();
             }
 
             eventLogin(device, new EventArgs());
         }
 
+
+
+        public void loginCheck(EventHandler handler)
+        {
+            Request req = new Request();
+            eventLoginCheck += handler;
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.getDevice().token } };
+            req.get(Urls.DEVICE_LOGING_CHECK, new Dictionary<string, string>(), headers, loginCheckCallBack);
+        }
+
+        private void loginCheckCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            eventLoginCheck(res, new EventArgs());
+        }
 
 
 

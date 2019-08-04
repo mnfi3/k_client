@@ -105,6 +105,9 @@
     <Compile Include="control\ItemRestaurantInRegister.xaml.cs">
       <DependentUpon>ItemRestaurantInRegister.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\MB.xaml.cs">
+      <DependentUpon>MB.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\Toast.cs" />
     <Compile Include="control\VKeyboard.xaml.cs">
       <DependentUpon>VKeyboard.xaml</DependentUpon>
@@ -177,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\ItemRestaurantInRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\MB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

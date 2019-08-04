@@ -67,13 +67,15 @@ namespace Kiosk
             this.Close();
         }
 
+
+
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             string user_name = txt_user_name.Text.ToString();
             string password = txt_password.Password.ToString();
 
             RRestaurant r_restaurant = new RRestaurant();
-            r_restaurant.login(user_name, password,loginCompleteCallBack);
+            r_restaurant.login(user_name, password, loginCompleteCallBack);
         }
 
         private void loginCompleteCallBack(object sender, EventArgs e){
@@ -81,7 +83,7 @@ namespace Kiosk
             if (restaurant.token != null)
             {
                 DBRestaurant db_rest = new DBRestaurant();
-                MessageBox.Show(db_rest.setRestaurant(restaurant).ToString()) ;
+                db_rest.setRestaurant(restaurant);
                 toast.ShowSuccess("رستوران با موفقیت ثبت شد");
                 G.restaurants = G.getRestaurants();
                 loadRests();
@@ -93,13 +95,18 @@ namespace Kiosk
         }
 
 
+
+
+
+
         private void loadRests()
         {
             List<Restaurant> restaurants = G.restaurants;
             lst_restaurants.Items.Clear();
+            ItemRestaurantInRegister _item;
             foreach (Restaurant res in restaurants)
             {
-                ItemRestaurantInRegister _item = new ItemRestaurantInRegister(res);
+                _item = new ItemRestaurantInRegister(res);
                 lst_restaurants.Items.Add(_item);
             }
         }

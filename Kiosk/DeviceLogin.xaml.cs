@@ -49,6 +49,10 @@ namespace Kiosk
                 grd_login.Visibility = Visibility.Visible;
             }
 
+            txt_client_key.Text = "client_key : " + G.client_key;
+            txt_device_name.Text = "name : " + G.device.name;
+            txt_device_user_name.Text = "user_name : " + G.device.user_name;
+
         }
 
 
@@ -96,6 +100,7 @@ namespace Kiosk
             {
                 new DBDevice().logoutDevice();
                 G.isLoggedIn = false;
+                G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Collapsed;
                 grd_login.Visibility = Visibility.Visible;
                 toast.ShowSuccess("با موفقیت خارج شدید");

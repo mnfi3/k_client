@@ -12,8 +12,6 @@ namespace Kiosk.db
 {
     class DBRestaurant:DBModel
     {
-
-       
         public int setRestaurant(Restaurant restaurant)
         {
             values.Clear();
@@ -34,7 +32,7 @@ namespace Kiosk.db
         {
             values.Clear();
             values.Add("@id", restaurant.id.ToString());
-            return db.delete("delete from restaurants where id = @id");
+            return db.delete("delete from restaurants where id=@id", values);
         }
 
         public List<Restaurant> getRestaurants(){
@@ -42,9 +40,10 @@ namespace Kiosk.db
             SqlDataReader dataReader = db.select("select * from restaurants");
              if (dataReader != null)
              {
-                 Restaurant restaurant = new Restaurant();
+                 Restaurant restaurant;
                  while (dataReader.Read())
                  {
+                     restaurant = new Restaurant();
                      int columnIndex;
                      columnIndex = dataReader.GetOrdinal("id");
                      restaurant.id = dataReader.GetInt32(columnIndex);
@@ -53,9 +52,9 @@ namespace Kiosk.db
                      columnIndex = dataReader.GetOrdinal("name");
                      restaurant.name = dataReader.GetString(columnIndex);
                      columnIndex = dataReader.GetOrdinal("image");
-                     restaurant.name = dataReader.GetString(columnIndex);
+                     restaurant.image = dataReader.GetString(columnIndex);
                      columnIndex = dataReader.GetOrdinal("token");
-                     restaurant.token = Crypt.EncryptString(dataReader.GetString(columnIndex), G.PUBLIC_KEY);
+                     restaurant.token = Crypt.DecryptString(dataReader.GetString(columnIndex), G.PUBLIC_KEY);
 
                      restaurants.Add(restaurant);
                  }

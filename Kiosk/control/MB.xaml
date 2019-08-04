@@ -1,0 +1,21 @@
+﻿<Window x:Class="Kiosk.control.MB"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		Background="#E1F5FE"
+        Style="{StaticResource vazir}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        WindowStartupLocation="CenterScreen"
+        Title="DialogCartSwipe" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock x:Name="txt_text" Grid.Row="0" Text="dialog" Margin="10 20" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" FontSize="17" Foreground="#000"/>
+        <Button x:Name="btn_ok" Click="btn_ok_Click" Grid.Row="1" Content="باشه" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0 8" Height="auto" Width="80"  FontSize="15" Foreground="#fff"/>
+
+
+    </Grid>
+</Window>

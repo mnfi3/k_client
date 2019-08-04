@@ -92,7 +92,14 @@ namespace Kiosk.db
                 {
                     foreach (string key in values.Keys)
                     {
-                        command.Parameters.AddWithValue(key, values[key]);
+                        if (values[key] != null)
+                        {
+                            command.Parameters.AddWithValue(key, values[key]);
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue(key, "");
+                        }
                     }
                 }
                 affected = command.ExecuteNonQuery();
@@ -119,7 +126,14 @@ namespace Kiosk.db
                 {
                     foreach (string key in values.Keys)
                     {
-                        command.Parameters.AddWithValue(key, values[key]);
+                        if (values[key] != null)
+                        {
+                            command.Parameters.AddWithValue(key, values[key]);
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue(key, "");
+                        }
                     }
                 }
                 affected = command.ExecuteNonQuery();

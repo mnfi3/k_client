@@ -40,12 +40,13 @@ namespace Kiosk.control
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            RegisterRestaurant _register = new RegisterRestaurant();
 
             if (restaurant != null)
             {
                 txt_name.Text = restaurant.name;
+                txt_user_name.Text = restaurant.user_name;
                 img_restaurant.ImageUrl = restaurant.image;
+                img_restaurant.Source = null;
             }
         }
 
@@ -58,13 +59,10 @@ namespace Kiosk.control
         private void logoutCallBack(object sender, EventArgs e)
         {
             Response res = sender as Response;
-            if (res.status == 1)
-            {
-                DBRestaurant db_res = new DBRestaurant();
-                db_res.removeRestaurant(this.restaurant);
-                G.restaurants = G.getRestaurants();
-                this.Visibility = Visibility.Collapsed;
-            }
+            DBRestaurant db_res = new DBRestaurant();
+            db_res.removeRestaurant(this.restaurant);
+            G.restaurants = G.getRestaurants();
+            this.Visibility = Visibility.Collapsed;
         }
 
        

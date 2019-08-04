@@ -27,12 +27,6 @@ namespace Kiosk.api
         }
 
 
-
-
-
-
-
-
         public async void get(string url, Dictionary<string, string> data, Dictionary<string, string> headers, EventHandler eventHandler)
         {
             EventHandler dataReceivedHandler = null;
@@ -62,9 +56,16 @@ namespace Kiosk.api
                     try
                     {
                         var json = (JObject)JsonConvert.DeserializeObject(responseString);
-                        res.status = json["status"].Value<Int32>();
-                        res.message = json["message"].Value<string>();
-                        res.data = json["data"].Value<JObject>();
+                        try
+                        {
+                            res.status = json["status"].Value<Int32>();
+                            res.message = json["message"].Value<string>();
+                            res.data = json["data"].Value<JObject>();
+                        }
+                        catch (InvalidCastException e)
+                        {
+
+                        }
                     }
                     catch (JsonReaderException e)
                     {
@@ -120,12 +121,14 @@ namespace Kiosk.api
                     try
                     {
                         var json = (JObject)JsonConvert.DeserializeObject(responseString);
-                        res.status = json["status"].Value<Int32>();
-                        res.message = json["message"].Value<string>();
                         try
                         {
+                            res.status = json["status"].Value<Int32>();
+                            res.message = json["message"].Value<string>();
                             res.data = json["data"].Value<JObject>();
-                        }catch(InvalidCastException e){
+                        }
+                        catch(InvalidCastException e)
+                        {
 
                         }
                     }

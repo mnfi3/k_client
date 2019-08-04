@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Threading.Tasks;
+using Kiosk.control;
 
 namespace Kiosk.api
 {
@@ -40,8 +41,8 @@ namespace Kiosk.api
             }
             else
             {
-                MessageBox.Show(res.message);
                 restaurant = new Restaurant();
+                MB.Show(res.message);
             }
 
             eventLogin(restaurant, new EventArgs());
@@ -60,7 +61,7 @@ namespace Kiosk.api
 
             Dictionary<string, string> data = new Dictionary<string, string>();
             Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + rest.token } };
-            request.post(Urls.DEVICE_LOGOUT, data, headers, logoutCompleteCallBack);
+            request.post(Urls.RESTAURANT_LOGOUT, data, headers, logoutCompleteCallBack);
         }
 
         private void logoutCompleteCallBack(object sender, EventArgs e)
