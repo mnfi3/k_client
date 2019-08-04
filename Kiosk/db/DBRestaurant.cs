@@ -23,7 +23,7 @@ namespace Kiosk.db
             values.Add("@user_name", restaurant.user_name);
             values.Add("@name", restaurant.name);
             values.Add("@image", restaurant.image);
-            values.Add("@token", Crypt.EncryptString(restaurant.token, G.PUBLIC_KEY));
+            values.Add("@token", Crypt.EncryptString(restaurant.token, G.PRIVATE_KEY));
             return db.insert("insert into restaurants (id, user_name, name, image, token) values (@id, @user_name, @name, @image, @token)", values);
         }
 
@@ -54,7 +54,7 @@ namespace Kiosk.db
                      columnIndex = dataReader.GetOrdinal("image");
                      restaurant.image = dataReader.GetString(columnIndex);
                      columnIndex = dataReader.GetOrdinal("token");
-                     restaurant.token = Crypt.DecryptString(dataReader.GetString(columnIndex), G.PUBLIC_KEY);
+                     restaurant.token = Crypt.DecryptString(dataReader.GetString(columnIndex), G.PRIVATE_KEY);
 
                      restaurants.Add(restaurant);
                  }

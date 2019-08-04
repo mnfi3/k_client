@@ -96,6 +96,9 @@
     <Compile Include="control\DialogPaymentAccept.xaml.cs">
       <DependentUpon>DialogPaymentAccept.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\DialogPublic.xaml.cs">
+      <DependentUpon>DialogPublic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\ItemDessert.xaml.cs">
       <DependentUpon>ItemDessert.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\DialogPaymentAccept.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\DialogPublic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

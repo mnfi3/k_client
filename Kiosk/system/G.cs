@@ -21,6 +21,7 @@ namespace Kiosk
         public static Timer timer = new System.Timers.Timer();
         public static bool isLoggedIn = false;
         public const string PUBLIC_KEY = "kkkF19BEE2EF1yyy";
+        public static string PRIVATE_KEY;
 
         //0c8z9sAo7anL6R5dzz3yeib0yHaWEyq4ktqrDaoLGv10JAxWvWh8b2QdCGH8lDV05MdvAyTpGULyPYfy0m42BQ==
         public static string X_API_KEY;
