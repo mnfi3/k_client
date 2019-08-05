@@ -18,6 +18,7 @@ using Kiosk.system;
 using Kiosk.license;
 using Kiosk.db;
 using System.Data.SqlClient;
+using Kiosk.api;
 
 
 namespace Kiosk
@@ -57,6 +58,7 @@ namespace Kiosk
 
             this.Close();
         }
+
 
         
 

@@ -1,4 +1,5 @@
 ﻿using Kiosk.control;
+using Kiosk.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +21,19 @@ namespace Kiosk
     /// </summary>
     public partial class ListProducts : Window
     {
+
+        public Restaurant restaurant;
         public ListProducts()
         {
             InitializeComponent();
         }
 
-        public ListProducts(List<ItemCart> items)
+        public ListProducts(Restaurant rest)
         {
             InitializeComponent();
-            G.timer.Enabled = true; ;
+            G.timer.Enabled = true;
 
+            this.restaurant = rest;
         }
 
 
@@ -38,6 +42,7 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadCategories();
+
         }
 
 
@@ -147,6 +152,8 @@ namespace Kiosk
 
         private void lst_categories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if ((sender as ListView).SelectedItem == null) return;
+
             foreach (ItemCategory c in lst_categories.Items)
             {
                 c.txt_category.Foreground = Brushes.Black;
@@ -162,11 +169,16 @@ namespace Kiosk
             {
                 //m.ToString();
             }
-           
+
+
+            lst_categories.SelectedItem = null;
+
+
         }
 
         private void lst_products_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if ((sender as ListView).SelectedItem == null) return;
             //ItemProduct pr = (ItemProduct)((sender as ListView).SelectedItem);
             //try
             //{
@@ -185,8 +197,10 @@ namespace Kiosk
             ProductInfo _info = new ProductInfo();
             if (_info.ShowDialog() == true)
             {
-
             }
+
+            lst_products.SelectedItem = null;
+
         }
 
        

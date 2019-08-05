@@ -35,6 +35,7 @@ namespace Kiosk
             G.setupTimer();
             G.isLoggedIn = db_device.isLoggedIn();
 
+            syncRestaurants();
 
         }
 
@@ -62,11 +63,20 @@ namespace Kiosk
 
         private void syncRestaurants()
         {
-            foreach (Restaurant res in G.restaurants)
-            {
+            RDevice r_device = new RDevice();
+            r_device.getRestaurants(restaurantCallBack);
+        }
 
+        private void restaurantCallBack(object sender, EventArgs e)
+        {
+            List<Restaurant> rests = sender as List<Restaurant>;
+            DBRestaurant db_rest = new DBRestaurant();
+            foreach (Restaurant rest in rests)
+            {
+                db_rest.updateRestaurantImage(rest);
             }
         }
+
 
         
     }

@@ -19,6 +19,8 @@ using System.IO;
 using System.Timers;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Kiosk.db;
+using Kiosk.model;
 
 namespace Kiosk
 {
@@ -52,12 +54,23 @@ namespace Kiosk
             this.Close();
         }
 
+
         private void lst_restaurants_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListProducts _products = new ListProducts();
+            if (lst_restaurants.SelectedItem == null) return;
+
+
+            ItemRestaurant _item = (ItemRestaurant)(sender as ListView).SelectedItem;
+            G.restaurant = _item.restaurant;
+
+            ListProducts _products = new ListProducts(_item.restaurant);
             _products.Show();
-            G.setupTimer();
+
+            //G.setupTimer();
             this.Close();
+
+
+            lst_restaurants.SelectedItem = null;
         }
 
         private void btn_manage_Click(object sender, RoutedEventArgs e)
@@ -78,66 +91,15 @@ namespace Kiosk
 
         private void loadRestaurants()
         {
-            ItemRestaurant r1 = new ItemRestaurant();
-            ItemRestaurant r2 = new ItemRestaurant();
-            ItemRestaurant r3 = new ItemRestaurant();
-            ItemRestaurant r4 = new ItemRestaurant();
-            ItemRestaurant r5 = new ItemRestaurant();
-            ItemRestaurant r6 = new ItemRestaurant();
-            ItemRestaurant r7 = new ItemRestaurant();
-            r1.txt_restaurant.Text = "رستوران 1";
-            r2.txt_restaurant.Text = "رستوران 2";
-            r3.txt_restaurant.Text = "رستوران 3";
-            r4.txt_restaurant.Text = "رستوران 4";
-            r5.txt_restaurant.Text = "رستوران 5";
-            r6.txt_restaurant.Text = "رستوران 6";
-            r7.txt_restaurant.Text = "رستوران 7";
+            DBRestaurant db_rest = new DBRestaurant();
+            List<Restaurant> rests = db_rest.getRestaurants();
+            ItemRestaurant _item;
+            foreach (Restaurant rest in rests)
+            {
+                _item = new ItemRestaurant(rest);
+                lst_restaurants.Items.Add(_item);
+            }
 
-
-            CachedImage.FileCache.AppCacheMode = CachedImage.FileCache.CacheMode.WinINet;
-            
-            r1.img_restaurant.ImageUrl = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
-
-
-            //var fullFilePath = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
-            //BitmapImage bitmap = new BitmapImage();
-            //bitmap.BeginInit();
-            //bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-            //bitmap.EndInit();
-           
-            ////r1.img_restaurant.Source =bitmap;
-            //r2.img_restaurant.Source = bitmap;
-
-            r2.img_restaurant.ImageUrl = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
-
-
-            lst_restaurants.Items.Add(r1);
-            lst_restaurants.Items.Add(r2);
-            lst_restaurants.Items.Add(r3);
-            lst_restaurants.Items.Add(r4);
-            lst_restaurants.Items.Add(r5);
-            lst_restaurants.Items.Add(r6);
-            lst_restaurants.Items.Add(r7);
-            //lst_restaurants.Items.Add(r1);
-
-            //grd_restaurants.Children.Add(r1);
-            //grd_restaurants.Children.Add(r2);
-            //grd_restaurants.Children.Add(r3);
-            //grd_restaurants.Children.Add(r4);
-            //grd_restaurants.Children.Add(r5);
-            //grd_restaurants.Children.Add(r6);
-            //Grid.SetRow(r1, 0);
-            //Grid.SetRow(r2, 0);
-            //Grid.SetRow(r3, 0);
-            //Grid.SetRow(r4, 1);
-            //Grid.SetRow(r5, 1);
-            //Grid.SetRow(r6, 1);
-            //Grid.SetColumn(r1, 0);
-            //Grid.SetColumn(r2, 1);
-            //Grid.SetColumn(r3, 2);
-            //Grid.SetColumn(r4, 0);
-            //Grid.SetColumn(r5, 1);
-            //Grid.SetColumn(r6, 2);
         }
 
         

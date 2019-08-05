@@ -45,15 +45,19 @@ namespace Kiosk.control
             {
                 txt_name.Text = restaurant.name;
                 txt_user_name.Text = restaurant.user_name;
-                img_restaurant.ImageUrl = restaurant.image;
                 img_restaurant.Source = null;
+                img_restaurant.ImageUrl = restaurant.image;
             }
         }
 
         private void btn_remove_Click(object sender, RoutedEventArgs e)
         {
-            RRestaurant r_res = new RRestaurant();
-            r_res.logout(this.restaurant, logoutCallBack);
+            DialogPublic d = new DialogPublic("آیا میخواهید این رستوران را حذف کنید؟");
+            if (d.ShowDialog() == true)
+            {
+                RRestaurant r_res = new RRestaurant();
+                r_res.logout(this.restaurant, logoutCallBack);
+            }
         }
 
         private void logoutCallBack(object sender, EventArgs e)

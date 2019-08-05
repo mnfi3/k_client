@@ -16,6 +16,7 @@ namespace Kiosk.api
         private EventHandler eventLogin = null;
         private EventHandler eventLoginCheck = null;
         private EventHandler eventLogout = null;
+        private EventHandler eventRestaurants = null;
 
 
 
@@ -87,5 +88,44 @@ namespace Kiosk.api
             eventLogout(res, new EventArgs());
         }
 
+
+
+
+
+
+
+
+        public void getRestaurants( EventHandler handler)
+        {
+            Request request = new Request();
+            eventRestaurants += handler;
+
+            Dictionary<string, string> data = new Dictionary<string, string> ();
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, {"k-token", G.device.token} };
+            request.get(Urls.DEVICE_RESTAURANTS, data, headers, restaurantsCallBack);
+        }
+
+        private void restaurantsCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            List<Restaurant> restaurants = new List<Restaurant>();
+            Restaurant restaurant;
+            if (res.status == 1)
+            {
+                JObject data = res.data;
+                JArray kiosks = data["users"].Value<JArray>();
+                for(int i=0 ; i<kiosks.Count ; i++)
+                {
+                    restaurant = Restaurant.parse((JObject)kiosks[i]);
+                    restaurants.Add(restaurant);
+                }
+            }
+            else
+            {
+                MB.Show(res.message);
+            }
+
+            eventRestaurants(restaurants, new EventArgs());
+        }
     }
 }

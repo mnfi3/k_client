@@ -73,7 +73,7 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            ListProducts _listProducts = new ListProducts(this.carts);
+            ListProducts _listProducts = new ListProducts();
             _listProducts.ShowDialog();
             this.Close();
         }

@@ -17,6 +17,7 @@ namespace Kiosk
         public static string client_key;
         public static Cart cart;
         public static Device device;
+        public static Restaurant restaurant;
         public static List<Restaurant> restaurants;
         public static Timer timer = new System.Timers.Timer();
         public static bool isLoggedIn = false;

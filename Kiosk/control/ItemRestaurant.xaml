@@ -23,7 +23,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Margin="10">
-            <TextBlock x:Name="txt_restaurant"  Text="رستوران ستاره باران" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Vazir" />
+            <TextBlock x:Name="txt_name"  Text="رستوران ستاره باران" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Vazir" />
         </Grid>
 
     </Grid>

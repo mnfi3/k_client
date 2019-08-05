@@ -24,6 +24,12 @@ namespace Kiosk.control
             InitializeComponent();
         }
 
+        public DialogPublic(string text)
+        {
+            InitializeComponent();
+            txt_text.Text = text;
+        }
+
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

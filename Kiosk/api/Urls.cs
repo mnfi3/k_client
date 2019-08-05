@@ -13,8 +13,11 @@ namespace Kiosk.api
         public const string DEVICE_LOGIN = BASE_URL + "/v1/kiosk/login";
         public const string DEVICE_LOGOUT = BASE_URL + "/v1/kiosk/logout";
         public const string DEVICE_LOGING_CHECK = BASE_URL + "/v1/kiosk/login/check";
+        public const string DEVICE_RESTAURANTS = BASE_URL + "/v1/kiosk/users";
+
 
         public const string RESTAURANT_LOGIN = BASE_URL + "/v1/login";
         public const string RESTAURANT_LOGOUT = BASE_URL + "/v1/logout";
+
     }
 }

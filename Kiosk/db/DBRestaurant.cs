@@ -64,5 +64,16 @@ namespace Kiosk.db
 
              return restaurants;
         }
+
+
+        public int updateRestaurantImage(Restaurant rest)
+        {
+            values.Clear();
+            values.Add("@id", rest.id.ToString());
+            values.Add("@image", rest.image);
+            return db.update("update restaurants set image=@image where id=@id", values);
+        }
     }
+
+   
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,23 @@ namespace Kiosk.control
     /// </summary>
     public partial class ItemRestaurant : UserControl
     {
+
+        public Restaurant restaurant;
         public ItemRestaurant()
         {
             InitializeComponent();
         }
+
+        public ItemRestaurant(Restaurant rest)
+        {
+            InitializeComponent();
+
+            this.restaurant = rest;
+
+            txt_name.Text = rest.name;
+            img_restaurant.ImageUrl = rest.image;
+        }
+
+
     }
 }
