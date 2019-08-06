@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             
+             Height="500"
              >
     
     <Grid Margin="20">
@@ -18,12 +22,12 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            </Image>
+            <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            </cachedImage:Image>
 
 
             <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">
-                <Label  FontWeight="Bold" Foreground="White" FontSize="17" Content="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="45" Width="60"   Margin="0 0 0 0" />
+                <Label x:Name="lbl_discount" FontWeight="Bold" Foreground="White" FontSize="17" Content="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="45" Width="60"   Margin="0 0 0 0" />
             </Border>
 
 

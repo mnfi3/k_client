@@ -8,7 +8,8 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
              Height="180"
-             
+             xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
+             Loaded="UserControl_Loaded"
              >
     <Grid Margin="10">
         
@@ -18,7 +19,7 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
-            <Image x:Name="img_category" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <cachedImage:Image x:Name="img_category" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 
         </Grid>
         

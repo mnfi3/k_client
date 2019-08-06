@@ -15,6 +15,10 @@ namespace Kiosk.model
         public string image { set; get; }
         public string token { set; get; }
 
+        public List<Category> categories { set; get; }
+
+
+
 
 
         public Restaurant()
@@ -24,6 +28,7 @@ namespace Kiosk.model
             name = "";
             image = "";
             token = null;
+            categories = new List<Category>();
         }
 
         public static Restaurant parse(JObject user)

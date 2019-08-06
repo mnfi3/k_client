@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Kiosk.model
 {
-    class Device
+    public class Device
     {
         public int id { set; get; }
         public string user_name { set; get; }

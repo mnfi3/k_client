@@ -19,5 +19,8 @@ namespace Kiosk.api
         public const string RESTAURANT_LOGIN = BASE_URL + "/v1/login";
         public const string RESTAURANT_LOGOUT = BASE_URL + "/v1/logout";
 
+
+        public const string RESTAURANT_PRODUCTS = BASE_URL + "/v1/restaurant/products";
+
     }
 }

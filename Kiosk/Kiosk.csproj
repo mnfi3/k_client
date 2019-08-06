@@ -122,6 +122,7 @@
     <Compile Include="DeviceLogin.xaml.cs">
       <DependentUpon>DeviceLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\Dessert.cs" />
     <Compile Include="model\Order.cs" />
     <Compile Include="model\OrderContent.cs" />
     <Compile Include="model\Payment.cs" />
@@ -138,6 +139,7 @@
       <DependentUpon>LicenseManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="license\Security.cs" />
+    <Compile Include="system\Utils.cs" />
     <Page Include="CartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,10 +161,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\ItemCart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="control\ItemCartInProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,9 +221,6 @@
     </Compile>
     <Compile Include="control\ItemCart.xaml.cs">
       <DependentUpon>ItemCart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="control\ItemCartInProducts.xaml.cs">
-      <DependentUpon>ItemCartInProducts.xaml</DependentUpon>
     </Compile>
     <Compile Include="control\ItemCategory.xaml.cs">
       <DependentUpon>ItemCategory.xaml</DependentUpon>

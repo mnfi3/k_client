@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kiosk.model
 {
-    class OrderContent
+    public class OrderContent
     {
         public int id { set; get; }
         public int order_id { set; get; }

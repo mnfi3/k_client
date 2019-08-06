@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
+             xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Style="{StaticResource vazir}"
              mc:Ignorable="d" 
              Height="400" FontFamily="Vazir">
-    <Grid Margin="10">
+    <Grid Margin="30">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -18,8 +18,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <cachedImage:Image x:Name="img_restaurant" Source="../img/ic_res.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <!--<Image x:Name="img_restaurant" Source="../img/ic_res.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
+            <cachedImage:Image x:Name="img_restaurant"  RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Source="../img/ic_res.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="10">

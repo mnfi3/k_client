@@ -55,6 +55,8 @@ namespace Kiosk
         }
 
 
+
+
         private void lst_restaurants_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lst_restaurants.SelectedItem == null) return;
@@ -94,6 +96,7 @@ namespace Kiosk
             DBRestaurant db_rest = new DBRestaurant();
             List<Restaurant> rests = db_rest.getRestaurants();
             ItemRestaurant _item;
+
             foreach (Restaurant rest in rests)
             {
                 _item = new ItemRestaurant(rest);

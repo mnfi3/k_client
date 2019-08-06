@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kiosk.model
 {
-    class Cart
+    public class Cart
     {
         public Cart(){
             cost = 0;
@@ -28,7 +28,7 @@ namespace Kiosk.model
             cost = 0;
             foreach (Product p in products)
             {
-                cost += p.price * p.count;
+                //cost += p.price * p.count;
             }
             cost = cost - ((cost * discount_percent) / 100);
             return cost;

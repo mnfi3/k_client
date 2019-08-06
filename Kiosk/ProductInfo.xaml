@@ -100,9 +100,9 @@
                                 <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="اندازه مورد نظر را انتخاب کنید" />
                                 <Grid Grid.Row="1">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                                        <Button Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                                        <Button Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                                        <Button x:Name="btn_small" Click="btn_small_Click" Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                                        <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                                        <Button x:Name="btn_large" Click="btn_large_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
                                     </StackPanel >
                                 </Grid>
                             </Grid>
@@ -192,11 +192,11 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text="25,000 تومان"/>
-                                <TextBlock FontSize="25" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
+                                <TextBlock x:Name="txt_price" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text="25,000 تومان"/>
+                                <TextBlock x:Name="txt_name" FontSize="25" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
                             </Grid>
 
-                            <TextBlock  Grid.Row="2"  Foreground="#121c1b" FontSize="18" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 10" FlowDirection="RightToLeft" Text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون "/>
+                            <TextBlock x:Name="txt_description" Grid.Row="2"  Foreground="#121c1b" FontSize="18" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 10" FlowDirection="RightToLeft" Text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون "/>
 
                             <Grid Grid.Row="3" Margin="0 0 0 50">
                                 <Grid.ColumnDefinitions>
@@ -209,7 +209,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="5" Foreground="#121c1b" Text="26,000 تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+                                    <TextBlock x:Name="txt_total" Margin="5" Foreground="#121c1b" Text="26,000 تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
                                     <TextBlock Margin="5" Foreground="#616161" Text="   : جمع" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
                                 </Grid>
 
@@ -228,11 +228,11 @@
                                             <RowDefinition Height="16*"/>
                                         </Grid.RowDefinitions>
 
-                                        <Button Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                                        <Button x:Name="btn_up" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
                                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="75"  Kind="KeyboardArrowUp" Foreground="#616161" Margin="0,6"/>
                                         </Button>
                                         <TextBlock  Foreground="#67aa39" FontSize="20" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>
-                                        <Button Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
+                                        <Button x:Name="btn_down" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="75" Height="75" Kind="KeyboardArrowDown" Foreground="#616161" Margin="0,6"/>
                                         </Button>
                                     </Grid>

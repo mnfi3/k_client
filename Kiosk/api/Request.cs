@@ -38,6 +38,8 @@ namespace Kiosk.api
                 url += d.Key + "=" + d.Value + "&";
             }
 
+            client.DefaultRequestHeaders.Add("Accept","application/json");
+            //client.DefaultRequestHeaders.Add("Content-Type", "application/json");
             foreach (KeyValuePair<string, string> header in headers)
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -101,6 +103,8 @@ namespace Kiosk.api
             EventHandler dataReceivedHandler = null;
             dataReceivedHandler += eventHandler;
 
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Content-Type", "application/json");
             foreach (KeyValuePair<string, string> header in headers)
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);

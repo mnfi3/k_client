@@ -14,6 +14,7 @@ namespace Kiosk.api
     {
         private EventHandler eventLogin = null;
         private EventHandler eventLogout = null;
+        private EventHandler eventProducts = null;
 
 
 
@@ -50,10 +51,6 @@ namespace Kiosk.api
 
 
 
-
-
-
-
         public void logout(Restaurant rest, EventHandler handler)
         {
             Request request = new Request();
@@ -68,6 +65,47 @@ namespace Kiosk.api
         {
             Response res = sender as Response;
             eventLogout(res, new EventArgs());
+        }
+
+
+
+
+
+
+
+        public void products(Restaurant restaurant, EventHandler handler)
+        {
+            Request request = new Request();
+            eventProducts += handler;
+
+            Dictionary<string, string> data = new Dictionary<string, string> ();
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token} };
+            request.get(Urls.RESTAURANT_PRODUCTS, data, headers, productsCallBack);
+        }
+
+
+        private void productsCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            List<Category> categories = new List<Category>();
+            Category category;
+            if (res.status == 1)
+            {
+                JObject data = res.data;
+                JArray products = data["products"].Value<JArray>();
+                for (int i = 0; i < products.Count; i++)
+                {
+                    category = Category.parse((JObject)products[i]);
+                    categories.Add(category);
+                }
+
+            }
+            else
+            {
+                MB.Show(res.message);
+            }
+
+            eventProducts(categories, new EventArgs());
         }
 
     }
