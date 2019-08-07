@@ -17,6 +17,8 @@ using ToastNotifications.Position;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
 using System.Windows.Media.Effects;
+using Kiosk.model;
+using Kiosk.system;
 
 namespace Kiosk
 {
@@ -26,16 +28,14 @@ namespace Kiosk
     public partial class CartView : Window
     {
 
-        private List<ItemCart> carts = new List<ItemCart>();
 
         private readonly Toast toast;
 
 
-        public CartView(List<ItemCart> carts)
+        public CartView()
         {
             InitializeComponent();
-            this.carts = carts;
-            
+
 
             toast = new Toast(this);
         }
@@ -46,19 +46,21 @@ namespace Kiosk
             txt_discount_code.Focus();
 
 
-            foreach (ItemCart i in carts)
-            {
-                lst_cart.Items.Add(i);
-            }
 
+
+            //refresh cart
             ItemCart _item;
-            for (int i = 0; i < 30; i++)
+            foreach (CartItem i in G.cart.items)
             {
-                _item = new ItemCart();
+                _item = new ItemCart(i, refreshCartViewEvent);
                 lst_cart.Items.Add(_item);
             }
 
-            //toast.OnUnloaded();
+            txt_cost.Text = Utils.persian_split(G.cart.cost) + " تومان ";
+            txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
+          
+
+
         }
 
         private void btn_exit_Click(object sender, RoutedEventArgs e)
@@ -73,7 +75,7 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            ListProducts _listProducts = new ListProducts();
+            ListProducts _listProducts = new ListProducts(G.restaurant);
             _listProducts.ShowDialog();
             this.Close();
         }
@@ -112,6 +114,14 @@ namespace Kiosk
             {
                 grd_main.Effect = null;
             }
+        }
+
+
+
+        private void refreshCartViewEvent(object sender, EventArgs e)
+        {
+            txt_cost.Text = Utils.persian_split(G.cart.cost) + " تومان ";
+            txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
         }
             
     }

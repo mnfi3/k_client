@@ -22,26 +22,49 @@ namespace Kiosk
     /// </summary>
     public partial class ProductInfo : Window
     {
-        public Product product;
+        private Product product;
+        private CartItem cartItem;
+        private int count = 1;
 
         private string dessert_size = "small";
-        public ProductInfo()
-        {
-            InitializeComponent();
-        }
+
+        Toast toast;
+
+        //public ProductInfo()
+        //{
+        //    InitializeComponent();
+        //}
 
         public ProductInfo(Product p)
         {
             InitializeComponent();
             this.product = p;
+            cartItem = new CartItem();
+
+
+            
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            toast = new Toast(this);
+
+
             txt_name.Text = product.name;
             txt_price.Text = Utils.persian_split(product.d_price) + "  تومان  ";
             txt_description.Text = product.description;
+            img_product.Source = null;
+            img_product.ImageUrl = product.image;
+            cartItem.product = this.product;
+
+
+            refreshCartItem();
+
+            if (isExistInCart() == true)
+            {
+                toast.ShowWarning("این محصول از قبل به سبد خرید اضافه شده است", new ToastNotifications.Core.MessageOptions());
+            }
 
             loadDesserts();
         }
@@ -60,10 +83,31 @@ namespace Kiosk
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            //something
+            G.cart.items.Add(this.cartItem);
             DialogResult = true;
         }
 
+
+        private void btn_up_Click(object sender, RoutedEventArgs e)
+        {
+            count++;
+            txt_count.Text = count.ToString();
+
+            cartItem.count = count;
+            refreshCartItem();
+        }
+
+        private void btn_down_Click(object sender, RoutedEventArgs e)
+        {
+            if (count > 1)
+            {
+                count--;
+                txt_count.Text = count.ToString();
+
+                cartItem.count = count;
+                refreshCartItem();
+            }
+        }
 
 
        
@@ -88,6 +132,7 @@ namespace Kiosk
                 }
             }
 
+            refreshCartItem();
 
 
 
@@ -114,6 +159,8 @@ namespace Kiosk
                 }
             }
 
+
+            refreshCartItem();
 
             lst_dessert2.SelectedItem = null;
         }
@@ -146,6 +193,8 @@ namespace Kiosk
             dessert_size = "small";
             resetDessertsPrices();
             resetBackColors();
+
+            refreshCartItem();
         }
 
         private void btn_medium_Click(object sender, RoutedEventArgs e)
@@ -153,6 +202,8 @@ namespace Kiosk
             dessert_size = "medium";
             resetDessertsPrices();
             resetBackColors();
+
+            refreshCartItem();
         }
 
         private void btn_large_Click(object sender, RoutedEventArgs e)
@@ -160,6 +211,8 @@ namespace Kiosk
             dessert_size = "large";
             resetDessertsPrices();
             resetBackColors();
+
+            refreshCartItem();
         }
 
 
@@ -226,6 +279,52 @@ namespace Kiosk
         }
 
 
+
+
+
+        private void refreshCartItem()
+        {
+            cartItem.desserts.Clear();
+            cartItem.desserts_size = this.dessert_size;
+
+            foreach (ItemDessert item in lst_dessert1.Items)
+            {
+                if (item.is_selected == true)
+                {
+                    item.dessert.product_id = this.product.id;
+                    cartItem.desserts.Add(item.dessert);
+                }
+            }
+
+            foreach (ItemDessert item in lst_dessert2.Items)
+            {
+                if (item.is_selected == true)
+                {
+                    item.dessert.product_id = this.product.id;
+                    cartItem.desserts.Add(item.dessert);
+                }
+            }
+
+
+            txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
+        }
+
+
+
+        private bool isExistInCart()
+        {
+            foreach (CartItem item in G.cart.items)
+            {
+                if (item.product.id == this.product.id)
+                {
+                    return true;
+                }
+            }
+
+            return false ;
+        }
+
+       
         
         
         }

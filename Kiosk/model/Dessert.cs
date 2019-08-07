@@ -10,6 +10,7 @@ namespace Kiosk.model
     public class Dessert
     {
         public int  id { get; set; }
+        public int  product_id { get; set; }
         public string name { get; set; }
         public string type { get; set; }
         public int price_small { get; set; }

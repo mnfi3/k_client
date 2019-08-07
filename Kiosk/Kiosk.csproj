@@ -122,6 +122,7 @@
     <Compile Include="DeviceLogin.xaml.cs">
       <DependentUpon>DeviceLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\CartItem.cs" />
     <Compile Include="model\Dessert.cs" />
     <Compile Include="model\Order.cs" />
     <Compile Include="model\OrderContent.cs" />

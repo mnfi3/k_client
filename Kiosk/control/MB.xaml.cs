@@ -32,9 +32,16 @@ namespace Kiosk.control
 
         public static void Show(string text)
         {
-            MB mb = new MB();
-            mb.txt_text.Text = text;
-            mb.ShowDialog();
+            try
+            {
+                MB mb = new MB();
+                mb.txt_text.Text = text;
+                mb.ShowDialog();
+            }
+            catch (InvalidOperationException e)
+            {
+
+            }
         }
     }
 }

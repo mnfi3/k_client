@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="4"  Margin="5 5 20 5">
-                    <cachedImage:Image  RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Height="auto" Width="auto" x:Name="img_product" Source="../img/ic_chicken_and_ribs.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Height="auto" Width="auto"  Source="../img/ic_chicken_and_ribs.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </Grid>
 
                 <Grid Grid.Column="3" Margin="5 5 20 5">
@@ -82,11 +82,11 @@
                             <RowDefinition Height="16*"/>
                         </Grid.RowDefinitions>
 
-                        <Button Width="70" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
-                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="70"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0,6"/>
+                        <Button x:Name="btn_up" Click="btn_up_Click" Width="70" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                            <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="70"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0,6"/>
                         </Button>
-                        <TextBlock FontSize="25" FontWeight="Bold" Foreground="#67aa39" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
-                        <Button Width="70" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
+                        <TextBlock x:Name="txt_count" FontSize="25" FontWeight="Bold" Foreground="#67aa39" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
+                        <Button x:Name="btn_down" Click="btn_down_Click" Width="70" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="70" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
                         </Button>
                     </Grid>
@@ -99,7 +99,7 @@
 
 
                 <Grid Grid.Column="0" Margin="5">
-                    <Button Height="85" Width="85" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button x:Name="btn_remove" Click="btn_remove_Click" Height="85" Width="85" Background="{x:Null}" BorderBrush="{x:Null}">
                         <materialDesign:PackIcon Height="50" Width="50" Kind="CloseCircle" Foreground="#BDBDBD" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Button>
                 </Grid>

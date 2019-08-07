@@ -73,7 +73,7 @@ namespace Kiosk
             DBRestaurant db_rest = new DBRestaurant();
             foreach (Restaurant rest in rests)
             {
-                db_rest.updateRestaurantImage(rest);
+                db_rest.updateRestaurantInfo(rest);
             }
         }
 

@@ -7,7 +7,8 @@
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
-             Height="35">
+             Height="35"
+             Loaded="UserControl_Loaded">
 
     <Grid  Height="35">
             
@@ -18,11 +19,11 @@
             </Grid.ColumnDefinitions>
 
 
-            <Button Grid.Column="0" Height="50" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Button x:Name="btn_remove" Click="btn_remove_Click" Grid.Column="0" Height="50" Width="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <materialDesign:PackIcon HorizontalAlignment="Left" Height="30" Width="30" Kind="Close" Foreground="#424242" VerticalAlignment="Center" />
             </Button>
 
-            <TextBlock Grid.Column="1" Text="پیاز      " FontSize="18" Foreground="#616161" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" FlowDirection="RightToLeft" FontFamily="Vazir"/>
+            <TextBlock x:Name="txt_name" Grid.Column="1" Text="پیاز      " FontSize="18" Foreground="#616161" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" FlowDirection="RightToLeft" FontFamily="Vazir"/>
 
         </Grid>
     </Grid>

@@ -66,12 +66,13 @@ namespace Kiosk.db
         }
 
 
-        public int updateRestaurantImage(Restaurant rest)
+        public int updateRestaurantInfo(Restaurant rest)
         {
             values.Clear();
             values.Add("@id", rest.id.ToString());
+            values.Add("@name", rest.name);
             values.Add("@image", rest.image);
-            return db.update("update restaurants set image=@image where id=@id", values);
+            return db.update("update restaurants set name=@name, image=@image where id=@id", values);
         }
     }
 

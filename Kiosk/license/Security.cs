@@ -61,8 +61,8 @@ namespace Kiosk.license
             Environment.ProcessorCount + "/" +
             Environment.MachineName + "/" +
             getCpuInfo() +
-            Environment.UserName + "/" +
-            Environment.GetLogicalDrives().Length;
+            Environment.UserName + "/";
+            //+ Environment.GetLogicalDrives().Length;
 
             return data;
         }

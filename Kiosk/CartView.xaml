@@ -92,10 +92,10 @@
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Foreground="Black" Margin="10 5" Grid.Row="0" HorizontalAlignment="Right" FontSize="22" Text=" : جمع مبلغ پرداختی"/>
-                                <TextBlock Foreground="#388E3C" Margin="10 5"  Grid.Row="1" HorizontalAlignment="Right" FontSize="22" Text="25,000 تومان" FontWeight="Bold"/>
+                                <TextBlock x:Name="txt_cost" Foreground="#388E3C" Margin="10 5"  Grid.Row="1" HorizontalAlignment="Right" FontSize="22" Text="25,000 تومان" FontWeight="Bold"/>
                                 <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="2" HorizontalAlignment="Right" FontSize="22" Text=""/>
                                 <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="3" HorizontalAlignment="Right" FontSize="22" Text=" : مبلغ پرداختی با تخفیف"/>
-                                <TextBlock Foreground="#388E3C" Margin="10 5"  Grid.Row="4" HorizontalAlignment="Right" FontSize="22" Text="20,000 تومان" FontWeight="Bold"/>
+                                <TextBlock x:Name="txt_d_cost" Foreground="#388E3C" Margin="10 5"  Grid.Row="4" HorizontalAlignment="Right" FontSize="22" Text="20,000 تومان" FontWeight="Bold"/>
                                 <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="5" HorizontalAlignment="Right" FontSize="22" Text=""/>
                                 <TextBlock Foreground="#FFCF4141" Margin="10 5"  Grid.Row="6" HorizontalAlignment="Right" FontSize="22" TextAlignment="Right" VerticalAlignment="Bottom" Text="در صورت داشتن کد تخفیف آن را وارد کنید" FontFamily="Vazir"/>
                                 <Border  Margin="50 0"  Grid.Row="7" Width="auto" Height="65" HorizontalAlignment="Stretch" CornerRadius="10" BorderThickness="1">

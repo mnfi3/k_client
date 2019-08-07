@@ -23,19 +23,24 @@ namespace Kiosk
     public partial class ListProducts : Window
     {
 
-        public Restaurant restaurant;
+        private Restaurant restaurant;
+
+        private Toast toast;
 
 
-        public ListProducts()
-        {
-            InitializeComponent();
-        }
+        //public ListProducts()
+        //{
+        //    InitializeComponent();
+        //}
 
         public ListProducts(Restaurant rest)
         {
             InitializeComponent();
+            toast = new Toast(this);
+
             G.timer.Enabled = true;
 
+            G.restaurant = rest;
             this.restaurant = rest;
         }
 
@@ -60,9 +65,8 @@ namespace Kiosk
 
         private void btn_cart_Click(object sender, RoutedEventArgs e)
         {
-            List<ItemCart> _itemCarts = new List<ItemCart>();
 
-            CartView _cart = new CartView(_itemCarts);
+            CartView _cart = new CartView();
             _cart.Show();
             this.Close();
         }
@@ -111,6 +115,7 @@ namespace Kiosk
             ProductInfo _info = new ProductInfo(_item.product);
             if (_info.ShowDialog() == true)
             {
+                toast.ShowSuccess("به سبد خرید اضافه شد");
             }
 
 
@@ -134,7 +139,7 @@ namespace Kiosk
         {
 
             RRestaurant r_rest = new RRestaurant();
-            r_rest.products(this.restaurant, productCallBack);
+            r_rest.products(G.restaurant, productCallBack);
 
 
         }

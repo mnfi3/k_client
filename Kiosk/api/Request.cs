@@ -104,7 +104,7 @@ namespace Kiosk.api
             dataReceivedHandler += eventHandler;
 
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("Content-Type", "application/json");
+            //client.DefaultRequestHeaders.Add("Content-Type", "application/json");
             foreach (KeyValuePair<string, string> header in headers)
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
