@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="txt_text" Grid.Row="0" Text="dialog" FontSize="18"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="txt_text" Grid.Row="0" TextWrapping="Wrap" FlowDirection="RightToLeft" Text="dialog" FontSize="18"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

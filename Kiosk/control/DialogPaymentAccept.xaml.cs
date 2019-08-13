@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.system;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace Kiosk.control
     /// </summary>
     public partial class DialogPaymentAccept : Window
     {
+        int price;
         public DialogPaymentAccept()
         {
             InitializeComponent();
+        }
+
+        public DialogPaymentAccept(int p)
+        {
+            InitializeComponent();
+            price = p;
+            txt_price.Text = Utils.persian_split(price) + " تومان ";
+
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)

@@ -40,6 +40,7 @@ namespace Kiosk
             loadRestaurants();
             G.timer.Enabled = false;
             G.restaurant = null;
+            G.cart.clear();
 
         }
 

@@ -40,8 +40,6 @@ namespace Kiosk
             InitializeComponent();
             this.product = p;
             cartItem = new CartItem();
-
-
             
         }
 
@@ -63,7 +61,7 @@ namespace Kiosk
 
             if (isExistInCart() == true)
             {
-                toast.ShowWarning("این محصول از قبل به سبد خرید اضافه شده است", new ToastNotifications.Core.MessageOptions());
+                //toast.ShowWarning("این محصول از قبل به سبد خرید اضافه شده است", new ToastNotifications.Core.MessageOptions());
             }
 
             loadDesserts();
@@ -102,9 +100,9 @@ namespace Kiosk
             if (count > 1)
             {
                 count--;
+                cartItem.count = count;
                 txt_count.Text = count.ToString();
 
-                cartItem.count = count;
                 refreshCartItem();
             }
         }
@@ -317,11 +315,29 @@ namespace Kiosk
             {
                 if (item.product.id == this.product.id)
                 {
+                    G.cart.remove(item);
                     return true;
                 }
             }
 
             return false ;
+        }
+
+
+
+      
+
+     
+
+
+
+        private void btn_up_TouchDown(object sender, TouchEventArgs e)
+        {
+            count++;
+            txt_count.Text = count.ToString();
+
+            cartItem.count = count;
+            refreshCartItem();
         }
 
        

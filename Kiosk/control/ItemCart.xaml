@@ -9,6 +9,7 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Style="{StaticResource vazir}"
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
+             Height="350"
              >
     <Grid Margin="5 10">
 
@@ -29,7 +30,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="4"  Margin="5 5 20 5">
-                    <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Height="auto" Width="auto"  Source="../img/ic_chicken_and_ribs.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto"  Source="../img/ic_chicken_and_ribs.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </Grid>
 
                 <Grid Grid.Column="3" Margin="5 5 20 5">

@@ -9,7 +9,7 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
-             Width="250"
+             Width="200"
               >
     <Grid Margin="15">
         <Grid.RowDefinitions>

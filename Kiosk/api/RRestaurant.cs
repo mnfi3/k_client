@@ -15,6 +15,7 @@ namespace Kiosk.api
         private EventHandler eventLogin = null;
         private EventHandler eventLogout = null;
         private EventHandler eventProducts = null;
+        private EventHandler eventDiscount = null;
 
 
 
@@ -107,6 +108,42 @@ namespace Kiosk.api
 
             eventProducts(categories, new EventArgs());
         }
+
+
+
+
+        public void checkDiscount(Restaurant restaurant, string discount_code, EventHandler handler)
+        {
+            Request request = new Request();
+            eventDiscount += handler;
+
+            Dictionary<string, string> data = new Dictionary<string, string> { { "discount_code", discount_code } };
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token } };
+            request.post(Urls.RESTAURANT_DISCOUNT_VALIDATE, data, headers, discountCheckComplete);
+        }
+
+        private void discountCheckComplete(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            Discount discount = new Discount();
+            if (res.status == 1)
+            {
+                JObject data = res.data;
+                discount.id = data["id"].Value<int>();
+                discount.percent = data["percent"].Value<int>();
+                discount.code = data["code"].Value<string>();
+                discount.is_valid = true;
+            }
+            else
+            {
+                discount.is_valid = false;
+                discount.id = 0;
+                MB.Show(res.message);
+            }
+
+            eventDiscount(discount, new EventArgs());
+        }
+
 
     }
 }

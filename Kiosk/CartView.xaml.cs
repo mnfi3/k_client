@@ -19,6 +19,7 @@ using ToastNotifications.Messages;
 using System.Windows.Media.Effects;
 using Kiosk.model;
 using Kiosk.system;
+using Kiosk.api;
 
 namespace Kiosk
 {
@@ -76,7 +77,7 @@ namespace Kiosk
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
             ListProducts _listProducts = new ListProducts(G.restaurant);
-            _listProducts.ShowDialog();
+            _listProducts.Show();
             this.Close();
         }
 
@@ -97,22 +98,46 @@ namespace Kiosk
 
         private void btn_discount_Click(object sender, RoutedEventArgs e)
         {
+            string discount_code = txt_discount_code.Text.ToString();
+            RRestaurant r_rest = new RRestaurant();
+            r_rest.checkDiscount(G.restaurant, discount_code, checkDiscountCodeComplete);
         }
+
+        private void checkDiscountCodeComplete(object sender, EventArgs e)
+        {
+            Discount d = sender as Discount;
+            if (d.is_valid)
+            {
+                G.cart.discount = d;
+                txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
+                toast.ShowSuccess("کد تخفیف اعمال شد");
+            }
+        }
+
+
+
 
         private void btn_pay_Click(object sender, RoutedEventArgs e) 
         {
-            BlurEffect blur = new BlurEffect();
-            grd_main.Effect = blur;
-
-            DialogPaymentAccept dialog = new DialogPaymentAccept();
-            if (dialog.ShowDialog() == true)
+            if (G.cart.items.Count > 0)
             {
-                DialogCartSwipe dialog2 = new DialogCartSwipe();
-                dialog2.ShowDialog();
+                BlurEffect blur = new BlurEffect();
+                grd_main.Effect = blur;
+
+                DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
+                if (dialog.ShowDialog() == true)
+                {
+                    DialogCartSwipe dialog2 = new DialogCartSwipe();
+                    dialog2.ShowDialog();
+                }
+                else
+                {
+                    grd_main.Effect = null;
+                }
             }
             else
             {
-                grd_main.Effect = null;
+                toast.ShowError("هیچ محصولی به سبد خرید اضافه نشده است");
             }
         }
 
@@ -122,6 +147,11 @@ namespace Kiosk
         {
             txt_cost.Text = Utils.persian_split(G.cart.cost) + " تومان ";
             txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
+        }
+
+        private void btn_discount_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
             
     }

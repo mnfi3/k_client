@@ -211,7 +211,7 @@
 
 
                     <Button x:Name="btn_back_to_restaurants" Grid.Column="0" Click="btn_back_to_restaurants_Click" FontSize="20" Height="70"  Foreground="White" Background="#7986CB" Content="بازگشت به لیست رستوران ها"  BorderBrush="{x:Null}" Margin="50 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Button>
-                    <Button x:Name="btn_cart" Grid.Column="1"  Click="btn_cart_Click" FontSize="20" Height="70"  Foreground="White" Background="#67aa39" Content=" مدیریت سبد خرید"  BorderBrush="{x:Null}" Margin="50 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Button>
+                    <Button x:Name="btn_cart" Grid.Column="1"  Click="btn_cart_Click" FontSize="20" Height="70"  Foreground="White" Background="#67aa39" Content=" مدیریت سبد خرید"  BorderBrush="{x:Null}" Margin="50 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FontFamily="Vazir"></Button>
 
                 </Grid>
 

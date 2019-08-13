@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="model\CartItem.cs" />
     <Compile Include="model\Dessert.cs" />
+    <Compile Include="model\Discount.cs" />
     <Compile Include="model\Order.cs" />
     <Compile Include="model\OrderContent.cs" />
     <Compile Include="model\Payment.cs" />

@@ -74,9 +74,13 @@ namespace Kiosk
 
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            ListRestaurant _listRestaurants = new ListRestaurant();
-            _listRestaurants.Show();
-            this.Close();
+            DialogPublic _dialog = new DialogPublic("آیا میخواهید به لیست رستوران ها برگردید؟ (سبد خرید شما خالی خواهد شد)");
+            if (_dialog.ShowDialog() == true)
+            {
+                ListRestaurant _listRestaurants = new ListRestaurant();
+                _listRestaurants.Show();
+                this.Close();
+            }
         }
 
         private void lst_categories_SelectionChanged(object sender, SelectionChangedEventArgs e)

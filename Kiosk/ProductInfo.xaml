@@ -114,7 +114,7 @@
                                     <RowDefinition Height="5*" />
                                 </Grid.RowDefinitions>
                                 <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید" FontFamily="Vazir"/>
-                                <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" SelectionChanged="lst_dessert1_SelectionChanged" >
+                                <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert1_SelectionChanged" >
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <UniformGrid Rows="1" FlowDirection="RightToLeft"/>
@@ -146,7 +146,7 @@
                                     <RowDefinition Height="5*" />
                                 </Grid.RowDefinitions>
                                 <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="دسرهای مورد نظر خود را انتخاب کنید"/>
-                                <ListView x:Name="lst_dessert2" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionChanged="lst_dessert2_SelectionChanged" FlowDirection="RightToLeft" >
+                                <ListView x:Name="lst_dessert2" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert2_SelectionChanged" FlowDirection="RightToLeft" >
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <UniformGrid Rows="1" FlowDirection="RightToLeft"/>
@@ -229,7 +229,7 @@
                                             <RowDefinition Height="16*"/>
                                         </Grid.RowDefinitions>
 
-                                        <Button x:Name="btn_up" Click="btn_up_Click" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                                        <Button x:Name="btn_up" Click="btn_up_Click" TouchDown="btn_up_TouchDown" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
                                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="75"  Kind="KeyboardArrowUp" Foreground="#616161" Margin="0,6"/>
                                         </Button>
                                         <TextBlock x:Name="txt_count"  Foreground="#67aa39" FontSize="20" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>

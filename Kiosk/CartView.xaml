@@ -97,7 +97,7 @@
                                 <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="3" HorizontalAlignment="Right" FontSize="22" Text=" : مبلغ پرداختی با تخفیف"/>
                                 <TextBlock x:Name="txt_d_cost" Foreground="#388E3C" Margin="10 5"  Grid.Row="4" HorizontalAlignment="Right" FontSize="22" Text="20,000 تومان" FontWeight="Bold"/>
                                 <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="5" HorizontalAlignment="Right" FontSize="22" Text=""/>
-                                <TextBlock Foreground="#FFCF4141" Margin="10 5"  Grid.Row="6" HorizontalAlignment="Right" FontSize="22" TextAlignment="Right" VerticalAlignment="Bottom" Text="در صورت داشتن کد تخفیف آن را وارد کنید" FontFamily="Vazir"/>
+                                <TextBlock Foreground="#FFCF4141" Margin="10 5"  Grid.Row="6" HorizontalAlignment="Right" FontSize="20" TextAlignment="Right" VerticalAlignment="Bottom" Text="در صورت داشتن کد تخفیف آن را وارد کنید" FontFamily="Vazir"/>
                                 <Border  Margin="50 0"  Grid.Row="7" Width="auto" Height="65" HorizontalAlignment="Stretch" CornerRadius="10" BorderThickness="1">
                                     <TextBox x:Name="txt_discount_code" Foreground="Black"  Width="auto" HorizontalAlignment="Stretch" FontSize="22"  Background="#81D4FA" PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#2962FF"   FontFamily="Vazir"/>
                                 </Border>
@@ -123,6 +123,12 @@
                     <Button  FontSize="20" Height="70" x:Name="btn_back_to_restaurants" Click="btn_back_to_restaurants_Click" Foreground="White" Background="#7986CB" Content="بازگشت به لیست غذاها"  BorderBrush="{x:Null}" Margin="10 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Button>
                     <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  x:Name="lst_cart" Margin="0 10 0 100"  VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both"  ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lst_cart_SelectionChanged">
                         <!--disable hilight-->
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Background" Value="Transparent" />
