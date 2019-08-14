@@ -20,6 +20,7 @@ using System.Windows.Media.Effects;
 using Kiosk.model;
 using Kiosk.system;
 using Kiosk.api;
+using Kiosk.db;
 
 namespace Kiosk
 {
@@ -121,19 +122,33 @@ namespace Kiosk
         {
             if (G.cart.items.Count > 0)
             {
-                BlurEffect blur = new BlurEffect();
-                grd_main.Effect = blur;
+                //BlurEffect blur = new BlurEffect();
+                //grd_main.Effect = blur;
+                handleShop();
+                //grd_main.Effect = null;
+                //try
+                //{
+                //    DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
+                //    if (dialog.ShowDialog() == true)
+                //    {
+                //        //DialogCartSwipe dialog2 = new DialogCartSwipe();
+                //        //if (dialog2.ShowDialog() == true)
+                //        //{
+                //        //    //handleShop();
+                //        //}
 
-                DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
-                if (dialog.ShowDialog() == true)
-                {
-                    DialogCartSwipe dialog2 = new DialogCartSwipe();
-                    dialog2.ShowDialog();
-                }
-                else
-                {
-                    grd_main.Effect = null;
-                }
+                //        handleShop();
+                //        grd_main.Effect = null;
+                //    }
+                //    else
+                //    {
+                //        grd_main.Effect = null;
+                //    }
+                //}
+                //catch (InvalidOperationException eee)
+                //{
+
+                //}
             }
             else
             {
@@ -149,10 +164,20 @@ namespace Kiosk
             txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
         }
 
-        private void btn_discount_Click_1(object sender, RoutedEventArgs e)
-        {
 
+
+
+        private void handleShop()
+        {
+            DBRestaurant db_rest = new DBRestaurant();
+            db_rest.saveShop(G.restaurant, G.cart, "pay_receipt");
+            toast.ShowSuccess("data saved!");
         }
+
+
+
+
+
             
     }
 }
