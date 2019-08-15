@@ -21,6 +21,7 @@ using Kiosk.model;
 using Kiosk.system;
 using Kiosk.api;
 using Kiosk.db;
+using Newtonsoft.Json;
 
 namespace Kiosk
 {
@@ -31,24 +32,21 @@ namespace Kiosk
     {
 
 
-        private readonly Toast toast;
+        private Toast toast;
 
 
         public CartView()
         {
             InitializeComponent();
 
-
-            toast = new Toast(this);
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            txt_discount_code.Focus();
+            toast = new Toast(this);
 
-
-
+            //txt_discount_code.Focus();
 
             //refresh cart
             ItemCart _item;
@@ -60,9 +58,6 @@ namespace Kiosk
 
             txt_cost.Text = Utils.persian_split(G.cart.cost) + " تومان ";
             txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
-          
-
-
         }
 
         private void btn_exit_Click(object sender, RoutedEventArgs e)
@@ -77,8 +72,8 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            ListProducts _listProducts = new ListProducts(G.restaurant);
-            _listProducts.Show();
+            //ListProducts _list = new ListProducts(G.restaurant);
+            //_list.Show();
             this.Close();
         }
 
@@ -122,33 +117,25 @@ namespace Kiosk
         {
             if (G.cart.items.Count > 0)
             {
-                //BlurEffect blur = new BlurEffect();
-                //grd_main.Effect = blur;
-                handleShop();
-                //grd_main.Effect = null;
-                //try
-                //{
-                //    DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
-                //    if (dialog.ShowDialog() == true)
-                //    {
-                //        //DialogCartSwipe dialog2 = new DialogCartSwipe();
-                //        //if (dialog2.ShowDialog() == true)
-                //        //{
-                //        //    //handleShop();
-                //        //}
+                BlurEffect blur = new BlurEffect();
+                grd_main.Effect = blur;
+                grd_main.Effect = null;
+                DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
+                if (dialog.ShowDialog() == true)
+                {
+                    //DialogCartSwipe dialog2 = new DialogCartSwipe();
+                    //if (dialog2.ShowDialog() == true)
+                    //{
+                    //    //handleShop();
+                    //}
 
-                //        handleShop();
-                //        grd_main.Effect = null;
-                //    }
-                //    else
-                //    {
-                //        grd_main.Effect = null;
-                //    }
-                //}
-                //catch (InvalidOperationException eee)
-                //{
-
-                //}
+                    handleShop();
+                    grd_main.Effect = null;
+                }
+                else
+                {
+                    grd_main.Effect = null;
+                }
             }
             else
             {
@@ -169,8 +156,8 @@ namespace Kiosk
 
         private void handleShop()
         {
-            DBRestaurant db_rest = new DBRestaurant();
-            db_rest.saveShop(G.restaurant, G.cart, "pay_receipt");
+            DBOrder db_order = new DBOrder();
+            db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
             toast.ShowSuccess("data saved!");
         }
 

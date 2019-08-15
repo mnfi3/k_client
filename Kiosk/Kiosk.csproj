@@ -85,6 +85,7 @@
     <Compile Include="api\RDevice.cs" />
     <Compile Include="api\Request.cs" />
     <Compile Include="api\Response.cs" />
+    <Compile Include="api\ROrder.cs" />
     <Compile Include="api\RRestaurant.cs" />
     <Compile Include="api\Urls.cs" />
     <Compile Include="control\DialogCartSwipe.xaml.cs">
@@ -98,6 +99,9 @@
     </Compile>
     <Compile Include="control\DialogPublic.xaml.cs">
       <DependentUpon>DialogPublic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="control\DialogTest.xaml.cs">
+      <DependentUpon>DialogTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="control\ItemDessert.xaml.cs">
       <DependentUpon>ItemDessert.xaml</DependentUpon>
@@ -118,6 +122,7 @@
     <Compile Include="db\DB.cs" />
     <Compile Include="db\DBDevice.cs" />
     <Compile Include="db\DBModel.cs" />
+    <Compile Include="db\DBOrder.cs" />
     <Compile Include="db\DBRestaurant.cs" />
     <Compile Include="DeviceLogin.xaml.cs">
       <DependentUpon>DeviceLogin.xaml</DependentUpon>
@@ -127,6 +132,7 @@
     <Compile Include="model\Discount.cs" />
     <Compile Include="model\Order.cs" />
     <Compile Include="model\OrderContent.cs" />
+    <Compile Include="model\OrderContentDessert.cs" />
     <Compile Include="model\Payment.cs" />
     <Compile Include="ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>
@@ -159,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\DialogPublic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\DialogTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

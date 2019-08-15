@@ -40,8 +40,8 @@ namespace Kiosk
 
         private void btn_finish_Click(object sender, RoutedEventArgs e)
         {
-            ListRestaurant _restaurnats = new ListRestaurant();
-            _restaurnats.Show();
+            ListRestaurant _list = new ListRestaurant();
+            _list.Show();
             this.Close();
         }
 

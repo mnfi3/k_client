@@ -7,6 +7,10 @@ using Kiosk.model;
 using Kiosk.license;
 using System.Windows;
 using System.Data.SqlClient;
+using Newtonsoft.Json.Linq;
+using System.Data;
+using Newtonsoft.Json;
+using Kiosk.control;
 
 namespace Kiosk.db
 {
@@ -83,100 +87,31 @@ namespace Kiosk.db
 
 
 
-        public int saveShop(Restaurant restaurant, Cart cart, string payment_receipt)
+        public Restaurant getRestaurant(int id)
         {
-
-            //find id to order
+            Restaurant restaurant = new Restaurant();
             values.Clear();
-            SqlDataReader dataReader = db.select("select top 1 * from orders order by id desc");
-            int order_id = 0;
+            values.Add("@id", id.ToString());
+            SqlDataReader dataReader = db.select("select top 1 * from restaurants where id=@id");
             if (dataReader != null)
             {
                 while (dataReader.Read())
                 {
-                    int columnIndex;
-                    columnIndex = dataReader.GetOrdinal("id");
-                    order_id = dataReader.GetInt32(columnIndex);
+                    restaurant.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
+                    restaurant.user_name = dataReader.GetString(dataReader.GetOrdinal("user_name"));
+                    restaurant.name = dataReader.GetString(dataReader.GetOrdinal("name"));
+                    restaurant.image = dataReader.GetString(dataReader.GetOrdinal("image"));
+                    restaurant.token = Crypt.DecryptString(dataReader.GetString(dataReader.GetOrdinal("token")), G.PRIVATE_KEY);
+                    break;
                 }
             }
+
             db.close();
 
-            //save order
-            values.Clear();
-            order_id++;
-            values.Add("@id", order_id.ToString());
-            values.Add("@restaurant_id", restaurant.id.ToString());
-            values.Add("@cost", cart.cost.ToString());
-            values.Add("@d_cost", cart.d_cost.ToString());
-            values.Add("@discount_id", cart.discount.id.ToString());
-            values.Add("@payment_receipt", payment_receipt);
-            DateTime datetime = DateTime.Now;
-            values.Add("@time", datetime.ToString("yyyyMMddHHmmss"));
-            db.insert("insert into orders (id, restaurant_id, cost, d_cost, discount_id, payment_receipt, time)"
-                +" values"
-                + " (@id, @restaurant_id, @cost, @d_cost, @discount_id, @payment_receipt, @time)", values);
-
-
-            //find id to order_content
-            values.Clear();
-            dataReader = db.select("select top 1 * from orders_content order by id desc");
-            int order_content_id = 0;
-            if (dataReader != null)
-            {
-                while (dataReader.Read())
-                {
-                    int columnIndex;
-                    columnIndex = dataReader.GetOrdinal("id");
-                    order_content_id = dataReader.GetInt32(columnIndex);
-                }
-            }
-            db.close();
-
-            //save orders_content
-            values.Clear();
-            foreach (CartItem item in cart.items)
-            {
-                order_content_id++;
-                values.Add("@id", order_content_id.ToString());
-                values.Add("@product_id", item.product.id.ToString());
-                values.Add("@order_id", order_id.ToString());
-                values.Add("@cost", item.cost.ToString());
-                values.Add("@count", item.count.ToString());
-                values.Add("@dessert_size", item.desserts_size);
-                db.insert("insert into orders_content (id, product_id, order_id, cost, count, dessert_size)"
-                    + " values"
-                    + " (@id, @product_id, @order_id, @cost, @count, @dessert_size)", values);
-                //save order_content_desserts
-                values.Clear();
-                foreach (Dessert dessert in item.desserts)
-                {
-                    values.Clear();
-                    values.Add("@orders_content_id", order_content_id.ToString());
-                    values.Add("@dessert_id", dessert.id.ToString());
-                    switch(item.desserts_size)
-                    {
-                        case "small" :
-                            values.Add("@price", dessert.price_small.ToString());
-                            break;
-                        case "medium":
-                            values.Add("@price", dessert.price_medium.ToString());
-                            break;
-                        case "large" :
-                            values.Add("@price", dessert.price_large.ToString());
-                            break;
-                    }
-
-                    db.insert("insert into order_content_desserts (orders_content_id, dessert_id, price)"
-                    + " values"
-                    + " (@orders_content_id, @dessert_id, @price)", values);
-                }
-            }
-
-
-            return 1;
+            return restaurant;
         }
 
-
+        
     }
 
    

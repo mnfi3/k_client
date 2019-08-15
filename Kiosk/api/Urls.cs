@@ -22,6 +22,7 @@ namespace Kiosk.api
 
         public const string RESTAURANT_PRODUCTS = BASE_URL + "/v1/restaurant/products";
         public const string RESTAURANT_DISCOUNT_VALIDATE = BASE_URL + "/v1/restaurant/discount-validate";
+        public const string RESTAURANT_ORDER = BASE_URL + "/v1/restaurant/order";
 
     }
 }

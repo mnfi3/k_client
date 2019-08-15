@@ -19,6 +19,8 @@ using Kiosk.license;
 using Kiosk.db;
 using System.Data.SqlClient;
 using Kiosk.api;
+using Kiosk.model;
+using Newtonsoft.Json;
 
 
 namespace Kiosk
@@ -50,8 +52,11 @@ namespace Kiosk
             }
             else
             {
-                ListRestaurant _restaurants = new ListRestaurant();
-                _restaurants.Show();
+                DBOrder db_order = new DBOrder();
+                Order order = db_order.getOrder(1);
+                new DialogTest(JsonConvert.SerializeObject(order)).ShowDialog();
+                ListRestaurant _list = new ListRestaurant();
+                _list.Show();
             }
 
             

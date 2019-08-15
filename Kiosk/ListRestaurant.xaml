@@ -60,7 +60,7 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <ListView ScrollViewer.PanningMode="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_restaurants" SelectionChanged="lst_restaurants_SelectionChanged">
+                    <ListView ScrollViewer.PanningMode="None"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_restaurants" SelectionChanged="lst_restaurants_SelectionChanged">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3"/>

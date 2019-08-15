@@ -97,3 +97,5 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\MB.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\MB.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogPublic.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogPublic.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogTest.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogTest.g.cs

@@ -67,8 +67,8 @@ namespace Kiosk
             ItemRestaurant _item = (ItemRestaurant)(sender as ListView).SelectedItem;
             G.restaurant = _item.restaurant;
 
-            ListProducts _products = new ListProducts(_item.restaurant);
-            _products.Show();
+            ListProducts _list = new ListProducts(_item.restaurant);
+            _list.Show();
 
             //G.setupTimer();
             this.Close();

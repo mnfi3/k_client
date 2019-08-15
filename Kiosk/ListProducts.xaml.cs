@@ -49,7 +49,10 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            loadData();
+            if (restaurant != null)
+            {
+                loadData();
+            }
         }
 
 
@@ -65,10 +68,9 @@ namespace Kiosk
 
         private void btn_cart_Click(object sender, RoutedEventArgs e)
         {
-
-            CartView _cart = new CartView();
-            _cart.Show();
-            this.Close();
+            CartView _cartView = new CartView();
+            _cartView.ShowDialog();
+            //this.Close();
         }
 
 
@@ -77,8 +79,8 @@ namespace Kiosk
             DialogPublic _dialog = new DialogPublic("آیا میخواهید به لیست رستوران ها برگردید؟ (سبد خرید شما خالی خواهد شد)");
             if (_dialog.ShowDialog() == true)
             {
-                ListRestaurant _listRestaurants = new ListRestaurant();
-                _listRestaurants.Show();
+                ListRestaurant _list = new ListRestaurant();
+                _list.Show();
                 this.Close();
             }
         }

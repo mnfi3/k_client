@@ -54,6 +54,11 @@ namespace Kiosk
             return db_rest.getRestaurants();
         }
 
+
+        public static async void reportShopsToServer()
+        {
+
+        }
        
 
         
