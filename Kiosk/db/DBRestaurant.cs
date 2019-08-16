@@ -92,7 +92,7 @@ namespace Kiosk.db
             Restaurant restaurant = new Restaurant();
             values.Clear();
             values.Add("@id", id.ToString());
-            SqlDataReader dataReader = db.select("select top 1 * from restaurants where id=@id");
+            SqlDataReader dataReader = db.select("select top 1 * from restaurants where id=@id", values);
             if (dataReader != null)
             {
                 while (dataReader.Read())

@@ -52,9 +52,6 @@ namespace Kiosk
             }
             else
             {
-                DBOrder db_order = new DBOrder();
-                Order order = db_order.getOrder(1);
-                new DialogTest(JsonConvert.SerializeObject(order)).ShowDialog();
                 ListRestaurant _list = new ListRestaurant();
                 _list.Show();
             }

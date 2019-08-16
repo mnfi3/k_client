@@ -1,4 +1,5 @@
-﻿using Kiosk.model;
+﻿using Kiosk.control;
+using Kiosk.model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -21,27 +22,25 @@ namespace Kiosk.api
 
             Dictionary<string, string> data = new Dictionary<string, string> { { "order", JsonConvert.SerializeObject(order) }};
             Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token } };
-            request.post(Urls.RESTAURANT_LOGIN, data, headers, syncOrderCallBack);
+            request.post(Urls.RESTAURANT_ORDER, data, headers, syncOrderCallBack);
         }
 
         private void syncOrderCallBack(object sender, EventArgs e)
         {
             Response res = sender as Response;
-            Restaurant restaurant;
+            int order_id = -1;
             if (res.status == 1)
             {
                 JObject data = res.data;
-                JObject user = data["user"].Value<JObject>();
-                restaurant = Restaurant.parse(user);
-                string token = data["token"].Value<string>();
-                restaurant.token = token;
+                order_id = data["order_id"].Value<int>();
+                //new DialogTest(res.full_response).ShowDialog();
             }
             else
             {
-                restaurant = new Restaurant();
+                //new DialogTest(res.full_response).ShowDialog();
             }
 
-            eventOrder(restaurant, new EventArgs());
+            eventOrder(order_id, new EventArgs());
         }
     }
 }

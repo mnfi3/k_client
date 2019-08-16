@@ -9,6 +9,7 @@ using Kiosk.model;
 using Kiosk.db;
 using Kiosk.system;
 using Kiosk.license;
+using Kiosk.api;
 
 namespace Kiosk
 {
@@ -55,9 +56,36 @@ namespace Kiosk
         }
 
 
-        public static async void reportShopsToServer()
-        {
 
+
+
+
+
+        public static void syncOrders()
+        {
+            DBOrder db_order = new DBOrder();
+            DBRestaurant db_rest = new DBRestaurant();
+            ROrder r_order = new ROrder();
+            Restaurant restaurant;
+            int last_order_id = -2;
+            while (last_order_id != -1)
+            {
+                last_order_id = db_order.getLastOrderId(last_order_id);
+                if (last_order_id == -1) break;
+                Order order = db_order.getOrder(last_order_id);
+                if (order.id == -1) continue;
+                restaurant = db_rest.getRestaurant(order.restaurant_id);
+                r_order.syncOrder(restaurant, order, syncOrderCallBack);
+            }
+        }
+
+
+        private static void syncOrderCallBack(object sender, EventArgs e)
+        {
+            int order_id = (int) sender;
+            if (order_id == -1) return;
+            DBOrder db_order = new DBOrder();
+            db_order.removeOrder(order_id);
         }
        
 

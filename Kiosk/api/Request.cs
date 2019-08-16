@@ -52,9 +52,10 @@ namespace Kiosk.api
             try
             {
                 var response = await client.GetAsync(url);
+                var responseString = await response.Content.ReadAsStringAsync();
+                res.full_response = responseString;
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseString = await response.Content.ReadAsStringAsync();
                     try
                     {
                         var json = (JObject)JsonConvert.DeserializeObject(responseString);
@@ -119,9 +120,11 @@ namespace Kiosk.api
             try
             {
                 var response = await client.PostAsync(url, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+                res.full_response = responseString;
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseString = await response.Content.ReadAsStringAsync();
+                    
                     try
                     {
                         var json = (JObject)JsonConvert.DeserializeObject(responseString);

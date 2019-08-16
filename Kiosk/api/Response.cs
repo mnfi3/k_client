@@ -12,5 +12,6 @@ namespace Kiosk.api
         public int status { set; get; }
         public string message { set; get; }
         public JObject data { set; get; }
+        public string full_response { set; get; }
     }
 }

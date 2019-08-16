@@ -78,7 +78,7 @@ namespace Kiosk.db
                 foreach (Dessert dessert in item.desserts)
                 {
                     values.Clear();
-                    values.Add("@orders_content_id", order_content_id.ToString());
+                    values.Add("@order_content_id", order_content_id.ToString());
                     values.Add("@dessert_id", dessert.id.ToString());
                     switch (item.desserts_size)
                     {
@@ -93,9 +93,9 @@ namespace Kiosk.db
                             break;
                     }
 
-                    db.insert("insert into order_content_desserts (orders_content_id, dessert_id, price)"
+                    db.insert("insert into order_content_desserts (order_content_id, dessert_id, price)"
                     + " values"
-                    + " (@orders_content_id, @dessert_id, @price)", values);
+                    + " (@order_content_id, @dessert_id, @price)", values);
                 }
             }
 
@@ -107,18 +107,17 @@ namespace Kiosk.db
 
 
 
-        public int getLastOrderId()
+        public int getLastOrderId(int current_id=-2)
         {
             int top_id = -1;
             values.Clear();
-            SqlDataReader dataReader = db.select("select top 1 * from orders");
+            values.Add("@current_id", current_id.ToString());
+            SqlDataReader dataReader = db.select("select top 1 * from orders where id > @current_id order by id asc", values);
             if (dataReader != null)
             {
                 while (dataReader.Read())
                 {
-                    int columnIndex;
-                    columnIndex = dataReader.GetOrdinal("id");
-                    top_id = dataReader.GetInt32(columnIndex);
+                    top_id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
                     break;
                 }
             }
@@ -131,7 +130,7 @@ namespace Kiosk.db
 
         public Order getOrder(int order_id)
         {
-            Order order = new Order();;
+            Order order = new Order();
             //get order
             values.Clear();
             values.Add("@id", order_id.ToString());
@@ -213,5 +212,28 @@ namespace Kiosk.db
             //MessageBox.Show(JSONString);
             return order;
         }
+
+
+
+        public void removeOrder(int id)
+        {
+            Order order = getOrder(id);
+            foreach (OrderContent oc in order.items)
+            {
+                values.Clear();
+                values.Add("@order_content_id", oc.id.ToString());
+                db.delete("delete from order_content_desserts where order_content_id=@order_content_id", values);
+            }
+
+            values.Clear();
+            values.Add("@order_id", id.ToString());
+            db.delete("delete from orders_content where order_id=@order_id", values);
+
+            values.Clear();
+            values.Add("@id", id.ToString());
+            db.delete("delete from orders where id=@id", values);
+        }
+
+
     }
 }

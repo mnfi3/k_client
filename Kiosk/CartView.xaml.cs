@@ -158,6 +158,7 @@ namespace Kiosk
         {
             DBOrder db_order = new DBOrder();
             db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
+            G.syncOrders();
             toast.ShowSuccess("data saved!");
         }
 
