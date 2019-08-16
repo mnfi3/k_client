@@ -75,7 +75,7 @@ namespace Kiosk.model
         public void clear()
         {
             this.items.Clear();
-            discount.percent = 0;
+            discount = new Discount(); 
         }
 
 

@@ -10,6 +10,7 @@ using Kiosk.db;
 using Kiosk.system;
 using Kiosk.license;
 using Kiosk.api;
+using System.Threading;
 
 namespace Kiosk
 {
@@ -20,7 +21,7 @@ namespace Kiosk
         public static Device device;
         public static Restaurant restaurant;
         public static List<Restaurant> restaurants;
-        public static Timer timer = new System.Timers.Timer();
+        public static System.Timers.Timer timer = new System.Timers.Timer();
         public static bool isLoggedIn = false;
         public const string PUBLIC_KEY = "kkkF19BEE2EF1yyy";
         public static string PRIVATE_KEY;
@@ -60,23 +61,30 @@ namespace Kiosk
 
 
 
+        //sync orders
+        private static Thread synThread = new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                DBOrder db_order = new DBOrder();
+                DBRestaurant db_rest = new DBRestaurant();
+                ROrder r_order = new ROrder();
+                Restaurant restaurant;
+                int last_order_id = -2;
+                while (last_order_id != -1)
+                {
+                    last_order_id = db_order.getLastOrderId(last_order_id);
+                    if (last_order_id == -1) break;
+                    Order order = db_order.getOrder(last_order_id);
+                    if (order.id == -1) continue;
+                    restaurant = db_rest.getRestaurant(order.restaurant_id);
+                    r_order.syncOrder(restaurant, order, syncOrderCallBack);
+                    Thread.Sleep(2000);
+                }
+            });
 
         public static void syncOrders()
         {
-            DBOrder db_order = new DBOrder();
-            DBRestaurant db_rest = new DBRestaurant();
-            ROrder r_order = new ROrder();
-            Restaurant restaurant;
-            int last_order_id = -2;
-            while (last_order_id != -1)
-            {
-                last_order_id = db_order.getLastOrderId(last_order_id);
-                if (last_order_id == -1) break;
-                Order order = db_order.getOrder(last_order_id);
-                if (order.id == -1) continue;
-                restaurant = db_rest.getRestaurant(order.restaurant_id);
-                r_order.syncOrder(restaurant, order, syncOrderCallBack);
-            }
+            synThread.Start();
         }
 
 

@@ -16,6 +16,7 @@ namespace Kiosk.model
 
         public Discount()
         {
+            id = 0;
             percent = 0;
         }
     }

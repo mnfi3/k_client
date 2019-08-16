@@ -69,7 +69,15 @@ namespace Kiosk
         private void btn_cart_Click(object sender, RoutedEventArgs e)
         {
             CartView _cartView = new CartView();
-            _cartView.ShowDialog();
+            if (_cartView.ShowDialog() == true)
+            {
+                toast.ShowSuccess("خرید با موفقیت انجام شد");
+                G.syncOrders();
+            }
+            else
+            {
+                toast.ShowError("پرداخت با مشکل مواجه شد");
+            }
             //this.Close();
         }
 
