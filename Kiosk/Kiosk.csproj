@@ -137,6 +137,7 @@
     <Compile Include="ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="system\Config.cs" />
     <Compile Include="system\G.cs" />
     <Compile Include="model\Device.cs" />
     <Compile Include="RegisterRestaurant.xaml.cs">

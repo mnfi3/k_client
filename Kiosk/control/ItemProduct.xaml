@@ -22,8 +22,18 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            </cachedImage:Image>
+
+
+            <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="10"/>
+            <StackPanel>
+                <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <StackPanel.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=Mask}" />
+                </StackPanel.OpacityMask>
+            </StackPanel>
+
+            
+
 
 
             <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">

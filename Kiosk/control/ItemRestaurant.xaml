@@ -9,19 +9,27 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Style="{StaticResource vazir}"
              mc:Ignorable="d" 
-             Height="400" FontFamily="Vazir">
+             Height="450" FontFamily="Vazir">
     <Grid Margin="30">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <cachedImage:Image x:Name="img_restaurant"  RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Source="../img/ic_res.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Border Name="Mask"  Background="LightGray" BorderThickness="0" CornerRadius="30"/>
+            <StackPanel>
+                <cachedImage:Image x:Name="img_restaurant"  RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Height="320" Source="../img/ic_res.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <StackPanel.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=Mask}" />
+                </StackPanel.OpacityMask>
+            </StackPanel>
+            
+            
         </Grid>
 
-        <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Row="1" Margin="10 10 10 2">
             <TextBlock x:Name="txt_name"  Text="رستوران ستاره باران" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Vazir" />
         </Grid>
 

@@ -7,21 +7,21 @@
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
-             Height="180"
+             Height="200"
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
              Loaded="UserControl_Loaded"
              >
     <Grid Margin="10">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="18*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
-            <Border Name="Mask" Background="White" BorderThickness=".5" CornerRadius="5"/>
+            <Border Name="Mask" Background="White" BorderThickness=".5" CornerRadius="10"/>
             <StackPanel>
-                <cachedImage:Image x:Name="img_category" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <cachedImage:Image x:Name="img_category" Height="150" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" Source="../img/ic_appetizer.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 <StackPanel.OpacityMask>
                     <VisualBrush Visual="{Binding ElementName=Mask}" />
                 </StackPanel.OpacityMask>

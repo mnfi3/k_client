@@ -21,6 +21,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Kiosk.db;
 using Kiosk.model;
+using Kiosk.system;
 
 namespace Kiosk
 {

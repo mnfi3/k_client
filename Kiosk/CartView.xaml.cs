@@ -164,6 +164,12 @@ namespace Kiosk
 
 
 
+        private void lst_cart_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ItemCart _item = (ItemCart)(sender as ListView).SelectedItem;
+            MessageBox.Show(_item.cartItem.product.name + " clicked ");
+        }
+
 
             
     }

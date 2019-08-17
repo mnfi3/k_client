@@ -17,6 +17,7 @@ using Kiosk.model;
 using System.Diagnostics;
 using Kiosk.api;
 using ToastNotifications;
+using Kiosk.system;
 
 namespace Kiosk
 {

@@ -1,9 +1,11 @@
 ﻿using Kiosk.api;
 using Kiosk.control;
 using Kiosk.model;
+using Kiosk.system;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -53,8 +55,18 @@ namespace Kiosk
             {
                 loadData();
             }
+
+            NetworkChange.NetworkAvailabilityChanged += AvailabilityChanged;
+            
         }
 
+        private void AvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
+        {
+            if (e.IsAvailable)
+                MessageBox.Show("Network connected!");
+            else
+                MessageBox.Show("Network disconnected!");
+        }
 
        
 
@@ -72,11 +84,12 @@ namespace Kiosk
             if (_cartView.ShowDialog() == true)
             {
                 toast.ShowSuccess("خرید با موفقیت انجام شد");
+                G.cart.clear();
                 G.syncOrders();
             }
             else
             {
-                toast.ShowError("پرداخت با مشکل مواجه شد");
+                //toast.ShowError("پرداخت با مشکل مواجه شد");
             }
             //this.Close();
         }
@@ -123,8 +136,6 @@ namespace Kiosk
         {
             if ((sender as ListView).SelectedItem == null) return;
 
-
-
             ItemProduct _item = (ItemProduct)(sender as ListView).SelectedItem;
             ProductInfo _info = new ProductInfo(_item.product);
             if (_info.ShowDialog() == true)
@@ -137,7 +148,7 @@ namespace Kiosk
 
         }
 
-
+       
 
 
 
@@ -188,6 +199,10 @@ namespace Kiosk
             }
 
         }
+
+       
+
+        
 
 
 

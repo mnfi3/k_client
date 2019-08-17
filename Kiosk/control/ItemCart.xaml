@@ -11,7 +11,7 @@
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
              Height="350"
              >
-    <Grid Margin="5 10">
+    <Grid Margin="5 10" >
 
         <Grid>
             <Grid.RowDefinitions>
@@ -30,9 +30,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="4"  Margin="5 5 20 5">
-                    <Border Name="Mask" Background="White" BorderThickness="0" CornerRadius="10"/>
+                    <Border Name="Mask" Background="#f4f4f4" BorderThickness="0" CornerRadius="10"/>
                     <StackPanel>
-                        <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto"  Source="../img/ic_chicken_and_ribs.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="300"  Source="../img/ic_chicken_and_ribs.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
                         <StackPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=Mask}" />
                         </StackPanel.OpacityMask>

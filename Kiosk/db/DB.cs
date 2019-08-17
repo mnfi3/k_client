@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.system;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Kiosk.db
 
         public DB()
         {
-            connetionString = "server=localhost;database=Kiosk;Integrated Security=true;";
+            connetionString = Config.DB_CONNECTION;
             connection = new SqlConnection(connetionString);
         }
 
