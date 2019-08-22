@@ -22,6 +22,9 @@ using Kiosk.system;
 using Kiosk.api;
 using Kiosk.db;
 using Newtonsoft.Json;
+using Microsoft.Reporting.WinForms;
+using System.Drawing.Printing;
+using System.IO;
 
 namespace Kiosk
 {
@@ -35,6 +38,7 @@ namespace Kiosk
         private Toast toast;
 
 
+
         public CartView()
         {
             InitializeComponent();
@@ -46,10 +50,14 @@ namespace Kiosk
         {
             toast = new Toast(this);
 
-            //txt_discount_code.Focus();
+            loadCartView();
+        }
 
-            //refresh cart
+
+        private void loadCartView()
+        {
             ItemCart _item;
+            lst_cart.Items.Clear();
             foreach (CartItem i in G.cart.items)
             {
                 _item = new ItemCart(i, refreshCartViewEvent);
@@ -72,8 +80,8 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            //ListProducts _list = new ListProducts(G.restaurant);
-            //_list.Show();
+            ListProducts _list = new ListProducts(G.restaurant);
+            _list.Show();
             this.Close();
         }
 
@@ -121,6 +129,7 @@ namespace Kiosk
                 grd_main.Effect = blur;
                 grd_main.Effect = null;
                 DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
+                //dialog.ShowDialog();
                 if (dialog.ShowDialog() == true)
                 {
                     //DialogCartSwipe dialog2 = new DialogCartSwipe();
@@ -154,23 +163,70 @@ namespace Kiosk
 
 
 
-        private void handleShop()
+        public void handleShop()
         {
+            grd_main.Effect = null;
             DBOrder db_order = new DBOrder();
             db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
-            DialogResult = true;
+            db_order.saveReceipt(G.cart);
+            toast.ShowSuccess("خرید با موفقیت انجام شد");
+            //printReceipt();
+            G.cart.clear();
+            loadCartView();
+            G.syncOrders();
         }
 
 
 
 
-        private void lst_cart_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+
+        //private void syncOrders()
+        //{
+        //    DBOrder db_order = new DBOrder();
+        //    DBRestaurant db_rest = new DBRestaurant();
+        //    ROrder r_order = new ROrder();
+        //    List<Order> orders = new List<Order>();
+        //    Order order;
+        //    int last_order_id = -2;
+        //    while (last_order_id != -1)
+        //    {
+        //        last_order_id = db_order.getLastOrderId(last_order_id);
+        //        if (last_order_id == -1) break;
+        //        order = db_order.getOrder(last_order_id);
+        //        if (order.id == -1) continue;
+        //        orders.Add(order);
+        //    }
+
+        //    r_order.syncOrders(orders, syncOrdersCallBack);
+        //}
+
+        //private static void syncOrdersCallBack(object sender, EventArgs e)
+        //{
+        //    int status = (int)sender;
+        //    if (status == 1)
+        //    {
+        //        DBOrder db_order = new DBOrder();
+        //        db_order.removeOrders();
+        //    }
+        //}
+
+
+
+
+
+
+
+        private void printReceipt()
         {
-            ItemCart _item = (ItemCart)(sender as ListView).SelectedItem;
-            MessageBox.Show(_item.cartItem.product.name + " clicked ");
+            PrintReceipt print = new PrintReceipt();
+            print.ShowDialog();
         }
 
+       
 
+
+       
             
     }
 }

@@ -13,6 +13,7 @@
              Height="500"
              >
     
+
     <Grid Margin="20">
 
         <Grid.RowDefinitions>
@@ -24,7 +25,7 @@
         <Grid Grid.Row="0">
 
 
-            <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="10"/>
+            <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="20"/>
             <StackPanel>
                 <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 <StackPanel.OpacityMask>

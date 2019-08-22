@@ -52,6 +52,8 @@ namespace Kiosk
             }
             else
             {
+                //Receipt _receipt = new Receipt();
+                //_receipt.Show();
                 ListRestaurant _list = new ListRestaurant();
                 _list.Show();
             }

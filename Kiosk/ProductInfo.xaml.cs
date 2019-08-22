@@ -57,14 +57,18 @@ namespace Kiosk
             cartItem.product = this.product;
 
 
-            refreshCartItem();
+            loadDesserts();
 
-            if (isExistInCart() == true)
+            if (G.cart.isExistInCart(this.product) == true)
             {
-                //toast.ShowWarning("این محصول از قبل به سبد خرید اضافه شده است", new ToastNotifications.Core.MessageOptions());
+                this.cartItem = G.cart.findByProduct(this.product);
+                loadCartItem();
+                G.cart.remove(cartItem);
             }
 
-            loadDesserts();
+
+            refreshCartItem();
+           
         }
 
 
@@ -278,6 +282,43 @@ namespace Kiosk
 
 
 
+        private void loadCartItem()
+        {
+            count = cartItem.count;
+            txt_count.Text = count.ToString();
+            this.dessert_size = cartItem.desserts_size;
+            resetDessertsPrices();
+            txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
+            resetBackColors();
+
+            foreach (ItemDessert _item1 in lst_dessert1.Items)
+            {
+                foreach (Dessert d in cartItem.desserts)
+                {
+                    if (d.id == _item1.dessert.id)
+                    {
+                        _item1.is_selected = true;
+                        _item1.Background = Brushes.White;
+                        break;
+                    }
+                }
+            }
+
+            foreach (ItemDessert _item2 in lst_dessert2.Items)
+            {
+                foreach (Dessert d in cartItem.desserts)
+                {
+                    if (d.id == _item2.dessert.id)
+                    {
+                        _item2.is_selected = true;
+                        _item2.Background = Brushes.White;
+                        break;
+                    }
+                }
+            }
+
+        }
+
 
 
         private void refreshCartItem()
@@ -307,27 +348,6 @@ namespace Kiosk
             txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
         }
 
-
-
-        private bool isExistInCart()
-        {
-            foreach (CartItem item in G.cart.items)
-            {
-                if (item.product.id == this.product.id)
-                {
-                    G.cart.remove(item);
-                    return true;
-                }
-            }
-
-            return false ;
-        }
-
-
-
-      
-
-     
 
 
 

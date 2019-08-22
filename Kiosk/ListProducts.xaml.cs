@@ -2,6 +2,7 @@
 using Kiosk.control;
 using Kiosk.model;
 using Kiosk.system;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,21 +54,12 @@ namespace Kiosk
         {
             if (restaurant != null)
             {
-                loadData();
+                loadProducts();
+                loadCart();
             }
-
-            NetworkChange.NetworkAvailabilityChanged += AvailabilityChanged;
-            
         }
 
-        private void AvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
-        {
-            if (e.IsAvailable)
-                MessageBox.Show("Network connected!");
-            else
-                MessageBox.Show("Network disconnected!");
-        }
-
+        
        
 
 
@@ -81,18 +73,19 @@ namespace Kiosk
         private void btn_cart_Click(object sender, RoutedEventArgs e)
         {
             CartView _cartView = new CartView();
-            if (_cartView.ShowDialog() == true)
-            {
-                toast.ShowSuccess("خرید با موفقیت انجام شد");
-                G.cart.clear();
-                G.syncOrders();
-            }
-            else
-            {
-                //toast.ShowError("پرداخت با مشکل مواجه شد");
-            }
-            //this.Close();
+            _cartView.Show();
+            this.Close();
+            //if (_cartView.ShowDialog() == true)
+            //{
+            //    //PrintReceipt print = new PrintReceipt();
+            //    //print.ShowDialog();
+
+            //    //G.cart.clear();
+            //    //G.syncOrders();
+            //}
         }
+
+       
 
 
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
@@ -141,6 +134,11 @@ namespace Kiosk
             if (_info.ShowDialog() == true)
             {
                 toast.ShowSuccess("به سبد خرید اضافه شد");
+                loadCart();
+            }
+            else
+            {
+                loadCart();
             }
 
 
@@ -160,12 +158,11 @@ namespace Kiosk
 
 
 
-        private void loadData()
+        private void loadProducts()
         {
 
             RRestaurant r_rest = new RRestaurant();
             r_rest.products(G.restaurant, productCallBack);
-
 
         }
 
@@ -176,6 +173,18 @@ namespace Kiosk
 
         }
 
+
+        private void loadCart()
+        {
+            lst_cart.Items.Clear();
+            ItemCartInListProduct _item;
+            foreach (CartItem i in G.cart.items)
+            {
+                _item = new ItemCartInListProduct(i);
+                lst_cart.Items.Add(_item);
+            }
+
+        }
 
 
         private void loadCategories(List<Category> cs)
@@ -200,8 +209,8 @@ namespace Kiosk
 
         }
 
-       
 
+        
         
 
 

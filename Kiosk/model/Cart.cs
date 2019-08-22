@@ -59,6 +59,36 @@ namespace Kiosk.model
             items.Add(item);
         }
 
+
+        public CartItem findByProduct(Product p)
+        {
+            CartItem item = new CartItem();
+            foreach (CartItem i in this.items)
+            {
+                if (p.id == i.product.id)
+                {
+                    item = i;
+                    break;
+                }
+            }
+            return item;
+        }
+
+        public bool isExistInCart(Product p)
+        {
+            foreach (CartItem i in this.items)
+            {
+                if (p.id == i.product.id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+
         public void remove(CartItem item)
         {
             for(int i=0 ; i<items.Count ; i++)

@@ -22,6 +22,7 @@ using Newtonsoft.Json;
 using Kiosk.db;
 using Kiosk.model;
 using Kiosk.system;
+using System.Windows.Media.Animation;
 
 namespace Kiosk
 {
@@ -36,15 +37,38 @@ namespace Kiosk
         }
 
 
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+
+            //DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+            //myDoubleAnimation.From = 1.0;
+            //myDoubleAnimation.To = 0.0;
+            //myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
+            //myDoubleAnimation.AutoReverse = true;
+            //myDoubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
+
+            //myStoryboard = new Storyboard();
+            //myStoryboard.Children.Add(myDoubleAnimation);
+            //Storyboard.SetTargetName(myDoubleAnimation, lst_restaurants.Name);
+            //Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
+
+            //// Use the Loaded event to start the Storyboard.
+            //lst_restaurants.Loaded += new RoutedEventHandler(lst_restaurantsLoaded);
+            //grd_main.Children.Add(lst_restaurants);
+            //this.Content = grd_main;
+
+
             loadRestaurants();
             G.timer.Enabled = false;
             G.restaurant = null;
             G.cart.clear();
 
+            
         }
 
+      
 
 
 

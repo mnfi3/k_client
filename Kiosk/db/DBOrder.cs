@@ -100,7 +100,7 @@ namespace Kiosk.db
             }
 
 
-            return 1;
+            return order_id;
         }
 
 
@@ -234,6 +234,63 @@ namespace Kiosk.db
             db.delete("delete from orders where id=@id", values);
         }
 
+
+
+        public void saveReceipt(Cart cart)
+        {
+            db.delete("truncate table receipt");
+            int num = 1;
+            foreach (CartItem item in cart.items)
+            {
+                values.Clear();
+                values.Add("@num", num.ToString());
+                values.Add("@name", item.product.name);
+                values.Add("@size", "");
+                values.Add("@price", item.product.d_price.ToString());
+                values.Add("@count", item.count.ToString());
+                values.Add("@cost", (item.count * item.product.d_price).ToString());
+                db.insert("insert into receipt (num, name, size, price, count, cost) values (@num, @name, @size, @price, @count, @cost)", values);
+                num++;
+                foreach (Dessert dessert in item.desserts)
+                {
+                    values.Clear();
+                    values.Add("@num", num.ToString());
+                    values.Add("@name", dessert.name);
+                    switch (item.desserts_size)
+                    {
+                        case "small": 
+                            values.Add("@size", "کوچک");
+                            values.Add("@price", dessert.price_small.ToString());
+                            values.Add("@cost", (item.count * dessert.price_small).ToString());
+                            break;
+                        case "medium": 
+                            values.Add("@size", "معمولی");
+                            values.Add("@price", dessert.price_medium.ToString());
+                            values.Add("@cost", (item.count * dessert.price_medium).ToString());
+                            break;
+                        case "large": 
+                            values.Add("@size", "بزرگ");
+                            values.Add("@price", dessert.price_large.ToString());
+                            values.Add("@cost", (item.count * dessert.price_large).ToString());
+                            break;
+                    }
+                    
+                    values.Add("@count", item.count.ToString());
+                    db.insert("insert into receipt (num, name, size, price, count, cost) values (@num, @name, @size, @price, @count, @cost)", values);
+                    num++;
+                }
+            }
+        }
+
+
+
+
+        public void removeOrders()
+        {
+            db.delete("truncate table orders");
+            db.delete("truncate table orders_content");
+            db.delete("truncate table order_content_desserts");
+        }
 
     }
 }

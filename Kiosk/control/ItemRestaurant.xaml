@@ -9,8 +9,8 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Style="{StaticResource vazir}"
              mc:Ignorable="d" 
-             Height="450" FontFamily="Vazir">
-    <Grid Margin="30">
+             Height="450" FontFamily="Vazir" Loaded="UserControl_Loaded">
+    <Grid x:Name="grd_main" Margin="30" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="350"/>

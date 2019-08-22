@@ -5,7 +5,7 @@
 		Background="#eeeeee"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Style="{StaticResource vazir}"
-        Title="DialogPaymentAccept" Height="300" Width="500" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="DialogPaymentAccept" Height="300" Width="500" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Margin="20 20">
         
         <Grid.RowDefinitions>

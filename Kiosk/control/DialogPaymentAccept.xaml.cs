@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +21,9 @@ namespace Kiosk.control
     /// </summary>
     public partial class DialogPaymentAccept : Window
     {
-        int price;
+        private int price = 0;
+
+
         public DialogPaymentAccept()
         {
             InitializeComponent();
@@ -30,8 +33,11 @@ namespace Kiosk.control
         {
             InitializeComponent();
             price = p;
-            txt_price.Text = Utils.persian_split(price) + " تومان ";
+        }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txt_price.Text = Utils.persian_split(price) + " تومان ";
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
@@ -43,5 +49,15 @@ namespace Kiosk.control
         {
             DialogResult = false;
         }
+
+
+
+       
+
+      
+      
+
+      
+        
     }
 }

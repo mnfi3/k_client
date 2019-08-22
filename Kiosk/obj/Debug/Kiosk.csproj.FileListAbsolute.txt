@@ -31,7 +31,6 @@ F:\C_sharp_project\Kiosk\Kiosk\obj\Debug\control\ItemRestaurant.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\Kiosk.exe.config
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk.exe
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk.pdb
-C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemCategory.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemProduct.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemRestaurant.baml
@@ -88,7 +87,6 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessert.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessertInCart.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemDessertInCart.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\CachedImage.dll
-C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk.csproj.Kiosk.exe.config
 C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Net.Http.Formatting.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Web.Http.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\System.Net.Http.Formatting.xml
@@ -99,3 +97,20 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogPublic.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogPublic.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogTest.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\DialogTest.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\Receipt.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\PrintReceipt.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\Receipt.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\PrintReceipt.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\RdlCompile.cache
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\RdlCompile.compiled
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk_Content.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemCartInListProduct.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\control\ItemCartInListProduct.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\Debug\Kiosk.csprojResolveAssemblyReference.cache

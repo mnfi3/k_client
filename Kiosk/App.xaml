@@ -49,9 +49,13 @@
                 <Setter Property="TextElement.FontFamily" Value="vazir_thin_fd_wol, /Kiosk;component/fonts/vazir/#Vazir-Thin-FD-WOL" />
             </Style>
             <!--fonts-->
-            
-            
-            
+
+
+            <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

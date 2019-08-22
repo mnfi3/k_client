@@ -62,38 +62,55 @@ namespace Kiosk
 
 
         //sync orders
-        private static Thread synThread = new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                DBOrder db_order = new DBOrder();
-                DBRestaurant db_rest = new DBRestaurant();
-                ROrder r_order = new ROrder();
-                Restaurant restaurant;
-                int last_order_id = -2;
-                while (last_order_id != -1)
-                {
-                    last_order_id = db_order.getLastOrderId(last_order_id);
-                    if (last_order_id == -1) break;
-                    Order order = db_order.getOrder(last_order_id);
-                    if (order.id == -1) continue;
-                    restaurant = db_rest.getRestaurant(order.restaurant_id);
-                    r_order.syncOrder(restaurant, order, syncOrderCallBack);
-                    Thread.Sleep(2000);
-                }
-            });
+        //private static Thread synThread = new Thread(() =>
+        //    {
+        //        Thread.CurrentThread.IsBackground = true;
+        //        DBOrder db_order = new DBOrder();
+        //        DBRestaurant db_rest = new DBRestaurant();
+        //        ROrder r_order = new ROrder();
+        //        Restaurant restaurant;
+        //        int last_order_id = -2;
+        //        while (last_order_id != -1)
+        //        {
+        //            last_order_id = db_order.getLastOrderId(last_order_id);
+        //            if (last_order_id == -1) break;
+        //            Order order = db_order.getOrder(last_order_id);
+        //            if (order.id == -1) continue;
+        //            restaurant = db_rest.getRestaurant(order.restaurant_id);
+        //            r_order.syncOrder(restaurant, order, syncOrderCallBack);
+        //            Thread.Sleep(1000);
+        //        }
+        //    });
 
         public static void syncOrders()
         {
-            synThread.Start();
+            DBOrder db_order = new DBOrder();
+            DBRestaurant db_rest = new DBRestaurant();
+            ROrder r_order = new ROrder();
+            List<Order> orders = new List<Order>();
+            Order order;
+            int last_order_id = -2;
+            while (last_order_id != -1)
+            {
+                last_order_id = db_order.getLastOrderId(last_order_id);
+                if (last_order_id == -1) break;
+                order = db_order.getOrder(last_order_id);
+                if (order.id == -1) continue;
+                orders.Add(order);
+            }
+
+            r_order.syncOrders(orders, syncOrdersCallBack);
         }
 
 
-        private static void syncOrderCallBack(object sender, EventArgs e)
+        private static void syncOrdersCallBack(object sender, EventArgs e)
         {
-            int order_id = (int) sender;
-            if (order_id == -1) return;
-            DBOrder db_order = new DBOrder();
-            db_order.removeOrder(order_id);
+            int status = (int)sender;
+            if (status == 1)
+            {
+                DBOrder db_order = new DBOrder();
+                db_order.removeOrders();
+            }
         }
        
 

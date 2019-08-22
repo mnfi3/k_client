@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using ToastNotifications;
@@ -19,6 +20,11 @@ namespace Kiosk.control
 
 
         private readonly Notifier _notifier;
+        
+
+
+
+
 
         public Toast(Window window)
         {
@@ -34,8 +40,8 @@ namespace Kiosk.control
                     offsetY: height/2);
 
                 cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                    notificationLifetime: TimeSpan.FromSeconds(2),
-                    maximumNotificationCount: MaximumNotificationCount.FromCount(1));
+                    notificationLifetime: TimeSpan.FromSeconds(1),
+                    maximumNotificationCount: MaximumNotificationCount.FromCount(5));
 
                 cfg.Dispatcher = Application.Current.Dispatcher;
 
@@ -44,7 +50,19 @@ namespace Kiosk.control
             });
 
             _notifier.ClearMessages(new ClearAll());
+
         }
+
+
+
+
+
+
+      
+
+
+
+
 
         public void OnUnloaded()
         {
