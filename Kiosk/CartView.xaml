@@ -99,7 +99,11 @@
                                 <TextBlock Foreground="Black" Margin="10 5"  Grid.Row="5" HorizontalAlignment="Right" FontSize="22" Text=""/>
                                 <TextBlock Foreground="#FFCF4141" Margin="10 5"  Grid.Row="6" HorizontalAlignment="Right" FontSize="20" TextAlignment="Right" VerticalAlignment="Bottom" Text="در صورت داشتن کد تخفیف آن را وارد کنید" FontFamily="Vazir"/>
                                 <Border  Margin="50 0"  Grid.Row="7" Width="auto" Height="65" HorizontalAlignment="Stretch" CornerRadius="10" BorderThickness="1">
-                                    <TextBox x:Name="txt_discount_code" Foreground="Black"  Width="auto" HorizontalAlignment="Stretch" FontSize="22"  Background="#81D4FA" PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#2962FF"   FontFamily="Vazir"/>
+                                    <TextBox x:Name="txt_discount_code" materialDesign:HintAssist.IsFloating="True" Foreground="Black"  Width="auto" HorizontalAlignment="Stretch" FontSize="19"  Background="#81D4FA" PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#2962FF"   FontFamily="Vazir">
+                                        <materialDesign:HintAssist.Hint>
+                                                <Label DockPanel.Dock="Right" Content="لطفا کد تخفیف را وارد کنید" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="auto"/>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
                                 </Border>
                                 <Button x:Name="btn_discount" Background="#F57F17" Click="btn_discount_Click" BorderBrush="{x:Null}" Foreground="White" Margin="50 0" Width="auto" Height="65"  Grid.Row="8" HorizontalAlignment="Stretch" FontSize="18" FontWeight="Normal" Content="اعمال کد تخفیف" FontFamily="Vazir"/>
 

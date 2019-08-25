@@ -28,30 +28,24 @@ namespace Kiosk
 
         private Restaurant restaurant;
 
-        private Toast toast;
+        //private Toast toast;
 
 
-        //public ListProducts()
-        //{
-        //    InitializeComponent();
-        //}
-
-        public ListProducts(Restaurant rest)
+        public ListProducts()
         {
             InitializeComponent();
-            toast = new Toast(this);
 
-            G.timer.Enabled = true;
-
-            G.restaurant = rest;
-            this.restaurant = rest;
+            this.restaurant = G.restaurant;
         }
+
 
 
        
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //toast = new Toast(this);
+
             if (restaurant != null)
             {
                 loadProducts();
@@ -133,7 +127,7 @@ namespace Kiosk
             ProductInfo _info = new ProductInfo(_item.product);
             if (_info.ShowDialog() == true)
             {
-                toast.ShowSuccess("به سبد خرید اضافه شد");
+                //toast.ShowSuccess("به سبد خرید اضافه شد");
                 loadCart();
             }
             else

@@ -40,7 +40,7 @@ namespace Kiosk.control
                     offsetY: height/2);
 
                 cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                    notificationLifetime: TimeSpan.FromSeconds(1),
+                    notificationLifetime: TimeSpan.FromSeconds(2),
                     maximumNotificationCount: MaximumNotificationCount.FromCount(5));
 
                 cfg.Dispatcher = Application.Current.Dispatcher;

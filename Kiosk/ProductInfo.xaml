@@ -86,7 +86,7 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <Grid Grid.Column="0" Background="#e6e6e6">
+                        <Grid Grid.Column="0" Background="#d6d6d6">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="4*"/>

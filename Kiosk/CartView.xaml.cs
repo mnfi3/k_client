@@ -68,6 +68,9 @@ namespace Kiosk
             txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
         }
 
+
+
+
         private void btn_exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -80,7 +83,7 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            ListProducts _list = new ListProducts(G.restaurant);
+            ListProducts _list = new ListProducts();
             _list.Show();
             this.Close();
         }
@@ -219,8 +222,8 @@ namespace Kiosk
 
         private void printReceipt()
         {
-            PrintReceipt print = new PrintReceipt();
-            print.ShowDialog();
+            //PrintReceipt print = new PrintReceipt();
+            //print.ShowDialog();
         }
 
        
