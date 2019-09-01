@@ -1,0 +1,25 @@
+﻿<Window x:Class="Kiosk.temp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded"  AllowsTransparency="True" WindowStyle="None" FontFamily="Vazir" x:Name="window_1">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <!--<Storyboard>
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0:0.5" FillBehavior="HoldEnd" />
+            </Storyboard>-->
+                <Storyboard >
+                    <DoubleAnimation  Storyboard.TargetProperty="Top" From="1080" To="0" Duration="0:0:0:4.5"  />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="Gold">
+        
+        <TextBlock Text="Hello" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Button Click="Button_Click" HorizontalAlignment="Center" x:Name="button_1">exit
+            
+        </Button>
+    </Grid>
+    
+</Window>

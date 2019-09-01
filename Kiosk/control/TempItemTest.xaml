@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Kiosk.control.TempItemTest"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Background="{x:Null}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             
+             x:Name="itemText">
+    <Grid Background="Transparent">
+        <Border Height="50" Width="90" x:Name="PulseBox"
+                        Background="Red" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+
+            <TextBox Text="hello world!" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
+
+        </Border>
+        
+    </Grid>
+    <UserControl.Resources>
+
+       
+
+        <!-- Pulse -->
+        <!--<Storyboard x:Key="Pulse" >
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>-->
+
+        <Storyboard x:Key="FadeInUp" >
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="80"/>
+                
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="80"/>
+                
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <!--<BeginStoryboard Storyboard="{StaticResource Pulse}"/>-->
+            <BeginStoryboard Storyboard="{StaticResource FadeInUp}"/>
+            
+        </EventTrigger>
+    </UserControl.Triggers>
+
+</UserControl>
