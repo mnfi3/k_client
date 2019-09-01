@@ -37,7 +37,8 @@ namespace Kiosk
         public ListProducts()
         {
             InitializeComponent();
-            _isEnabled = false;
+            this.Height = G.height;
+            this.Width = G.width;
             this.cln_cart.Width =new  GridLength(0, GridUnitType.Star);
             this.restaurant = G.restaurant;
         }
@@ -157,6 +158,8 @@ namespace Kiosk
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
+                
+               
             }
             else
             {
@@ -164,6 +167,10 @@ namespace Kiosk
                 if (G.cart.items.Count > 0)
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
+                }
+                else
+                {
+                    this.cln_cart.Width = new GridLength(0, GridUnitType.Star);
                 }
             }
 
@@ -189,14 +196,17 @@ namespace Kiosk
         }
 
 
-        private void loadCart()
+        private async void loadCart()
         {
             lst_cart.Items.Clear();
             ItemCartInListProduct _item;
+            
             foreach (CartItem i in G.cart.items)
             {
                 _item = new ItemCartInListProduct(i);
                 lst_cart.Items.Add(_item);
+                
+                
             }
         }
 
@@ -234,27 +244,7 @@ namespace Kiosk
             _clickToOrder.ShowDialog();
         }
 
-        private bool _isEnabled;
-
-        public bool IsCartEmpty
-        {
-            get { return _isEnabled; }
-            set
-            {
-                _isEnabled = value;
-                OnPropertyChanged("IsCartEmpty");
-            }
-        }
-
-        
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
+      
 
     }
 }

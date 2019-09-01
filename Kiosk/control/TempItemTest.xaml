@@ -44,12 +44,21 @@
         </Storyboard>-->
 
         <Storyboard x:Key="FadeInUp" >
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" Storyboard.TargetName="PulseBox">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="80"/>
-                
+            
+            
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.35">
+            </DoubleAnimation>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" Storyboard.TargetName="PulseBox">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="80"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="-8"/>
                 
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>

@@ -9,31 +9,6 @@
     <Grid Background="#f4f4f4" x:Name="grd_main">
 
 
-        <Grid Height="10" VerticalAlignment="Top" Background="#FF0080FF"/>
-        <Grid Height="50" VerticalAlignment="Top"  Background="#ff000000" Margin="0 10 0 0">
-            <materialDesign:PopupBox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
-                <StackPanel Width="150">
-                    <Button Content="مدیریت"/>
-                    <Separator/>
-                    <Button Name="btn_exit" Content="خروج" Click="btn_exit_Click"/>
-                </StackPanel>
-            </materialDesign:PopupBox>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-                <TextBlock Margin="10 0" Foreground="#FFaaaaaa" Text="powered by www.ezitech.ir" VerticalAlignment="Center"  HorizontalAlignment="Center"  FontSize="22" FontFamily="Sitka Display"  />
-
-                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon  Foreground="#FFaaaaaa" Kind="Telegram" Width="25" Height="25"/>
-                </Button>
-                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Instagram" Width="25" Height="25"/>
-                </Button>
-                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Web" Width="25" Height="25"/>
-                </Button>
-            </StackPanel>
-        </Grid>
-
-
         <Grid  Margin="0 60 0 0">
 
             <Grid.RowDefinitions>

@@ -12,105 +12,132 @@
              Height="300"
              >
     <Grid Margin="30 15" >
+        <Border  x:Name="PulseBox"
+                        Background="Transparent" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1"  Margin="2" Height="200" VerticalAlignment="Stretch">
+                        <Border Name="Mask" Background="White" BorderThickness="0" CornerRadius="10" Height="200" />
+                        <StackPanel>
+                            <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="200" HorizontalAlignment="Right" Source="../img/ic_chicken_and_ribs.jpg"  VerticalAlignment="Center" />
+                            <StackPanel.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Mask}" />
+                            </StackPanel.OpacityMask>
+                        </StackPanel>
+                    </Grid>
 
 
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="1"  Margin="2" Height="200" VerticalAlignment="Stretch">
-                    <Border Name="Mask" Background="White" BorderThickness="0" CornerRadius="10" Height="200" />
-                    <StackPanel>
-                        <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="200" HorizontalAlignment="Right" Source="../img/ic_chicken_and_ribs.jpg"  VerticalAlignment="Center" />
-                        <StackPanel.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=Mask}" />
-                        </StackPanel.OpacityMask>
-                    </StackPanel>
+                    <Grid Grid.Column="0" Margin="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Grid Grid.Column="0" Margin="2 20" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid Grid.Column="1" Margin="2" HorizontalAlignment="Center">
+                                    <TextBlock Foreground="#121c1b" VerticalAlignment="Center" HorizontalAlignment="Center" Text="تعداد" FontSize="13"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="16*"/>
+                                    <RowDefinition Height="18*"/>
+                                    <RowDefinition Height="5*"/>
+                                    <RowDefinition Height="16*"/>
+                                </Grid.RowDefinitions>
+
+                                <Button x:Name="btn_up" Click="btn_up_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="50"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0"/>
+                                </Button>
+                                <TextBlock x:Name="txt_count" FontSize="15" FontWeight="Bold" Foreground="#67aa39" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
+                                <Button x:Name="btn_down" Click="btn_down_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
+                                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="50" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
                 </Grid>
 
 
+                <Grid Grid.Row="1" Margin="5">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <TextBlock x:Name="txt_product" Foreground="#121c1b" Text="جوجه کباب" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right"  VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txt_price" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
+                    </StackPanel>
 
-                <Grid Grid.Column="0" Margin="2">
+                </Grid>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
 
-                   
+                <Grid Grid.Row="2" VerticalAlignment="Center"  Margin="0" Height="2" Width="auto">
+                    <Grid Height="1" Width="auto" Background="#aaaaaa">
 
-                    <Grid Grid.Column="0" Margin="2 20" HorizontalAlignment="Left">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0">
-                            <Grid Grid.Column="1" Margin="2" HorizontalAlignment="Center">
-                                <TextBlock Foreground="#121c1b" VerticalAlignment="Center" HorizontalAlignment="Center" Text="تعداد" FontSize="13"/>
-                            </Grid>
-                        </Grid>
-
-                        <Grid Grid.Row="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="16*"/>
-                                <RowDefinition Height="18*"/>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="16*"/>
-                            </Grid.RowDefinitions>
-
-                            <Button x:Name="btn_up" Click="btn_up_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
-                                <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="50"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0"/>
-                            </Button>
-                            <TextBlock x:Name="txt_count" FontSize="15" FontWeight="Bold" Foreground="#67aa39" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
-                            <Button x:Name="btn_down" Click="btn_down_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
-                                <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="50" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
-                            </Button>
-                        </Grid>
                     </Grid>
                 </Grid>
 
-
-
-
-
-
-
-
-
             </Grid>
+        </Border>
 
-
-            <Grid Grid.Row="1" Margin="5">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <TextBlock x:Name="txt_product" Foreground="#121c1b" Text="جوجه کباب" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right"  VerticalAlignment="Center"/>
-                    <TextBlock x:Name="txt_price" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
-                </StackPanel>
-
-            </Grid>
-
-
-            <Grid Grid.Row="2" VerticalAlignment="Center"  Margin="0" Height="2" Width="auto">
-                <Grid Height="1" Width="auto" Background="#aaaaaa">
-
-                </Grid>
-            </Grid>
-
-
-
-
-        </Grid>
-
-
+        
     </Grid>
+    <UserControl.Resources>
+        <Storyboard x:Key="FadeInUp" >
+
+
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.35">
+            </DoubleAnimation>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="-8"/>
+
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+
+            <BeginStoryboard Storyboard="{StaticResource FadeInUp}"/>
+
+        </EventTrigger>
+    </UserControl.Triggers>
 </UserControl>
 
 

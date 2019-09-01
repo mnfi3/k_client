@@ -40,6 +40,10 @@ namespace Kiosk.control
         {
             txt_product.Text = product.name;
             txt_product_price.Text = Utils.persian_split(product.d_price) + " تومان ";
+            //BitmapImage b = new BitmapImage();
+            //b.BeginInit();
+            //b.UriSource = new Uri("B:\\programing\\C#\\Kiosk\\Kiosk\\img\\ic_pasta.jpg");
+            //b.EndInit();
             img_product.Source = null;
             img_product.ImageUrl = product.image;
             if (product.d_price < product.price)

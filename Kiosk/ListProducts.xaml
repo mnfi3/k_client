@@ -6,7 +6,7 @@
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Style="{StaticResource iransans}"
-        Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized"  AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" FontFamily="iransans">
+        Height="600" Width="1000" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" FontFamily="iransans">
 
 
 
@@ -73,10 +73,10 @@
                 <TextBlock Grid.Column="1" Width="Auto"  Foreground="#444444"  Text="اشتها آور ها" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
 
             </Grid>
-            <ListView Grid.Row="1" Margin="10" ScrollViewer.PanningMode="Both"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_products" SelectionChanged="lst_products_SelectionChanged"  FontFamily="Vazir" >
+            <ListView Grid.Row="1" Margin="10" HorizontalContentAlignment="Right" HorizontalAlignment="Right" ScrollViewer.PanningMode="Both"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_products" SelectionChanged="lst_products_SelectionChanged"  FontFamily="Vazir" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="3"/>
+                        <UniformGrid FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Top" Columns="3"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
 
@@ -150,30 +150,21 @@
                             </Setter.Value>
                         </Setter>
 
-                        <Setter Property="Opacity" Value="0" />
+                        <!--<Setter Property="Opacity" Value="0" />
                         <Style.Triggers>
                             <EventTrigger RoutedEvent="Loaded">
                                 <EventTrigger.Actions>
                                     <BeginStoryboard>
-                                        <!--<Storyboard>
+                                        --><!--<Storyboard>
                                             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.1">
                                             </DoubleAnimation>
-                                        </Storyboard>-->
-                                        <Storyboard>
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
-                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.15"/>
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
-                                            </DoubleAnimationUsingKeyFrames>
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
-                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.15"/>
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
-                                            </DoubleAnimationUsingKeyFrames>
-                                        </Storyboard>
+                                        </Storyboard>--><!--
+                                        
 
                                     </BeginStoryboard>
                                 </EventTrigger.Actions>
                             </EventTrigger>
-                        </Style.Triggers>
+                        </Style.Triggers>-->
                     </Style>
                     
                 </ListView.ItemContainerStyle>

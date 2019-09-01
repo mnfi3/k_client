@@ -31,7 +31,7 @@ namespace Kiosk
             {
                 item = new TempItemTest();
                 lstTexts.Items.Add(item);
-                await Task.Delay(200);
+                await Task.Delay(350);
                 //TempItemText item3 = (TempItemText)lstTexts.Items[lstTexts.Items.Count - 1];
 
             }
