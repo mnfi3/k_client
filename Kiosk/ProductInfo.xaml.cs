@@ -194,6 +194,7 @@ namespace Kiosk
                     _item.is_selected = true;
                 }
             }
+            
 
 
             refreshCartItem();

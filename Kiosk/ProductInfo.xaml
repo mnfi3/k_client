@@ -30,9 +30,88 @@
                 <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="اندازه مورد نظر را انتخاب کنید" />
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="btn_small" Click="btn_small_Click" Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                        <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                        <Button x:Name="btn_large" Click="btn_large_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="bounce1">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LittleSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LittleSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="bounce2">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="NormalSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="NormalSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="bounce3">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LargeSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LargeSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                        <Border x:Name="LittleSize" RenderTransformOrigin="0.5,0.5">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                    <BeginStoryboard Storyboard="{StaticResource bounce1}"/>
+                                </EventTrigger>
+                            </Border.Triggers>
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                            <Button x:Name="btn_small" Click="btn_small_Click" Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        </Border>
+
+                        <Border x:Name="NormalSize" RenderTransformOrigin="0.5,0.5">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                    <BeginStoryboard Storyboard="{StaticResource bounce2}"/>
+                                </EventTrigger>
+                            </Border.Triggers>
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        </Border>
+
+                        <Border x:Name="LargeSize" RenderTransformOrigin="0.5,0.5">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                    <BeginStoryboard Storyboard="{StaticResource bounce3}"/>
+                                </EventTrigger>
+                            </Border.Triggers>
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                                <Button x:Name="btn_large" Click="btn_large_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        </Border>
                     </StackPanel >
                 </Grid>
             </Grid>
@@ -46,7 +125,8 @@
                 <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert1_SelectionChanged" >
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Rows="1" FlowDirection="RightToLeft"/>
+                            <UniformGrid  Rows="1" FlowDirection="RightToLeft"/>
+
                             <!--<StackPanel Orientation="Horizontal" />-->
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
@@ -194,6 +274,6 @@
             </Grid>
         </Grid>
         
-
     </Grid>
+    
 </Window>

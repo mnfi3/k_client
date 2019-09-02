@@ -158,8 +158,7 @@ namespace Kiosk
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
-                
-               
+                              
             }
             else
             {
@@ -196,7 +195,7 @@ namespace Kiosk
         }
 
 
-        private async void loadCart()
+        private  void loadCart()
         {
             lst_cart.Items.Clear();
             ItemCartInListProduct _item;
