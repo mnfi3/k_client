@@ -24,18 +24,18 @@ namespace Kiosk
         {
             InitializeComponent();
         }
-        private async void loadTexts()
-        {
-            TempItemTest item;
-            for (int i = 0; i < 100; i++)
-            {
-                item = new TempItemTest();
-                lstTexts.Items.Add(item);
-                await Task.Delay(350);
-                //TempItemText item3 = (TempItemText)lstTexts.Items[lstTexts.Items.Count - 1];
+        //private async void loadTexts()
+        //{
+        //    TempItemTest item;
+        //    for (int i = 0; i < 100; i++)
+        //    {
+        //        item = new TempItemTest();
+        //        lstTexts.Items.Add(item);
+        //        await Task.Delay(350);
+        //        //TempItemText item3 = (TempItemText)lstTexts.Items[lstTexts.Items.Count - 1];
 
-            }
-        }
+        //    }
+        //}
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +48,7 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            loadTexts();
+            //loadTexts();
         }
     }
 }

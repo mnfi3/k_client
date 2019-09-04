@@ -29,49 +29,83 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>-->
-            <ListView x:Name="lst_cart" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Center" Columns="1"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="0" x:Name="lst_cart" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch"  Height="auto" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Center" Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
 
-                <!--disable hilight-->
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                    <ContentPresenter />
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
+                    <!--disable hilight-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <!--<materialDesign:ColorZone Mode="Standard" Background="White" Padding="0.5">
+                        
+                        
+                    </materialDesign:ColorZone>-->
+                    <Border BorderThickness="0 1 0 0" BorderBrush="White" Margin="0 -4 0 0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="14"  ShadowDepth="1.5" Direction="90" Color="#222" Opacity=".5" RenderingBias="Performance" />
+                        </Border.Effect>
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="txt_total" FontFamily="iransans" FontSize="17" Grid.Column="0" Margin="10 10 0 0" HorizontalAlignment="Left" FontWeight="Bold" Foreground="Black" Text="16000"/>
+                        <TextBlock Grid.Column="1" FontFamily="iransans" FontSize="17" Margin="0 10 10 0" HorizontalAlignment="Right" FontWeight="Bold" Foreground="Black" Text="جمع حساب"/>
+                    </Grid>
+                    
+                </StackPanel>
+                <Button Grid.Row="2" x:Name="btn_checkout" FontSize="16" Click="btn_checkout_Click" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Foreground="White"  Content="مدیریت سبد" Background="#00b356" ></Button>
+            </Grid>
+            
+                
+                
+            
+            
         </Grid>
 
         <Grid Grid.Column="1" Background="#f1f1f1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    
                 </Grid.ColumnDefinitions>
 
-                <materialDesign:PopupBox Grid.Column="0" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
-                    <StackPanel Width="150">
-                        <Button Click="Button_Click" Content="مدیریت"/>
-                        <Separator/>
-                        <Button Name="btn_exit" Content="خروج" Click="btn_exit_Click"/>
-                    </StackPanel>
-                </materialDesign:PopupBox>
                 <TextBlock Grid.Column="1" Width="Auto"  Foreground="#444444"  Text="اشتها آور ها" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
-
+                <Button x:Name="btn_back_to_restaurants" Visibility="Hidden" Grid.Column="0"  Click="btn_back_to_restaurants_Click" FontSize="15" Height="40"  Foreground="White" Background="#ff1269" BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Vazir" Margin="5 -4" Text=" رستوران ها"/>
+                        <materialDesign:PackIcon Kind="ArrowBack"/>
+                    </StackPanel>
+                </Button>
             </Grid>
             <ListView Grid.Row="1" Margin="10" HorizontalContentAlignment="Right" HorizontalAlignment="Right" ScrollViewer.PanningMode="Both"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_products" SelectionChanged="lst_products_SelectionChanged"  FontFamily="Vazir" >
                 <ListView.ItemsPanel>
@@ -123,12 +157,19 @@
                 <!--anim-->
 
             </ListView>
-
+            
+            <materialDesign:PopupBox  Grid.Row="2" x:Name="btn_setting" Visibility="Visible" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#f1f1f1">
+                <StackPanel Width="150">
+                    <Button Click="Button_Click" Content="مدیریت"/>
+                    <Separator/>
+                    <Button Name="btn_exit" Content="خروج" Click="btn_exit_Click"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
         </Grid>
 
         <Grid x:Name="grd_category" Grid.Column="2" Background="#fcfcfc">
 
-
+             
             <ListView Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both" x:Name="lst_categories"   ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lst_categories_SelectionChanged">
 
                 <ListView.ItemsPanel>
@@ -208,7 +249,7 @@
 
 
 
-                    <Button x:Name="btn_back_to_restaurants" Grid.Column="0" Click="btn_back_to_restaurants_Click" FontSize="20" Height="70"  Foreground="White" Background="#7986CB" Content="بازگشت به لیست رستوران ها"  BorderBrush="{x:Null}" Margin="50 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Button>
+                    
                     <Button x:Name="btn_cart" Grid.Column="1"  Click="btn_cart_Click" FontSize="20" Height="70"  Foreground="White" Background="#67aa39" Content=" مدیریت سبد خرید"  BorderBrush="{x:Null}" Margin="50 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FontFamily="Vazir"></Button>
 
        </Grid>-->

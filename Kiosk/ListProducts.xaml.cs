@@ -49,6 +49,12 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //show btn_back_to_restaurants button if have more than one restaurant
+
+            if (G.restaurants.Count > 1)
+            {
+                btn_back_to_restaurants.Visibility = Visibility.Visible;
+            }
             //toast = new Toast(this);
 
             if (G.cart.items.Count > 0)
@@ -70,6 +76,7 @@ namespace Kiosk
                 loadProducts();
                 loadCart();
             }
+            txt_total.Text = "ت "  + Utils.persian_split(txt_total.Text);
 
         }
 
@@ -236,11 +243,26 @@ namespace Kiosk
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            lst_categories.Items.Clear();
-            lst_products.Items.Clear();
-            lst_cart.Items.Clear();
-            _clickToOrder = new ClickToOrder(animCallback);
-            _clickToOrder.ShowDialog();
+            //lst_categories.Items.Clear();
+            //lst_products.Items.Clear();
+            //lst_cart.Items.Clear();
+            //_clickToOrder = new ClickToOrder(animCallback);
+            //_clickToOrder.ShowDialog();
+            DialogManageApp _dialog = new DialogManageApp();
+            if (_dialog.ShowDialog() == true)
+            {
+                DeviceLogin _login = new DeviceLogin();
+                _login.Show();
+                this.Close();
+            }
+        }
+
+        private void btn_checkout_Click(object sender, RoutedEventArgs e)
+        {
+            CartView _cartView = new CartView();
+            _cartView.Show();
+            this.Close();
+
         }
 
       

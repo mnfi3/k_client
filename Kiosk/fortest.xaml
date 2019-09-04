@@ -8,12 +8,12 @@
         Style="{StaticResource iransans}"
         Height="400" Width="600" Foreground="White" ResizeMode="NoResize" WindowState="Maximized"  Loaded="Window_Loaded" FontFamily="iransans">
     <Grid>
-        <Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Click="Button_Click">create</Button>
-        <ListView Grid.Row="1" x:Name="lstTexts">
+        <Button Grid.Row="0" Click="Button_Click">create</Button>-->
+        <!--<ListView Grid.Row="1" x:Name="lstTexts">-->
 
             <!--<ListView.ItemContainerStyle >
 
@@ -33,14 +33,14 @@
                     </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>-->
-            <ListView.ItemsPanel >
+            <!--<ListView.ItemsPanel >
                 <ItemsPanelTemplate >
 
                     <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Left" Columns="17"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-        </ListView>
-        <!--<Grid Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
+        </ListView>-->
+        <Grid  HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.Resources>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Foreground" Value="White"/>
@@ -61,16 +61,16 @@
 
             <StackPanel>
 
-                --><!-- Marching Ants --><!--
+                 <!--Marching Ants--> 
                 <Grid>
 
                     <Rectangle x:Name="AlertBox"
-                      Stroke="Red" 
+                      Stroke="Blue" 
                        StrokeDashOffset="2" StrokeDashArray="5" Margin="5">
                         <Rectangle.Fill>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="6,4" MappingMode="Absolute" SpreadMethod="Repeat">
-                                <GradientStop Color="Red" Offset="0.25"/>
-                                <GradientStop Color="#00000000" Offset="0.15"/>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="10,8" MappingMode="Absolute" SpreadMethod="Repeat">
+                                <GradientStop Color="Blue" Offset="0.15"/>
+                                <GradientStop Color="#00ff00" Offset="0.15"/>
                             </LinearGradientBrush>
                         </Rectangle.Fill>
                     </Rectangle>
@@ -78,10 +78,10 @@
                     <TextBlock/>
 
                 </Grid>
-                --><!-- End Marching Ants -->
+                 <!--End Marching Ants--> 
 
 
-                <!-- Pulse : Will not skew other elements location like width/height animations would. --><!--
+                 <!--Pulse : Will not skew other elements location like width/height animations would.--> 
                 <Grid>
                     <Border x:Name="PulseBox"
                         Background="Red" RenderTransformOrigin="0.5,0.5">
@@ -98,10 +98,10 @@
 
                     </Border>
                 </Grid>
-                --><!-- End Pulse -->
+                 <!--End Pulse--> 
 
 
-                <!-- Flipper --><!--
+                 <!--Flipper--> 
                 <Grid>
                     <Border x:Name="FlipperBox"
                         Background="Red">
@@ -118,10 +118,10 @@
 
                     </Border>
                 </Grid>
-                --><!-- End Flipper -->
+                 <!--End Flipper--> 
 
 
-                <!-- Elastic Lines --><!--
+                 <!--Elastic Lines--> 
                 <Grid>
                     <Rectangle x:Name="ElasticBox"
                       Stroke="Red" StrokeThickness="5" Margin="5">
@@ -136,10 +136,10 @@
                     <TextBlock/>
 
                 </Grid>
-                --><!-- End Elastic Box -->
+                 <!--End Elastic Box--> 
 
 
-                <!-- Knight Rider --><!--
+                 <!--Knight Rider--> 
                 <Grid>
                     <Rectangle Fill="Red"/>
                     <Rectangle x:Name="KRBox" Width="50" Fill="White" RenderTransformOrigin="0.5,0.5">
@@ -156,10 +156,10 @@
                     <TextBlock Foreground="Red"/>
 
                 </Grid>
-                --><!-- End Knight Rider --><!--
+                 <!--End Knight Rider--> 
 
             </StackPanel>
-        </Grid>-->
+        </Grid>
     </Grid>
 
     <Window.Resources>
@@ -218,7 +218,7 @@
         </Storyboard>
 
     </Window.Resources>
-    <!--<Window.Triggers>
+    <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource Pulse}"/>
             <BeginStoryboard Storyboard="{StaticResource MarchingAnts}"/>
@@ -226,7 +226,7 @@
             <BeginStoryboard Storyboard="{StaticResource ElasticLines}"/>
             <BeginStoryboard Storyboard="{StaticResource KnightRider}"/>
         </EventTrigger>
-    </Window.Triggers>-->
+    </Window.Triggers>
 
     
 </Window>

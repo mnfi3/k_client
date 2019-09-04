@@ -54,11 +54,15 @@ namespace Kiosk
                 G.restaurant = null;
                 G.cart.clear();
                 
-                ClickToOrder _clickToOrder = new ClickToOrder();
+                ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
                 _clickToOrder.ShowDialog();
             }
            
             
+        }
+        private void animHandler(object sender,EventArgs e)
+        {
+
         }
 
       
