@@ -124,6 +124,9 @@
     <Compile Include="api\ROrder.cs" />
     <Compile Include="api\RRestaurant.cs" />
     <Compile Include="api\Urls.cs" />
+    <Compile Include="ClickToOrder.xaml.cs">
+      <DependentUpon>ClickToOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\DialogCartSwipe.xaml.cs">
       <DependentUpon>DialogCartSwipe.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,9 @@
     <Compile Include="control\Receipt.xaml.cs">
       <DependentUpon>Receipt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\TempItemTest.xaml.cs">
+      <DependentUpon>TempItemTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\Toast.cs" />
     <Compile Include="control\VKeyboard.xaml.cs">
       <DependentUpon>VKeyboard.xaml</DependentUpon>
@@ -165,19 +171,13 @@
     <Compile Include="db\DBDevice.cs" />
     <Compile Include="db\DBModel.cs" />
     <Compile Include="db\DBOrder.cs" />
+    <Compile Include="db\DBProducts.cs" />
     <Compile Include="db\DBRestaurant.cs" />
     <Compile Include="DeviceLogin.xaml.cs">
       <DependentUpon>DeviceLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KioskDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KioskDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="KioskDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KioskDataSet1.xsd</DependentUpon>
+    <Compile Include="fortest.xaml.cs">
+      <DependentUpon>fortest.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\CartItem.cs" />
     <Compile Include="model\Dessert.cs" />
@@ -208,6 +208,10 @@
     <Compile Include="system\PrintR.cs" />
     <Compile Include="system\Utils.cs" />
     <Page Include="CartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClickToOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,11 +275,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="control\TempItemTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="control\VKeyboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeviceLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="fortest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,7 +371,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="receipt.rdlc" />
     <Resource Include="fonts\vazir\Vazir-Black.ttf" />
     <Resource Include="fonts\vazir\Vazir-Bold.ttf" />
     <Resource Include="fonts\vazir\Vazir-Light.ttf" />
@@ -380,28 +391,6 @@
     <Resource Include="fonts\vazir\Vazir-Thin-FD-WOL.ttf" />
     <Resource Include="fonts\iransans\IRANSans%28FaNum%29_Medium.ttf" />
     <Resource Include="fonts\iransans\IRANSans.ttf" />
-    <None Include="KioskDataSet.xsc">
-      <DependentUpon>KioskDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="KioskDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KioskDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="KioskDataSet.xss">
-      <DependentUpon>KioskDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="KioskDataSet1.xsc">
-      <DependentUpon>KioskDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="KioskDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KioskDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="KioskDataSet1.xss">
-      <DependentUpon>KioskDataSet1.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -445,6 +434,7 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\click_to_order.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

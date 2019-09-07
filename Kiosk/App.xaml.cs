@@ -23,6 +23,8 @@ namespace Kiosk
         public App()
         {
             //configuration
+            getDisplayHeightAndWidth();
+
             G.X_API_KEY = Crypt.DecryptString("0c8z9sAo7anL6R5dzz3yeib0yHaWEyq4ktqrDaoLGv10JAxWvWh8b2QdCGH8lDV05MdvAyTpGULyPYfy0m42BQ==", G.PUBLIC_KEY);
             G.client_key = Security.getClientKey();
             G.PRIVATE_KEY = "kkk" + G.client_key + "yyy";
@@ -78,7 +80,11 @@ namespace Kiosk
             }
         }
 
-
+        private void getDisplayHeightAndWidth()
+        {
+            G.height = SystemParameters.PrimaryScreenHeight;
+            G.width = SystemParameters.PrimaryScreenWidth;
+        }
         
     }
 }

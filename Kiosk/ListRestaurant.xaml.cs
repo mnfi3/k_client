@@ -41,31 +41,28 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-
-            //DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            //myDoubleAnimation.From = 1.0;
-            //myDoubleAnimation.To = 0.0;
-            //myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
-            //myDoubleAnimation.AutoReverse = true;
-            //myDoubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
-
-            //myStoryboard = new Storyboard();
-            //myStoryboard.Children.Add(myDoubleAnimation);
-            //Storyboard.SetTargetName(myDoubleAnimation, lst_restaurants.Name);
-            //Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
-
-            //// Use the Loaded event to start the Storyboard.
-            //lst_restaurants.Loaded += new RoutedEventHandler(lst_restaurantsLoaded);
-            //grd_main.Children.Add(lst_restaurants);
-            //this.Content = grd_main;
-
-
-            loadRestaurants();
-            G.timer.Enabled = false;
-            G.restaurant = null;
-            G.cart.clear();
-
+            if (G.restaurants.Count == 1)
+            {
+                ListProducts _listProduct = new ListProducts();
+                _listProduct.Show();
+                this.Close();
+            }
+            else
+            {
+                loadRestaurants();
+                G.timer.Enabled = false;
+                G.restaurant = null;
+                G.cart.clear();
+                
+                ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
+                _clickToOrder.ShowDialog();
+            }
+           
             
+        }
+        private void animHandler(object sender,EventArgs e)
+        {
+
         }
 
       

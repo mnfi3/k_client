@@ -1,10 +1,12 @@
 ﻿using Kiosk.api;
 using Kiosk.control;
+using Kiosk.db;
 using Kiosk.model;
 using Kiosk.system;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -28,33 +30,62 @@ namespace Kiosk
 
         private Restaurant restaurant;
 
+        ClickToOrder _clickToOrder;
+
         //private Toast toast;
 
 
         public ListProducts()
         {
             InitializeComponent();
-
+            this.Height = G.height;
+            this.Width = G.width;
+            this.cln_cart.Width =new  GridLength(0, GridUnitType.Star);
             this.restaurant = G.restaurant;
         }
 
 
 
-       
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //show btn_back_to_restaurants button if have more than one restaurant
+
+            if (G.restaurants.Count > 1)
+            {
+                btn_back_to_restaurants.Visibility = Visibility.Visible;
+            }
             //toast = new Toast(this);
 
-            if (restaurant != null)
+            if (G.cart.items.Count > 0)
+            {
+                this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
+            }
+
+            if (G.restaurants.Count == 1)
+            {
+                G.restaurant = G.restaurants[0];
+                this.restaurant = G.restaurants[0];
+                //loadProducts();
+                //loadCart();
+                _clickToOrder = new ClickToOrder(animCallback);
+                _clickToOrder.ShowDialog();
+            }
+            else
             {
                 loadProducts();
                 loadCart();
             }
+            txt_total.Text = "ت "  + Utils.persian_split(txt_total.Text);
+
         }
 
-        
-       
+        private void animCallback(object sender, EventArgs e)
+        {
+            loadProducts();
+            loadCart();
+        }
 
 
 
@@ -79,7 +110,7 @@ namespace Kiosk
             //}
         }
 
-       
+
 
 
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
@@ -129,10 +160,23 @@ namespace Kiosk
             {
                 //toast.ShowSuccess("به سبد خرید اضافه شد");
                 loadCart();
+                if (G.cart.items.Count > 0)
+                {
+                    this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
+                }
+                              
             }
             else
             {
                 loadCart();
+                if (G.cart.items.Count > 0)
+                {
+                    this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
+                }
+                else
+                {
+                    this.cln_cart.Width = new GridLength(0, GridUnitType.Star);
+                }
             }
 
 
@@ -140,54 +184,58 @@ namespace Kiosk
 
         }
 
-       
-
-
-
-
-
-
-
-
-
-
 
         private void loadProducts()
         {
-
+            //load from server
             RRestaurant r_rest = new RRestaurant();
             r_rest.products(G.restaurant, productCallBack);
-
         }
 
         private void productCallBack(object sender, EventArgs e)
         {
+            DBProducts db_products = new DBProducts();
             List<Category> categories = sender as List<Category>;
-            loadCategories(categories);
 
+            //if connection was fail
+            if (categories.Count == 0)
+            {
+                categories = db_products.getProducts(this.restaurant);
+                loadCategories(categories);
+            }
+            else
+            {
+                loadCategories(categories);
+                List<Category> categories2 = categories;
+                //save new products to local db
+                db_products.resetProducts(categories2, this.restaurant);
+            }
+
+           
         }
 
 
-        private void loadCart()
+        private  void loadCart()
         {
             lst_cart.Items.Clear();
             ItemCartInListProduct _item;
+            
             foreach (CartItem i in G.cart.items)
             {
                 _item = new ItemCartInListProduct(i);
                 lst_cart.Items.Add(_item);
             }
-
         }
 
 
-        private void loadCategories(List<Category> cs)
+        private async void loadCategories(List<Category> cs)
         {
             ItemCategory _item;
             foreach (Category ct in cs)
             {
                 _item = new ItemCategory(ct);
                 lst_categories.Items.Add(_item);
+                await Task.Delay(200);
             }
         }
 
@@ -200,21 +248,34 @@ namespace Kiosk
                 _item = new ItemProduct(p);
                 lst_products.Items.Add(_item);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            //lst_categories.Items.Clear();
+            //lst_products.Items.Clear();
+            //lst_cart.Items.Clear();
+            //_clickToOrder = new ClickToOrder(animCallback);
+            //_clickToOrder.ShowDialog();
+            DialogManageApp _dialog = new DialogManageApp();
+            if (_dialog.ShowDialog() == true)
+            {
+                DeviceLogin _login = new DeviceLogin();
+                _login.Show();
+                this.Close();
+            }
+        }
+
+        private void btn_checkout_Click(object sender, RoutedEventArgs e)
+        {
+            CartView _cartView = new CartView();
+            _cartView.Show();
+            this.Close();
 
         }
 
+      
 
-        
-        
-
-
-
-    
-       
-        
-        
-       
-
-        
     }
 }

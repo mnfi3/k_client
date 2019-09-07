@@ -6,190 +6,194 @@
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Style="{StaticResource vazir}"
-        Height="800" Width="1400" Foreground="White" ResizeMode="NoResize" WindowState="Maximized"  AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
-    <Grid Background="LightGray">
+        Height="800" Width="1400" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
 
 
+    <Grid Background="White" x:Name="grd_main">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Grid Height="10" VerticalAlignment="Top" Background="#FF0080FF"/>
-        
-        <Grid Height="50" VerticalAlignment="Top"  Background="#ff000000" Margin="0 10 0 0">
-            <materialDesign:PopupBox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
-                <StackPanel Width="150">
-                    <Button Content="مدیریت"/>
-                    <Separator/>
-                    <Button Name="btn_exit" Content="خروج" Click="btn_exit_Click"/>
-                </StackPanel>
-            </materialDesign:PopupBox>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-                <TextBlock Margin="10 0" Foreground="#FFaaaaaa" Text="powered by www.ezitech.ir" VerticalAlignment="Center"  HorizontalAlignment="Center"  FontSize="22" FontFamily="Sitka Display"  />
+        <Grid Background="#f1f1f1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
 
-                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon  Foreground="#FFaaaaaa" Kind="Telegram" Width="25" Height="25"/>
-                </Button>
-                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Instagram" Width="25" Height="25"/>
-                </Button>
-                <Button  VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Vazir">
-                    <materialDesign:PackIcon  VerticalAlignment="Center" Foreground="#FFaaaaaa" Kind="Web" Width="25" Height="25"/>
-                </Button>
-            </StackPanel>
+            <Grid Grid.Row="0" Margin="20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="اندازه مورد نظر را انتخاب کنید" />
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="bounce1">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LittleSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LittleSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="bounce2">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="NormalSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="NormalSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="bounce3">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LargeSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LargeSize">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                        <Border x:Name="LittleSize" RenderTransformOrigin="0.5,0.5">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                    <BeginStoryboard Storyboard="{StaticResource bounce1}"/>
+                                </EventTrigger>
+                            </Border.Triggers>
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                            <Button x:Name="btn_small" Click="btn_small_Click" Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        </Border>
+
+                        <Border x:Name="NormalSize" RenderTransformOrigin="0.5,0.5">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                    <BeginStoryboard Storyboard="{StaticResource bounce2}"/>
+                                </EventTrigger>
+                            </Border.Triggers>
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        </Border>
+
+                        <Border x:Name="LargeSize" RenderTransformOrigin="0.5,0.5">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                    <BeginStoryboard Storyboard="{StaticResource bounce3}"/>
+                                </EventTrigger>
+                            </Border.Triggers>
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                                <Button x:Name="btn_large" Click="btn_large_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                        </Border>
+                    </StackPanel >
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید" FontFamily="Vazir"/>
+                <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert1_SelectionChanged" >
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid  Rows="1" FlowDirection="RightToLeft"/>
+
+                            <!--<StackPanel Orientation="Horizontal" />-->
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <!--disable hilight-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <!--disable hilight-->
+
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="دسرهای مورد نظر خود را انتخاب کنید"/>
+                <ListView x:Name="lst_dessert2" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert2_SelectionChanged" FlowDirection="RightToLeft" >
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="1" FlowDirection="RightToLeft"/>
+                            <!--<StackPanel Orientation="Horizontal"></StackPanel>-->
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <!--disable hilight-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <!--disable hilight-->
+
+                </ListView>
+            </Grid>
         </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <Grid x:Name="grd_main" Margin="0 60 0 0">
-
-
-            <Grid>
-
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-
-
-                    <Grid Grid.Row="0" Background="#304FFE">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Normal" Grid.Column="0" VerticalAlignment="Center"   Text="مخلفات" />
-                        <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Normal" Grid.Column="1" Margin="10" VerticalAlignment="Center" Text="محصول"/>
-                    </Grid>
-
-
-
-
-
-
-
-                    <Grid Grid.Row="1" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <Grid Grid.Column="0" Background="#d6d6d6">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="4*"/>
-                                <RowDefinition Height="4*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Margin="20 20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="3*" />
-                                </Grid.RowDefinitions>
-                                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="اندازه مورد نظر را انتخاب کنید" />
-                                <Grid Grid.Row="1">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button x:Name="btn_small" Click="btn_small_Click" Background="#fcfcfc" Foreground="#3b4944" FontSize="20" Content="کوچک"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                                        <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                                        <Button x:Name="btn_large" Click="btn_large_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="20" Content="بزرگ"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
-                                    </StackPanel >
-                                </Grid>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Margin="20 20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="5*" />
-                                </Grid.RowDefinitions>
-                                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید" FontFamily="Vazir"/>
-                                <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert1_SelectionChanged" >
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <UniformGrid Rows="1" FlowDirection="RightToLeft"/>
-                                            <!--<StackPanel Orientation="Horizontal" />-->
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-
-                                    <!--disable hilight-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="{x:Type ListViewItem}">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                        <ContentPresenter />
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <!--disable hilight-->
-
-                                </ListView>
-                            </Grid>
-
-                            <Grid Grid.Row="2" Margin="20 20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="5*" />
-                                </Grid.RowDefinitions>
-                                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="دسرهای مورد نظر خود را انتخاب کنید"/>
-                                <ListView x:Name="lst_dessert2" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert2_SelectionChanged" FlowDirection="RightToLeft" >
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <UniformGrid Rows="1" FlowDirection="RightToLeft"/>
-                                            <!--<StackPanel Orientation="Horizontal"></StackPanel>-->
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-
-                                    <!--disable hilight-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="{x:Type ListViewItem}">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                        <ContentPresenter />
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <!--disable hilight-->
-                                    
-                                </ListView>
-                            </Grid>
-
-                        </Grid>
-
-
-                        
-                        
-                        <Grid Grid.Column="1" Background="#fcfcfc">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="3*"/>
-                                <RowDefinition Height="1.5*"/>
-                            </Grid.RowDefinitions>
-
-
-
-                            <Grid Grid.Row="0">
-                                <!--<Border Name="Mask"  Background="#fcfcfc" BorderThickness="0" CornerRadius="10"/>
+            <Grid Grid.Row="0">
+                <!--<Border Name="Mask"  Background="#fcfcfc" BorderThickness="0" CornerRadius="10"/>
                                 <StackPanel>
                                     <cachedImage:Image x:Name="img_product" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill" Height="auto" Width="auto" Source="img/ic_chicken_and_ribs.jpg"/>
                                     <StackPanel.OpacityMask>
@@ -197,93 +201,79 @@
                                     </StackPanel.OpacityMask>
                                 </StackPanel>-->
 
-                                <cachedImage:Image x:Name="img_product" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Source="img/ic_chicken_and_ribs.jpg"/>
+                <cachedImage:Image x:Name="img_product" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Source="img/ic_chicken_and_ribs.jpg"/>
 
-                            </Grid>
+            </Grid>
 
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="txt_price" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text="25,000 تومان"/>
-                                <TextBlock x:Name="txt_name" FontSize="25" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
-                            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="txt_price" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text="25,000 تومان"/>
+                <TextBlock x:Name="txt_name" FontSize="25" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
+            </Grid>
 
-                            <TextBlock x:Name="txt_description" Grid.Row="2"  Foreground="#121c1b" FontSize="18" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 10" FlowDirection="RightToLeft" Text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون "/>
+            <TextBlock x:Name="txt_description" Grid.Row="2"  Foreground="#121c1b" FontSize="18" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 10" FlowDirection="RightToLeft" Text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون "/>
 
-                            <Grid Grid.Row="3" Margin="0 0 0 50">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+            <Grid Grid.Row="3" Margin="0 0 0 50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="0" HorizontalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="txt_total" Margin="5" Foreground="#121c1b" Text="26,000 تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
-                                    <TextBlock Margin="5" Foreground="#616161" Text="   : جمع" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
-                                </Grid>
+                <Grid Grid.Column="0" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="txt_total" Margin="5" Foreground="#121c1b" Text="26,000 تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock Margin="5" Foreground="#616161" Text="   : جمع" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+                </Grid>
 
-                                <Grid Grid.Column="1" Margin="0 0 30 0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="80"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Foreground="#121c1b" Grid.Column="0" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="تعداد" FontSize="20"/>
+                <Grid Grid.Column="1" Margin="0 0 30 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Foreground="#121c1b" Grid.Column="0" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="تعداد" FontSize="20"/>
 
-                                    <Grid Grid.Column="1" Margin="20 5" HorizontalAlignment="Right" >
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="16*"/>
-                                            <RowDefinition Height="11*"/>
-                                            <RowDefinition Height="5*"/>
-                                            <RowDefinition Height="16*"/>
-                                        </Grid.RowDefinitions>
+                    <Grid Grid.Column="1" Margin="20 5" HorizontalAlignment="Right" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16*"/>
+                            <RowDefinition Height="11*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="16*"/>
+                        </Grid.RowDefinitions>
 
-                                        <Button x:Name="btn_up" Click="btn_up_Click" TouchDown="btn_up_TouchDown" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
-                                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="75"  Kind="KeyboardArrowUp" Foreground="#616161" Margin="0,6"/>
-                                        </Button>
-                                        <TextBlock x:Name="txt_count"  Foreground="#67aa39" FontSize="20" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>
-                                        <Button x:Name="btn_down" Click="btn_down_Click" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
-                                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="75" Height="75" Kind="KeyboardArrowDown" Foreground="#616161" Margin="0,6"/>
-                                        </Button>
-                                    </Grid>
-
-                                </Grid>
-
-
-                            </Grid>
-
-
-
-                            <Grid Grid.Row="4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click" Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#7986CB" Content="لغو"/>
-                                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click" FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#67aa39" Content="افزودن به سبد خرید"/>
-
-                            </Grid>
-
-                        </Grid>
-
-
+                        <Button x:Name="btn_up" Click="btn_up_Click" TouchDown="btn_up_TouchDown" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="75"  Kind="KeyboardArrowUp" Foreground="#616161" Margin="0,6"/>
+                        </Button>
+                        <TextBlock x:Name="txt_count"  Foreground="#67aa39" FontSize="20" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>
+                        <Button x:Name="btn_down" Click="btn_down_Click" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
+                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="75" Height="75" Kind="KeyboardArrowDown" Foreground="#616161" Margin="0,6"/>
+                        </Button>
                     </Grid>
 
                 </Grid>
 
+
             </Grid>
 
 
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click" Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#7986CB" Content="لغو"/>
+                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click" FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#67aa39" Content="افزودن به سبد خرید"/>
+
+            </Grid>
         </Grid>
-
-
-
-
-
+        
     </Grid>
+    
 </Window>

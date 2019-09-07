@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Kiosk.control;
 using Kiosk.model;
 using Kiosk.system;
+using System.Windows.Media.Animation;
 
 namespace Kiosk
 {
@@ -25,10 +26,10 @@ namespace Kiosk
         private Product product;
         private CartItem cartItem;
         private int count = 1;
+        private Boolean added;
 
         private string dessert_size = "small";
 
-        Toast toast;
 
         //public ProductInfo()
         //{
@@ -39,14 +40,42 @@ namespace Kiosk
         {
             InitializeComponent();
             this.product = p;
+            this.Height = G.height;
+            this.Width = G.width;
+            this.Left = G.width;
+            
             cartItem = new CartItem();
             
         }
 
-
+        private void slideInLeft()
+        {
+            DoubleAnimation slideInRight = new DoubleAnimation();
+            slideInRight.From = G.width;
+            slideInRight.To = 0;
+            slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(350));
+            slideInRight.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slideInRight);
+        }
+        private void slideOutRight()
+        {
+            DoubleAnimation slideOutLeft = new DoubleAnimation();
+            slideOutLeft.Completed += new EventHandler(slideOutFinished);
+            
+            slideOutLeft.From = 0;
+            slideOutLeft.To = G.width;
+            slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(350));
+            slideOutLeft.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slideOutLeft);
+        }
+        private void slideOutFinished(object sender, EventArgs e)
+        {
+            DialogResult = added;
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            toast = new Toast(this);
+            slideInLeft();
+            
 
 
             txt_name.Text = product.name;
@@ -80,13 +109,17 @@ namespace Kiosk
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            added = false;
+            slideOutRight();
+           
         }
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             G.cart.items.Add(this.cartItem);
-            DialogResult = true;
+            added = true;
+            slideOutRight();
+            
         }
 
 
@@ -160,6 +193,7 @@ namespace Kiosk
                     _item.is_selected = true;
                 }
             }
+            
 
 
             refreshCartItem();

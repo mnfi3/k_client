@@ -29,6 +29,9 @@ namespace Kiosk
         //0c8z9sAo7anL6R5dzz3yeib0yHaWEyq4ktqrDaoLGv10JAxWvWh8b2QdCGH8lDV05MdvAyTpGULyPYfy0m42BQ==
         public static string X_API_KEY;
 
+        //Display height & width
+        public static double height{get;set;}
+        public static double width{get;set;}
 
 
 

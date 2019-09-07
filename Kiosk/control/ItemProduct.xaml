@@ -7,53 +7,110 @@
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Style="{StaticResource iransans}"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              
              Height="500"
-             >
-    
+             FontFamily="iransans">
 
-    <Grid Margin="20">
+    <Grid>
+        <Border  x:Name="PulseBox"
+                        Background="Transparent" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid Margin="20">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="8*"/>
-        </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-
-
-            <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="20"/>
-            <StackPanel>
-                <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <StackPanel.OpacityMask>
-                    <VisualBrush Visual="{Binding ElementName=Mask}" />
-                </StackPanel.OpacityMask>
-            </StackPanel>
-
-            
-
+                <Grid Grid.Row="0">
 
 
-            <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">
-                <Label x:Name="lbl_discount" FontWeight="Bold" Foreground="White" FontSize="17" Content="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="45" Width="60"   Margin="0 0 0 0" />
-            </Border>
+                    <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="20"/>
+                    <StackPanel>
+                        <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <StackPanel.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=Mask}" />
+                        </StackPanel.OpacityMask>
+                    </StackPanel>
 
 
 
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <TextBlock x:Name="txt_product" Margin="10" Text="appetizer" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
-        </Grid>
-
-        <Grid Grid.Row="2">
-
-            <TextBlock x:Name="txt_product_price" Margin="10" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
-        </Grid>
 
 
+                    <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">
+                        <Label x:Name="lbl_discount" FontWeight="Bold" Foreground="White" FontSize="17" Content="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="45" Width="60"   Margin="0 0 0 0" />
+                    </Border>
+
+
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="txt_product" Margin="10" Text="appetizer" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+
+                    <TextBlock x:Name="txt_product_price" Margin="10" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
+                </Grid>
+
+
+            </Grid>
+        </Border>
+        
     </Grid>
+    <UserControl.Resources>
+        <Storyboard x:Key="FadeInUp" >
+
+
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.35">
+            </DoubleAnimation>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="-8"/>
+
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="bounce">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <!--<BeginStoryboard Storyboard="{StaticResource Pulse}"/>-->
+            <BeginStoryboard Storyboard="{StaticResource FadeInUp}"/>
+
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+            
+            <BeginStoryboard Storyboard="{StaticResource bounce}"/>
+
+        </EventTrigger>
+    </UserControl.Triggers>
 </UserControl>

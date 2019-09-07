@@ -38,6 +38,10 @@ namespace Kiosk.control
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             txt_category.Text = category.name;
+            //BitmapImage b = new BitmapImage();
+            //b.BeginInit();
+            //b.UriSource = new Uri("B:\\programing\\C#\\Kiosk\\Kiosk\\img\\ic_pasta.jpg");
+            //b.EndInit();
             img_category.Source = null;
             img_category.ImageUrl = category.image;
         }

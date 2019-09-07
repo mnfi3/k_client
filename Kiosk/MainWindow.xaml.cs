@@ -56,6 +56,9 @@ namespace Kiosk
                 //_receipt.Show();
                 ListRestaurant _list = new ListRestaurant();
                 _list.Show();
+                //fortest _tst = new fortest();
+                //_tst.Show();
+                
             }
 
             
