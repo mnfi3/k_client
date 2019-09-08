@@ -19,6 +19,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Stimulsoft.Report;
+using System.Drawing.Printing;
 
 namespace Kiosk
 {
@@ -79,7 +81,36 @@ namespace Kiosk
             }
             txt_total.Text = "ت "  + Utils.persian_split(txt_total.Text);
 
+
+
+            //print test
+            //StiReport report = new StiReport();
+            //report.Load("Report.mrt");
+            //report.Compile();
+            //report["restaurant"] = G.restaurant.name;
+            //report["cost"] = Utils.persian_split(125000) + " تومان ";
+            //report["d_cost"] = Utils.persian_split(100000) + " تومان ";
+            //report["order_number"] = Utils.toPersianNum("1547");
+            //report.Printed += Report_Printed;
+            //report.Printing += Report_Printing;
+            //PrinterSettings setting = new PrinterSettings();
+            //setting.PrinterName = "ReceiptPrinter";
+            //report.Print(false, setting);
         }
+
+        private void Report_Printing(object sender, EventArgs e)
+        {
+            //when printing
+            //MessageBox.Show("printing");
+        }
+
+        private void Report_Printed(object sender, EventArgs e)
+        {
+            //when printed
+            //MessageBox.Show("printed");
+        }
+
+
 
         private void animCallback(object sender, EventArgs e)
         {
@@ -206,9 +237,11 @@ namespace Kiosk
             else
             {
                 loadCategories(categories);
-                List<Category> categories2 = categories;
                 //save new products to local db
-                db_products.resetProducts(categories2, this.restaurant);
+                Task.Run(() =>
+                    db_products.resetProducts(categories, this.restaurant)
+                    );
+               
             }
 
            

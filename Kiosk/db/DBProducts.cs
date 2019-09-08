@@ -13,7 +13,7 @@ namespace Kiosk.db
     {
 
 
-        public void resetProducts(List<Category> categories, Restaurant restaurant )
+        public void  resetProducts(List<Category> categories, Restaurant restaurant )
         {
             //remove old data
             clearRestaurantProducts(restaurant);

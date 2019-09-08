@@ -1,4 +1,5 @@
 ﻿using Kiosk.model;
+using Kiosk.system;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -243,39 +244,39 @@ namespace Kiosk.db
             foreach (CartItem item in cart.items)
             {
                 values.Clear();
-                values.Add("@num", num.ToString());
+                values.Add("@num", Utils.toPersianNum(num));
                 values.Add("@name", item.product.name);
                 values.Add("@size", "");
-                values.Add("@price", item.product.d_price.ToString());
-                values.Add("@count", item.count.ToString());
-                values.Add("@cost", (item.count * item.product.d_price).ToString());
+                values.Add("@price", Utils.persian_split(item.product.d_price));
+                values.Add("@count", Utils.toPersianNum(item.count));
+                values.Add("@cost", Utils.persian_split((item.count * item.product.d_price)));
                 db.insert("insert into receipt (num, name, size, price, count, cost) values (@num, @name, @size, @price, @count, @cost)", values);
                 num++;
                 foreach (Dessert dessert in item.desserts)
                 {
                     values.Clear();
-                    values.Add("@num", num.ToString());
+                    values.Add("@num", Utils.toPersianNum(num));
                     values.Add("@name", dessert.name);
                     switch (item.desserts_size)
                     {
                         case "small": 
                             values.Add("@size", "کوچک");
-                            values.Add("@price", dessert.price_small.ToString());
-                            values.Add("@cost", (item.count * dessert.price_small).ToString());
+                            values.Add("@price", Utils.persian_split(dessert.price_small));
+                            values.Add("@cost", Utils.persian_split((item.count * dessert.price_small)));
                             break;
                         case "medium": 
                             values.Add("@size", "معمولی");
-                            values.Add("@price", dessert.price_medium.ToString());
-                            values.Add("@cost", (item.count * dessert.price_medium).ToString());
+                            values.Add("@price", Utils.persian_split(dessert.price_medium.ToString()));
+                            values.Add("@cost", Utils.persian_split((item.count * dessert.price_medium)));
                             break;
                         case "large": 
                             values.Add("@size", "بزرگ");
-                            values.Add("@price", dessert.price_large.ToString());
-                            values.Add("@cost", (item.count * dessert.price_large).ToString());
+                            values.Add("@price", Utils.persian_split(dessert.price_large.ToString()));
+                            values.Add("@cost", Utils.persian_split((item.count * dessert.price_large)));
                             break;
                     }
-                    
-                    values.Add("@count", item.count.ToString());
+
+                    values.Add("@count", Utils.toPersianNum(item.count));
                     db.insert("insert into receipt (num, name, size, price, count, cost) values (@num, @name, @size, @price, @count, @cost)", values);
                     num++;
                 }

@@ -25,6 +25,7 @@ using Newtonsoft.Json;
 using Microsoft.Reporting.WinForms;
 using System.Drawing.Printing;
 using System.IO;
+using Stimulsoft.Report;
 
 namespace Kiosk
 {
@@ -173,7 +174,7 @@ namespace Kiosk
             db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
             db_order.saveReceipt(G.cart);
             toast.ShowSuccess("خرید با موفقیت انجام شد");
-            //printReceipt();
+            printReceipt();
             G.cart.clear();
             loadCartView();
             G.syncOrders();
@@ -222,10 +223,32 @@ namespace Kiosk
 
         private void printReceipt()
         {
-            //PrintReceipt print = new PrintReceipt();
-            //print.ShowDialog();
+            //print test
+            //StiReport report = new StiReport();
+            //report.Load("Report.mrt");
+            //report.Compile();
+            //report["restaurant"] = G.restaurant.name;
+            //report["cost"] = Utils.persian_split(G.cart.cost) + " تومان ";
+            //report["d_cost"] = Utils.persian_split(G.cart.d_cost) + " تومان ";
+            //report["order_number"] = Utils.toPersianNum("1547");
+            //report.Printed += Report_Printed;
+            //report.Printing += Report_Printing;
+            //PrinterSettings setting = new PrinterSettings();
+            //setting.PrinterName = "ReceiptPrinter";
+            //report.Print(false, setting);
         }
 
+        private void Report_Printing(object sender, EventArgs e)
+        {
+            //when printing
+            //MessageBox.Show("printing");
+        }
+
+        private void Report_Printed(object sender, EventArgs e)
+        {
+            //when printed
+            //MessageBox.Show("printed");
+        }
        
 
 
