@@ -7,12 +7,11 @@
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             Style="{StaticResource iransans}"
+             Style="{StaticResource vazir}"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
-             
-             Height="500"
-             FontFamily="iransans">
+             Height="450"
+             FontFamily="vazir">
 
     <Grid>
         <Border  x:Name="PulseBox"
@@ -28,9 +27,9 @@
             <Grid Margin="20">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="8*"/>
-                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="350"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -38,7 +37,7 @@
 
                     <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="20"/>
                     <StackPanel>
-                        <cachedImage:Image  x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <cachedImage:Image Width="auto" Height="350" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <StackPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=Mask}" />
                         </StackPanel.OpacityMask>
@@ -57,12 +56,11 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <TextBlock x:Name="txt_product" Margin="10" Text="appetizer" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
+                    <TextBlock x:Name="txt_product" Margin="2" Text="appetizer" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
-
-                    <TextBlock x:Name="txt_product_price" Margin="10" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
+                    <TextBlock x:Name="txt_product_price" Margin="2" Text="25,000  تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
                 </Grid>
 
 

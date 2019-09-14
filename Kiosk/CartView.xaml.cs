@@ -55,7 +55,7 @@ namespace Kiosk
         }
 
 
-        private void loadCartView()
+        private async void loadCartView()
         {
             ItemCart _item;
             lst_cart.Items.Clear();
@@ -63,6 +63,7 @@ namespace Kiosk
             {
                 _item = new ItemCart(i, refreshCartViewEvent);
                 lst_cart.Items.Add(_item);
+                await Task.Delay(200);
             }
 
             txt_cost.Text = Utils.persian_split(G.cart.cost) + " تومان ";

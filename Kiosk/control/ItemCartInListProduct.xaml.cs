@@ -23,24 +23,26 @@ namespace Kiosk.control
     public partial class ItemCartInListProduct : UserControl
     {
 
-        CartItem cartItem;
+        public CartItem cartItem;
+        EventHandler costChangeHandler;
 
         public ItemCartInListProduct()
         {
             InitializeComponent();
         }
 
-        public ItemCartInListProduct(CartItem item)
+        public ItemCartInListProduct(CartItem item, EventHandler h)
         {
             InitializeComponent();
             this.cartItem = item;
+            costChangeHandler += h;
         }
 
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             txt_product.Text = cartItem.product.name;
-            txt_count.Text = cartItem.count.ToString();
+            txt_count.Text = Utils.toPersianNum(cartItem.count);
             txt_price.Text = Utils.persian_split(cartItem.product.d_price) + " تومان ";
             img_product.Source = null;
             img_product.ImageUrl = cartItem.product.image;
@@ -53,7 +55,8 @@ namespace Kiosk.control
                 if (item.product.id == this.cartItem.product.id)
                 {
                     item.count++;
-                    txt_count.Text = item.count.ToString();
+                    txt_count.Text = Utils.toPersianNum(item.count);
+                    costChangeHandler(new object(), new EventArgs());
                     break;
                 }
             }
@@ -68,7 +71,8 @@ namespace Kiosk.control
                     if (item.count > 1)
                     {
                         item.count--;
-                        txt_count.Text = item.count.ToString();
+                        txt_count.Text = Utils.toPersianNum(item.count);
+                        costChangeHandler(new object(), new EventArgs());
                         break;
                     }
                 }

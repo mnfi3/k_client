@@ -35,7 +35,7 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <ListView Grid.Row="0" x:Name="lst_cart" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch"  Height="auto" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both">
+                <ListView Grid.Row="0" x:Name="lst_cart" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalAlignment="Stretch"  Height="auto" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Center" Columns="1"/>
@@ -107,7 +107,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <ListView Grid.Row="1" Margin="10" HorizontalContentAlignment="Right" HorizontalAlignment="Right" ScrollViewer.PanningMode="Both"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_products" SelectionChanged="lst_products_SelectionChanged"  FontFamily="Vazir" >
+            <ListView Grid.Row="1" Margin="10" HorizontalContentAlignment="Right" HorizontalAlignment="Right" ScrollViewer.PanningMode="Both" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_products" SelectionChanged="lst_products_SelectionChanged"  FontFamily="Vazir" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Top" Columns="3"/>
@@ -170,7 +170,7 @@
         <Grid x:Name="grd_category" Grid.Column="2" Background="#fcfcfc">
 
              
-            <ListView Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both" x:Name="lst_categories"   ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lst_categories_SelectionChanged">
+            <ListView Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both" x:Name="lst_categories"   ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="lst_categories_SelectionChanged">
 
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>

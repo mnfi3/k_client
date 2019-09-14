@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Style="{StaticResource vazir}"
              mc:Ignorable="d" 
              Height="200"
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"

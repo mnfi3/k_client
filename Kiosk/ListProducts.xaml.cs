@@ -79,7 +79,7 @@ namespace Kiosk
                 loadProducts();
                 loadCart();
             }
-            txt_total.Text = "ت "  + Utils.persian_split(txt_total.Text);
+            txt_total.Text = "ت "  + Utils.persian_split(G.cart.cost);
 
 
 
@@ -178,7 +178,20 @@ namespace Kiosk
 
             lst_categories.SelectedItem = null;
 
+        }
 
+        private void selectFirstCategory()
+        {
+            if (lst_categories.Items.Count < 1) return;
+
+            foreach (ItemCategory c in lst_categories.Items)
+            {
+                c.txt_category.Foreground = Brushes.Black;
+            }
+            ItemCategory cat = (ItemCategory)lst_categories.Items[0];
+            cat.txt_category.Foreground = Brushes.Green;
+            loadProducts(cat.category);
+            lst_categories.SelectedItem = null;
         }
 
         private void lst_products_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -195,11 +208,13 @@ namespace Kiosk
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
+                txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
                               
             }
             else
             {
                 loadCart();
+                txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
                 if (G.cart.items.Count > 0)
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
@@ -250,15 +265,18 @@ namespace Kiosk
 
         private  void loadCart()
         {
-            lst_cart.Items.Clear();
-            ItemCartInListProduct _item;
+            loadCart1();
+            //lst_cart.Items.Clear();
+            //ItemCartInListProduct _item;
             
-            foreach (CartItem i in G.cart.items)
-            {
-                _item = new ItemCartInListProduct(i);
-                lst_cart.Items.Add(_item);
-            }
+            //foreach (CartItem i in G.cart.items)
+            //{
+            //    _item = new ItemCartInListProduct(i, on_cost_changed_handler);
+            //    lst_cart.Items.Add(_item);
+            //}
         }
+
+      
 
 
         private async void loadCategories(List<Category> cs)
@@ -270,6 +288,8 @@ namespace Kiosk
                 lst_categories.Items.Add(_item);
                 await Task.Delay(200);
             }
+
+            selectFirstCategory();
         }
 
         private void loadProducts(Category c)
@@ -308,7 +328,74 @@ namespace Kiosk
 
         }
 
-      
+
+        private void on_cost_changed_handler(object sender, EventArgs e)
+        {
+            txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
+        }
+
+
+
+
+
+
+        private async void loadCart1()
+        {
+            ItemCartInListProduct _item;
+
+            //add new items to listview
+            foreach (CartItem i in G.cart.items)
+            {
+                bool is_find = false;
+                foreach (ItemCartInListProduct ic in lst_cart.Items)
+                {
+                    if (i.product.id == ic.cartItem.product.id)
+                    {
+                        is_find = true;
+                        break;
+                    }
+                }
+
+                if (!is_find)
+                {
+                    _item = new ItemCartInListProduct(i, on_cost_changed_handler);
+                    lst_cart.Items.Add(_item);
+                    await Task.Delay(200);
+                }
+            }
+
+            //remove old item from listview
+            bool is_reload = false;
+            foreach (ItemCartInListProduct ic in lst_cart.Items)
+            {
+                bool is_exist = false;
+                foreach (CartItem i in G.cart.items)
+                {
+                    if (i.product.id == ic.cartItem.product.id)
+                    {
+                        is_exist = true;
+                        break;
+                    }
+                }
+
+                if (!is_exist)
+                {
+                    is_reload = true;
+                    break;
+                }
+            }
+
+            if (is_reload)
+            {
+                lst_cart.Items.Clear();
+                foreach (CartItem i in G.cart.items)
+                {
+                    _item = new ItemCartInListProduct(i, on_cost_changed_handler);
+                    lst_cart.Items.Add(_item);
+                }
+            }
+        }
+
 
     }
 }

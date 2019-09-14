@@ -79,6 +79,7 @@ namespace Kiosk
 
 
             txt_name.Text = product.name;
+            txt_count.Text = Utils.toPersianNum(count);
             txt_price.Text = Utils.persian_split(product.d_price) + "  تومان  ";
             txt_description.Text = product.description;
             img_product.Source = null;
@@ -126,7 +127,7 @@ namespace Kiosk
         private void btn_up_Click(object sender, RoutedEventArgs e)
         {
             count++;
-            txt_count.Text = count.ToString();
+            txt_count.Text = Utils.toPersianNum(count);
 
             cartItem.count = count;
             refreshCartItem();
@@ -138,7 +139,7 @@ namespace Kiosk
             {
                 count--;
                 cartItem.count = count;
-                txt_count.Text = count.ToString();
+                txt_count.Text = Utils.toPersianNum(count);
 
                 refreshCartItem();
             }
@@ -319,7 +320,7 @@ namespace Kiosk
         private void loadCartItem()
         {
             count = cartItem.count;
-            txt_count.Text = count.ToString();
+            txt_count.Text = Utils.toPersianNum(count);
             this.dessert_size = cartItem.desserts_size;
             resetDessertsPrices();
             txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
