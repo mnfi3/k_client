@@ -33,6 +33,7 @@ namespace Kiosk
         private Restaurant restaurant;
 
         ClickToOrder _clickToOrder;
+        Category active_category;
 
         //private Toast toast;
 
@@ -166,9 +167,18 @@ namespace Kiosk
 
             try
             {
-                ItemCategory cat = (ItemCategory)(sender as ListView).SelectedItem;
-                cat.txt_category.Foreground = Brushes.Green;
-                loadProducts(cat.category);
+                ItemCategory _cat = (ItemCategory)(sender as ListView).SelectedItem;
+                _cat.txt_category.Foreground = Brushes.Green;
+                if (active_category == _cat.category)
+                {
+                    return;
+                }
+                else
+                {
+                    active_category = _cat.category;
+                    renderProducts(_cat.category);
+                    txt_category_name.Text = _cat.category.name;
+                }
             }
             catch (InvalidCastException m)
             {
@@ -188,9 +198,11 @@ namespace Kiosk
             {
                 c.txt_category.Foreground = Brushes.Black;
             }
-            ItemCategory cat = (ItemCategory)lst_categories.Items[0];
-            cat.txt_category.Foreground = Brushes.Green;
-            loadProducts(cat.category);
+            ItemCategory _cat = (ItemCategory)lst_categories.Items[0];
+            active_category = _cat.category;
+            _cat.txt_category.Foreground = Brushes.Green;
+            renderProducts(_cat.category);
+            txt_category_name.Text = _cat.category.name;
             lst_categories.SelectedItem = null;
         }
 
@@ -292,7 +304,7 @@ namespace Kiosk
             selectFirstCategory();
         }
 
-        private void loadProducts(Category c)
+        private async void renderProducts(Category c)
         {
             lst_products.Items.Clear();
             ItemProduct _item;
@@ -300,6 +312,7 @@ namespace Kiosk
             {
                 _item = new ItemProduct(p);
                 lst_products.Items.Add(_item);
+                await Task.Delay(70);
             }
         }
 

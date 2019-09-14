@@ -5,8 +5,8 @@
          xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource iransans}"
-        Height="600" Width="1000" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" FontFamily="iransans">
+        Style="{StaticResource vazir}"
+        Height="600" Width="1000" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" FontFamily="vazir">
 
 
 
@@ -99,7 +99,7 @@
                     
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="1" Width="Auto"  Foreground="#444444"  Text="اشتها آور ها" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
+                <TextBlock x:Name="txt_category_name" Grid.Column="1" Width="Auto"  Foreground="#444444"  Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
                 <Button x:Name="btn_back_to_restaurants" Visibility="Hidden" Grid.Column="0"  Click="btn_back_to_restaurants_Click" FontSize="15" Height="40"  Foreground="White" Background="#ff1269" BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Vazir" Margin="5 -4" Text=" رستوران ها"/>
