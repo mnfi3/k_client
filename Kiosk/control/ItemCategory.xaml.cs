@@ -44,6 +44,12 @@ namespace Kiosk.control
             //b.EndInit();
             img_category.Source = null;
             img_category.ImageUrl = category.image;
+
+            double height = G.height / 4.5;
+            double img_height = (height / 4) * 3;
+            this.Height = height;
+            grd_main.RowDefinitions[0].Height = new GridLength(img_height) ;
+            this.img_category.Height = img_height;
         }
 
 

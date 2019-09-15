@@ -77,7 +77,7 @@
                     </Grid>
                     
                 </StackPanel>
-                <Button Grid.Row="2" x:Name="btn_checkout" FontSize="16" Click="btn_checkout_Click" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Foreground="White"  Content="مدیریت سبد" Background="#00b356" ></Button>
+                <Button Grid.Row="2" x:Name="btn_checkout" FontSize="16" Click="btn_checkout_Click" TouchUp="btn_checkout_Click"  Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Foreground="White"  Content="مدیریت سبد" Background="#00b356" ></Button>
             </Grid>
             
                 
@@ -99,8 +99,8 @@
                     
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="txt_category_name" Grid.Column="1" Width="Auto"  Foreground="#444444"  Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
-                <Button x:Name="btn_back_to_restaurants" Visibility="Hidden" Grid.Column="0"  Click="btn_back_to_restaurants_Click" FontSize="15" Height="40"  Foreground="White" Background="#ff1269" BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <TextBlock x:Name="txt_category_name" Grid.Column="1" Width="Auto"  Foreground="#444444" FontFamily="vazir" FontWeight="ExtraBold" Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
+                <Button x:Name="btn_back_to_restaurants" Visibility="Hidden" Grid.Column="0"  Click="btn_back_to_restaurants_Click"  FontSize="15" Height="40"  Foreground="White" Background="#ff1269" BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Vazir" Margin="5 -4" Text=" رستوران ها"/>
                         <materialDesign:PackIcon Kind="ArrowBack"/>

@@ -83,6 +83,41 @@ namespace Kiosk.db
 
 
 
+        public List<Printer> getPrinters(Restaurant rest)
+        {
+            List<Printer> printers = new List<Printer>();
+            Printer printer;
+            values.Clear();
+            values.Add("@id", rest.id.ToString());
+            SqlDataReader dataReader = db.select("select * from printers where restaurant_id=@id", values);
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    printer = new Printer();
+                    printer.name = dataReader.GetString(dataReader.GetOrdinal("name"));
+                    printers.Add(printer);
+                    break;
+                }
+            }
+
+            db.close();
+            return printers;
+        }
+
+        public void savePrinters(Restaurant rest, List<Printer> printers)
+        {
+            values.Clear();
+            values.Add("@id", rest.id.ToString());
+            db.delete("delete from printers where restaurant_id=@id", values);
+            foreach (Printer p in printers)
+            {
+                values.Clear();
+                values.Add("@id", rest.id.ToString());
+                values.Add("@name", p.name);
+                db.insert("insert into printers (restaurant_id, name) values (@id, @name)", values);
+            }
+        }
 
 
 

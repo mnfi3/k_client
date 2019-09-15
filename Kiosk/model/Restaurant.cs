@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Kiosk.db;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,15 @@ namespace Kiosk.model
         public string token { set; get; }
 
         public List<Category> categories { set; get; }
+
+        public List<Printer> printers
+        {
+            get
+            {
+                DBRestaurant db_rest = new DBRestaurant();
+                return db_rest.getPrinters(this);
+            }
+        }
 
 
 

@@ -211,8 +211,18 @@ namespace Kiosk
             if ((sender as ListView).SelectedItem == null) return;
 
             ItemProduct _item = (ItemProduct)(sender as ListView).SelectedItem;
-            ProductInfo _info = new ProductInfo(_item.product);
-            if (_info.ShowDialog() == true)
+            ProductInfo _info = new ProductInfo(_item.product, addToCartCallBack);
+            _info.Show();
+            this.Hide();
+
+            lst_products.SelectedItem = null;
+
+        }
+
+        private void addToCartCallBack(object sender, EventArgs e)
+        {
+            this.Show();
+            if ((bool)sender == true)
             {
                 //toast.ShowSuccess("به سبد خرید اضافه شد");
                 loadCart();
@@ -221,7 +231,7 @@ namespace Kiosk
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
                 txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
-                              
+
             }
             else
             {
@@ -236,10 +246,6 @@ namespace Kiosk
                     this.cln_cart.Width = new GridLength(0, GridUnitType.Star);
                 }
             }
-
-
-            lst_products.SelectedItem = null;
-
         }
 
 

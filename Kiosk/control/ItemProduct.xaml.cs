@@ -51,12 +51,22 @@ namespace Kiosk.control
                 lbl_discount.Visibility = Visibility.Visible;
                 float price = product.price;
                 float d_price = product.d_price;
-                lbl_discount.Content =  ((int)   (((price - d_price) / price) * 100)   ).ToString() + "%";
+                string discount = ((int)(((price - d_price) / price) * 100)).ToString() + "%";
+                lbl_discount.Text = Utils.toPersianNum(discount);
             }
             else
             {
                 lbl_discount.Visibility = Visibility.Collapsed;
             }
+
+
+
+            double height = G.height / 3;
+            double img_height = (height / 7) * 5;
+            this.Height = height;
+            grd_main.RowDefinitions[0].Height = new GridLength(img_height); ;
+            this.img_product.Height = img_height;
+
         }
 
 

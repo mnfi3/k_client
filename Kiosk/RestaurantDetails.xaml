@@ -1,0 +1,55 @@
+﻿<Window x:Class="Kiosk.RestaurantDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		     Background="{x:Null}"
+             xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Style="{StaticResource vazir}"
+         ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None" FontFamily="Vazir">
+    <Grid Background="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Margin="20" >
+            <TextBlock x:Name="txt_restaurant" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Text="restaurant" FontSize="22" FontWeight="Bold" FontFamily="Vazir"/>
+            <Button x:Name="btn_back" Click="btn_back_Click"  Content="بازگشت" Width="100" Height="50" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="200 20"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="20">
+            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="auto" FlowDirection="RightToLeft" FontSize="20"  Text="پرینترهای مجاز رستوران را انتخاب کنید"/>
+            
+            <ListView x:Name="lst_printers" VerticalAlignment="Top" Background="LightGray" Height="auto" Width="420" HorizontalAlignment="Center" Margin="0 60 0 100" FontFamily="Vazir" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Top" Columns="1"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                
+                
+            </ListView>
+            <Button x:Name="btn_save" Click="btn_save_Click"  Content="ذخیره" FontSize="20" Width="150" Height="50" FontWeight="Bold" Background="Green" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40" FontFamily="Vazir"/>
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>

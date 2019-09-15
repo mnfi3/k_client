@@ -45,7 +45,7 @@
            
             
             
-            <ListView  Width="auto"  Height="auto"  x:Name="lst_restaurants" Margin="10" Background="#f00" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ListView  Width="auto"  Height="auto"  x:Name="lst_restaurants" Margin="10" Background="#f00" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lst_restaurants_SelectionChanged" >
                 <!--disable hilight-->
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">

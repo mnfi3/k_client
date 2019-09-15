@@ -27,6 +27,7 @@ namespace Kiosk
         private CartItem cartItem;
         private int count = 1;
         private Boolean added;
+        private EventHandler addToCartHandler;
 
         private string dessert_size = "small";
 
@@ -36,45 +37,23 @@ namespace Kiosk
         //    InitializeComponent();
         //}
 
-        public ProductInfo(Product p)
+        public ProductInfo(Product p, EventHandler handler)
         {
             InitializeComponent();
             this.product = p;
             this.Height = G.height;
             this.Width = G.width;
-            this.Left = G.width;
-            
+            //this.Left = G.width;
+
+            addToCartHandler += handler;
             cartItem = new CartItem();
             
         }
 
-        private void slideInLeft()
-        {
-            DoubleAnimation slideInRight = new DoubleAnimation();
-            slideInRight.From = G.width;
-            slideInRight.To = 0;
-            slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(350));
-            slideInRight.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slideInRight);
-        }
-        private void slideOutRight()
-        {
-            DoubleAnimation slideOutLeft = new DoubleAnimation();
-            slideOutLeft.Completed += new EventHandler(slideOutFinished);
-            
-            slideOutLeft.From = 0;
-            slideOutLeft.To = G.width;
-            slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(350));
-            slideOutLeft.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slideOutLeft);
-        }
-        private void slideOutFinished(object sender, EventArgs e)
-        {
-            DialogResult = added;
-        }
+       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            slideInLeft();
+            //slideInLeft();
             
 
 
@@ -94,12 +73,42 @@ namespace Kiosk
                 this.cartItem = G.cart.findByProduct(this.product);
                 loadCartItem();
                 G.cart.remove(cartItem);
+                btn_cancel.Content = "حذف از سبد خرید";
             }
 
 
             refreshCartItem();
            
         }
+
+
+
+        //private void slideInLeft()
+        //{
+        //    DoubleAnimation slideInRight = new DoubleAnimation();
+        //    slideInRight.From = G.width;
+        //    slideInRight.To = 0;
+        //    slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(300));
+        //    slideInRight.AccelerationRatio = .5;
+        //    this.BeginAnimation(LeftProperty, slideInRight);
+        //}
+        //private void slideOutRight()
+        //{
+        //    DoubleAnimation slideOutLeft = new DoubleAnimation();
+        //    slideOutLeft.Completed += new EventHandler(slideOutFinished);
+
+        //    slideOutLeft.From = 0;
+        //    slideOutLeft.To = G.width;
+        //    slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(300));
+        //    slideOutLeft.AccelerationRatio = .5;
+        //    this.BeginAnimation(LeftProperty, slideOutLeft);
+        //}
+        //private void slideOutFinished(object sender, EventArgs e)
+        //{
+        //    addToCartHandler(added, new EventArgs());
+        //    this.Close();
+        //    //DialogResult = added;
+        //}
 
 
 
@@ -111,7 +120,9 @@ namespace Kiosk
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
             added = false;
-            slideOutRight();
+            //slideOutRight();
+            addToCartHandler(added, new EventArgs());
+            this.Close();
            
         }
 
@@ -119,7 +130,9 @@ namespace Kiosk
         {
             G.cart.items.Add(this.cartItem);
             added = true;
-            slideOutRight();
+            //slideOutRight();
+            addToCartHandler(added, new EventArgs());
+            this.Close();
             
         }
 
@@ -158,12 +171,12 @@ namespace Kiosk
             {
                 if (_item.is_selected == true)
                 {
-                    _item.Background = Brushes.Transparent;
+                    _item.PulseBox.Background = Brushes.Transparent;
                     _item.is_selected = false;
                 }
                 else
                 {
-                    _item.Background = (Brush)new BrushConverter().ConvertFrom("#fcfcfc");
+                    _item.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom("#fcfcfc");
                     _item.is_selected = true;
                 }
             }
@@ -185,12 +198,12 @@ namespace Kiosk
             {
                 if (_item.is_selected == true)
                 {
-                    _item.Background = Brushes.Transparent;
+                    _item.PulseBox.Background = Brushes.Transparent;
                     _item.is_selected = false;
                 }
                 else
                 {
-                    _item.Background = (Brush)new BrushConverter().ConvertFrom("#fcfcfc");
+                    _item.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom("#fcfcfc");
                     _item.is_selected = true;
                 }
             }
@@ -203,7 +216,7 @@ namespace Kiosk
         }
 
 
-        private void loadDesserts()
+        private async void loadDesserts()
         {
             lst_dessert1.Items.Clear();
             lst_dessert2.Items.Clear();
@@ -214,10 +227,12 @@ namespace Kiosk
                 if (d.type == "d1")
                 {
                     lst_dessert1.Items.Add(_item);
+                    await Task.Delay(100);
                 }
                 else if(d.type == "d2")
                 {
                     lst_dessert2.Items.Add(_item);
+                    await Task.Delay(100);
                 }
             }
 
@@ -333,7 +348,7 @@ namespace Kiosk
                     if (d.id == _item1.dessert.id)
                     {
                         _item1.is_selected = true;
-                        _item1.Background = Brushes.White;
+                        _item1.PulseBox.Background = Brushes.White;
                         break;
                     }
                 }
@@ -346,7 +361,7 @@ namespace Kiosk
                     if (d.id == _item2.dessert.id)
                     {
                         _item2.is_selected = true;
-                        _item2.Background = Brushes.White;
+                        _item2.PulseBox.Background = Brushes.White;
                         break;
                     }
                 }
@@ -386,14 +401,7 @@ namespace Kiosk
 
 
 
-        private void btn_up_TouchDown(object sender, TouchEventArgs e)
-        {
-            count++;
-            txt_count.Text = count.ToString();
-
-            cartItem.count = count;
-            refreshCartItem();
-        }
+        
 
        
         

@@ -37,7 +37,7 @@ namespace Kiosk.control
 
 
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             txt_product.Text = cartItem.product.name;
             img_product.Source = null;
@@ -51,6 +51,16 @@ namespace Kiosk.control
             {
                 _item = new ItemDessertInCart(d, eventChange);
                 lst_desserts.Items.Add(_item);
+                await Task.Delay(200);
+            }
+
+            if (lst_desserts.Items.Count > 0)
+            {
+                lst_desserts.Height = 170;
+            }
+            else
+            {
+                lst_desserts.Height = 0;
             }
         }
 

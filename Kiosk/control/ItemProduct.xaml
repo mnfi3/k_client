@@ -10,7 +10,7 @@
              Style="{StaticResource vazir}"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
-             Height="450"
+             Height="350"
              FontFamily="vazir">
 
     <Grid>
@@ -24,10 +24,10 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <Grid Margin="20">
+            <Grid Margin="20" x:Name="grd_main">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="350"/>
+                    <RowDefinition Height="250"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -37,7 +37,7 @@
 
                     <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="20"/>
                     <StackPanel>
-                        <cachedImage:Image Width="auto" Height="350" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <cachedImage:Image Width="auto" Height="250" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <StackPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=Mask}" />
                         </StackPanel.OpacityMask>
@@ -48,7 +48,7 @@
 
 
                     <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">
-                        <Label x:Name="lbl_discount" FontWeight="Bold" Foreground="White" FontSize="17" Content="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="45" Width="60"   Margin="0 0 0 0" />
+                        <TextBlock x:Name="lbl_discount" FontWeight="Bold" Foreground="White" FontSize="22" Text="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="auto" Width="auto"   Margin="10 5" />
                     </Border>
 
 

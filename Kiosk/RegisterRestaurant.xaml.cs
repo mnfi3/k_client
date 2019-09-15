@@ -26,11 +26,9 @@ namespace Kiosk
     /// </summary>
     public partial class RegisterRestaurant : Window
     {
-        Toast toast;
         public RegisterRestaurant()
         {
             InitializeComponent();
-            toast = new Toast(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -85,13 +83,11 @@ namespace Kiosk
             {
                 DBRestaurant db_rest = new DBRestaurant();
                 db_rest.setRestaurant(restaurant);
-                toast.ShowSuccess("رستوران با موفقیت ثبت شد");
                 G.restaurants = G.getRestaurants();
                 loadRests();
             }
             else
             {
-                toast.ShowError("عملیات انجام نشد");
             }
         }
 
@@ -110,6 +106,19 @@ namespace Kiosk
                 _item = new ItemRestaurantInRegister(res);
                 lst_restaurants.Items.Add(_item);
             }
+        }
+
+        private void lst_restaurants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lst_restaurants.SelectedItem == null) return;
+
+
+            ItemRestaurantInRegister _item = (ItemRestaurantInRegister)(sender as ListView).SelectedItem;
+            RestaurantDetails _details = new RestaurantDetails(_item.restaurant);
+            _details.Show();
+            this.Close();
+
+            lst_restaurants.SelectedItem = null;
         }
     }
 }

@@ -157,6 +157,9 @@
     <Compile Include="control\ItemDessertInCart.xaml.cs">
       <DependentUpon>ItemDessertInCart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\ItemPrinter.xaml.cs">
+      <DependentUpon>ItemPrinter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\ItemRestaurantInRegister.xaml.cs">
       <DependentUpon>ItemRestaurantInRegister.xaml</DependentUpon>
     </Compile>
@@ -192,12 +195,16 @@
     <Compile Include="model\OrderContent.cs" />
     <Compile Include="model\OrderContentDessert.cs" />
     <Compile Include="model\Payment.cs" />
+    <Compile Include="model\Printer.cs" />
     <Compile Include="model\ReceiptItem.cs" />
     <Compile Include="PrintReceipt.xaml.cs">
       <DependentUpon>PrintReceipt.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RestaurantDetails.xaml.cs">
+      <DependentUpon>RestaurantDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="system\Config.cs" />
@@ -258,6 +265,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\ItemDessertInCart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\ItemPrinter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,6 +362,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="license\LicenseManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestaurantDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,9 +10,10 @@
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              Width="200"
+             Margin="10 0"
               >
     <Border  x:Name="PulseBox"
-                        Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                        Background="Transparent" RenderTransformOrigin="0.5,0.5" CornerRadius="15">
         <Border.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -21,6 +22,8 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Border.RenderTransform>
+
+
         <Grid Margin="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -29,14 +32,46 @@
             </Grid.RowDefinitions>
 
             <TextBlock x:Name="txt_name" Grid.Row="0" Margin="5" Foreground="#121c1b" FontSize="14" Text="پیاز"  HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
-            <cachedImage:Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" x:Name="img_dessert" Width="auto" Margin="5" Height="auto" Grid.Row="1" Source="../img/ic_onion.png"/>
+
+
+            <Grid Grid.Row="1">
+                <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="10"/>
+                <StackPanel>
+                    <cachedImage:Image Width="auto" Height="150" x:Name="img_dessert" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <StackPanel.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Mask}" />
+                    </StackPanel.OpacityMask>
+                </StackPanel>
+            </Grid>
+           
+            <!--<cachedImage:Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" x:Name="img_dessert" Width="auto" Margin="5" Height="auto" Grid.Row="1" Source="../img/ic_onion.png"/>-->
+
+
             <TextBlock x:Name="txt_price" Grid.Row="2" Margin="5" Foreground="#121c1b"  FontSize="14" Text="1,200 تومان"  HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
 
         </Grid>
     </Border>
 
     <UserControl.Resources>
-        
+        <Storyboard x:Key="FadeInUp" >
+
+
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.35">
+            </DoubleAnimation>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="-8"/>
+
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
         <Storyboard x:Key="bounce">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
@@ -48,11 +83,16 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
-
     <UserControl.Triggers>
-        
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <!--<BeginStoryboard Storyboard="{StaticResource Pulse}"/>-->
+            <BeginStoryboard Storyboard="{StaticResource FadeInUp}"/>
+
+        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+
             <BeginStoryboard Storyboard="{StaticResource bounce}"/>
+
         </EventTrigger>
     </UserControl.Triggers>
 </UserControl>
