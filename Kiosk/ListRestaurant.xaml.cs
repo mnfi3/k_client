@@ -31,18 +31,34 @@ namespace Kiosk
     /// </summary>
     public partial class ListRestaurant : Window
     {
+
+        private bool standby = false;
         public ListRestaurant()
         {
             InitializeComponent();
+        }
+
+        public ListRestaurant(bool standby)
+        {
+            InitializeComponent();
+            this.standby = standby;
         }
 
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (standby)
+            {
+                G.timer.Enabled = false;
+                ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
+                _clickToOrder.ShowDialog();
+            }
+
 
             if (G.restaurants.Count == 1)
             {
+                G.restaurant = G.restaurants[0];
                 ListProducts _listProduct = new ListProducts();
                 _listProduct.Show();
                 this.Close();
@@ -50,12 +66,8 @@ namespace Kiosk
             else
             {
                 loadRestaurants();
-                G.timer.Enabled = false;
                 G.restaurant = null;
                 G.cart.clear();
-                
-                ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
-                _clickToOrder.ShowDialog();
             }
            
             

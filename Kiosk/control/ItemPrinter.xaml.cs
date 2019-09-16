@@ -43,6 +43,11 @@ namespace Kiosk.control
             chk_printer.IsChecked = !chk_printer.IsChecked;
         }
 
+        private void chk_printer_Click(object sender, RoutedEventArgs e)
+        {
+            chk_printer.IsChecked = !chk_printer.IsChecked;
+        }
+
         
     }
 }

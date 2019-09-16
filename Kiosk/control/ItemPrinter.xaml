@@ -18,7 +18,7 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <CheckBox x:Name="chk_printer"  Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <CheckBox x:Name="chk_printer" Click="chk_printer_Click"  Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
 
         

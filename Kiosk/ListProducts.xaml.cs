@@ -32,10 +32,8 @@ namespace Kiosk
 
         private Restaurant restaurant;
 
-        ClickToOrder _clickToOrder;
         Category active_category;
 
-        //private Toast toast;
 
 
         public ListProducts()
@@ -54,32 +52,18 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //show btn_back_to_restaurants button if have more than one restaurant
-
             if (G.restaurants.Count > 1)
             {
                 btn_back_to_restaurants.Visibility = Visibility.Visible;
             }
-            //toast = new Toast(this);
 
             if (G.cart.items.Count > 0)
             {
                 this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
             }
 
-            if (G.restaurants.Count == 1)
-            {
-                G.restaurant = G.restaurants[0];
-                this.restaurant = G.restaurants[0];
-                //loadProducts();
-                //loadCart();
-                _clickToOrder = new ClickToOrder(animCallback);
-                _clickToOrder.ShowDialog();
-            }
-            else
-            {
-                loadProducts();
-                loadCart();
-            }
+            loadProducts();
+            loadCart();
             txt_total.Text = "ت "  + Utils.persian_split(G.cart.cost);
 
 

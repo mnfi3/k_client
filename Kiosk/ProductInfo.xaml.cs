@@ -54,8 +54,6 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //slideInLeft();
-            
-
 
             txt_name.Text = product.name;
             txt_count.Text = Utils.toPersianNum(count);
@@ -65,20 +63,28 @@ namespace Kiosk
             img_product.ImageUrl = product.image;
             cartItem.product = this.product;
 
-
-            loadDesserts();
-
             if (G.cart.isExistInCart(this.product) == true)
             {
                 this.cartItem = G.cart.findByProduct(this.product);
+                this.dessert_size = cartItem.desserts_size;
+                btn_cancel.Content = "حذف از سبد خرید";
+                count = cartItem.count;
+                txt_count.Text = Utils.toPersianNum(count);
+                txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
+            }
+            loadDesserts();
+        }
+
+        private void dessertLoadedCallBack(object sender, EventArgs e)
+        {
+            if (G.cart.isExistInCart(this.product) == true)
+            {
                 loadCartItem();
                 G.cart.remove(cartItem);
-                btn_cancel.Content = "حذف از سبد خرید";
             }
 
 
             refreshCartItem();
-           
         }
 
 
@@ -227,14 +233,16 @@ namespace Kiosk
                 if (d.type == "d1")
                 {
                     lst_dessert1.Items.Add(_item);
-                    await Task.Delay(100);
+                    await Task.Delay(50);
                 }
                 else if(d.type == "d2")
                 {
                     lst_dessert2.Items.Add(_item);
-                    await Task.Delay(100);
+                    await Task.Delay(50);
                 }
             }
+
+            dessertLoadedCallBack(new object(), new EventArgs());
 
         }
 

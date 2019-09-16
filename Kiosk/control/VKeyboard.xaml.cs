@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.system;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,16 +55,25 @@ namespace Kiosk.control
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
+            if (Config.DEBUG)
+            {
+                DialogResult = true;
+            }
+        }
+
+        private void btn_close_TouchDown(object sender, TouchEventArgs e)
+        {
             DialogResult = true;
-            //this.Close();
         }
 
        
+
 
        
 
         private void btn_capselock_Click(object sender, RoutedEventArgs e)
         {
+            if (!Config.DEBUG) return;
             if (capselock == true)
             {
                 capselock = false;
@@ -77,7 +87,48 @@ namespace Kiosk.control
 
         }
 
+        private void btn_capselock_TouchDown(object sender, TouchEventArgs e)
+        {
+            
+            if (capselock == true)
+            {
+                capselock = false;
+                btn_capselock.Foreground = Brushes.White;
+            }
+            else
+            {
+                capselock = true;
+                btn_capselock.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#29B6F6"));
+            }
+        }
+
+
+
+
         private void btn_backspace_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Config.DEBUG) return;
+            if (input != null)
+            {
+                string str = input.Text;
+                if (str.Length > 0)
+                {
+                    str = str.Remove(str.Length - 1);
+                    input.Text = str;
+                }
+            }
+            else
+            {
+                string str = input2.Password;
+                if (str.Length > 0)
+                {
+                    str = str.Remove(str.Length - 1);
+                    input2.Password = str;
+                }
+            }
+        }
+
+        private void btn_backspace_TouchDown(object sender, TouchEventArgs e)
         {
             if (input != null)
             {
@@ -100,9 +151,16 @@ namespace Kiosk.control
         }
 
 
+
+
+
+
+
+
+
         private void buttonClick(object sender, RoutedEventArgs e)
         {
-            
+            if (!Config.DEBUG) return;
             Button button = sender as Button;
             string tag = button.Tag.ToString();
             if (capselock == true)
@@ -119,6 +177,31 @@ namespace Kiosk.control
                 input2.Password += tag;
             }
         }
+
+        private void btnTouchDown(object sender, TouchEventArgs e)
+        {
+            Button button = sender as Button;
+            string tag = button.Tag.ToString();
+            if (capselock == true)
+            {
+                tag = tag.ToUpper();
+            }
+
+            if (input != null)
+            {
+                input.Text += tag;
+            }
+            else
+            {
+                input2.Password += tag;
+            }
+        }
+
+        
+
+        
+
+       
 
 
 
