@@ -211,3 +211,5 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\RestaurantDetails.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\RestaurantDetails.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\ItemPrinter.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\ItemPrinter.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\Toast.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\Toast.g.cs

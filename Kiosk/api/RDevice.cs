@@ -44,7 +44,6 @@ namespace Kiosk.api
             }
             else
             {
-                MB.Show(res.message);
                 device = new Device();
             }
 
@@ -122,7 +121,6 @@ namespace Kiosk.api
             }
             else
             {
-                MB.Show(res.message);
             }
 
             eventRestaurants(restaurants, new EventArgs());

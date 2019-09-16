@@ -28,6 +28,7 @@ namespace Kiosk
         private int count = 1;
         private Boolean added;
         private EventHandler addToCartHandler;
+        private bool desserts_loaded = false;
 
         private string dessert_size = "small";
 
@@ -83,8 +84,8 @@ namespace Kiosk
                 G.cart.remove(cartItem);
             }
 
-
             refreshCartItem();
+            desserts_loaded = true;
         }
 
 
@@ -125,6 +126,7 @@ namespace Kiosk
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
+            if (!desserts_loaded) return;
             added = false;
             //slideOutRight();
             addToCartHandler(added, new EventArgs());
@@ -134,6 +136,8 @@ namespace Kiosk
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
+            if (!desserts_loaded) return;
+
             G.cart.items.Add(this.cartItem);
             added = true;
             //slideOutRight();
@@ -169,6 +173,11 @@ namespace Kiosk
 
         private void lst_dessert1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!desserts_loaded) 
+            {
+                lst_dessert1.SelectedItem = null;
+                return; 
+            }
             if ((sender as ListView).SelectedItem == null) return;
 
 
@@ -196,6 +205,11 @@ namespace Kiosk
 
         private void lst_dessert2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!desserts_loaded)
+            {
+                lst_dessert2.SelectedItem = null;
+                return;
+            }
             if ((sender as ListView).SelectedItem == null) return;
 
 

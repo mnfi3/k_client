@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         
         <TextBlock x:Name="txt_text" Grid.Row="0" Text="dialog" Margin="10 20" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" FontSize="17" Foreground="#000"/>
-        <Button x:Name="btn_ok" Click="btn_ok_Click" Grid.Row="1" Content="باشه" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0 8" Height="auto" Width="80"  FontSize="15" Foreground="#fff"/>
+        <Button x:Name="btn_ok" Click="btn_ok_Click" TouchDown="btn_ok_TouchDown" Grid.Row="1" Content="باشه" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0 8" Height="auto" Width="80"  FontSize="15" Foreground="#fff"/>
 
 
     </Grid>

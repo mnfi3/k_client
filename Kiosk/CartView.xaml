@@ -35,7 +35,7 @@
 
 
 
-                <Grid  Grid.Column="0" Background="White" >
+                <Grid x:Name="grd_pay"  Grid.Column="0" Background="White" >
 
                     <Button  x:Name="btn_pay"
                              Click="btn_pay_Click"
@@ -79,7 +79,7 @@
                                     </StackPanel>
                                 </Border>
 
-                                <Border Grid.Row="2" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
+                                <Border x:Name="grd_discount" Grid.Row="2" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
                                     <StackPanel Margin="15" VerticalAlignment="Center" Orientation="Vertical">
                                         <TextBlock Foreground="BlueViolet" Margin="10"  Grid.Row="6" HorizontalAlignment="Center" FontSize="20" FontWeight="SemiBold" TextAlignment="Right" VerticalAlignment="Bottom" Text="اگر کد تخفیف دارید آن را وارد کنید" FontFamily="Vazir"/>
                                         <TextBox x:Name="txt_discount_code"  Margin="20" materialDesign:HintAssist.IsFloating="True" Foreground="#263238" Text="" FlowDirection="RightToLeft"  Width="250" Height="70" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="22"   PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#673AB7"   FontFamily="Vazir" FontWeight="Bold">

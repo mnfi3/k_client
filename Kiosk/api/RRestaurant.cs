@@ -44,7 +44,6 @@ namespace Kiosk.api
             else
             {
                 restaurant = new Restaurant();
-                MB.Show(res.message);
             }
 
             eventLogin(restaurant, new EventArgs());
@@ -103,7 +102,6 @@ namespace Kiosk.api
             }
             else
             {
-                MB.Show(res.message);
             }
 
             eventProducts(categories, new EventArgs());
@@ -138,7 +136,6 @@ namespace Kiosk.api
             {
                 discount.is_valid = false;
                 discount.id = 0;
-                MB.Show(res.message);
             }
 
             eventDiscount(discount, new EventArgs());

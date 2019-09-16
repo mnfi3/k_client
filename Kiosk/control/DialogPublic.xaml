@@ -2,31 +2,35 @@
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-		Background="#E1F5FE"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Style="{StaticResource vazir}"
-        Title="DialogManageApp" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Margin="20 20">
+        Background="Transparent"
+        Title="DialogManageApp" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <TextBlock x:Name="txt_text" Grid.Row="0" TextWrapping="Wrap" FlowDirection="RightToLeft" Text="dialog" FontSize="18"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Grid Grid.Row="1" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Border  x:Name="PulseBox" Background="#99607D8B"  BorderThickness="1" BorderBrush="#1976D2" CornerRadius="15" RenderTransformOrigin="0.5,0.5">
+        <Grid Margin="20 20">
 
-            <Button x:Name="btn_ok" Click="btn_ok_Click" FontSize="17" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#388E3C" Grid.Column="1" Content="تایید">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            </Button>
+            <TextBlock x:Name="txt_text" Grid.Row="0" TextWrapping="Wrap" FlowDirection="RightToLeft" Text="dialog" FontSize="18" Foreground="#F9F9F9"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Button x:Name="btn_cancel" Click="btn_cancel_Click" FontSize="17" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#f44336"  Grid.Column="0" Content="لغو">
+                <Button x:Name="btn_ok" Click="btn_ok_Click" FontSize="17" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#dd388E3C" Grid.Column="1" Content="بله">
 
-            </Button>
+                </Button>
+
+                <Button x:Name="btn_cancel" Click="btn_cancel_Click" FontSize="17" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#ddf44336"  Grid.Column="0" Content="خیر">
+
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

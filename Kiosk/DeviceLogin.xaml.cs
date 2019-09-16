@@ -26,14 +26,12 @@ namespace Kiosk
     public partial class DeviceLogin : Window
     {
 
-        private readonly Toast toast;
 
 
         public DeviceLogin()
         {
             InitializeComponent();
 
-            toast = new Toast(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -103,12 +101,10 @@ namespace Kiosk
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Collapsed;
                 grd_login.Visibility = Visibility.Visible;
-                toast.ShowSuccess("با موفقیت خارج شدید");
 
             }
             else
             {
-                toast.ShowError("عملیات شکست خورد");
             }
         } 
 
@@ -129,7 +125,6 @@ namespace Kiosk
             {
                 DBDevice db_device = new DBDevice();
                 db_device.saveDevice(device);
-                toast.ShowSuccess("با موفقیت وارد شدید");
                 G.isLoggedIn = true;
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Visible;
@@ -137,7 +132,6 @@ namespace Kiosk
             }
             else
             {
-                toast.ShowError("عملیات شکست خورد");
             }
         } 
 

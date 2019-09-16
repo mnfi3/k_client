@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.system;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,7 @@ namespace Kiosk.control
             InitializeComponent();
         }
 
-        private void btn_ok_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        
 
 
         public static void Show(string text)
@@ -42,6 +40,16 @@ namespace Kiosk.control
             {
 
             }
+        }
+
+        private void btn_ok_TouchDown(object sender, TouchEventArgs e)
+        {
+            this.Close();
+        }
+        private void btn_ok_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Config.DEBUG) return;
+            this.Close();
         }
     }
 }

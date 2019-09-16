@@ -208,13 +208,13 @@ namespace Kiosk
             this.Show();
             if ((bool)sender == true)
             {
-                //toast.ShowSuccess("به سبد خرید اضافه شد");
                 loadCart();
                 if (G.cart.items.Count > 0)
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
                 txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
+                Toast.success ("به سبد خرید اضافه شد");
 
             }
             else

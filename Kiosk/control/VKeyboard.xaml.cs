@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -51,19 +52,47 @@ namespace Kiosk.control
             //Window mainWindow = curApp.MainWindow;
             //this.Left = mainWindow.Left + (mainWindow.Width - this.ActualWidth) / 2;
             //this.Top = mainWindow.Top + (mainWindow.Height - this.ActualHeight) / 2;
+            opacityIn();
         }
+
+        private void opacityIn()
+        {
+            DoubleAnimation anim = new DoubleAnimation();
+            anim.From = 0;
+            anim.To = 1;
+            anim.Duration = new Duration(TimeSpan.FromMilliseconds(400));
+            anim.AccelerationRatio = .5;
+            this.BeginAnimation(OpacityProperty, anim);
+        }
+
+        private void opacityOut()
+        {
+            DoubleAnimation anim = new DoubleAnimation();
+            anim.From = 1;
+            anim.To = 0;
+            anim.Completed += new EventHandler(opacityOutFinished);
+            anim.Duration = new Duration(TimeSpan.FromMilliseconds(400));
+            anim.AccelerationRatio = .5;
+            this.BeginAnimation(OpacityProperty, anim);
+        }
+
+        private void opacityOutFinished(object sender, EventArgs e)
+        {
+            DialogResult = true;
+        }
+
+
+
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
-            if (Config.DEBUG)
-            {
-                DialogResult = true;
-            }
+            if (!Config.DEBUG) return;
+            opacityOut();
         }
 
         private void btn_close_TouchDown(object sender, TouchEventArgs e)
         {
-            DialogResult = true;
+            opacityOut();
         }
 
        

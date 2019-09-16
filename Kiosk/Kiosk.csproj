@@ -172,7 +172,9 @@
     <Compile Include="control\TempItemTest.xaml.cs">
       <DependentUpon>TempItemTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="control\Toast.cs" />
+    <Compile Include="control\Toast.xaml.cs">
+      <DependentUpon>Toast.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\VKeyboard.xaml.cs">
       <DependentUpon>VKeyboard.xaml</DependentUpon>
     </Compile>
@@ -293,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\TempItemTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\Toast.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
