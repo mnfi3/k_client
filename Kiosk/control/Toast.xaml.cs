@@ -60,7 +60,7 @@ namespace Kiosk.control
             DoubleAnimation slideInRight = new DoubleAnimation();
             slideInRight.From = G.width;
             slideInRight.To = G.width/2 - 250;
-            slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(300));
+            slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(200));
             slideInRight.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slideInRight);
         }
@@ -71,7 +71,7 @@ namespace Kiosk.control
 
             slideOutLeft.From = G.width / 2 - 250;
             slideOutLeft.To = G.width;
-            slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(300));
+            slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(200));
             slideOutLeft.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slideOutLeft);
         }
@@ -140,12 +140,12 @@ namespace Kiosk.control
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!Config.DEBUG) return;
-            this.Close();
+            slideOutRight();
         }
 
         private void Window_TouchDown(object sender, TouchEventArgs e)
         {
-            this.Close();
+            slideOutRight();
         }
     }
 }

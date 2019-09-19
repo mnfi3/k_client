@@ -45,9 +45,11 @@
                              Height="70"
                              Content="پرداخت"
                              BorderBrush="{x:Null}"
-                             Margin="10 10"
+                             Margin="50 10"
                              VerticalAlignment="Bottom"
                              HorizontalAlignment="Stretch"
+                             FontWeight="Light"
+                             FontFamily="Vazir"
                              />
                     
                     <Grid x:Name="grd_payment" Margin="0 10 0 100"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  >
@@ -81,13 +83,13 @@
 
                                 <Border x:Name="grd_discount" Grid.Row="2" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
                                     <StackPanel Margin="15" VerticalAlignment="Center" Orientation="Vertical">
-                                        <TextBlock Foreground="BlueViolet" Margin="10"  Grid.Row="6" HorizontalAlignment="Center" FontSize="20" FontWeight="SemiBold" TextAlignment="Right" VerticalAlignment="Bottom" Text="اگر کد تخفیف دارید آن را وارد کنید" FontFamily="Vazir"/>
+                                        <TextBlock Foreground="BlueViolet" Margin="10"  Grid.Row="6" HorizontalAlignment="Center" FontSize="20" FontWeight="Light" TextAlignment="Right" VerticalAlignment="Bottom" Text="اگر کد تخفیف دارید آن را وارد کنید" FontFamily="Vazir"/>
                                         <TextBox x:Name="txt_discount_code"  Margin="20" materialDesign:HintAssist.IsFloating="True" Foreground="#263238" Text="" FlowDirection="RightToLeft"  Width="250" Height="70" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="22"   PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#673AB7"   FontFamily="Vazir" FontWeight="Bold">
                                             <materialDesign:HintAssist.Hint>
                                                 <Label DockPanel.Dock="Right" Foreground="#37474F" Content="کد تخفیف را وارد کنید" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="auto"/>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                        <Button x:Name="btn_discount" Background="#673AB7" Click="btn_discount_Click" BorderBrush="{x:Null}" Foreground="White" Margin="20" Width="200" Height="50"  VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="18" FontWeight="Normal" Content="اعمال کد تخفیف" FontFamily="Vazir"/>
+                                        <Button x:Name="btn_discount" Background="#673AB7" Click="btn_discount_Click" BorderBrush="{x:Null}" Foreground="White" Margin="20" Width="200" Height="50"  VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="18" FontWeight="Light" Content="اعمال کد تخفیف" FontFamily="Vazir"/>
                                     </StackPanel>
                                 </Border>
                             </Grid>

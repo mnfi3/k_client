@@ -23,5 +23,14 @@ namespace Kiosk.control
         {
             InitializeComponent();
         }
+
+
+
+
+
+        public void handlePayment()
+        {
+            //pos.buyRequest(buyRequest, handler)
+        }
     }
 }

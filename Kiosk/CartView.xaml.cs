@@ -26,6 +26,7 @@ using Microsoft.Reporting.WinForms;
 using System.Drawing.Printing;
 using System.IO;
 using Stimulsoft.Report;
+using System.Windows.Media.Animation;
 
 namespace Kiosk
 {
@@ -47,6 +48,8 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadCartView();
+
+           
         }
 
 
@@ -127,36 +130,36 @@ namespace Kiosk
 
         private void btn_pay_Click(object sender, RoutedEventArgs e) 
         {
-            if (G.cart.items.Count > 0)
+            if (G.cart.items.Count == 0)
             {
-                BlurEffect blur = new BlurEffect();
-                grd_main.Effect = blur;
-                grd_pay.Effect = blur;
-                DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
-                //dialog.ShowDialog();
-                if (dialog.ShowDialog() == true)
-                {
-                    //DialogCartSwipe dialog2 = new DialogCartSwipe();
-                    //if (dialog2.ShowDialog() == true)
-                    //{
-                    //    //handleShop();
-                    //}
+                Toast.error("هیچ محصولی در سبد خرید شما وجود ندارد");
+                return;
+            }
 
+
+            BlurEffect blur = new BlurEffect();
+            grd_main.Effect = blur;
+            grd_pay.Effect = blur;
+            DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
+            //dialog.ShowDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                DialogCartSwipe dialog2 = new DialogCartSwipe();
+                if (dialog2.ShowDialog() == true)
+                {
                     handleShop();
                     grd_main.Effect = null;
                     grd_pay.Effect = null;
                 }
                 else
                 {
-                    grd_main.Effect = null;
-                    grd_pay.Effect = null;
+                    //payment failed
                 }
             }
             else
             {
-                //Toast toast = new Toast("هیچ محصولی در سبد خرید شما وجود ندارد", 2);
-                //toast.ShowDialog();
-                Toast.error("هیچ محصولی در سبد خرید شما وجود ندارد");
+                grd_main.Effect = null;
+                grd_pay.Effect = null;
             }
         }
 
