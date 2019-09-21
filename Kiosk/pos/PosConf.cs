@@ -8,9 +8,10 @@ namespace Kiosk.pos
 {
     class PosConf
     {
-        public static const int READ_TIMEOUT = 180000;
-        public static const string IP = "127.0.0.1";
-        public static const int PORT = 1024;
+        public const int READ_TIMEOUT = 180000;
+        public const string IP = "127.0.0.1";
+        public const int PORT = 1024;
+        public static string URL = "http://localhost:" + PORT + "/bpmpospc/service";
 
     }
 }

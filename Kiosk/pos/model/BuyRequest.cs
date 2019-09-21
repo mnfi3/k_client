@@ -17,6 +17,7 @@ namespace Kiosk.pos.model
         public BuyRequest()
         {
             ServiceCode = "1";
+            PayerId = "12345";
         }
     }
 }

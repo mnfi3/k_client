@@ -21,5 +21,26 @@ namespace Kiosk.pos.model
         public string TraceNumber { set; get; }
         public string TransactionDate { set; get; }
         public string TransactionTime { set; get; }
+
+
+
+        //this fields and functions is for handle success
+        public string error { set; get; }
+        public bool success { set; get; }
+
+
+        public BuyResponse()
+        {
+            this.error = "";
+        }
+
+
+        public bool hasError()
+        {
+            if (this.error.Length > 1) return true;
+            return false;
+        }
+
+        
     }
 }

@@ -199,6 +199,11 @@
     <Compile Include="model\Payment.cs" />
     <Compile Include="model\Printer.cs" />
     <Compile Include="model\ReceiptItem.cs" />
+    <Compile Include="pos\model\BuyRequest.cs" />
+    <Compile Include="pos\model\BuyResponse.cs" />
+    <Compile Include="pos\Pos.cs" />
+    <Compile Include="pos\PosConf.cs" />
+    <Compile Include="pos\PosMessage.cs" />
     <Compile Include="PrintReceipt.xaml.cs">
       <DependentUpon>PrintReceipt.xaml</DependentUpon>
     </Compile>
@@ -463,6 +468,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\click_to_order.jpg" />
+    <Content Include="zz.txt" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

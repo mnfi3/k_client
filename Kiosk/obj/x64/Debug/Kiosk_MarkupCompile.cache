@@ -11,8 +11,8 @@ false
 DEBUG;TRACE
 C:\dev\c_charp\Kiosk\Kiosk\App.xaml
 31-1182047928
-51001242449
-68-1169627102
+6-1984023959
+73-1098318155
 37-1779950626
 CartView.xaml;ClickToOrder.xaml;control\DialogCartSwipe.xaml;control\DialogManageApp.xaml;control\DialogPaymentAccept.xaml;control\DialogPublic.xaml;control\DialogTest.xaml;control\ItemCart.xaml;control\ItemCartInListProduct.xaml;control\ItemCategory.xaml;control\ItemDessert.xaml;control\ItemDessertInCart.xaml;control\ItemPrinter.xaml;control\ItemProduct.xaml;control\ItemRestaurant.xaml;control\ItemRestaurantInRegister.xaml;control\MB.xaml;control\Receipt.xaml;control\TempItemTest.xaml;control\Toast.xaml;control\VKeyboard.xaml;DeviceLogin.xaml;fortest.xaml;ListProducts.xaml;ListRestaurant.xaml;MainWindow.xaml;PrintReceipt.xaml;ProductInfo.xaml;RegisterRestaurant.xaml;license\LicenseManager.xaml;RestaurantDetails.xaml;
 

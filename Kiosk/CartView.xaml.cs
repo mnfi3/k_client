@@ -27,6 +27,7 @@ using System.Drawing.Printing;
 using System.IO;
 using Stimulsoft.Report;
 using System.Windows.Media.Animation;
+using Kiosk.pos.model;
 
 namespace Kiosk
 {
@@ -144,17 +145,8 @@ namespace Kiosk
             //dialog.ShowDialog();
             if (dialog.ShowDialog() == true)
             {
-                DialogCartSwipe dialog2 = new DialogCartSwipe();
-                if (dialog2.ShowDialog() == true)
-                {
-                    handleShop();
-                    grd_main.Effect = null;
-                    grd_pay.Effect = null;
-                }
-                else
-                {
-                    //payment failed
-                }
+                DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+                dialog2.ShowDialog();
             }
             else
             {
@@ -162,6 +154,28 @@ namespace Kiosk
                 grd_pay.Effect = null;
             }
         }
+
+
+        private void paymentCallBack(object sender, EventArgs e)
+        {
+            grd_main.Effect = null;
+            grd_pay.Effect = null;
+
+            BuyResponse response = sender as BuyResponse;
+            if (!response.success)
+            {
+                Toast.error(response.error, 5);
+            }
+            else
+            {
+                //handleShop();
+                Toast.success("پرداخت با موفقیت انجام شد", 5);
+            }
+            
+           
+        }
+
+
 
 
 
