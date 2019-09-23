@@ -1,19 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="Kiosk" Category="Project" Bounds="412.098333333333,0,50,25.96" Label="Kiosk" />
-    <Node Id="MaterialDesignColors 1.1.3" Category="Package" Bounds="170.385,111.92,161.426666666667,25.96" Label="MaterialDesignColors 1.1.3" />
-    <Node Id="MaterialDesignThemes 2.5.1" Category="Package" Bounds="166.686666666667,55.96,168.823333333333,25.96" Label="MaterialDesignThemes 2.5.1" />
-    <Node Id="Newtonsoft.Json 12.0.2" Category="Package" Bounds="366.136666666667,55.96,141.923333333333,25.96" Label="Newtonsoft.Json 12.0.2" />
-    <Node Id="ToastNotifications 2.5.1" Category="Package" Bounds="565.853333333333,111.92,142.49,25.96" Label="ToastNotifications 2.5.1" />
-    <Node Id="ToastNotifications.Messages 2.5.1" Category="Package" Bounds="538.661666666667,55.96,196.873333333333,25.96" Label="ToastNotifications.Messages 2.5.1" />
+    <Node Id="CachedImage 0.1.8.0" Category="Package" Bounds="949.823733333334,55.96,129.16,25.96" Label="CachedImage 0.1.8.0" />
+    <Node Id="Kiosk" Category="Project" Bounds="845.622513075413,1.4210854715202E-14,50,25.96" Label="Kiosk" />
+    <Node Id="MaterialDesignColors 1.1.3" Category="Package" Bounds="1032.83671063963,117.75862777262,161.426666666667,25.96" Label="MaterialDesignColors 1.1.3" />
+    <Node Id="MaterialDesignThemes 2.5.1" Category="Package" Bounds="1108.98383333333,55.96,168.823333333333,25.96" Label="MaterialDesignThemes 2.5.1" />
+    <Node Id="Microsoft.ReportViewer.Common.v12 12.0.0.1" Category="Package" Bounds="432.5102,55.96,260.44,25.96" Label="Microsoft.ReportViewer.Common.v12 12.0.0.1" />
+    <Node Id="Microsoft.ReportViewer.WinForms.v12 12.0.0.1" Category="Package" Bounds="1307.80726666667,55.96,264.886666666667,25.96" Label="Microsoft.ReportViewer.WinForms.v12 12.0.0.1" />
+    <Node Id="Microsoft.SqlServer.Types 14.0.1016.290" Category="Package" Bounds="171.923433333334,55.96,230.586666666667,25.96" Label="Microsoft.SqlServer.Types 14.0.1016.290" />
+    <Node Id="Newtonsoft.Json 12.0.2" Category="Package" Bounds="1.13686837721616E-13,55.96,141.923333333333,25.96" Label="Newtonsoft.Json 12.0.2" />
+    <Node Id="ToastNotifications 2.5.1" Category="Package" Bounds="746.277120542298,161.379268692435,142.49,25.96" Label="ToastNotifications 2.5.1" />
+    <Node Id="ToastNotifications.Messages 2.5.1" Category="Package" Bounds="722.9503,65.5544877142855,196.873333333333,25.96" Label="ToastNotifications.Messages 2.5.1" />
   </Nodes>
   <Links>
-    <Link Source="Kiosk" Target="MaterialDesignThemes 2.5.1" Category="Installed Package" Bounds="302.859680175781,20.5015048980713,109.238647460938,32.8655643463135" />
-    <Link Source="Kiosk" Target="Newtonsoft.Json 12.0.2" Category="Installed Package" Bounds="437.098327636719,25.9599990844727,0,21" />
-    <Link Source="Kiosk" Target="ToastNotifications.Messages 2.5.1" Category="Installed Package" Bounds="462.098327636719,19.9750003814697,119.942626953125,33.5599384307861" />
-    <Link Source="MaterialDesignThemes 2.5.1" Target="MaterialDesignColors 1.1.3" Category="Package Dependency" Bounds="251.098327636719,81.9199981689453,0,21" />
-    <Link Source="ToastNotifications.Messages 2.5.1" Target="ToastNotifications 2.5.1" Category="Package Dependency" Bounds="637.098327636719,81.9199981689453,0,21" />
+    <Link Source="Kiosk" Target="CachedImage 0.1.8.0" Category="Installed Package" Bounds="895.622513075414,22.710060695621,77.0438123930038,29.9856388322383" />
+    <Link Source="Kiosk" Target="MaterialDesignThemes 2.5.1" Category="Installed Package" Bounds="895.622513075413,17.3143156232801,214.037629164641,37.1082656023248" />
+    <Link Source="Kiosk" Target="Microsoft.ReportViewer.Common.v12 12.0.0.1" Category="Installed Package" Bounds="643.001183710421,17.5237964528116,202.621329364992,36.8268031053043" />
+    <Link Source="Kiosk" Target="Microsoft.ReportViewer.WinForms.v12 12.0.0.1" Category="Installed Package" Bounds="895.622513075413,15.4359884459932,405.241825261485,39.8107696270162" />
+    <Link Source="Kiosk" Target="Microsoft.SqlServer.Types 14.0.1016.290" Category="Installed Package" Bounds="411.275356766659,15.3779880359626,434.347156308754,41.6623713713107" />
+    <Link Source="Kiosk" Target="Newtonsoft.Json 12.0.2" Category="Installed Package" Bounds="144.820053100586,14.442328453064,700.802444458008,40.9921312332153" />
+    <Link Source="Kiosk" Target="ToastNotifications.Messages 2.5.1" Category="Installed Package" Bounds="836.540657944698,25.96,24.3330581426143,32.3981610322426" />
+    <Link Source="MaterialDesignThemes 2.5.1" Target="MaterialDesignColors 1.1.3" Category="Package Dependency" Bounds="1137.43780195737,81.92,39.187195903907,30.3300282022095" />
+    <Link Source="ToastNotifications.Messages 2.5.1" Target="ToastNotifications 2.5.1" Category="Package Dependency" Bounds="818.408332439468,91.5144877142855,2.45511930567,60.8720922309582" />
   </Links>
   <Categories>
     <Category Id="Installed Package" />

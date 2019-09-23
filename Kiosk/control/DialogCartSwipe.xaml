@@ -5,18 +5,16 @@
 		Background="#eeeeee"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         WindowStartupLocation="CenterScreen"
-        Title="DialogCartSwipe" Height="1000" Width="500" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+        Title="DialogCartSwipe" Height="500" Width="650" AllowsTransparency="False" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <WebBrowser Grid.Row="0" x:Name="webview" Height="auto" Width="auto" Margin="20"/>
-        <Image Grid.Row="1" Source="../img/ic_card_swipe.png" Height="auto" Width="auto" Margin="20"/>
-        <TextBlock  Grid.Row="2"  Margin="10" TextWrapping="Wrap"  Height="auto" Width="auto" Foreground="#616161" Text="لطفا کارت خود را در دستگاه کارت خوان بکشید" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <WebBrowser Grid.Row="0"  x:Name="webview" LoadCompleted="webview_LoadCompleted" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="20"  OverridesDefaultStyle="False" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <TextBlock  Grid.Row="1"  Margin="10" TextWrapping="Wrap"  Height="auto" Width="auto" Foreground="#616161" FontFamily="vazir" Text="لطفا کارت خود را در دستگاه کارت خوان بکشید" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
         
     </Grid>
 </Window>

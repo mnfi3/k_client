@@ -26,11 +26,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_ok" Click="btn_ok_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#67aa39" Grid.Column="1" Content="بله">
+                <Button x:Name="btn_ok" Click="btn_ok_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#dd388E3C" Grid.Column="1" Content="بله">
 
                 </Button>
 
-                <Button x:Name="btn_cancel" Click="btn_cancel_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#7986CB"  Grid.Column="0" Content="خیر">
+                <Button x:Name="btn_cancel" Click="btn_cancel_Click" FontSize="20" BorderBrush="{x:Null}" Margin="30 10" Width="auto" Height="auto" Background="#ddf44336"  Grid.Column="0" Content="خیر">
 
                 </Button>
             </Grid>

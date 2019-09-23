@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+        xmlns:local="clr-namespace:Kiosk.control"
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Style="{StaticResource vazir}"
@@ -10,15 +11,24 @@
 
 
 
-    <Grid Background="white">
+    <Grid Background="White" x:Name="grd_main">
         
+        
+       
+        
+        
+        
+        <Grid x:Name="grd_main2" Visibility="Visible">
+            
+       
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="cln_cart" Width="2.5*"/>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="2.5*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Visibility="Visible" Background="White">
-            
+
             <!--<Grid.Style>
                 <Style TargetType="{x:Type Grid}">
                     <Setter Property="Visibility" Value="Visible"/>
@@ -56,7 +66,7 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
-                
+
                 <StackPanel Grid.Row="1" Orientation="Vertical">
                     <!--<materialDesign:ColorZone Mode="Standard" Background="White" Padding="0.5">
                         
@@ -75,18 +85,20 @@
                         <TextBlock x:Name="txt_total" FontFamily="iransans" FontSize="17" Grid.Column="0" Margin="10 10 0 0" HorizontalAlignment="Left" FontWeight="Bold" Foreground="Black" Text="16000"/>
                         <TextBlock Grid.Column="1" FontFamily="iransans" FontSize="17" Margin="0 10 10 0" HorizontalAlignment="Right" FontWeight="Bold" Foreground="Black" Text="جمع حساب"/>
                     </Grid>
-                    
+
                 </StackPanel>
                 <Button Grid.Row="2" x:Name="btn_checkout" FontSize="16" Click="btn_checkout_Click" TouchUp="btn_checkout_Click"  Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Foreground="White"  Content="مدیریت سبد" Background="#00b356" ></Button>
             </Grid>
-            
-                
-                
-            
-            
+
+
+
+
+
         </Grid>
 
         <Grid Grid.Column="1" Background="#f1f1f1">
+
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -96,7 +108,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    
+
                 </Grid.ColumnDefinitions>
 
                 <TextBlock x:Name="txt_category_name" Grid.Column="1" Width="Auto"  Foreground="#444444" FontFamily="vazir" FontWeight="ExtraBold" Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
@@ -157,7 +169,7 @@
                 <!--anim-->
 
             </ListView>
-            
+
             <materialDesign:PopupBox  Grid.Row="2" x:Name="btn_setting" Visibility="Visible" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#f1f1f1">
                 <StackPanel Width="150">
                     <Button Click="Button_Click" Content="مدیریت"/>
@@ -169,7 +181,7 @@
 
         <Grid x:Name="grd_category" Grid.Column="2" Background="#fcfcfc">
 
-             
+
             <ListView Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  ScrollViewer.PanningMode="Both" x:Name="lst_categories"   ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="lst_categories_SelectionChanged">
 
                 <ListView.ItemsPanel>
@@ -196,10 +208,12 @@
                             <EventTrigger RoutedEvent="Loaded">
                                 <EventTrigger.Actions>
                                     <BeginStoryboard>
-                                        --><!--<Storyboard>
+                                        -->
+                        <!--<Storyboard>
                                             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.1">
                                             </DoubleAnimation>
-                                        </Storyboard>--><!--
+                                        </Storyboard>-->
+                        <!--
                                         
 
                                     </BeginStoryboard>
@@ -207,7 +221,7 @@
                             </EventTrigger>
                         </Style.Triggers>-->
                     </Style>
-                    
+
                 </ListView.ItemContainerStyle>
                 <!--disable hilight-->
 
@@ -253,6 +267,17 @@
                     <Button x:Name="btn_cart" Grid.Column="1"  Click="btn_cart_Click" FontSize="20" Height="70"  Foreground="White" Background="#67aa39" Content=" مدیریت سبد خرید"  BorderBrush="{x:Null}" Margin="50 10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FontFamily="Vazir"></Button>
 
        </Grid>-->
+
+        </Grid>
+
+
+        <!--progress-->
+        <Viewbox  Width="150" Height="150"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            
+            <local:CircleProgress x:Name="prg_loading" />
+        </Viewbox>
 
     </Grid>
 </Window>

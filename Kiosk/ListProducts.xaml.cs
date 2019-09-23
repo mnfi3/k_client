@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Stimulsoft.Report;
 using System.Drawing.Printing;
+using System.Windows.Media.Effects;
 
 namespace Kiosk
 {
@@ -51,6 +52,10 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            G.resetTimer(timeFinishHandler);
+
+            grd_main2.Effect = new BlurEffect();
+            prg_loading.Start();
             //show btn_back_to_restaurants button if have more than one restaurant
             if (G.restaurants.Count > 1)
             {
@@ -83,6 +88,15 @@ namespace Kiosk
             //report.Print(false, setting);
         }
 
+        private void timeFinishHandler(object sender, EventArgs e)
+        {
+            MessageBox.Show("time finished in list products");
+            ListRestaurant _window = new ListRestaurant(true);
+            _window.Show();
+            this.Close();
+        }
+
+
         private void Report_Printing(object sender, EventArgs e)
         {
             //when printing
@@ -113,9 +127,17 @@ namespace Kiosk
 
         private void btn_cart_Click(object sender, RoutedEventArgs e)
         {
-            CartView _cartView = new CartView();
-            _cartView.Show();
-            this.Close();
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+            {
+                App.Current.Windows[intCounter].Close();
+            }
+            ListRestaurant _window = new ListRestaurant(true);
+            _window.Show();
+
+            //CartView _cartView = new CartView();
+            //_cartView.Show();
+            //this.Close();
+
             //if (_cartView.ShowDialog() == true)
             //{
             //    //PrintReceipt print = new PrintReceipt();
@@ -260,6 +282,10 @@ namespace Kiosk
                     );
                
             }
+
+            grd_main2.Effect = null;
+            prg_loading.Stop();
+            prg_loading.Visibility = Visibility.Collapsed;
 
            
         }

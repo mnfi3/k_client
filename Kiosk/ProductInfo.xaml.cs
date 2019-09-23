@@ -15,6 +15,7 @@ using Kiosk.control;
 using Kiosk.model;
 using Kiosk.system;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 
 namespace Kiosk
 {
@@ -55,6 +56,9 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //slideInLeft();
+            BlurEffect blur = new BlurEffect();
+            btn_add.Effect = blur;
+            btn_cancel.Effect = blur;
 
             txt_name.Text = product.name;
             txt_count.Text = Utils.toPersianNum(count);
@@ -86,6 +90,8 @@ namespace Kiosk
 
             refreshCartItem();
             desserts_loaded = true;
+            btn_add.Effect = null;
+            btn_cancel.Effect = null;
         }
 
 

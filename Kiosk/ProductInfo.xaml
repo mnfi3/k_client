@@ -211,7 +211,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txt_price" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text="25,000 تومان"/>
+                <TextBlock x:Name="txt_price" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                 <TextBlock x:Name="txt_name" FontSize="25" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
             </Grid>
 
@@ -228,7 +228,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="txt_total" Margin="5" Foreground="#121c1b" Text="26,000 تومان" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="txt_total" Margin="5" Foreground="#121c1b" Text="" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
                     <TextBlock Margin="5" Foreground="#616161" Text="   : جمع" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
                 </Grid>
 

@@ -213,3 +213,7 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\ItemPrinter.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\ItemPrinter.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\Toast.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\Toast.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\CircleProgress.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\CircleProgress.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\Kiosk_MarkupCompile.lref

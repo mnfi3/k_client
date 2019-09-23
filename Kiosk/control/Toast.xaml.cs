@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -32,6 +33,7 @@ namespace Kiosk.control
         private const string COLOR_ERROR = "#99f44336";
 
         private static Toast toast;
+        private Grid grid = null;
 
 
         private int timeSecond;
@@ -49,8 +51,20 @@ namespace Kiosk.control
             this.Left = G.width;
         }
 
+        public Toast(string text, int second, ref Grid g)
+        {
+            InitializeComponent();
+            timeSecond = second;
+            StartCloseTimer();
+            txt_text.Text = text;
+            this.Left = G.width;
+            this.grid = g;
+            
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (grid != null) grid.Effect =  new BlurEffect();
             slideInLeft();
         }
 
@@ -58,12 +72,19 @@ namespace Kiosk.control
         private void slideInLeft()
         {
             DoubleAnimation slideInRight = new DoubleAnimation();
+            slideInRight.Completed += new EventHandler(slideInFinished);
             slideInRight.From = G.width;
             slideInRight.To = G.width/2 - 250;
             slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(200));
             slideInRight.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slideInRight);
         }
+
+        private void slideInFinished(object sender, EventArgs e)
+        {
+            if (grid != null) grid.Effect = new BlurEffect();
+        }
+
         private void slideOutRight()
         {
             DoubleAnimation slideOutLeft = new DoubleAnimation();
@@ -77,8 +98,8 @@ namespace Kiosk.control
         }
         private void slideOutFinished(object sender, EventArgs e)
         {
+            if(grid != null) this.grid.Effect = null;
             this.Close();
-            //DialogResult = added;
         }
 
 
@@ -117,10 +138,22 @@ namespace Kiosk.control
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_SUCCESS);
             toast.ShowDialog();
         }
+        public static void successBlur(string text, ref Grid g, int second = 2)
+        {
+            toast = new Toast(text, second, ref g);
+            toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_SUCCESS);
+            toast.ShowDialog();
+        }
 
         public static void error(string text, int second = 2)
         {
             toast = new Toast(text, second);
+            toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_ERROR);
+            toast.ShowDialog();
+        }
+        public static void errorBlur(string text, ref Grid g, int second = 2)
+        {
+            toast = new Toast(text, second, ref g);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_ERROR);
             toast.ShowDialog();
         }
@@ -132,8 +165,18 @@ namespace Kiosk.control
             toast.ShowDialog();
         }
 
+        public static void messageBlur(string text, ref Grid g, int second = 2)
+        {
+            toast = new Toast(text, second, ref g);
+            toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_MESSAGE);
+            toast.ShowDialog();
+        }
+
+        
 
 
+
+      
 
 
 

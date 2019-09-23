@@ -35,19 +35,47 @@ namespace Kiosk
 
 
 
-
-        public static void setupTimer()
+        //timer config
+        private static EventHandler timeFinishEvent;
+        public static void resetTimer(EventHandler handler)
         {
+            //timeFinishEvent;
+            timeFinishEvent = new EventHandler(handler);
+            setupTimer();
+        }
+
+
+        private static void setupTimer()
+        {
+            //remove last timer
+            //disableTimer();
+
+            //config new timer
+            timer = new System.Timers.Timer();
             timer.Interval = 5000;
             timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true;
+            timer.AutoReset = false;
             timer.Enabled = true;
         }
 
-        public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            //MessageBox.Show("time finish");
+            //MessageBox.Show("hello from on Timed");
+            //disableTimer();
+            App.goStandBy();
+            //timeFinishEvent(new object(), new EventArgs());
         }
+
+        public static void disableTimer()
+        {
+            timer.Stop();
+            timer.Enabled = false;
+            timer.Dispose();
+        }
+
+
+
+
 
         public static Device getDevice(){
           return new DBDevice().getDevice();

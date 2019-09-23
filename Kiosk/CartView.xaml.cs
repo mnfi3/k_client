@@ -48,10 +48,21 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            G.resetTimer(timeFinishHandler);
             loadCartView();
 
            
         }
+
+        private void timeFinishHandler(object sender, EventArgs e)
+        {
+            Toast.message("time finished in cart view");
+            ListRestaurant _window = new ListRestaurant(true);
+            _window.Show();
+            this.Close();
+        }
+
+
 
 
         private async void loadCartView()
@@ -122,7 +133,7 @@ namespace Kiosk
             }
             else
             {
-                Toast.error("کد تخفیف معتبر نمی باشد");
+                Toast.errorBlur("کد تخفیف معتبر نمی باشد", ref grd_main, 2);
             }
         }
 

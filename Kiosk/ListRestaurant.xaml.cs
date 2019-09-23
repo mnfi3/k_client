@@ -48,9 +48,9 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            G.resetTimer(timeFinishHandler);
             if (standby)
             {
-                G.timer.Enabled = false;
                 ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
                 _clickToOrder.ShowDialog();
             }
@@ -75,6 +75,12 @@ namespace Kiosk
         private void animHandler(object sender,EventArgs e)
         {
 
+        }
+
+        private void timeFinishHandler(object sender, EventArgs e)
+        {
+            //ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
+            //_clickToOrder.ShowDialog();
         }
 
       

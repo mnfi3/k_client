@@ -35,21 +35,32 @@ namespace Kiosk.control
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string text = System.IO.File.ReadAllText(@"C:\dev\c_charp\Kiosk\Kiosk\zz.txt");
-            //MessageBox.Show(text);
-            //webview.NavigateToString(text);
-
-            ////Uri uri = new Uri(@"pack://Kiosk:,,,/zz.txt", UriKind.Absolute);
-            //Uri uri = new Uri("C:\\dev\\c_charp\\Kiosk\\Kiosk\\zz.txt");
-            //Stream stream = Application.GetResourceStream(uri).Stream;
-            //using (StreamReader reader = new StreamReader(stream))
+            //webview.Loaded += delegate
             //{
-            //    // Navigate to HTML document string  
-            //    this.webview.NavigateToString(reader.ReadToEnd());
-            //}                                                      
+                //webview.Navigate(new Uri("http://www.google.com/"));
+
+
+                //string text = System.IO.File.ReadAllText(@"C:\dev\c_charp\Kiosk\Kiosk\zz.html");
+                //MessageBox.Show(text);
+                //webview.NavigateToString("<html><body><span style='color:back'>hello</span></body></html>");
+
+                string curDir = Directory.GetCurrentDirectory();
+                this.webview.Source = new Uri(String.Format("file:///{0}/zz.html", curDir));
+
+                //Uri uri = new Uri(@"pack://Kiosk:,,,/zz.txt", UriKind.Absolute);
+                    
+            //};
+
+                                             
             //doPayment();
         }
 
+
+        private void webview_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            string script = "document.body.style.overflow ='hidden'";
+            webview.InvokeScript("execScript", new Object[] { script, "JavaScript" });
+        }
 
 
 
@@ -73,6 +84,8 @@ namespace Kiosk.control
             paymentHandler(buyResponse, new EventArgs());
             this.Close();
         }
+
+       
 
         
     }
