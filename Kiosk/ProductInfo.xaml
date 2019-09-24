@@ -250,7 +250,7 @@
                         <Button x:Name="btn_up" Click="btn_up_Click"  Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="75"  Kind="KeyboardArrowUp" Foreground="#616161" Margin="0,6"/>
                         </Button>
-                        <TextBlock x:Name="txt_count"  Foreground="#67aa39" FontSize="22" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>
+                        <TextBlock x:Name="txt_count"  Foreground="#00b356" FontSize="22" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1"  Grid.RowSpan="2"/>
                         <Button x:Name="btn_down" Click="btn_down_Click" Width="75" Height="75" Background="#fcfcfc" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="75" Height="75" Kind="KeyboardArrowDown" Foreground="#616161" Margin="0,6"/>
                         </Button>
@@ -269,8 +269,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#7986CB" Content="لغو"/>
-                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#67aa39" Content="افزودن به سبد خرید" FontFamily="Vazir"/>
+                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#f44336" Content="لغو"/>
+                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#00b356" Content="افزودن به سبد خرید" FontFamily="Vazir"/>
 
             </Grid>
         </Grid>

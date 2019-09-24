@@ -42,15 +42,7 @@ namespace Kiosk
 
         }
 
-        public static void goStandBy()
-        {
-            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
-            {
-                App.Current.Windows[intCounter].Close();
-            }
-            ListRestaurant _window = new ListRestaurant(true);
-            _window.Show();
-        }
+        
 
         
 

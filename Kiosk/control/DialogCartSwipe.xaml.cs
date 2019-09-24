@@ -56,6 +56,9 @@ namespace Kiosk.control
         }
 
 
+       
+
+
         private void webview_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             string script = "document.body.style.overflow ='hidden'";

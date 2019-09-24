@@ -43,10 +43,12 @@ namespace Kiosk.control
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             txt_price.Text = Utils.persian_split(0) + " تومان ";
             slideInBottom();
         }
 
+        
 
 
 

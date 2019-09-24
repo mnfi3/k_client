@@ -10,5 +10,6 @@ namespace Kiosk.system
     {
         public const bool DEBUG = true;
         public const string DB_CONNECTION = "server=localhost;database=Kiosk;Integrated Security=true;";
+        public const double STAND_BY_TIME = 20000;
     }
 }

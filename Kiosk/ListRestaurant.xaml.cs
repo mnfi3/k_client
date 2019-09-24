@@ -36,19 +36,25 @@ namespace Kiosk
         public ListRestaurant()
         {
             InitializeComponent();
+
+            G.restaurant = null;
+            G.cart.clear();
         }
 
         public ListRestaurant(bool standby)
         {
             InitializeComponent();
             this.standby = standby;
+
+            G.restaurant = null;
+            G.cart.clear();
         }
 
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            G.resetTimer(timeFinishHandler);
+            //G.resetTimer(timeFinishHandler);
             if (standby)
             {
                 ClickToOrder _clickToOrder = new ClickToOrder(animHandler);
@@ -66,8 +72,6 @@ namespace Kiosk
             else
             {
                 loadRestaurants();
-                G.restaurant = null;
-                G.cart.clear();
             }
            
             

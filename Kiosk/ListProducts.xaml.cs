@@ -32,14 +32,16 @@ namespace Kiosk
     {
 
         private Restaurant restaurant;
-
         Category active_category;
+        System.Timers.Timer timer = new System.Timers.Timer();
+
 
 
 
         public ListProducts()
         {
             InitializeComponent();
+
             this.Height = G.height;
             this.Width = G.width;
             this.cln_cart.Width =new  GridLength(0, GridUnitType.Star);
@@ -52,7 +54,7 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            G.resetTimer(timeFinishHandler);
+
 
             grd_main2.Effect = new BlurEffect();
             prg_loading.Start();
@@ -72,7 +74,6 @@ namespace Kiosk
             txt_total.Text = "ت "  + Utils.persian_split(G.cart.cost);
 
 
-
             //print test
             //StiReport report = new StiReport();
             //report.Load("Report.mrt");
@@ -88,13 +89,11 @@ namespace Kiosk
             //report.Print(false, setting);
         }
 
-        private void timeFinishHandler(object sender, EventArgs e)
-        {
-            MessageBox.Show("time finished in list products");
-            ListRestaurant _window = new ListRestaurant(true);
-            _window.Show();
-            this.Close();
-        }
+
+       
+      
+
+        
 
 
         private void Report_Printing(object sender, EventArgs e)
@@ -111,11 +110,11 @@ namespace Kiosk
 
 
 
-        private void animCallback(object sender, EventArgs e)
-        {
-            loadProducts();
-            loadCart();
-        }
+        //private void animCallback(object sender, EventArgs e)
+        //{
+        //    loadProducts();
+        //    loadCart();
+        //}
 
 
 
@@ -227,6 +226,7 @@ namespace Kiosk
 
         private void addToCartCallBack(object sender, EventArgs e)
         {
+            
             this.Show();
             if ((bool)sender == true)
             {
@@ -236,7 +236,7 @@ namespace Kiosk
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
                 txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
-                Toast.success ("به سبد خرید اضافه شد");
+                Toast.success ("به سبد خرید اضافه شد", 1);
 
             }
             else

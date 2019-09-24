@@ -27,7 +27,7 @@ namespace Kiosk
         private Product product;
         private CartItem cartItem;
         private int count = 1;
-        private Boolean added;
+        private bool added = false;
         private EventHandler addToCartHandler;
         private bool desserts_loaded = false;
 
@@ -55,6 +55,7 @@ namespace Kiosk
        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             //slideInLeft();
             BlurEffect blur = new BlurEffect();
             btn_add.Effect = blur;
@@ -79,6 +80,9 @@ namespace Kiosk
             }
             loadDesserts();
         }
+
+       
+
 
         private void dessertLoadedCallBack(object sender, EventArgs e)
         {

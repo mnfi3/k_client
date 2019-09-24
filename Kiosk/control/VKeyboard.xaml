@@ -273,7 +273,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <Button x:Name="btn_close" BorderBrush="{x:Null}" Background="#43A047" Grid.Column="0" Margin="10" Width="auto" Height="auto" Click="btn_close_Click" TouchDown="btn_close_TouchDown" >
+            <Button x:Name="btn_close" BorderBrush="{x:Null}" Background="#388E3C" Grid.Column="0" Margin="10" Width="auto" Height="auto" Click="btn_close_Click" TouchDown="btn_close_TouchDown" >
                 <materialDesign:PackIcon Kind="Tick" Width="auto" Height="auto"/>
             </Button>
 

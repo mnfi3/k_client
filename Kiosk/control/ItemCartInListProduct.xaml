@@ -79,7 +79,7 @@
                                 <Button x:Name="btn_up" Click="btn_up_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
                                     <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="50"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0"/>
                                 </Button>
-                                <TextBlock x:Name="txt_count" FontSize="15" FontWeight="Bold" Foreground="#67aa39" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
+                                <TextBlock x:Name="txt_count" FontSize="15" FontWeight="Bold" Foreground="#00b356" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
                                 <Button x:Name="btn_down" Click="btn_down_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                                     <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="50" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
                                 </Button>

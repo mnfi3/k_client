@@ -36,13 +36,13 @@ namespace Kiosk.control
         private Grid grid = null;
 
 
-        private int timeSecond;
+        private double timeSecond;
 
         //public Toast()
         //{
         //    InitializeComponent();
         //}
-        public Toast(string text, int second)
+        public Toast(string text, double second)
         {
             InitializeComponent();
             timeSecond = second;
@@ -51,7 +51,7 @@ namespace Kiosk.control
             this.Left = G.width;
         }
 
-        public Toast(string text, int second, ref Grid g)
+        public Toast(string text, double second, ref Grid g)
         {
             InitializeComponent();
             timeSecond = second;
@@ -125,47 +125,47 @@ namespace Kiosk.control
 
 
 
-       
 
 
 
 
 
 
-        public static void success(string text, int second = 2)
+
+        public static void success(string text, double second = 1.5)
         {
             toast = new Toast(text, second);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_SUCCESS);
             toast.ShowDialog();
         }
-        public static void successBlur(string text, ref Grid g, int second = 2)
+        public static void successBlur(string text, ref Grid g, double second = 1.5)
         {
             toast = new Toast(text, second, ref g);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_SUCCESS);
             toast.ShowDialog();
         }
 
-        public static void error(string text, int second = 2)
+        public static void error(string text, double second = 1.5)
         {
             toast = new Toast(text, second);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_ERROR);
             toast.ShowDialog();
         }
-        public static void errorBlur(string text, ref Grid g, int second = 2)
+        public static void errorBlur(string text, ref Grid g, double second = 1.5)
         {
             toast = new Toast(text, second, ref g);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_ERROR);
             toast.ShowDialog();
         }
 
-        public static void message(string text, int second = 2)
+        public static void message(string text, double second = 1.5)
         {
             toast = new Toast(text, second);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_MESSAGE);
             toast.ShowDialog();
         }
 
-        public static void messageBlur(string text, ref Grid g, int second = 2)
+        public static void messageBlur(string text, ref Grid g, double second = 1.5)
         {
             toast = new Toast(text, second, ref g);
             toast.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom(COLOR_MESSAGE);

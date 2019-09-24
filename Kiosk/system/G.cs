@@ -35,35 +35,20 @@ namespace Kiosk
 
 
 
-        //timer config
-        private static EventHandler timeFinishEvent;
-        public static void resetTimer(EventHandler handler)
-        {
-            //timeFinishEvent;
-            timeFinishEvent = new EventHandler(handler);
-            setupTimer();
-        }
 
-
-        private static void setupTimer()
+       
+        
+        public static void setupTimer(ElapsedEventHandler handler, bool remove_old_timer = true)
         {
-            //remove last timer
-            //disableTimer();
+            //remove old timer
+            if(remove_old_timer) disableTimer();
 
             //config new timer
             timer = new System.Timers.Timer();
-            timer.Interval = 5000;
-            timer.Elapsed += OnTimedEvent;
+            timer.Interval = Config.STAND_BY_TIME;
+            timer.Elapsed += new ElapsedEventHandler(handler);
             timer.AutoReset = false;
             timer.Enabled = true;
-        }
-
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            //MessageBox.Show("hello from on Timed");
-            //disableTimer();
-            App.goStandBy();
-            //timeFinishEvent(new object(), new EventArgs());
         }
 
         public static void disableTimer()
@@ -71,6 +56,7 @@ namespace Kiosk
             timer.Stop();
             timer.Enabled = false;
             timer.Dispose();
+            timer = null;
         }
 
 
