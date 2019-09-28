@@ -217,3 +217,9 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\CircleProgress.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\CircleProgress.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\Kiosk_MarkupCompile.lref
+C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Debug\Kiosk.exe.manifest
+C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Debug\Kiosk.application
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\Kiosk.exe.manifest
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\Kiosk.application
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\SwipePage.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Debug\control\SwipePage.g.cs

@@ -170,8 +170,12 @@ namespace Kiosk
             }
             else
             {
-                //handleShop();
-                Toast.success("پرداخت با موفقیت انجام شد", 5);
+                handleShop(response);
+                Toast.success("پرداخت با موفقیت انجام شد.لطفا رسیدهای خود را دریافت نمایید", 4);
+
+                ListRestaurant window = new ListRestaurant(true);
+                window.Show();
+                this.Close();
             }
             
            
@@ -190,10 +194,8 @@ namespace Kiosk
 
 
 
-        public void handleShop()
+        public void handleShop(BuyResponse response)
         {
-            grd_main.Effect = null;
-            grd_pay.Effect = null;
             DBOrder db_order = new DBOrder();
             db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
             db_order.saveReceipt(G.cart);
@@ -247,31 +249,43 @@ namespace Kiosk
         private void printReceipt()
         {
             //print test
-            //StiReport report = new StiReport();
-            //report.Load("Report.mrt");
-            //report.Compile();
-            //report["restaurant"] = G.restaurant.name;
-            //report["cost"] = Utils.persian_split(G.cart.cost) + " تومان ";
-            //report["d_cost"] = Utils.persian_split(G.cart.d_cost) + " تومان ";
-            //report["order_number"] = Utils.toPersianNum("1547");
+            PrinterSettings setting;
+            StiReport report = new StiReport();
+            report.Load("Report.mrt");
+            report.Compile();
+            report["restaurant"] = G.restaurant.name;
+            report["cost"] = Utils.persian_split(G.cart.cost) + " تومان ";
+            report["d_cost"] = Utils.persian_split(G.cart.d_cost) + " تومان ";
+            DateTime datetime = DateTime.Now;
+            report["order_number"] = Utils.toPersianNum(G.restaurant.id.ToString() + datetime.ToString("HHmms"));
             //report.Printed += Report_Printed;
             //report.Printing += Report_Printing;
-            //PrinterSettings setting = new PrinterSettings();
-            //setting.PrinterName = "ReceiptPrinter";
-            //report.Print(false, setting);
+            foreach (Printer printer in G.restaurant.printers)
+            {
+                try
+                {
+                    setting = new PrinterSettings();
+                    setting.PrinterName = printer.name;
+                    report.Print(false, setting);
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
 
-        private void Report_Printing(object sender, EventArgs e)
-        {
-            //when printing
-            //MessageBox.Show("printing");
-        }
+        //private void Report_Printing(object sender, EventArgs e)
+        //{
+        //    //when printing
+        //    //MessageBox.Show("printing");
+        //}
 
-        private void Report_Printed(object sender, EventArgs e)
-        {
-            //when printed
-            //MessageBox.Show("printed");
-        }
+        //private void Report_Printed(object sender, EventArgs e)
+        //{
+        //    //when printed
+        //    //MessageBox.Show("printed");
+        //}
        
 
 

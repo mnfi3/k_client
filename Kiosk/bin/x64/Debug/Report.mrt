@@ -178,9 +178,9 @@ FROM receipt</SqlCommand>
             </Text8>
             <Text9 Ref="14" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>2,0,0.7,0.3</ClientRectangle>
+              <ClientRectangle>1.9,0,0.7,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,12,Bold| Italic</Font>
+              <Font>Vazir,9</Font>
               <Guid>dd5fcb06d9164bf6a471f11af2ffba33</Guid>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -195,14 +195,14 @@ FROM receipt</SqlCommand>
               <Brush>Transparent</Brush>
               <ClientRectangle>0.1,0,1.9,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,10,Bold| Italic| Underline</Font>
+              <Font>Vazir,9</Font>
               <Guid>5d0f3d41a0f440d0a4a3cf12bae0cd02</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text10</Name>
               <Page isRef="4" />
               <Parent isRef="5" />
-              <Text>www.ezitech.ir</Text>
+              <Text>www.kiosk.arta-ind.com</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text10>
@@ -243,7 +243,7 @@ FROM receipt</SqlCommand>
         </PageHeaderBand1>
         <PageFooterBand1 Ref="18" type="PageFooterBand" isKey="true">
           <Brush>Transparent</Brush>
-          <ClientRectangle>0,4.42,2.62,0.8</ClientRectangle>
+          <ClientRectangle>0,4.1,2.62,0.8</ClientRectangle>
           <Components isList="true" count="4">
             <Text14 Ref="19" type="Text" isKey="true">
               <Brush>Transparent</Brush>
@@ -423,7 +423,7 @@ FROM receipt</SqlCommand>
       <Guid>8e5956c1f8a24e9e82ad9f6713575ba9</Guid>
       <Margins>0.39,0.39,0.39,0.39</Margins>
       <Name>Page1</Name>
-      <PageHeight>6</PageHeight>
+      <PageHeight>3.5</PageHeight>
       <PageWidth>3.4</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
@@ -445,10 +445,10 @@ FROM receipt</SqlCommand>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>9/8/2019 4:18:52 PM</ReportChanged>
+  <ReportChanged>9/28/2019 3:45:53 PM</ReportChanged>
   <ReportCreated>9/8/2019 12:07:37 PM</ReportCreated>
   <ReportFile>C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Debug\Report.mrt</ReportFile>
-  <ReportGuid>235aa26b925a4f2782894cfa7b4b9610</ReportGuid>
+  <ReportGuid>b531ad06329e4167ae8c403f32a6cb95</ReportGuid>
   <ReportImage isNull="true" />
   <ReportName>Report</ReportName>
   <ReportUnit>Inches</ReportUnit>
