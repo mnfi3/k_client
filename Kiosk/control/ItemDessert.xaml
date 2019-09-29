@@ -10,10 +10,12 @@
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              Width="200"
-             Margin="10 0"
+             Height="auto"
+             Margin="10 5"
               >
     <Border  x:Name="PulseBox"
                         Background="Transparent" RenderTransformOrigin="0.5,0.5" CornerRadius="15">
+        
         <Border.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -47,7 +49,7 @@
             <!--<cachedImage:Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" x:Name="img_dessert" Width="auto" Margin="5" Height="auto" Grid.Row="1" Source="../img/ic_onion.png"/>-->
 
 
-            <TextBlock x:Name="txt_price" Grid.Row="2" Margin="5" Foreground="#121c1b"  FontSize="14" Text="1,200 تومان"  HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" Grid.Row="2" Margin="5" Foreground="#121c1b"  FontSize="14" Text="1,200 تومان"  HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
 
         </Grid>
     </Border>

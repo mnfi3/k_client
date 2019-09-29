@@ -9,7 +9,7 @@
     
     <Grid Background="White">
              
-        <Button x:Name="btn_close" Click="btn_exit_Click" Width="200" Height="100" Content="خروج"/>
+        <Button x:Name="btn_close" Click="btn_exit_Click" Width="auto" Height="auto" Content="خروج" Foreground="White" Background="White" />
 
     </Grid>
 </Window>

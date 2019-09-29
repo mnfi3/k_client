@@ -211,7 +211,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txt_price" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
+                <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" FontSize="22" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                 <TextBlock x:Name="txt_name" FontSize="25" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
             </Grid>
 
@@ -228,7 +228,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="txt_total" Margin="5" Foreground="#121c1b" Text="" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="txt_total" Margin="5" FlowDirection="RightToLeft" Foreground="#121c1b" Text="" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
                     <TextBlock Margin="5" Foreground="#616161" Text="   : جمع" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
                 </Grid>
 
@@ -269,7 +269,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#f44336" Content="لغو"/>
+                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#BDBDBD" Content="لغو"/>
                 <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#00b356" Content="افزودن به سبد خرید" FontFamily="Vazir"/>
 
             </Grid>

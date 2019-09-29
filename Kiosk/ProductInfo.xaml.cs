@@ -56,14 +56,15 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //slideInLeft();
+            slideInRight();
+
             BlurEffect blur = new BlurEffect();
             btn_add.Effect = blur;
             btn_cancel.Effect = blur;
 
             txt_name.Text = product.name;
             txt_count.Text = Utils.toPersianNum(count);
-            txt_price.Text = Utils.persian_split(product.d_price) + "  تومان  ";
+            txt_price.Text = Utils.persian_split(product.d_price) + " تومان ";
             txt_description.Text = product.description;
             img_product.Source = null;
             img_product.ImageUrl = product.image;
@@ -76,12 +77,50 @@ namespace Kiosk
                 btn_cancel.Content = "حذف از سبد خرید";
                 count = cartItem.count;
                 txt_count.Text = Utils.toPersianNum(count);
-                txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
+                txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
             }
             loadDesserts();
         }
 
-       
+
+
+
+        private void slideInRight()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideInFinished);
+            slide.From = G.width;
+            slide.To = 0;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slide);
+        }
+
+        private void slideInFinished(object sender, EventArgs e)
+        {
+        }
+
+        private void slideOutRight()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideOutFinished);
+            slide.From = 0;
+            slide.To = G.width;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slide);
+        }
+        private void slideOutFinished(object sender, EventArgs e)
+        {
+            addToCartHandler(added, new EventArgs());
+            this.Close();
+        }
+
+
+
+
+
+
 
 
         private void dessertLoadedCallBack(object sender, EventArgs e)
@@ -129,18 +168,15 @@ namespace Kiosk
 
 
 
-        private void btn_exit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
+       
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
             if (!desserts_loaded) return;
             added = false;
             //slideOutRight();
-            addToCartHandler(added, new EventArgs());
-            this.Close();
+            //addToCartHandler(added, new EventArgs());
+            //this.Close();
+            slideOutRight();
            
         }
 
@@ -151,8 +187,9 @@ namespace Kiosk
             G.cart.items.Add(this.cartItem);
             added = true;
             //slideOutRight();
-            addToCartHandler(added, new EventArgs());
-            this.Close();
+            //addToCartHandler(added, new EventArgs());
+            //this.Close();
+            slideOutRight();
             
         }
 
@@ -194,16 +231,7 @@ namespace Kiosk
             ItemDessert _item = (ItemDessert)(sender as ListView).SelectedItem;
             if (_item != null)
             {
-                if (_item.is_selected == true)
-                {
-                    _item.PulseBox.Background = Brushes.Transparent;
-                    _item.is_selected = false;
-                }
-                else
-                {
-                    _item.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom("#fcfcfc");
-                    _item.is_selected = true;
-                }
+                _item.setSelection();
             }
 
             refreshCartItem();
@@ -226,19 +254,9 @@ namespace Kiosk
             ItemDessert _item = (ItemDessert)(sender as ListView).SelectedItem;
             if (_item != null)
             {
-                if (_item.is_selected == true)
-                {
-                    _item.PulseBox.Background = Brushes.Transparent;
-                    _item.is_selected = false;
-                }
-                else
-                {
-                    _item.PulseBox.Background = (Brush)new BrushConverter().ConvertFrom("#fcfcfc");
-                    _item.is_selected = true;
-                }
+                _item.setSelection();
             }
             
-
 
             refreshCartItem();
 
@@ -311,7 +329,7 @@ namespace Kiosk
 
                 foreach (ItemDessert item in lst_dessert2.Items)
                 {
-                    item.txt_price.Text = Utils.persian_split(item.dessert.price_small) + " تومان ";
+                    item.txt_price.Text =Utils.persian_split(item.dessert.price_small) + " تومان ";
                 }
             }
             else if (dessert_size == "medium")
@@ -370,7 +388,7 @@ namespace Kiosk
             txt_count.Text = Utils.toPersianNum(count);
             this.dessert_size = cartItem.desserts_size;
             resetDessertsPrices();
-            txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
+            txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
             resetBackColors();
 
             foreach (ItemDessert _item1 in lst_dessert1.Items)
@@ -427,7 +445,7 @@ namespace Kiosk
             }
 
 
-            txt_total.Text = Utils.persian_split(cartItem.cost) + "  تومان  ";
+            txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
         }
 
 

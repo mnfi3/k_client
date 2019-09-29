@@ -41,7 +41,7 @@ namespace Kiosk.control
         }
 
 
-        private void doPayment()
+        private  void doPayment()
         {
             Pos pos = new Pos(paymentCallBack);
             BuyRequest buyRequest = new BuyRequest();

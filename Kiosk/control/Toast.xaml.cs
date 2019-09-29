@@ -28,9 +28,9 @@ namespace Kiosk.control
         //Toast.success();
         //Toast.error();
 
-        private const string COLOR_MESSAGE = "#9978909C";
-        private const string COLOR_SUCCESS = "#aa4CAF50";
-        private const string COLOR_ERROR = "#99f44336";
+        private const string COLOR_MESSAGE = "#dd78909C";
+        private const string COLOR_SUCCESS = "#dd00b356";
+        private const string COLOR_ERROR = "#ddf44336";
 
         private static Toast toast;
         private Grid grid = null;
@@ -65,19 +65,22 @@ namespace Kiosk.control
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (grid != null) grid.Effect =  new BlurEffect();
-            slideInLeft();
+            //slideInTop();
+            sizeUp();
         }
 
 
-        private void slideInLeft()
+
+
+        private void slideInTop()
         {
-            DoubleAnimation slideInRight = new DoubleAnimation();
-            slideInRight.Completed += new EventHandler(slideInFinished);
-            slideInRight.From = G.width;
-            slideInRight.To = G.width/2 - 250;
-            slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(200));
-            slideInRight.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slideInRight);
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideInFinished);
+            slide.From =0;
+            slide.To = G.height / 2 - 50;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(TopProperty, slide);
         }
 
         private void slideInFinished(object sender, EventArgs e)
@@ -85,22 +88,72 @@ namespace Kiosk.control
             if (grid != null) grid.Effect = new BlurEffect();
         }
 
-        private void slideOutRight()
+        private void slideOutBottom()
         {
-            DoubleAnimation slideOutLeft = new DoubleAnimation();
-            slideOutLeft.Completed += new EventHandler(slideOutFinished);
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideOutFinished);
 
-            slideOutLeft.From = G.width / 2 - 250;
-            slideOutLeft.To = G.width;
-            slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(200));
-            slideOutLeft.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slideOutLeft);
+            slide.From = G.height / 2 - 50;
+            slide.To = G.height;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(TopProperty, slide);
         }
         private void slideOutFinished(object sender, EventArgs e)
         {
             if(grid != null) this.grid.Effect = null;
             this.Close();
         }
+
+
+        //=================================================
+        private void sizeUp()
+        {
+            DoubleAnimation w = new DoubleAnimation();
+            w.Completed += new EventHandler(sizeUpFinished);
+            w.From = 0;
+            w.To = 500;
+            w.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            w.AccelerationRatio = .5;
+            //DoubleAnimation h = new DoubleAnimation();
+            //h.From = 0;
+            //w.To = 100;
+            //h.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            //h.AccelerationRatio = .5;
+
+            this.BeginAnimation(WidthProperty, w);
+            //this.BeginAnimation(HeightProperty, h);
+        }
+
+        private void sizeUpFinished(object sender, EventArgs e)
+        {
+            if (grid != null) grid.Effect = new BlurEffect();
+        }
+
+        private void sizeDown()
+        {
+            DoubleAnimation w = new DoubleAnimation();
+            w.Completed += new EventHandler(sizeDownFinished);
+            w.From = 500;
+            w.To = 0;
+            w.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            w.AccelerationRatio = .5;
+            //DoubleAnimation h = new DoubleAnimation();
+            //w.From = 100;
+            //h.To = 0;
+            //h.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            //h.AccelerationRatio = .5;
+
+            this.BeginAnimation(WidthProperty, w);
+            //this.BeginAnimation(HeightProperty, h);
+        }
+        private void sizeDownFinished(object sender, EventArgs e)
+        {
+            if (grid != null) this.grid.Effect = null;
+            this.Close();
+        }
+
+
 
 
 
@@ -120,7 +173,8 @@ namespace Kiosk.control
             DispatcherTimer timer = (DispatcherTimer)sender;
             timer.Stop();
             timer.Tick -= TimerTick;
-            slideOutRight();
+            //slideOutBottom();
+            sizeDown();
         }
 
 
@@ -183,12 +237,14 @@ namespace Kiosk.control
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!Config.DEBUG) return;
-            slideOutRight();
+            //slideOutBottom();
+            sizeDown();
         }
 
         private void Window_TouchDown(object sender, TouchEventArgs e)
         {
-            slideOutRight();
+            //slideOutBottom();
+            sizeDown();
         }
     }
 }

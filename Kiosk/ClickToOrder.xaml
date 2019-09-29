@@ -26,8 +26,8 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <Border BorderBrush="white" BorderThickness="4" VerticalAlignment="center" HorizontalAlignment="Center" MouseDown="open_list_restaurant">
-                <TextBlock Foreground="white" >
+            <Border BorderBrush="white" BorderThickness="4" CornerRadius="30" VerticalAlignment="center" HorizontalAlignment="Center" MouseDown="open_list_restaurant">
+                <TextBlock Foreground="white"  FontFamily="vazir">
                     <TextBlock.Effect>
                         <DropShadowEffect ShadowDepth="0" Color="Black" BlurRadius="10" />
                     </TextBlock.Effect>

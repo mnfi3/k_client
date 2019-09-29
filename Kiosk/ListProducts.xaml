@@ -82,8 +82,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="txt_total" FontFamily="iransans" FontSize="17" Grid.Column="0" Margin="10 10 0 0" HorizontalAlignment="Left" FontWeight="Bold" Foreground="Black" Text="16000"/>
-                        <TextBlock Grid.Column="1" FontFamily="iransans" FontSize="17" Margin="0 10 10 0" HorizontalAlignment="Right" FontWeight="Bold" Foreground="Black" Text="جمع حساب"/>
+                            <TextBlock x:Name="txt_total" FontFamily="vazir" FlowDirection="RightToLeft" FontSize="17" Grid.Column="0" Margin="10 10 0 0" HorizontalAlignment="Left" FontWeight="Bold" Foreground="Black" Text="16000"/>
+                        <TextBlock Grid.Column="1" FontFamily="vazir" FontSize="17" Margin="0 10 10 0" HorizontalAlignment="Right" FontWeight="Bold" Foreground="Black" Text="جمع حساب"/>
                     </Grid>
 
                 </StackPanel>

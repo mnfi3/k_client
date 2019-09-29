@@ -9,7 +9,7 @@
         Title="DialogCartSwipe" Height="100" Width="500" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown" TouchDown="Window_TouchDown">
 
 
-    <Border  x:Name="PulseBox" Background="#9978909C"  BorderThickness="1" BorderBrush="#FF5722" CornerRadius="10" RenderTransformOrigin="0.5,0.5">
+    <Border  x:Name="PulseBox" Background="#9978909C"  BorderThickness="1" BorderBrush="#222222" CornerRadius="10" RenderTransformOrigin="0.5,0.5">
         <Grid >
             <TextBlock x:Name="txt_text" Foreground="#F9F9F9" Text="dialog" Margin="10" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="auto" TextAlignment="Center" FontSize="17" FontWeight="Light"  />
         </Grid>

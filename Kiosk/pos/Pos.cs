@@ -23,34 +23,38 @@ namespace Kiosk.pos
 
 
 
-        public void requestBuy(BuyRequest buy)
+        public async void requestBuy(BuyRequest buy)
         {
-            BuyResponse buy_response = new BuyResponse();
-            string requestJosn = JsonConvert.SerializeObject(buy);
-            string responseJson = socketRequest(requestJosn);
-            //string responseJson = httpRequest(requestJosn).Result;
-            if (responseJson.Contains("[error]"))
-            {
-                responseJson = responseJson.Replace("[error]", "");
-                buy_response.error = responseJson;
-            }
-            else
-            {
-                buy_response = JsonConvert.DeserializeObject<BuyResponse>(responseJson);
-                if (buy_response.ReturnCode != 100)
+            //Task.Run(() =>
+            //{
+                BuyResponse buy_response = new BuyResponse();
+                string requestJosn = JsonConvert.SerializeObject(buy);
+                string responseJson = await socketRequest(requestJosn);
+                //string responseJson = httpRequest(requestJosn).Result;
+            //});
+                if (responseJson.Contains("[error]"))
                 {
-                    PosMessage mes = new PosMessage(buy_response.ReturnCode, buy_response.ReasonCode);
-                    buy_response.error = mes.getMessage();
-                    buy_response.success = false;
+                    responseJson = responseJson.Replace("[error]", "");
+                    buy_response.error = responseJson;
                 }
                 else
                 {
-                    buy_response.error = "";
-                    buy_response.success = true;
+                    buy_response = JsonConvert.DeserializeObject<BuyResponse>(responseJson);
+                    if (buy_response.ReturnCode != 100)
+                    {
+                        PosMessage mes = new PosMessage(buy_response.ReturnCode, buy_response.ReasonCode);
+                        buy_response.error = mes.getMessage();
+                        buy_response.success = false;
+                    }
+                    else
+                    {
+                        buy_response.error = "";
+                        buy_response.success = true;
+                    }
                 }
-            }
 
-            responseHandler(buy_response, new EventArgs());
+                responseHandler(buy_response, new EventArgs());
+            
         }
 
 
@@ -58,39 +62,45 @@ namespace Kiosk.pos
 
 
 
-        private string socketRequest(String str_comm)
+        private async Task<string> socketRequest(String str_comm)
         {
-            System.Net.Sockets.TcpClient client = null;
-            try
+            string message = "[error] خطا در ارتباط با پوز";
+            await Task.Run(() =>
             {
-                System.Net.ServicePointManager.Expect100Continue = false;
-                byte[] resvCommand = new byte[10025];
-                client = new System.Net.Sockets.TcpClient(PosConf.IP, PosConf.PORT); // Create a new connection  
-                if (!client.Connected)
-                {
-                    return "[error] لطفا پورت سرویس را بررسی نمایید";
-                }
-                NetworkStream stream = client.GetStream();
-                byte[] sendCommand = Encoding.ASCII.GetBytes(str_comm);
-                stream.Write(sendCommand, 0, sendCommand.Length);
-                stream.ReadTimeout = PosConf.READ_TIMEOUT;
-                int recvSize = stream.Read(resvCommand, 0, resvCommand.Length);
-                string jsonStr = Encoding.UTF8.GetString(resvCommand);
-                client.Close();
-                return jsonStr;
-            }
-            catch (Exception ex)
-            {
+                System.Net.Sockets.TcpClient client = null;
                 try
                 {
+                    System.Net.ServicePointManager.Expect100Continue = false;
+                    byte[] resvCommand = new byte[10025];
+                    client = new System.Net.Sockets.TcpClient(PosConf.IP, PosConf.PORT); // Create a new connection  
+                    if (!client.Connected)
+                    {
+                        message = "[error] لطفا پورت سرویس را بررسی نمایید";
+                    }
+                    NetworkStream stream = client.GetStream();
+                    byte[] sendCommand = Encoding.ASCII.GetBytes(str_comm);
+                    stream.Write(sendCommand, 0, sendCommand.Length);
+                    stream.ReadTimeout = PosConf.READ_TIMEOUT;
+                    int recvSize = stream.Read(resvCommand, 0, resvCommand.Length);
+                    string jsonStr = Encoding.UTF8.GetString(resvCommand);
                     client.Close();
-                    return "[error] " + ex.Message.ToString();
+                    message = jsonStr;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return "[error] خطا در ارتباط سوکت";
+                    try
+                    {
+                        client.Close();
+                        message = "[error] خطا در ارتباط سوکت";
+                    }
+                    catch
+                    {
+                        message = "[error] خطا در ارتباط سوکت";
+                    }
                 }
-            }
+            });
+
+            return message;
         }
 
 

@@ -26,8 +26,8 @@ using Microsoft.Reporting.WinForms;
 using System.Drawing.Printing;
 using System.IO;
 using Stimulsoft.Report;
-using System.Windows.Media.Animation;
 using Kiosk.pos.model;
+using System.Windows.Media.Animation;
 
 namespace Kiosk
 {
@@ -43,12 +43,17 @@ namespace Kiosk
         {
             InitializeComponent();
 
+            this.Height = G.height;
+            this.Width = G.width;
+
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadCartView();
+
+            slideInRight();
         }
 
         
@@ -74,10 +79,7 @@ namespace Kiosk
 
 
 
-        private void btn_exit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+       
 
         private void lst_cart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -86,9 +88,7 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            ListProducts _list = new ListProducts();
-            _list.Show();
-            this.Close();
+            slideOutLeft();
         }
 
 
@@ -124,7 +124,7 @@ namespace Kiosk
             }
             else
             {
-                Toast.errorBlur("کد تخفیف معتبر نمی باشد", ref grd_main, 2);
+                Toast.error("کد تخفیف معتبر نمی باشد");
             }
         }
 
@@ -140,9 +140,9 @@ namespace Kiosk
             }
 
 
-            BlurEffect blur = new BlurEffect();
-            grd_main.Effect = blur;
-            grd_pay.Effect = blur;
+            //BlurEffect blur = new BlurEffect();
+            //grd_main.Effect = blur;
+            //grd_pay.Effect = blur;
             DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
             //dialog.ShowDialog();
             if (dialog.ShowDialog() == true)
@@ -152,16 +152,16 @@ namespace Kiosk
             }
             else
             {
-                grd_main.Effect = null;
-                grd_pay.Effect = null;
+                //grd_main.Effect = null;
+                //grd_pay.Effect = null;
             }
         }
 
 
         private void paymentCallBack(object sender, EventArgs e)
         {
-            grd_main.Effect = null;
-            grd_pay.Effect = null;
+            //grd_main.Effect = null;
+            //grd_pay.Effect = null;
 
             BuyResponse response = sender as BuyResponse;
             if (!response.success)
@@ -286,6 +286,40 @@ namespace Kiosk
         //    //when printed
         //    //MessageBox.Show("printed");
         //}
+
+
+
+        private void slideInRight()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideInFinished);
+            slide.From = G.width;
+            slide.To = 0;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slide);
+        }
+
+        private void slideInFinished(object sender, EventArgs e)
+        {
+        }
+
+        private void slideOutLeft()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideOutFinished);
+            slide.From = 0;
+            slide.To = -G.width;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slide);
+        }
+        private void slideOutFinished(object sender, EventArgs e)
+        {
+            ListProducts _list = new ListProducts();
+            _list.Show();
+            this.Close();
+        }
        
 
 

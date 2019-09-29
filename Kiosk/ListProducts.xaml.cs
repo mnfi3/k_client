@@ -22,6 +22,7 @@ using System.Windows.Shapes;
 using Stimulsoft.Report;
 using System.Drawing.Printing;
 using System.Windows.Media.Effects;
+using System.Windows.Media.Animation;
 
 namespace Kiosk
 {
@@ -54,7 +55,7 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            slideInRight();
 
             grd_main2.Effect = new BlurEffect();
             prg_loading.Start();
@@ -71,7 +72,7 @@ namespace Kiosk
 
             loadProducts();
             loadCart();
-            txt_total.Text = "ت "  + Utils.persian_split(G.cart.cost);
+            txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
 
 
             //print test
@@ -226,7 +227,7 @@ namespace Kiosk
 
         private void addToCartCallBack(object sender, EventArgs e)
         {
-            
+
             this.Show();
             if ((bool)sender == true)
             {
@@ -235,14 +236,14 @@ namespace Kiosk
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
-                txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
+                txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
                 Toast.success ("به سبد خرید اضافه شد", 1);
 
             }
             else
             {
                 loadCart();
-                txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
+                txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
                 if (G.cart.items.Count > 0)
                 {
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
@@ -351,16 +352,15 @@ namespace Kiosk
 
         private void btn_checkout_Click(object sender, RoutedEventArgs e)
         {
-            CartView _cartView = new CartView();
-            _cartView.Show();
-            this.Close();
+            slideOutLeft();
+            
 
         }
 
 
         private void on_cost_changed_handler(object sender, EventArgs e)
         {
-            txt_total.Text = "ت " + Utils.persian_split(G.cart.cost);
+            txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
         }
 
 
@@ -425,6 +425,39 @@ namespace Kiosk
             }
         }
 
+
+
+        private void slideInRight()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideInFinished);
+            slide.From = G.width;
+            slide.To = 0;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slide);
+        }
+
+        private void slideInFinished(object sender, EventArgs e)
+        {
+        }
+
+        private void slideOutLeft()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(slideOutFinished);
+            slide.From = 0;
+            slide.To = -G.width;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.AccelerationRatio = .5;
+            this.BeginAnimation(LeftProperty, slide);
+        }
+        private void slideOutFinished(object sender, EventArgs e)
+        {
+            CartView _cartView = new CartView();
+            _cartView.Show();
+            this.Close();
+        }
 
     }
 }

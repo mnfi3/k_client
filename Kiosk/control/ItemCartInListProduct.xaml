@@ -93,7 +93,7 @@
                 <Grid Grid.Row="1" Margin="5">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <TextBlock x:Name="txt_product" Foreground="#121c1b" Text="جوجه کباب" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right"  VerticalAlignment="Center"/>
-                        <TextBlock x:Name="txt_price" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
                     </StackPanel>
 
                 </Grid>
