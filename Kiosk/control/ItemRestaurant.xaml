@@ -7,9 +7,9 @@
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             Style="{StaticResource vazir}"
+             FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              mc:Ignorable="d" 
-             Height="450" FontFamily="Vazir">
+             Height="450" >
     <Grid x:Name="grd_main" Margin="30" >
 
         <Grid.RowDefinitions>
@@ -30,7 +30,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Margin="10 10 10 2">
-            <TextBlock x:Name="txt_name"  Text="رستوران ستاره باران" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Vazir" />
+            <TextBlock x:Name="txt_name"  Text="رستوران ستاره باران" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"  />
         </Grid>
 
     </Grid>

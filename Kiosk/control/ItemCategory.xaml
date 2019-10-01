@@ -6,11 +6,11 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             Style="{StaticResource vazir}"
+             FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              mc:Ignorable="d" 
              Height="200"
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
-             Loaded="UserControl_Loaded"
+             Loaded="UserControl_Loaded" 
              >
     <Grid>
         <!--<Grid.Triggers>

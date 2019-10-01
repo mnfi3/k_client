@@ -32,5 +32,29 @@ namespace Kiosk.Properties {
                 return ((string)(this["KioskConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string device {
+            get {
+                return ((string)(this["device"]));
+            }
+            set {
+                this["device"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string restaurants {
+            get {
+                return ((string)(this["restaurants"]));
+            }
+            set {
+                this["restaurants"] = value;
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ using Kiosk.api;
 using Kiosk.model;
 using ToastNotifications;
 using Kiosk.control;
+using Kiosk.preference;
 
 namespace Kiosk
 {
@@ -97,6 +98,7 @@ namespace Kiosk
             if (res.status == 1)
             {
                 new DBDevice().logoutDevice();
+                //new STDevice().logoutDevice();
                 G.isLoggedIn = false;
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Collapsed;
@@ -125,6 +127,8 @@ namespace Kiosk
             {
                 DBDevice db_device = new DBDevice();
                 db_device.saveDevice(device);
+                //STDevice st_device = new STDevice();
+                //st_device.saveDevice(device);
                 G.isLoggedIn = true;
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Visible;

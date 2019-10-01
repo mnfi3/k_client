@@ -5,7 +5,7 @@
         xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource vazir}"
+         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Height="800" Width="1400" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
 
 
@@ -122,7 +122,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
-                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید" FontFamily="Vazir"/>
+                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید" />
                 <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert1_SelectionChanged"  >
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -270,7 +270,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#BDBDBD" Content="لغو"/>
-                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#00b356" Content="افزودن به سبد خرید" FontFamily="Vazir"/>
+                <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#00b356" Content="افزودن به سبد خرید"/>
 
             </Grid>
         </Grid>

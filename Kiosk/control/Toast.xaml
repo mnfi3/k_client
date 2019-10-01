@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="Transparent"
-        Style="{StaticResource vazir}"
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         WindowStartupLocation="CenterScreen"
-        Title="DialogCartSwipe" Height="100" Width="500" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown" TouchDown="Window_TouchDown">
+        Title="DialogCartSwipe" Height="100" Width="500" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown" TouchDown="Window_TouchDown" >
 
 
     <Border  x:Name="PulseBox" Background="#9978909C"  BorderThickness="1" BorderBrush="#222222" CornerRadius="10" RenderTransformOrigin="0.5,0.5">

@@ -16,6 +16,7 @@ using Kiosk.model;
 using Kiosk.api;
 using ToastNotifications;
 using Kiosk.db;
+using Kiosk.preference;
 
 namespace Kiosk.control
 {
@@ -65,6 +66,8 @@ namespace Kiosk.control
             Response res = sender as Response;
             DBRestaurant db_res = new DBRestaurant();
             db_res.removeRestaurant(this.restaurant);
+            //STRestaurant st_res = new STRestaurant();
+            //st_res.removeRestaurant(this.restaurant);
             G.restaurants = G.getRestaurants();
             this.Visibility = Visibility.Collapsed;
         }

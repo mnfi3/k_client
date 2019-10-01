@@ -4,8 +4,8 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="#E1F5FE"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource vazir}"
-        Title="DialogManageApp" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
+        Title="DialogManageApp" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" >
     <Grid Margin="20 20">
 
         <Grid.RowDefinitions>

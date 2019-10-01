@@ -4,7 +4,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="Transparent"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource vazir}"
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Title="DialogPaymentAccept" Height="300" Width="500" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
 
     <Border  x:Name="PulseBox" Background="#99ffffff"  BorderThickness="1" BorderBrush="#1976D2" CornerRadius="15" RenderTransformOrigin="0.5,0.5">

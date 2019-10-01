@@ -17,12 +17,16 @@
            
 
             <!--fonts-->
-            <Style x:Key="iransans">
-                <Setter Property="TextElement.FontFamily" Value="IRANSans, /Kiosk;component/fonts/iransans/#IRANSans(FaNum)_Medium" />
+            <Style x:Key="iransans_medium">
+                <Setter Property="TextElement.FontFamily" Value="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium" />
             </Style>
 
+            <Style x:Key="iransans">
+                <Setter Property="TextElement.FontFamily" Value="/Kiosk;component/fonts/iransans/#IRANSans" />
+            </Style>
+            
             <Style x:Key="vazir">
-                <Setter Property="TextElement.FontFamily" Value="vazir, /Kiosk;component/fonts/vazir/#Vazir" />
+                <Setter Property="TextElement.FontFamily" Value="Vazir" />
             </Style>
 
             <Style x:Key="vazir_fd">

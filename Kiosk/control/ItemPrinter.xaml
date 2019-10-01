@@ -4,8 +4,8 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		Background="#eeeeee"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource vazir}"
-             Height="70" Width="400" Loaded="UserControl_Loaded" PreviewMouseDown="UserControl_PreviewMouseDown">
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
+             Height="70" Width="400" Loaded="UserControl_Loaded" PreviewMouseDown="UserControl_PreviewMouseDown" >
     <Grid>
         
         <Grid.ColumnDefinitions>

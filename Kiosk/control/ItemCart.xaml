@@ -7,9 +7,9 @@
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             Style="{StaticResource vazir}"
+            FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
-             Height="300"
+             Height="300" 
              >
     <Grid Margin="5 10" >
 

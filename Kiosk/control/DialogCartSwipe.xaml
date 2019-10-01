@@ -6,6 +6,7 @@
 		Background="#ffffff"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         WindowStartupLocation="CenterScreen"
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Title="DialogCartSwipe" Height="500" Width="650" AllowsTransparency="False" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         
@@ -16,7 +17,7 @@
 
         <!--<WebBrowser Grid.Row="0"  x:Name="webview" LoadCompleted="webview_LoadCompleted" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="20"  OverridesDefaultStyle="False" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>-->
         <local:SwipePage Grid.Row="0"  x:Name="webview"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="20"  OverridesDefaultStyle="False" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <TextBlock  Grid.Row="1"  Margin="10" TextWrapping="Wrap"  Height="auto" Width="auto" Foreground="#616161" FontFamily="vazir" Text="لطفا کارت خود را در دستگاه کارت خوان بکشید" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock  Grid.Row="1"  Margin="10" TextWrapping="Wrap"  Height="auto" Width="auto" Foreground="#616161"  Text="لطفا کارت خود را در دستگاه کارت خوان بکشید" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
         
     </Grid>
 </Window>

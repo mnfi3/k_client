@@ -7,8 +7,8 @@
 		     Background="{x:Null}"
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource vazir}"
-         ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None" FontFamily="Vazir">
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
+         ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None"  >
     <Grid Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
@@ -16,14 +16,14 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0" Margin="20" >
-            <TextBlock x:Name="txt_restaurant" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Text="restaurant" FontSize="22" FontWeight="Bold" FontFamily="Vazir"/>
+            <TextBlock x:Name="txt_restaurant" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Text="restaurant" FontSize="22" FontWeight="Bold" />
             <Button x:Name="btn_back" Click="btn_back_Click"  Content="بازگشت" Width="100" Height="50" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="200 20"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="20">
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="auto" FlowDirection="RightToLeft" FontSize="20"  Text="پرینترهای مجاز رستوران را انتخاب کنید"/>
             
-            <ListView x:Name="lst_printers" VerticalAlignment="Top" Background="LightGray" Height="auto" Width="420" HorizontalAlignment="Center" Margin="0 60 0 100" FontFamily="Vazir" >
+            <ListView x:Name="lst_printers" VerticalAlignment="Top" Background="LightGray" Height="auto" Width="420" HorizontalAlignment="Center" Margin="0 60 0 100"  >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Top" Columns="1"/>
@@ -45,7 +45,7 @@
                 
                 
             </ListView>
-            <Button x:Name="btn_save" Click="btn_save_Click"  Content="ذخیره" FontSize="20" Width="150" Height="50" FontWeight="Bold" Background="Green" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40" FontFamily="Vazir"/>
+            <Button x:Name="btn_save" Click="btn_save_Click"  Content="ذخیره" FontSize="20" Width="150" Height="50" FontWeight="Bold" Background="Green" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40" />
 
 
         </Grid>

@@ -7,11 +7,11 @@
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		     Background="{x:Null}"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             Style="{StaticResource vazir}"
+             FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              Height="350"
-             FontFamily="vazir">
+             >
 
     <Grid>
         <Border  x:Name="PulseBox"
@@ -35,9 +35,9 @@
                 <Grid Grid.Row="0">
 
 
-                    <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="20"/>
+                    <Border Name="Mask" Background="#ECEFF1" BorderThickness=".5" CornerRadius="20"/>
                     <StackPanel>
-                        <cachedImage:Image Width="auto" Height="250" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <cachedImage:Image Width="auto" Height="250" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <StackPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=Mask}" />
                         </StackPanel.OpacityMask>
@@ -48,7 +48,7 @@
 
 
                     <Border Margin="5" CornerRadius="20"   VerticalAlignment="Top" HorizontalAlignment="Left" Background="#f44336"  BorderThickness="1">
-                        <TextBlock x:Name="lbl_discount" FontWeight="Bold" Foreground="White" FontSize="22" Text="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="auto" Width="auto"   Margin="10 5" />
+                        <TextBlock x:Name="lbl_discount" FontWeight="Bold"  Foreground="White" FontSize="22" Text="25%" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="auto" Width="auto"   Margin="10 5" />
                     </Border>
 
 

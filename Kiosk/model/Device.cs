@@ -21,9 +21,9 @@ namespace Kiosk.model
         public Device()
         {
             id = 0;
-            user_name = null;
+            user_name = "";
             name = "";
-            token = null;
+            token = "";
             client_key = "";
         }
 

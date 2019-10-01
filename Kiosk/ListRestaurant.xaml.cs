@@ -23,6 +23,7 @@ using Kiosk.db;
 using Kiosk.model;
 using Kiosk.system;
 using System.Windows.Media.Animation;
+using Kiosk.preference;
 
 namespace Kiosk
 {
@@ -142,6 +143,8 @@ namespace Kiosk
         {
             DBRestaurant db_rest = new DBRestaurant();
             List<Restaurant> rests = db_rest.getRestaurants();
+            //STRestaurant st_rest = new STRestaurant();
+            //List<Restaurant> rests = st_rest.getRestaurants();
             ItemRestaurant _item;
 
             foreach (Restaurant rest in rests)

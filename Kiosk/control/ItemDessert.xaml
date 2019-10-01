@@ -12,6 +12,7 @@
              Width="200"
              Height="auto"
              Margin="10 5"
+             FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
               >
     <Border  x:Name="PulseBox"
                         Background="Transparent" RenderTransformOrigin="0.5,0.5" CornerRadius="15">

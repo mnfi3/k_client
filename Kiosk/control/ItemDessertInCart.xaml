@@ -8,7 +8,8 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
              Height="35"
-             Loaded="UserControl_Loaded">
+             Loaded="UserControl_Loaded"
+             FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium">
 
 
     <Border  x:Name="PulseBox"
@@ -35,7 +36,7 @@
                     <materialDesign:PackIcon HorizontalAlignment="Left" Height="30" Width="30" Kind="Close" Foreground="#424242" VerticalAlignment="Center" />
                 </Button>
 
-                <TextBlock x:Name="txt_name" Grid.Column="1" Text="پیاز      " FontSize="18" Foreground="#616161" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" FlowDirection="RightToLeft" FontFamily="Vazir"/>
+                <TextBlock x:Name="txt_name" Grid.Column="1" Text="پیاز      " FontSize="18" Foreground="#616161" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" FlowDirection="RightToLeft" />
 
             </Grid>
         </Grid>

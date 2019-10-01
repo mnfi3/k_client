@@ -201,14 +201,8 @@
     <Compile Include="control\MB.xaml.cs">
       <DependentUpon>MB.xaml</DependentUpon>
     </Compile>
-    <Compile Include="control\Receipt.xaml.cs">
-      <DependentUpon>Receipt.xaml</DependentUpon>
-    </Compile>
     <Compile Include="control\SwipePage.xaml.cs">
       <DependentUpon>SwipePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="control\TempItemTest.xaml.cs">
-      <DependentUpon>TempItemTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="control\Toast.xaml.cs">
       <DependentUpon>Toast.xaml</DependentUpon>
@@ -242,15 +236,16 @@
     <Compile Include="pos\Pos.cs" />
     <Compile Include="pos\PosConf.cs" />
     <Compile Include="pos\PosMessage.cs" />
-    <Compile Include="PrintReceipt.xaml.cs">
-      <DependentUpon>PrintReceipt.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="preference\STDevice.cs" />
+    <Compile Include="preference\Storage.cs" />
+    <Compile Include="preference\STRestaurant.cs" />
     <Compile Include="ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="RestaurantDetails.xaml.cs">
       <DependentUpon>RestaurantDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="system\Config.cs" />
     <Compile Include="system\G.cs" />
@@ -337,15 +332,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="control\Receipt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="control\SwipePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="control\TempItemTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -406,10 +393,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PrintReceipt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ProductInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -449,6 +432,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="fonts\broya\BRoya.ttf" />
+    <Resource Include="fonts\broya\BRoyaBold.ttf" />
     <None Include="Kiosk_TemporaryKey.pfx" />
     <None Include="Report.mrt" />
     <Resource Include="fonts\vazir\Vazir-Black.ttf" />

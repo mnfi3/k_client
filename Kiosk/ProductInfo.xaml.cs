@@ -91,7 +91,7 @@ namespace Kiosk
             slide.Completed += new EventHandler(slideInFinished);
             slide.From = G.width;
             slide.To = 0;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slide);
         }
@@ -106,7 +106,7 @@ namespace Kiosk
             slide.Completed += new EventHandler(slideOutFinished);
             slide.From = 0;
             slide.To = G.width;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slide);
         }

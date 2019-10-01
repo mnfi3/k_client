@@ -88,21 +88,24 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            slideOutLeft();
+            //slideOutLeft();
+            ListProducts _list = new ListProducts();
+            _list.Show();
+            this.Close();
         }
 
 
         private void txt_discount_code_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            BlurEffect blur = new BlurEffect();
-            grd_products.Effect = blur;
-            grd_pay.Effect = blur;
+            //BlurEffect blur = new BlurEffect();
+            //grd_products.Effect = blur;
+            //grd_pay.Effect = blur;
 
             VKeyboard _keyboard = new VKeyboard(ref txt_discount_code);
             if (_keyboard.ShowDialog() == true)
             {
-                grd_products.Effect = null;
-                grd_pay.Effect = null;
+                //grd_products.Effect = null;
+                //grd_pay.Effect = null;
             }
         }
 
@@ -140,9 +143,10 @@ namespace Kiosk
             }
 
 
-            //BlurEffect blur = new BlurEffect();
-            //grd_main.Effect = blur;
-            //grd_pay.Effect = blur;
+            BlurEffect blur = new BlurEffect();
+            grd_main.Effect = blur;
+            grd_pay.Effect = blur;
+            Task.Delay(100);
             DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
             //dialog.ShowDialog();
             if (dialog.ShowDialog() == true)
@@ -152,8 +156,8 @@ namespace Kiosk
             }
             else
             {
-                //grd_main.Effect = null;
-                //grd_pay.Effect = null;
+                grd_main.Effect = null;
+                grd_pay.Effect = null;
             }
         }
 
@@ -295,7 +299,7 @@ namespace Kiosk
             slide.Completed += new EventHandler(slideInFinished);
             slide.From = G.width;
             slide.To = 0;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slide);
         }
@@ -310,7 +314,7 @@ namespace Kiosk
             slide.Completed += new EventHandler(slideOutFinished);
             slide.From = 0;
             slide.To = -G.width;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slide);
         }
@@ -320,6 +324,8 @@ namespace Kiosk
             _list.Show();
             this.Close();
         }
+
+        
        
 
 

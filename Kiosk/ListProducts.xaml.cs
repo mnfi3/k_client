@@ -23,6 +23,7 @@ using Stimulsoft.Report;
 using System.Drawing.Printing;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Animation;
+using Kiosk.preference;
 
 namespace Kiosk
 {
@@ -35,6 +36,7 @@ namespace Kiosk
         private Restaurant restaurant;
         Category active_category;
         System.Timers.Timer timer = new System.Timers.Timer();
+        bool is_loaded_data = false;
 
 
 
@@ -57,22 +59,8 @@ namespace Kiosk
         {
             slideInRight();
 
-            grd_main2.Effect = new BlurEffect();
-            prg_loading.Start();
-            //show btn_back_to_restaurants button if have more than one restaurant
-            if (G.restaurants.Count > 1)
-            {
-                btn_back_to_restaurants.Visibility = Visibility.Visible;
-            }
-
-            if (G.cart.items.Count > 0)
-            {
-                this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
-            }
-
-            loadProducts();
-            loadCart();
-            txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
+           
+           
 
 
             //print test
@@ -287,6 +275,7 @@ namespace Kiosk
             grd_main2.Effect = null;
             prg_loading.Stop();
             prg_loading.Visibility = Visibility.Collapsed;
+            is_loaded_data = true;
 
            
         }
@@ -352,7 +341,10 @@ namespace Kiosk
 
         private void btn_checkout_Click(object sender, RoutedEventArgs e)
         {
-            slideOutLeft();
+            //slideOutLeft();
+            CartView _cartView = new CartView();
+            _cartView.Show();
+            this.Close();
             
 
         }
@@ -433,13 +425,35 @@ namespace Kiosk
             slide.Completed += new EventHandler(slideInFinished);
             slide.From = G.width;
             slide.To = 0;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slide);
         }
 
         private void slideInFinished(object sender, EventArgs e)
         {
+            if (!is_loaded_data)
+            {
+                grd_main2.Effect = new BlurEffect();
+                prg_loading.Start();
+                prg_loading.Visibility = Visibility.Visible;
+            }
+            //show btn_back_to_restaurants button if have more than one restaurant
+            if (G.restaurants.Count > 1)
+            {
+                btn_back_to_restaurants.Visibility = Visibility.Visible;
+            }
+
+            if (G.cart.items.Count > 0)
+            {
+                this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
+            }
+
+            loadProducts();
+            loadCart();
+            txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
+
+           
         }
 
         private void slideOutLeft()
@@ -448,7 +462,7 @@ namespace Kiosk
             slide.Completed += new EventHandler(slideOutFinished);
             slide.From = 0;
             slide.To = -G.width;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(200));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             this.BeginAnimation(LeftProperty, slide);
         }

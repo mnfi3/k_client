@@ -21,6 +21,7 @@ using System.Data.SqlClient;
 using Kiosk.api;
 using Kiosk.model;
 using Newtonsoft.Json;
+using Kiosk.preference;
 
 
 namespace Kiosk
@@ -38,14 +39,12 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            DBDevice db_device = new DBDevice();
-
             if (!Security.licenceChecker())
             {
                 LicenseManager _manager = new LicenseManager();
                 _manager.Show();
             }
-            else if (!db_device.isLoggedIn())
+            else if (!G.isLoggedIn)
             {
                 DeviceLogin _device = new DeviceLogin();
                 _device.Show();

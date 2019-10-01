@@ -5,8 +5,8 @@
         xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Style="{StaticResource vazir}"
-        Height="800" Width="1400" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+        FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
+        Height="800" Width="1400" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" >
     
     
     <Grid Background="#f4f4f4" x:Name="grd_main">
@@ -52,7 +52,6 @@
                              VerticalAlignment="Bottom"
                              HorizontalAlignment="Stretch"
                              FontWeight="Light"
-                             FontFamily="Vazir"
                              />
                     
                     <Grid x:Name="grd_payment" Margin="0 10 0 100"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  >
@@ -70,7 +69,7 @@
 
                                 <Button x:Name="btn_back_to_restaurants" Click="btn_back_to_restaurants_Click"  Grid.Row="0"  FontSize="15" Height="auto" Width="auto"  Foreground="DarkGray" Background="Transparent" BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="DarkGray" FontFamily="Vazir" FontSize="22" FontWeight="Bold" VerticalAlignment="Center" Margin="5" Text="بازگشت به لیست غذاها"/>
+                                        <TextBlock Foreground="DarkGray"  FontSize="22" FontWeight="Bold" VerticalAlignment="Center" Margin="5" Text="بازگشت به لیست غذاها"/>
                                         <materialDesign:PackIcon Foreground="DarkGray" Kind="KeyboardArrowRight" Width="50" Height="60"/>
                                     </StackPanel>
                                 </Button>
@@ -86,13 +85,13 @@
 
                                 <Border x:Name="grd_discount" Grid.Row="2" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
                                     <StackPanel Margin="15" VerticalAlignment="Center" Orientation="Vertical">
-                                        <TextBlock Foreground="BlueViolet" Margin="10"  Grid.Row="6" HorizontalAlignment="Center" FontSize="20" FontWeight="Light" TextAlignment="Right" VerticalAlignment="Bottom" Text="اگر کد تخفیف دارید آن را وارد کنید" FontFamily="Vazir"/>
-                                        <TextBox x:Name="txt_discount_code"  Margin="20" materialDesign:HintAssist.IsFloating="True" Foreground="#263238" Text="" FlowDirection="RightToLeft"  Width="250" Height="70" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="22"   PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#673AB7"   FontFamily="Vazir" FontWeight="Bold">
+                                        <TextBlock Foreground="BlueViolet" Margin="10"  Grid.Row="6" HorizontalAlignment="Center" FontSize="20" FontWeight="Light" TextAlignment="Right" VerticalAlignment="Bottom" Text="اگر کد تخفیف دارید آن را وارد کنید" />
+                                        <TextBox x:Name="txt_discount_code"  Margin="20" materialDesign:HintAssist.IsFloating="True" Foreground="#263238" Text="" FlowDirection="RightToLeft"  Width="250" Height="70" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="22"   PreviewMouseLeftButtonDown="txt_discount_code_PreviewMouseLeftButtonDown" BorderBrush="#673AB7"    FontWeight="Bold">
                                             <materialDesign:HintAssist.Hint>
                                                 <Label DockPanel.Dock="Right" Foreground="#37474F" Content="کد تخفیف را وارد کنید" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="auto"/>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                        <Button x:Name="btn_discount" Background="#673AB7" Click="btn_discount_Click" BorderBrush="{x:Null}" Foreground="White" Margin="20" Width="200" Height="50"  VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="18" FontWeight="Light" Content="اعمال کد تخفیف" FontFamily="Vazir"/>
+                                        <Button x:Name="btn_discount" Background="#673AB7" Click="btn_discount_Click" BorderBrush="{x:Null}" Foreground="White" Margin="20" Width="200" Height="50"  VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="18" FontWeight="Light" Content="اعمال کد تخفیف" />
                                     </StackPanel>
                                 </Border>
                             </Grid>

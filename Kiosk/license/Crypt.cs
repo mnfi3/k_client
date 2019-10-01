@@ -37,7 +37,7 @@ namespace Kiosk.license
             }
             catch
             {
-                return "decryption failed check your text";
+                return "#fail";
             }
 
         }
@@ -65,7 +65,7 @@ namespace Kiosk.license
             }
             catch
             {
-                return "encryption failed check your text";
+                return "#fail";
             }
         }
 

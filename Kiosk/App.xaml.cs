@@ -11,6 +11,7 @@ using Kiosk.model;
 using Kiosk.db;
 using System.Timers;
 using Kiosk.api;
+using Kiosk.preference;
 
 namespace Kiosk
 {
@@ -22,6 +23,7 @@ namespace Kiosk
 
         public App()
         {
+
             //configuration
             getDisplayHeightAndWidth();
 
@@ -30,15 +32,17 @@ namespace Kiosk
             G.PRIVATE_KEY = "kkk" + G.client_key + "yyy";
             DBDevice db_device = new DBDevice();
             G.device = db_device.getDevice();
+            //STDevice st_device = new STDevice();
+            //G.device = st_device.getDevice();
             loginCheck();
 
-            //G.timer = new System.Timers.Timer();
             G.cart = new Cart();
             G.restaurants = new DBRestaurant().getRestaurants();
             G.isLoggedIn = db_device.isLoggedIn();
+            //G.restaurants = new STRestaurant().getRestaurants();
+            //G.isLoggedIn = st_device.isLoggedIn();
 
             syncRestaurants();
-
 
         }
 
@@ -62,6 +66,11 @@ namespace Kiosk
                 db_device.logoutDevice();
                 G.isLoggedIn = false;
                 G.device = db_device.getDevice();
+
+                //STDevice st_device = new STDevice();
+                //st_device.logoutDevice();
+                //G.isLoggedIn = false;
+                //G.device = st_device.getDevice();
             }
         }
 
@@ -77,9 +86,11 @@ namespace Kiosk
         {
             List<Restaurant> rests = sender as List<Restaurant>;
             DBRestaurant db_rest = new DBRestaurant();
+            //STRestaurant st_rest = new STRestaurant();
             foreach (Restaurant rest in rests)
             {
                 db_rest.updateRestaurantInfo(rest);
+                //st_rest.updateRestaurantInfo(rest);
             }
         }
 

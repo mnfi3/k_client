@@ -34,10 +34,10 @@ namespace Kiosk.model
         public Restaurant()
         {
             id = 0;
-            user_name = null;
+            user_name = "";
             name = "";
             image = "";
-            token = null;
+            token = "";
             categories = new List<Category>();
         }
 

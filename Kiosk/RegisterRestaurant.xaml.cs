@@ -18,6 +18,7 @@ using System.Diagnostics;
 using Kiosk.api;
 using ToastNotifications;
 using Kiosk.system;
+using Kiosk.preference;
 
 namespace Kiosk
 {
@@ -83,6 +84,8 @@ namespace Kiosk
             {
                 DBRestaurant db_rest = new DBRestaurant();
                 db_rest.setRestaurant(restaurant);
+                //STRestaurant st_rest = new STRestaurant();
+                //st_rest.setRestaurant(restaurant);
                 G.restaurants = G.getRestaurants();
                 loadRests();
             }

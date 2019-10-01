@@ -8,6 +8,7 @@
              xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
+             FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              d:DesignHeight="100" d:DesignWidth="300"
              Width="auto" Height="100" Margin="10" Loaded="UserControl_Loaded">
     <Grid>
