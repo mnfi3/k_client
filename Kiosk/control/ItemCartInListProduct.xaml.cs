@@ -25,17 +25,20 @@ namespace Kiosk.control
 
         public CartItem cartItem;
         EventHandler costChangeHandler;
+        EventHandler removedHandler;
 
         public ItemCartInListProduct()
         {
             InitializeComponent();
         }
 
-        public ItemCartInListProduct(CartItem item, EventHandler h)
+        public ItemCartInListProduct(CartItem item, EventHandler up_down_handler, EventHandler remove_handler)
         {
             InitializeComponent();
             this.cartItem = item;
-            costChangeHandler += h;
+            costChangeHandler += up_down_handler;
+            removedHandler += remove_handler;
+            
         }
 
 
@@ -73,6 +76,26 @@ namespace Kiosk.control
                         item.count--;
                         txt_count.Text = Utils.toPersianNum(item.count);
                         costChangeHandler(new object(), new EventArgs());
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+        private void btn_remove_Click(object sender, RoutedEventArgs e)
+        {
+            DialogPublic _d = new DialogPublic("آیا می خواهید " + cartItem.product.name + " را از سبد خرید حذف کنید؟");
+            if (_d.ShowDialog() == true)
+            {
+                for (int i = 0; i < G.cart.items.Count; i++)
+                {
+                    if (this.cartItem.product.id == G.cart.items[i].product.id)
+                    {
+                        G.cart.items.RemoveAt(i);
+                        this.Visibility = Visibility.Collapsed;
+                        removedHandler(cartItem.product.name, new EventArgs());
                         break;
                     }
                 }

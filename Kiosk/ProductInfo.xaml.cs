@@ -56,7 +56,7 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            slideInRight();
+            fadeIn();
 
             BlurEffect blur = new BlurEffect();
             btn_add.Effect = blur;
@@ -69,6 +69,13 @@ namespace Kiosk
             img_product.Source = null;
             img_product.ImageUrl = product.image;
             cartItem.product = this.product;
+
+
+            //img_product.Name = "image";
+            //ScaleTransform transform = new ScaleTransform(0, 0);
+            //img_product.RenderTransform = transform;
+            //this.RegisterName("image", transform);
+
 
             if (G.cart.isExistInCart(this.product) == true)
             {
@@ -85,32 +92,38 @@ namespace Kiosk
 
 
 
-        private void slideInRight()
+        private void fadeIn()
         {
             DoubleAnimation slide = new DoubleAnimation();
-            slide.Completed += new EventHandler(slideInFinished);
-            slide.From = G.width;
+            slide.Completed += new EventHandler(fadeInFinished);
+            //slide.From = G.width;
+            slide.From = 0;
+            //slide.To = 0;
+            slide.To = 1;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
+            slide.AccelerationRatio = .5;
+            //this.BeginAnimation(LeftProperty, slide);
+            this.BeginAnimation(OpacityProperty, slide);
+        }
+
+        private void fadeInFinished(object sender, EventArgs e)
+        {
+        }
+
+        private void fadeOut()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(fadeOutFinished);
+            //slide.From = 0;
+            slide.From = 1;
+            //slide.To = G.width;
             slide.To = 0;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slide);
+            //this.BeginAnimation(LeftProperty, slide);
+            this.BeginAnimation(OpacityProperty, slide);
         }
-
-        private void slideInFinished(object sender, EventArgs e)
-        {
-        }
-
-        private void slideOutRight()
-        {
-            DoubleAnimation slide = new DoubleAnimation();
-            slide.Completed += new EventHandler(slideOutFinished);
-            slide.From = 0;
-            slide.To = G.width;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
-            slide.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slide);
-        }
-        private void slideOutFinished(object sender, EventArgs e)
+        private void fadeOutFinished(object sender, EventArgs e)
         {
             addToCartHandler(added, new EventArgs());
             this.Close();
@@ -176,7 +189,7 @@ namespace Kiosk
             //slideOutRight();
             //addToCartHandler(added, new EventArgs());
             //this.Close();
-            slideOutRight();
+            fadeOut();
            
         }
 
@@ -189,7 +202,7 @@ namespace Kiosk
             //slideOutRight();
             //addToCartHandler(added, new EventArgs());
             //this.Close();
-            slideOutRight();
+            fadeOut();
             
         }
 

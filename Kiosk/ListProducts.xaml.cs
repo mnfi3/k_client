@@ -41,6 +41,7 @@ namespace Kiosk
 
 
 
+
         public ListProducts()
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            slideInRight();
+            fadeIn();
 
            
            
@@ -281,17 +282,61 @@ namespace Kiosk
         }
 
 
-        private  void loadCart()
+        private async void loadCart()
         {
-            loadCart1();
-            //lst_cart.Items.Clear();
-            //ItemCartInListProduct _item;
-            
-            //foreach (CartItem i in G.cart.items)
-            //{
-            //    _item = new ItemCartInListProduct(i, on_cost_changed_handler);
-            //    lst_cart.Items.Add(_item);
-            //}
+            ItemCartInListProduct _item;
+
+            //add new items to listview
+            foreach (CartItem i in G.cart.items)
+            {
+                bool is_find = false;
+                foreach (ItemCartInListProduct ic in lst_cart.Items)
+                {
+                    if (i.product.id == ic.cartItem.product.id)
+                    {
+                        is_find = true;
+                        break;
+                    }
+                }
+
+                if (!is_find)
+                {
+                    _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
+                    lst_cart.Items.Add(_item);
+                    await Task.Delay(200);
+                }
+            }
+
+            //remove old item from listview
+            bool is_reload = false;
+            foreach (ItemCartInListProduct ic in lst_cart.Items)
+            {
+                bool is_exist = false;
+                foreach (CartItem i in G.cart.items)
+                {
+                    if (i.product.id == ic.cartItem.product.id)
+                    {
+                        is_exist = true;
+                        break;
+                    }
+                }
+
+                if (!is_exist)
+                {
+                    is_reload = true;
+                    break;
+                }
+            }
+
+            if (is_reload)
+            {
+                lst_cart.Items.Clear();
+                foreach (CartItem i in G.cart.items)
+                {
+                    _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
+                    lst_cart.Items.Add(_item);
+                }
+            }
         }
 
       
@@ -314,12 +359,16 @@ namespace Kiosk
         {
             lst_products.Items.Clear();
             ItemProduct _item;
+            int index = 0;
             foreach (Product p in c.products)
             {
+                if (c.id != active_category.id) return;
                 _item = new ItemProduct(p);
                 lst_products.Items.Add(_item);
                 await Task.Delay(70);
+                if (index == 0) lst_products.ScrollIntoView(lst_products.Items[0]);
             }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -355,82 +404,43 @@ namespace Kiosk
             txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
         }
 
-
-
-
-
-
-        private async void loadCart1()
+        private void on_cart_item_removed_handler(object sender, EventArgs e)
         {
-            ItemCartInListProduct _item;
+            txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
 
-            //add new items to listview
-            foreach (CartItem i in G.cart.items)
+            if (G.cart.items.Count > 0)
             {
-                bool is_find = false;
-                foreach (ItemCartInListProduct ic in lst_cart.Items)
-                {
-                    if (i.product.id == ic.cartItem.product.id)
-                    {
-                        is_find = true;
-                        break;
-                    }
-                }
-
-                if (!is_find)
-                {
-                    _item = new ItemCartInListProduct(i, on_cost_changed_handler);
-                    lst_cart.Items.Add(_item);
-                    await Task.Delay(200);
-                }
+                this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
+            }
+            else
+            {
+                this.cln_cart.Width = new GridLength(0, GridUnitType.Star);
             }
 
-            //remove old item from listview
-            bool is_reload = false;
-            foreach (ItemCartInListProduct ic in lst_cart.Items)
-            {
-                bool is_exist = false;
-                foreach (CartItem i in G.cart.items)
-                {
-                    if (i.product.id == ic.cartItem.product.id)
-                    {
-                        is_exist = true;
-                        break;
-                    }
-                }
-
-                if (!is_exist)
-                {
-                    is_reload = true;
-                    break;
-                }
-            }
-
-            if (is_reload)
-            {
-                lst_cart.Items.Clear();
-                foreach (CartItem i in G.cart.items)
-                {
-                    _item = new ItemCartInListProduct(i, on_cost_changed_handler);
-                    lst_cart.Items.Add(_item);
-                }
-            }
+            loadCart();
         }
 
 
 
-        private void slideInRight()
+
+
+
+
+        private void fadeIn()
         {
             DoubleAnimation slide = new DoubleAnimation();
-            slide.Completed += new EventHandler(slideInFinished);
-            slide.From = G.width;
-            slide.To = 0;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
+            slide.Completed += new EventHandler(fadeInFinished);
+            //slide.From = G.width;
+            slide.From = 0;
+            //slide.To = 0;
+            slide.To = 1;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
             slide.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slide);
+            //this.BeginAnimation(LeftProperty, slide);
+            this.BeginAnimation(OpacityProperty, slide);
         }
 
-        private void slideInFinished(object sender, EventArgs e)
+        private void fadeInFinished(object sender, EventArgs e)
         {
             if (!is_loaded_data)
             {
@@ -456,17 +466,20 @@ namespace Kiosk
            
         }
 
-        private void slideOutLeft()
+        private void fadeOut()
         {
             DoubleAnimation slide = new DoubleAnimation();
-            slide.Completed += new EventHandler(slideOutFinished);
-            slide.From = 0;
-            slide.To = -G.width;
+            slide.Completed += new EventHandler(fadeOutFinished);
+            //slide.From = G.width;
+            slide.From = 1;
+            //slide.To = 0;
+            slide.To = 0;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slide);
+            //this.BeginAnimation(LeftProperty, slide);
+            this.BeginAnimation(OpacityProperty, slide);
         }
-        private void slideOutFinished(object sender, EventArgs e)
+        private void fadeOutFinished(object sender, EventArgs e)
         {
             CartView _cartView = new CartView();
             _cartView.Show();

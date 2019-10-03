@@ -75,6 +75,11 @@ namespace Kiosk
             this.Close();
         }
 
+        private void btn_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
 
 
 

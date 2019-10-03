@@ -45,7 +45,7 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <TextBlock FontWeight="Bold" x:Name="txt_category" Text="appetizer" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock FontWeight="Bold" x:Name="txt_category" Text="appetizer" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
 
             </Grid>

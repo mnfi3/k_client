@@ -74,12 +74,12 @@
                                     </StackPanel>
                                 </Button>
 
-                                <Border Grid.Row="1" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
+                                <Border x:Name="grd_price" Grid.Row="1" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
                                     <StackPanel  Orientation="Vertical" Margin="15" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                                         <TextBlock Foreground="Black" Margin="10 5"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Text=" : جمع مبلغ پرداختی"/>
-                                        <TextBlock x:Name="txt_cost" FlowDirection="RightToLeft" Foreground="#00b356" Margin="10 5"   HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Text="" FontWeight="Bold"/>
+                                        <TextBlock x:Name="txt_cost" FlowDirection="RightToLeft" Foreground="#00b356" Margin="10 5"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="" FontWeight="Bold"/>
                                         <TextBlock Foreground="Black" Margin="10 20 10 5"   HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Text=" : مبلغ پرداختی با تخفیف"/>
-                                        <TextBlock x:Name="txt_d_cost" FlowDirection="RightToLeft" Foreground="#00b356" Margin="10 5"   HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Text="" FontWeight="Bold"/>
+                                        <TextBlock x:Name="txt_d_cost" FlowDirection="RightToLeft" Foreground="#00b356" Margin="10 5"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Border>
 

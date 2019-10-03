@@ -53,7 +53,7 @@ namespace Kiosk
         {
             loadCartView();
 
-            slideInRight();
+            fadeIn();
         }
 
         
@@ -97,15 +97,17 @@ namespace Kiosk
 
         private void txt_discount_code_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //BlurEffect blur = new BlurEffect();
-            //grd_products.Effect = blur;
-            //grd_pay.Effect = blur;
+            BlurEffect blur = new BlurEffect();
+            grd_products.Effect = blur;
+            grd_price.Effect = blur;
+            btn_pay.Effect = blur;
 
             VKeyboard _keyboard = new VKeyboard(ref txt_discount_code);
             if (_keyboard.ShowDialog() == true)
             {
-                //grd_products.Effect = null;
-                //grd_pay.Effect = null;
+                grd_products.Effect = null;
+                grd_price.Effect = null;
+                btn_pay.Effect = null;
             }
         }
 
@@ -164,8 +166,8 @@ namespace Kiosk
 
         private void paymentCallBack(object sender, EventArgs e)
         {
-            //grd_main.Effect = null;
-            //grd_pay.Effect = null;
+            grd_main.Effect = null;
+            grd_pay.Effect = null;
 
             BuyResponse response = sender as BuyResponse;
             if (!response.success)
@@ -293,32 +295,38 @@ namespace Kiosk
 
 
 
-        private void slideInRight()
+        private void fadeIn()
         {
             DoubleAnimation slide = new DoubleAnimation();
-            slide.Completed += new EventHandler(slideInFinished);
-            slide.From = G.width;
+            slide.Completed += new EventHandler(fadeInFinished);
+            //slide.From = G.width;
+            slide.From = 0;
+            //slide.To = 0;
+            slide.To = 1;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
+            slide.AccelerationRatio = .5;
+            //this.BeginAnimation(LeftProperty, slide);
+            this.BeginAnimation(OpacityProperty, slide);
+        }
+
+        private void fadeInFinished(object sender, EventArgs e)
+        {
+        }
+
+        private void fadeOut()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            slide.Completed += new EventHandler(fadeInFinished);
+            //slide.From = G.width;
+            slide.From = 1;
+            //slide.To = 0;
             slide.To = 0;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slide);
+            //this.BeginAnimation(LeftProperty, slide);
+            this.BeginAnimation(OpacityProperty, slide);
         }
-
-        private void slideInFinished(object sender, EventArgs e)
-        {
-        }
-
-        private void slideOutLeft()
-        {
-            DoubleAnimation slide = new DoubleAnimation();
-            slide.Completed += new EventHandler(slideOutFinished);
-            slide.From = 0;
-            slide.To = -G.width;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
-            slide.AccelerationRatio = .5;
-            this.BeginAnimation(LeftProperty, slide);
-        }
-        private void slideOutFinished(object sender, EventArgs e)
+        private void fadeOutFinished(object sender, EventArgs e)
         {
             ListProducts _list = new ListProducts();
             _list.Show();

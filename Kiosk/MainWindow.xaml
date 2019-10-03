@@ -9,7 +9,7 @@
     
     <Grid Background="White">
              
-        <Button x:Name="btn_close" Click="btn_exit_Click" Width="auto" Height="auto" Content="خروج" Foreground="White" Background="White" />
+        <TextBlock x:Name="btn_close" PreviewMouseDown="btn_close_PreviewMouseDown" Width="70"  TextAlignment="Center" Height="50" Text="خروج" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="#eeeeee" Background="White" />
 
     </Grid>
 </Window>

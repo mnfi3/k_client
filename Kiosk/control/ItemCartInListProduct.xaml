@@ -9,7 +9,7 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
-             Height="300" 
+             Height="320" 
              >
     <Grid Margin="30 15" >
         <Border  x:Name="PulseBox"
@@ -37,9 +37,9 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="1"  Margin="2" Height="200" VerticalAlignment="Stretch">
-                        <Border Name="Mask" Background="White" BorderThickness="0" CornerRadius="10" Height="200" />
+                        <Border Name="Mask" Background="#ECEFF1" BorderThickness="0" CornerRadius="10" Height="200" />
                         <StackPanel>
-                            <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="200" HorizontalAlignment="Right" Source="../img/ic_chicken_and_ribs.jpg"  VerticalAlignment="Center" />
+                            <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="200" Stretch="Uniform" HorizontalAlignment="Right" Source="../img/ic_chicken_and_ribs.jpg"  VerticalAlignment="Center" />
                             <StackPanel.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=Mask}" />
                             </StackPanel.OpacityMask>
@@ -64,7 +64,7 @@
 
                             <Grid Grid.Row="0">
                                 <Grid Grid.Column="1" Margin="2" HorizontalAlignment="Center">
-                                    <TextBlock Foreground="#121c1b" VerticalAlignment="Center" HorizontalAlignment="Center" Text="تعداد" FontSize="13"/>
+                                    <TextBlock Foreground="#121c1b" VerticalAlignment="Center" HorizontalAlignment="Center" Text="تعداد" FontSize="18"/>
                                 </Grid>
                             </Grid>
 
@@ -79,7 +79,7 @@
                                 <Button x:Name="btn_up" Click="btn_up_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
                                     <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="50"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0"/>
                                 </Button>
-                                <TextBlock x:Name="txt_count" FontSize="15" FontWeight="Bold" Foreground="#00b356" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="6,6,5,6" Grid.RowSpan="2"/>
+                                <TextBlock x:Name="txt_count" FontSize="24" FontWeight="Bold" Foreground="#00b356" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="0" Grid.RowSpan="2"/>
                                 <Button x:Name="btn_down" Click="btn_down_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                                     <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="50" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
                                 </Button>
@@ -91,9 +91,13 @@
 
 
                 <Grid Grid.Row="1" Margin="5">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <TextBlock x:Name="txt_product" Foreground="#121c1b" Text="جوجه کباب" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right"  VerticalAlignment="Center"/>
-                        <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
+                    <Button x:Name="btn_remove" Click="btn_remove_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0" Height="70" Width="70" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Height="auto" Width="auto"  Kind="CloseCircle" Foreground="#ef5350" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    </Button>
+                    
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="70 0 0 0">
+                        <TextBlock x:Name="txt_product" Foreground="#121c1b" Text="جوجه کباب" FontWeight="SemiBold" FontSize="18" HorizontalAlignment="Right" TextAlignment="Right"  VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
                     </StackPanel>
 
                 </Grid>
