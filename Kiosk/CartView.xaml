@@ -72,6 +72,9 @@
                                         <TextBlock Foreground="DarkGray"  FontSize="22" FontWeight="Bold" VerticalAlignment="Center" Margin="5" Text="بازگشت به لیست غذاها"/>
                                         <materialDesign:PackIcon Foreground="DarkGray" Kind="KeyboardArrowRight" Width="50" Height="60"/>
                                     </StackPanel>
+                                    
+                                    
+                                    
                                 </Button>
 
                                 <Border x:Name="grd_price" Grid.Row="1" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">

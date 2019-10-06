@@ -141,10 +141,10 @@ namespace Kiosk
 
         private void loadRestaurants()
         {
-            DBRestaurant db_rest = new DBRestaurant();
-            List<Restaurant> rests = db_rest.getRestaurants();
-            //STRestaurant st_rest = new STRestaurant();
-            //List<Restaurant> rests = st_rest.getRestaurants();
+            //DBRestaurant db_rest = new DBRestaurant();
+            //List<Restaurant> rests = db_rest.getRestaurants();
+            STRestaurant st_rest = new STRestaurant();
+            List<Restaurant> rests = st_rest.getRestaurants();
             ItemRestaurant _item;
 
             foreach (Restaurant rest in rests)

@@ -97,8 +97,8 @@ namespace Kiosk
             Response res = sender as Response;
             if (res.status == 1)
             {
-                new DBDevice().logoutDevice();
-                //new STDevice().logoutDevice();
+                //new DBDevice().logoutDevice();
+                new STDevice().logoutDevice();
                 G.isLoggedIn = false;
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Collapsed;
@@ -125,10 +125,10 @@ namespace Kiosk
             Device device = sender as Device;
             if (device.token != null)
             {
-                DBDevice db_device = new DBDevice();
-                db_device.saveDevice(device);
-                //STDevice st_device = new STDevice();
-                //st_device.saveDevice(device);
+                //DBDevice db_device = new DBDevice();
+                //db_device.saveDevice(device);
+                STDevice st_device = new STDevice();
+                st_device.saveDevice(device);
                 G.isLoggedIn = true;
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Visible;

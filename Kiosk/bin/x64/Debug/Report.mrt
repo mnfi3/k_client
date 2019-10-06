@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <StiSerializer version="1.02" type="Net" application="StiReport">
+  <AutoLocalizeReportOnRun>True</AutoLocalizeReportOnRun>
   <Dictionary Ref="1" type="Dictionary" isKey="true">
     <BusinessObjects isList="true" count="0" />
     <Databases isList="true" count="1">
@@ -44,18 +45,18 @@ FROM receipt</SqlCommand>
   <MetaTags isList="true" count="0" />
   <Pages isList="true" count="1">
     <Page1 Ref="4" type="Page" isKey="true">
-      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Border>None;Black;2;DashDot;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="3">
         <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.2,2.62,0.6</ClientRectangle>
-          <Components isList="true" count="12">
+          <Components isList="true" count="11">
             <Text1 Ref="6" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>2,0.3,0.6,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,10</Font>
+              <Font>IRANSans(FaNum) Medium,10</Font>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text1</Name>
@@ -67,10 +68,10 @@ FROM receipt</SqlCommand>
             </Text1>
             <Text11 Ref="7" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
+              <Brush>[64:0:0]</Brush>
               <ClientRectangle>0.8,0.6,0.5,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,7,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,6</Font>
               <Guid>3f1a66db60c642c5b445898769a57645</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -78,15 +79,16 @@ FROM receipt</SqlCommand>
               <Page isRef="4" />
               <Parent isRef="5" />
               <Text>قیمت</Text>
-              <TextBrush>Black</TextBrush>
+              <TextBrush>White</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text11>
             <Text12 Ref="8" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
+              <Brush>[64:0:0]</Brush>
               <ClientRectangle>0.6,0.6,0.2,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,6,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,6</Font>
               <Guid>28a29028894b41b4b0e7417b99769253</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -94,15 +96,16 @@ FROM receipt</SqlCommand>
               <Page isRef="4" />
               <Parent isRef="5" />
               <Text>تعداد</Text>
-              <TextBrush>Black</TextBrush>
+              <TextBrush>White</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text12>
             <Text13 Ref="9" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
+              <Brush>[64:0:0]</Brush>
               <ClientRectangle>0,0.6,0.6,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,8,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,6</Font>
               <Guid>eb1068fc7fec4e75a3bdb4ea04797b9c</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -110,15 +113,16 @@ FROM receipt</SqlCommand>
               <Page isRef="4" />
               <Parent isRef="5" />
               <Text>قیمت کل</Text>
-              <TextBrush>Black</TextBrush>
+              <TextBrush>White</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text13>
             <Text16 Ref="10" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
-              <ClientRectangle>1.6,0.6,0.8,0.2</ClientRectangle>
+              <Brush>[64:0:0]</Brush>
+              <ClientRectangle>1.3,0.6,1.1,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,7,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,6</Font>
               <Guid>42b8b9bbdb2743a8991a2a54907f34a9</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -126,31 +130,16 @@ FROM receipt</SqlCommand>
               <Page isRef="4" />
               <Parent isRef="5" />
               <Text>نام</Text>
-              <TextBrush>Black</TextBrush>
+              <TextBrush>White</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text16>
-            <Text17 Ref="11" type="Text" isKey="true">
+            <Text15 Ref="11" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
-              <ClientRectangle>1.3,0.6,0.3,0.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Vazir,5,Bold</Font>
-              <Guid>79b2ebba535c472a8f920853d3cebb77</Guid>
-              <HorAlignment>Center</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text17</Name>
-              <Page isRef="4" />
-              <Parent isRef="5" />
-              <Text>سایز</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text17>
-            <Text15 Ref="12" type="Text" isKey="true">
-              <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
+              <Brush>[64:0:0]</Brush>
               <ClientRectangle>2.4,0.6,0.2,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,5,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,6</Font>
               <Guid>e01ddfdb447c4c58af7bb2d021771e86</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -158,14 +147,15 @@ FROM receipt</SqlCommand>
               <Page isRef="4" />
               <Parent isRef="5" />
               <Text>ردیف</Text>
-              <TextBrush>Black</TextBrush>
+              <TextBrush>White</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text15>
-            <Text8 Ref="13" type="Text" isKey="true">
+            <Text8 Ref="12" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>1,0.3,1,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,10</Font>
+              <Font>IRANSans(FaNum) Medium,10</Font>
               <Guid>9360de220d80442fb940d7b45d2207a7</Guid>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -176,11 +166,11 @@ FROM receipt</SqlCommand>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text8>
-            <Text9 Ref="14" type="Text" isKey="true">
+            <Text9 Ref="13" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>1.9,0,0.7,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,9</Font>
+              <Font>IRANSans(FaNum) Medium,9</Font>
               <Guid>dd5fcb06d9164bf6a471f11af2ffba33</Guid>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -191,11 +181,11 @@ FROM receipt</SqlCommand>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text9>
-            <Text10 Ref="15" type="Text" isKey="true">
+            <Text10 Ref="14" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0.1,0,1.9,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,9</Font>
+              <Font>IRANSans(FaNum) Medium,9</Font>
               <Guid>5d0f3d41a0f440d0a4a3cf12bae0cd02</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -206,11 +196,11 @@ FROM receipt</SqlCommand>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text10>
-            <Text21 Ref="16" type="Text" isKey="true">
+            <Text21 Ref="15" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0.6,0.3,0.7,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,7</Font>
+              <Font>IRANSans(FaNum) Medium,7</Font>
               <Guid>ff5bd9462ee84bb5b21be2098db9f694</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text21</Name>
@@ -220,11 +210,11 @@ FROM receipt</SqlCommand>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text21>
-            <Text22 Ref="17" type="Text" isKey="true">
+            <Text22 Ref="16" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.3,0.6,0.2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,7,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,7,Bold</Font>
               <Guid>2cc79b50a4744e7dafd7f452570b3ae9</Guid>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
@@ -241,172 +231,93 @@ FROM receipt</SqlCommand>
           <Page isRef="4" />
           <Parent isRef="4" />
         </PageHeaderBand1>
-        <PageFooterBand1 Ref="18" type="PageFooterBand" isKey="true">
-          <Brush>Transparent</Brush>
-          <ClientRectangle>0,4.1,2.62,0.8</ClientRectangle>
-          <Components isList="true" count="4">
-            <Text14 Ref="19" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>1.2,0.08,1.2,0.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Vazir,10</Font>
-              <Guid>511873828deb4d1db1102e98abebb725</Guid>
-              <HorAlignment>Right</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text14</Name>
-              <Page isRef="4" />
-              <Parent isRef="18" />
-              <Text> : قیمت کل</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text14>
-            <Text18 Ref="20" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0.1,0.08,1.1,0.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Vazir,10</Font>
-              <Guid>a9a7bad23b3e4932beb9cf7de584e75c</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text18</Name>
-              <Page isRef="4" />
-              <Parent isRef="18" />
-              <Text>{cost}</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text18>
-            <Text19 Ref="21" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>1.2,0.38,1.2,0.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Vazir,10</Font>
-              <Guid>3a952d9632764524bec82a6e222a58f5</Guid>
-              <HorAlignment>Right</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text19</Name>
-              <Page isRef="4" />
-              <Parent isRef="18" />
-              <Text> : قیمت کل با تخفیف</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text19>
-            <Text20 Ref="22" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0.1,0.38,1.1,0.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Vazir,10</Font>
-              <Guid>f67e526da7d348d5b6485d7278f8094e</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text20</Name>
-              <Page isRef="4" />
-              <Parent isRef="18" />
-              <Text>{d_cost}</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text20>
-          </Components>
-          <Conditions isList="true" count="0" />
-          <Name>PageFooterBand1</Name>
-          <Page isRef="4" />
-          <Parent isRef="4" />
-        </PageFooterBand1>
-        <DataBand1 Ref="23" type="DataBand" isKey="true">
+        <DataBand1 Ref="17" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <BusinessObjectGuid isNull="true" />
-          <ClientRectangle>0,1.2,2.62,0.3</ClientRectangle>
-          <Components isList="true" count="6">
-            <Text3 Ref="24" type="Text" isKey="true">
+          <ClientRectangle>0,1.2,2.62,0.1</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text3 Ref="18" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
-              <ClientRectangle>1.6,0,0.8,0.3</ClientRectangle>
+              <ClientRectangle>1.3,0,1.1,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,7,Bold</Font>
+              <Font>IRANSans(FaNum) Medium,6,Bold</Font>
               <Guid>7b0b83f0cd1f4cf0a60d79cf5e25c287</Guid>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text3</Name>
               <Page isRef="4" />
-              <Parent isRef="23" />
+              <Parent isRef="17" />
               <Text>{receipt.name}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text3>
-            <Text4 Ref="25" type="Text" isKey="true">
-              <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
-              <ClientRectangle>1.3,0,0.3,0.3</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Vazir,5</Font>
-              <Guid>966c18f6fa624e7bb9854b61d8089150</Guid>
-              <HorAlignment>Right</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text4</Name>
-              <Page isRef="4" />
-              <Parent isRef="23" />
-              <Text>{receipt.size}</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text4>
-            <Text5 Ref="26" type="Text" isKey="true">
+            <Text5 Ref="19" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0.8,0,0.5,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,7</Font>
+              <Font>IRANSans(FaNum) Medium,7</Font>
               <Guid>7ed29c08ea5e49eba2815698cc27c0ba</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text5</Name>
               <Page isRef="4" />
-              <Parent isRef="23" />
+              <Parent isRef="17" />
               <Text>{receipt.price}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text5>
-            <Text6 Ref="27" type="Text" isKey="true">
+            <Text6 Ref="20" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0.6,0,0.2,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,6</Font>
+              <Font>IRANSans(FaNum) Medium,6</Font>
               <Guid>fc087faef08c41858000431681526ea4</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text6</Name>
               <Page isRef="4" />
-              <Parent isRef="23" />
+              <Parent isRef="17" />
               <Text>{receipt.count}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text6>
-            <Text7 Ref="28" type="Text" isKey="true">
+            <Text7 Ref="21" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0,0.6,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,8</Font>
+              <Font>IRANSans(FaNum) Medium,8</Font>
               <Guid>22de1e87911449b6a8cec3f00037641d</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text7</Name>
               <Page isRef="4" />
-              <Parent isRef="23" />
+              <Parent isRef="17" />
               <Text>{receipt.cost}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text7>
-            <Text2 Ref="29" type="Text" isKey="true">
+            <Text2 Ref="22" type="Text" isKey="true">
               <Border>AdvBlack;1;Solid;Black;1;Solid;Black;1;Solid;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>2.4,0,0.2,0.3</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Vazir,5</Font>
+              <Font>IRANSans(FaNum) Medium,5</Font>
               <Guid>4daee613e4b042c19cc5f715c38f2229</Guid>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text2</Name>
               <Page isRef="4" />
-              <Parent isRef="23" />
+              <Parent isRef="17" />
               <Text>{receipt.num}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text2>
           </Components>
           <Conditions isList="true" count="0" />
@@ -418,22 +329,99 @@ FROM receipt</SqlCommand>
           <Parent isRef="4" />
           <Sort isList="true" count="0" />
         </DataBand1>
+        <FooterBand1 Ref="23" type="FooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.7,2.62,0.7</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text14 Ref="24" type="Text" isKey="true">
+              <Border>Top, Right;Black;1;Dash;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>1.2,0.2,1.4,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>IRANSans(FaNum) Medium,8</Font>
+              <Guid>01eec47d5052405c8de1573dc731bf52</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="4" />
+              <Parent isRef="23" />
+              <Text> : قیمت کل</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text18 Ref="25" type="Text" isKey="true">
+              <Border>Top, Left;Black;1;Dash;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>0,0.2,1.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>IRANSans(FaNum) Medium,8</Font>
+              <Guid>23bcd44302ac42d2b51c7301a7e18e86</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="4" />
+              <Parent isRef="23" />
+              <Text>{cost}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text23 Ref="26" type="Text" isKey="true">
+              <Border>Right, Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>1.2,0.5,1.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>IRANSans(FaNum) Medium,8</Font>
+              <Guid>be7b770e9fa04311a196c16733e42939</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="4" />
+              <Parent isRef="23" />
+              <Text> : قیمت کل با تخفیف</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text19 Ref="27" type="Text" isKey="true">
+              <Border>Left, Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>0,0.5,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>IRANSans(FaNum) Medium,8</Font>
+              <Guid>7f1809fdff604880bd40087e28eb09a5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="4" />
+              <Parent isRef="23" />
+              <Text>{d_cost}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>FooterBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </FooterBand1>
       </Components>
       <Conditions isList="true" count="0" />
       <Guid>8e5956c1f8a24e9e82ad9f6713575ba9</Guid>
       <Margins>0.39,0.39,0.39,0.39</Margins>
       <Name>Page1</Name>
-      <PageHeight>3.5</PageHeight>
+      <PageHeight>3.3</PageHeight>
       <PageWidth>3.4</PageWidth>
-      <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="30" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <UnlimitedBreakable>False</UnlimitedBreakable>
+      <UnlimitedHeight>True</UnlimitedHeight>
+      <Watermark Ref="28" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page1>
   </Pages>
-  <PrinterSettings Ref="31" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="29" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -445,10 +433,10 @@ FROM receipt</SqlCommand>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>9/28/2019 3:45:53 PM</ReportChanged>
+  <ReportChanged>10/6/2019 3:34:18 PM</ReportChanged>
   <ReportCreated>9/8/2019 12:07:37 PM</ReportCreated>
-  <ReportFile>C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Debug\Report.mrt</ReportFile>
-  <ReportGuid>b531ad06329e4167ae8c403f32a6cb95</ReportGuid>
+  <ReportFile>C:\Users\Mohsen\Desktop\kiosk_resourse\Report.mrt</ReportFile>
+  <ReportGuid>23afe403a31b4a049ebb7283f6b797ee</ReportGuid>
   <ReportImage isNull="true" />
   <ReportName>Report</ReportName>
   <ReportUnit>Inches</ReportUnit>
@@ -477,13 +465,20 @@ namespace Reports
 }
 </Script>
   <ScriptLanguage>CSharp</ScriptLanguage>
-  <Styles isList="true" count="1">
-    <Style1 Ref="32" type="Stimulsoft.Report.StiStyle" isKey="true">
-      <Brush>Gainsboro</Brush>
+  <Styles isList="true" count="2">
+    <Style1 Ref="30" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Brush>Black</Brush>
       <Conditions isList="true" count="0" />
       <Font>Arial,8</Font>
       <Name>Style1</Name>
-      <TextBrush>Black</TextBrush>
+      <TextBrush>White</TextBrush>
     </Style1>
+    <Style2 Ref="31" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Brush>Transparent</Brush>
+      <Conditions isList="true" count="0" />
+      <Font>Arial,8</Font>
+      <Name>Style2</Name>
+      <TextBrush>Black</TextBrush>
+    </Style2>
   </Styles>
 </StiSerializer>

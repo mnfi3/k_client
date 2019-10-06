@@ -10,7 +10,7 @@
              FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
-             Height="350"
+             Height="450"
              >
 
     <Grid>
@@ -27,7 +27,8 @@
             <Grid Margin="20" x:Name="grd_main">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="220"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -37,7 +38,7 @@
 
                     <Border Name="Mask" Background="#ffffff" BorderThickness=".5" CornerRadius="20"/>
                     <StackPanel>
-                        <cachedImage:Image Width="auto" Height="250" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <cachedImage:Image Width="auto" Height="220" x:Name="img_product" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <StackPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=Mask}" />
                         </StackPanel.OpacityMask>
@@ -56,11 +57,15 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    <TextBlock x:Name="txt_product" Margin="2" Text="appetizer" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
+                    <TextBlock x:Name="txt_product" Margin="2" Text="appetizer" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000c08"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
-                    <TextBlock x:Name="txt_product_price" Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#6e6e6e"/>
+                    <TextBlock x:Name="txt_product_d_price" TextDecorations="Strikethrough" Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#f44336"/>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <TextBlock x:Name="txt_product_price"  Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#00b356"/>
                 </Grid>
 
 

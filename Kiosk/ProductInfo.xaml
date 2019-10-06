@@ -17,12 +17,12 @@
 
         <Grid Background="#f1f1f1" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="0*"/>
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Margin="20 20">
+            <!--<Grid Grid.Row="0" Margin="20 20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="3*" />
@@ -94,7 +94,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Border.RenderTransform>
-                            <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="22" Content="معمولی"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
+                            <Button x:Name="btn_medium" Click="btn_medium_Click" Background="{x:Null}" Foreground="#3b4944" FontSize="22" Content="متوسط"  BorderBrush="{x:Null}" Height="auto" Width="150" Margin="50 10"/>
                         </Border>
 
                         <Border x:Name="LargeSize" RenderTransformOrigin="0.5,0.5">
@@ -115,7 +115,7 @@
                         </Border>
                     </StackPanel >
                 </Grid>
-            </Grid>
+            </Grid>-->
 
             <Grid Grid.Row="1" Margin="20 20">
                 <Grid.RowDefinitions>
@@ -272,7 +272,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#BDBDBD" Content="لغو"/>
+                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#BDBDBD" Content="بازگشت"/>
                 <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#00b356" Content="افزودن به سبد خرید"/>
 
             </Grid>

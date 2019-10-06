@@ -13,7 +13,6 @@ namespace Kiosk.model
         public int product_id { set; get; }
         public int cost { set; get; }
         public int count { set; get; }
-        public string dessert_size { set; get; }
         public List<OrderContentDessert> desserts { set; get; }
     }
 }

@@ -10,7 +10,6 @@ namespace Kiosk.model
     {
         public int num { set; get;}
         public string name { set; get;}
-        public string size { set; get; }
         public int price { set; get; }
         public int count { set; get; }
         public int cost { set; get; }
@@ -18,7 +17,6 @@ namespace Kiosk.model
 
         public ReceiptItem()
         {
-            size = "";
         }
 
     }

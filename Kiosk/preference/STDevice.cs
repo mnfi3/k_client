@@ -1,4 +1,5 @@
-﻿using Kiosk.model;
+﻿//using Kiosk.license;
+using Kiosk.model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Kiosk.preference
         public bool isLoggedIn()
         {
             string device = Properties.Settings.Default.device;
-            if (device == "") return false;
+            if (device.Length < 5) return false;
             return true;
         }
 
@@ -23,6 +24,7 @@ namespace Kiosk.preference
         {
             Device device = new Device();
             string json = Properties.Settings.Default.device;
+            //json = Crypt.DecryptString(json, G.PRIVATE_KEY);
             try
             {
                 if (JsonConvert.DeserializeObject<Device>(json) != null)
@@ -38,6 +40,7 @@ namespace Kiosk.preference
         public void saveDevice(Device device)
         {
             string json = JsonConvert.SerializeObject(device);
+            //json = Crypt.EncryptString(json, G.PRIVATE_KEY);
             Properties.Settings.Default.device = json;
             Properties.Settings.Default.Save();
         }

@@ -70,10 +70,9 @@ namespace Kiosk.db
                 values.Add("@order_id", order_id.ToString());
                 values.Add("@cost", item.cost.ToString());
                 values.Add("@count", item.count.ToString());
-                values.Add("@dessert_size", item.desserts_size);
-                db.insert("insert into orders_content (id, product_id, order_id, cost, count, dessert_size)"
+                db.insert("insert into orders_content (id, product_id, order_id, cost, count)"
                     + " values"
-                    + " (@id, @product_id, @order_id, @cost, @count, @dessert_size)", values);
+                    + " (@id, @product_id, @order_id, @cost, @count)", values);
                 //save order_content_desserts
                 values.Clear();
                 foreach (Dessert dessert in item.desserts)
@@ -81,18 +80,7 @@ namespace Kiosk.db
                     values.Clear();
                     values.Add("@order_content_id", order_content_id.ToString());
                     values.Add("@dessert_id", dessert.id.ToString());
-                    switch (item.desserts_size)
-                    {
-                        case "small":
-                            values.Add("@price", dessert.price_small.ToString());
-                            break;
-                        case "medium":
-                            values.Add("@price", dessert.price_medium.ToString());
-                            break;
-                        case "large":
-                            values.Add("@price", dessert.price_large.ToString());
-                            break;
-                    }
+                    values.Add("@price", dessert.price.ToString());
 
                     db.insert("insert into order_content_desserts (order_content_id, dessert_id, price)"
                     + " values"
@@ -172,7 +160,6 @@ namespace Kiosk.db
                     content.product_id = dataReader.GetInt32(dataReader.GetOrdinal("product_id"));
                     content.cost = dataReader.GetInt32(dataReader.GetOrdinal("cost"));
                     content.count = dataReader.GetInt32(dataReader.GetOrdinal("count"));
-                    content.dessert_size = dataReader.GetString(dataReader.GetOrdinal("dessert_size"));
                     order.items.Add(content);
                 }
             }
@@ -246,44 +233,43 @@ namespace Kiosk.db
                 values.Clear();
                 values.Add("@num", Utils.toPersianNum(num));
                 values.Add("@name", item.product.name);
-                values.Add("@size", "");
                 values.Add("@price", Utils.persian_split(item.product.d_price));
                 values.Add("@count", Utils.toPersianNum(item.count));
                 values.Add("@cost", Utils.persian_split((item.count * item.product.d_price)));
-                db.insert("insert into receipt (num, name, size, price, count, cost) values (@num, @name, @size, @price, @count, @cost)", values);
+                db.insert("insert into receipt (num, name, price, count, cost) values (@num, @name, @price, @count, @cost)", values);
                 num++;
                 foreach (Dessert dessert in item.desserts)
                 {
                     values.Clear();
                     values.Add("@num", Utils.toPersianNum(num));
                     values.Add("@name", dessert.name);
-                    switch (item.desserts_size)
-                    {
-                        case "small": 
-                            values.Add("@size", "کوچک");
-                            values.Add("@price", Utils.persian_split(dessert.price_small));
-                            values.Add("@cost", Utils.persian_split((item.count * dessert.price_small)));
-                            break;
-                        case "medium": 
-                            values.Add("@size", "معمولی");
-                            values.Add("@price", Utils.persian_split(dessert.price_medium.ToString()));
-                            values.Add("@cost", Utils.persian_split((item.count * dessert.price_medium)));
-                            break;
-                        case "large": 
-                            values.Add("@size", "بزرگ");
-                            values.Add("@price", Utils.persian_split(dessert.price_large.ToString()));
-                            values.Add("@cost", Utils.persian_split((item.count * dessert.price_large)));
-                            break;
-                    }
-
+                    values.Add("@price", Utils.persian_split(dessert.price));
                     values.Add("@count", Utils.toPersianNum(item.count));
-                    db.insert("insert into receipt (num, name, size, price, count, cost) values (@num, @name, @size, @price, @count, @cost)", values);
+                    values.Add("@cost", Utils.persian_split((item.count * dessert.price)));
+                    db.insert("insert into receipt (num, name, price, count, cost) values (@num, @name, @price, @count, @cost)", values);
                     num++;
                 }
             }
         }
 
 
+
+        public int getReceiptItemCount()
+        {
+            int i = 0;
+            SqlDataReader dataReader = db.select("select * from receipt", values);
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    i++;
+                }
+            }
+
+            db.close();
+
+            return i;
+        }
 
 
         public void removeOrders()

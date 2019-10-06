@@ -7,7 +7,7 @@
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Title="DialogPaymentAccept" Height="300" Width="500" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
 
-    <Border  x:Name="PulseBox" Background="#99ffffff"  BorderThickness="1" BorderBrush="#1976D2" CornerRadius="15" RenderTransformOrigin="0.5,0.5">
+    <Border  x:Name="PulseBox" Background="#eeffffff"  BorderThickness="1" BorderBrush="#1976D2" CornerRadius="15" RenderTransformOrigin="0.5,0.5">
         <Grid Margin="20 20">
 
             <Grid.RowDefinitions>

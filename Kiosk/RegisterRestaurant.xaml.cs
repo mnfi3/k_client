@@ -40,7 +40,7 @@ namespace Kiosk
 
         private void btn_finish_Click(object sender, RoutedEventArgs e)
         {
-            ListRestaurant _list = new ListRestaurant();
+            ListRestaurant _list = new ListRestaurant(true);
             _list.Show();
             this.Close();
         }
@@ -82,10 +82,10 @@ namespace Kiosk
             Restaurant restaurant = sender as Restaurant;
             if (restaurant.token != null)
             {
-                DBRestaurant db_rest = new DBRestaurant();
-                db_rest.setRestaurant(restaurant);
-                //STRestaurant st_rest = new STRestaurant();
-                //st_rest.setRestaurant(restaurant);
+                //DBRestaurant db_rest = new DBRestaurant();
+                //db_rest.setRestaurant(restaurant);
+                STRestaurant st_rest = new STRestaurant();
+                st_rest.setRestaurant(restaurant);
                 G.restaurants = G.getRestaurants();
                 loadRests();
             }

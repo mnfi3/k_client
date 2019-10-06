@@ -31,7 +31,6 @@ namespace Kiosk
         private EventHandler addToCartHandler;
         private bool desserts_loaded = false;
 
-        private string dessert_size = "small";
 
 
         //public ProductInfo()
@@ -71,17 +70,13 @@ namespace Kiosk
             cartItem.product = this.product;
 
 
-            //img_product.Name = "image";
-            //ScaleTransform transform = new ScaleTransform(0, 0);
-            //img_product.RenderTransform = transform;
-            //this.RegisterName("image", transform);
 
 
             if (G.cart.isExistInCart(this.product) == true)
             {
                 this.cartItem = G.cart.findByProduct(this.product);
-                this.dessert_size = cartItem.desserts_size;
-                btn_cancel.Content = "حذف از سبد خرید";
+                //btn_cancel.Content = "بازگشت";
+                //btn_add.Content = "اعمال تغییرات";
                 count = cartItem.count;
                 txt_count.Text = Utils.toPersianNum(count);
                 txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
@@ -96,13 +91,10 @@ namespace Kiosk
         {
             DoubleAnimation slide = new DoubleAnimation();
             slide.Completed += new EventHandler(fadeInFinished);
-            //slide.From = G.width;
             slide.From = 0;
-            //slide.To = 0;
             slide.To = 1;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
             slide.AccelerationRatio = .5;
-            //this.BeginAnimation(LeftProperty, slide);
             this.BeginAnimation(OpacityProperty, slide);
         }
 
@@ -114,13 +106,10 @@ namespace Kiosk
         {
             DoubleAnimation slide = new DoubleAnimation();
             slide.Completed += new EventHandler(fadeOutFinished);
-            //slide.From = 0;
             slide.From = 1;
-            //slide.To = G.width;
             slide.To = 0;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
-            //this.BeginAnimation(LeftProperty, slide);
             this.BeginAnimation(OpacityProperty, slide);
         }
         private void fadeOutFinished(object sender, EventArgs e)
@@ -138,11 +127,7 @@ namespace Kiosk
 
         private void dessertLoadedCallBack(object sender, EventArgs e)
         {
-            if (G.cart.isExistInCart(this.product) == true)
-            {
-                loadCartItem();
-                G.cart.remove(cartItem);
-            }
+            loadCartItem();
 
             refreshCartItem();
             desserts_loaded = true;
@@ -152,32 +137,7 @@ namespace Kiosk
 
 
 
-        //private void slideInLeft()
-        //{
-        //    DoubleAnimation slideInRight = new DoubleAnimation();
-        //    slideInRight.From = G.width;
-        //    slideInRight.To = 0;
-        //    slideInRight.Duration = new Duration(TimeSpan.FromMilliseconds(300));
-        //    slideInRight.AccelerationRatio = .5;
-        //    this.BeginAnimation(LeftProperty, slideInRight);
-        //}
-        //private void slideOutRight()
-        //{
-        //    DoubleAnimation slideOutLeft = new DoubleAnimation();
-        //    slideOutLeft.Completed += new EventHandler(slideOutFinished);
-
-        //    slideOutLeft.From = 0;
-        //    slideOutLeft.To = G.width;
-        //    slideOutLeft.Duration = new Duration(TimeSpan.FromMilliseconds(300));
-        //    slideOutLeft.AccelerationRatio = .5;
-        //    this.BeginAnimation(LeftProperty, slideOutLeft);
-        //}
-        //private void slideOutFinished(object sender, EventArgs e)
-        //{
-        //    addToCartHandler(added, new EventArgs());
-        //    this.Close();
-        //    //DialogResult = added;
-        //}
+        
 
 
 
@@ -186,9 +146,6 @@ namespace Kiosk
         {
             if (!desserts_loaded) return;
             added = false;
-            //slideOutRight();
-            //addToCartHandler(added, new EventArgs());
-            //this.Close();
             fadeOut();
            
         }
@@ -197,11 +154,14 @@ namespace Kiosk
         {
             if (!desserts_loaded) return;
 
+            if (G.cart.isExistInCart(this.product) == true)
+            {
+                G.cart.remove(cartItem);
+            }
+
+
             G.cart.items.Add(this.cartItem);
             added = true;
-            //slideOutRight();
-            //addToCartHandler(added, new EventArgs());
-            //this.Close();
             fadeOut();
             
         }
@@ -303,95 +263,8 @@ namespace Kiosk
 
 
 
-        private void btn_small_Click(object sender, RoutedEventArgs e)
-        {
-            dessert_size = "small";
-            resetDessertsPrices();
-            resetBackColors();
 
-            refreshCartItem();
-        }
-
-        private void btn_medium_Click(object sender, RoutedEventArgs e)
-        {
-            dessert_size = "medium";
-            resetDessertsPrices();
-            resetBackColors();
-
-            refreshCartItem();
-        }
-
-        private void btn_large_Click(object sender, RoutedEventArgs e)
-        {
-            dessert_size = "large";
-            resetDessertsPrices();
-            resetBackColors();
-
-            refreshCartItem();
-        }
-
-
-        private void resetDessertsPrices()
-        {
-            if (dessert_size == "small")
-            {
-                foreach (ItemDessert item in lst_dessert1.Items)
-                {
-                    item.txt_price.Text = Utils.persian_split(item.dessert.price_small) + " تومان ";
-                }
-
-                foreach (ItemDessert item in lst_dessert2.Items)
-                {
-                    item.txt_price.Text =Utils.persian_split(item.dessert.price_small) + " تومان ";
-                }
-            }
-            else if (dessert_size == "medium")
-            {
-                foreach (ItemDessert item in lst_dessert1.Items)
-                {
-                    item.txt_price.Text = Utils.persian_split(item.dessert.price_medium) + " تومان ";
-                }
-
-                foreach (ItemDessert item in lst_dessert2.Items)
-                {
-                    item.txt_price.Text = Utils.persian_split(item.dessert.price_medium) + " تومان ";
-                }
-            }
-            else if (dessert_size == "large")
-            {
-                foreach (ItemDessert item in lst_dessert1.Items)
-                {
-                    item.txt_price.Text = Utils.persian_split(item.dessert.price_large) + " تومان ";
-                }
-
-                foreach (ItemDessert item in lst_dessert2.Items)
-                {
-                    item.txt_price.Text = Utils.persian_split(item.dessert.price_large) + " تومان ";
-                }
-            }
-        }
-
-        private void resetBackColors()
-        {
-            if (dessert_size == "small")
-            {
-                btn_small.Background = Brushes.White;
-                btn_medium.Background = Brushes.Transparent;
-                btn_large.Background = Brushes.Transparent;
-            }
-            else if (dessert_size == "medium")
-            {
-                btn_small.Background = Brushes.Transparent;
-                btn_medium.Background = Brushes.White;
-                btn_large.Background = Brushes.Transparent;
-            }
-            else if (dessert_size == "large")
-            {
-                btn_small.Background = Brushes.Transparent;
-                btn_medium.Background = Brushes.Transparent;
-                btn_large.Background = Brushes.White;
-            }
-        }
+        
 
 
 
@@ -399,10 +272,7 @@ namespace Kiosk
         {
             count = cartItem.count;
             txt_count.Text = Utils.toPersianNum(count);
-            this.dessert_size = cartItem.desserts_size;
-            resetDessertsPrices();
             txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
-            resetBackColors();
 
             foreach (ItemDessert _item1 in lst_dessert1.Items)
             {
@@ -437,7 +307,6 @@ namespace Kiosk
         private void refreshCartItem()
         {
             cartItem.desserts.Clear();
-            cartItem.desserts_size = this.dessert_size;
 
             foreach (ItemDessert item in lst_dessert1.Items)
             {

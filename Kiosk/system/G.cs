@@ -65,16 +65,16 @@ namespace Kiosk
 
 
         public static Device getDevice(){
-            return new DBDevice().getDevice();
-            //return new STDevice().getDevice();
+            //return new DBDevice().getDevice();
+            return new STDevice().getDevice();
         }
 
         public static List<Restaurant> getRestaurants()
         {
-            DBRestaurant db_rest = new DBRestaurant();
-            return db_rest.getRestaurants();
-            //STRestaurant st_rest = new STRestaurant();
-            //return st_rest.getRestaurants();
+            //DBRestaurant db_rest = new DBRestaurant();
+            //return db_rest.getRestaurants();
+            STRestaurant st_rest = new STRestaurant();
+            return st_rest.getRestaurants();
         }
 
 

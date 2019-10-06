@@ -22,16 +22,17 @@ namespace Kiosk.control
     /// </summary>
     public partial class ItemCart : UserControl
     {
-        private EventHandler eventChange = null;
+        private EventHandler eventChange = null, eventRemoved;
         public CartItem cartItem;
 
-        public ItemCart(CartItem ci, EventHandler handler)
+        public ItemCart(CartItem ci, EventHandler handler, EventHandler removeHandler)
         {
             InitializeComponent();
 
             this.cartItem = ci;
-            eventChange += handler;
+            eventChange += handler; 
             eventChange += dessertRemovedHandler;
+            eventRemoved += removeHandler;
         }
 
 
@@ -77,7 +78,7 @@ namespace Kiosk.control
                     {
                         G.cart.items.RemoveAt(i);
                         this.Visibility = Visibility.Collapsed;
-                        eventChange(cartItem.product.name, new EventArgs());
+                        eventRemoved(cartItem.product.name, new EventArgs());
                         break;
                     }
                 }

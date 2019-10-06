@@ -64,10 +64,10 @@ namespace Kiosk.control
         private void logoutCallBack(object sender, EventArgs e)
         {
             Response res = sender as Response;
-            DBRestaurant db_res = new DBRestaurant();
-            db_res.removeRestaurant(this.restaurant);
-            //STRestaurant st_res = new STRestaurant();
-            //st_res.removeRestaurant(this.restaurant);
+            //DBRestaurant db_res = new DBRestaurant();
+            //db_res.removeRestaurant(this.restaurant);
+            STRestaurant st_res = new STRestaurant();
+            st_res.removeRestaurant(this.restaurant);
             G.restaurants = G.getRestaurants();
             this.Visibility = Visibility.Collapsed;
         }

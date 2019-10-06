@@ -30,19 +30,23 @@ namespace Kiosk
             G.X_API_KEY = Crypt.DecryptString("0c8z9sAo7anL6R5dzz3yeib0yHaWEyq4ktqrDaoLGv10JAxWvWh8b2QdCGH8lDV05MdvAyTpGULyPYfy0m42BQ==", G.PUBLIC_KEY);
             G.client_key = Security.getClientKey();
             G.PRIVATE_KEY = "kkk" + G.client_key + "yyy";
-            DBDevice db_device = new DBDevice();
-            G.device = db_device.getDevice();
-            //STDevice st_device = new STDevice();
-            //G.device = st_device.getDevice();
+            //DBDevice db_device = new DBDevice();
+            //G.device = db_device.getDevice();
+            STDevice st_device = new STDevice();
+            G.device = st_device.getDevice();
+            
             loginCheck();
 
             G.cart = new Cart();
-            G.restaurants = new DBRestaurant().getRestaurants();
-            G.isLoggedIn = db_device.isLoggedIn();
-            //G.restaurants = new STRestaurant().getRestaurants();
-            //G.isLoggedIn = st_device.isLoggedIn();
+            //G.restaurants = new DBRestaurant().getRestaurants();
+            //G.isLoggedIn = db_device.isLoggedIn();
+            G.restaurants = new STRestaurant().getRestaurants();
+            G.isLoggedIn = st_device.isLoggedIn();
 
             syncRestaurants();
+
+
+
 
         }
 
@@ -62,15 +66,15 @@ namespace Kiosk
             Response res = sender as Response;
             if (res.status == 0)
             {
-                DBDevice db_device = new DBDevice();
-                db_device.logoutDevice();
-                G.isLoggedIn = false;
-                G.device = db_device.getDevice();
-
-                //STDevice st_device = new STDevice();
-                //st_device.logoutDevice();
+                //DBDevice db_device = new DBDevice();
+                //db_device.logoutDevice();
                 //G.isLoggedIn = false;
-                //G.device = st_device.getDevice();
+                //G.device = db_device.getDevice();
+
+                STDevice st_device = new STDevice();
+                st_device.logoutDevice();
+                G.isLoggedIn = false;
+                G.device = st_device.getDevice();
             }
         }
 
@@ -85,12 +89,12 @@ namespace Kiosk
         private void restaurantCallBack(object sender, EventArgs e)
         {
             List<Restaurant> rests = sender as List<Restaurant>;
-            DBRestaurant db_rest = new DBRestaurant();
-            //STRestaurant st_rest = new STRestaurant();
+            //DBRestaurant db_rest = new DBRestaurant();
+            STRestaurant st_rest = new STRestaurant();
             foreach (Restaurant rest in rests)
             {
-                db_rest.updateRestaurantInfo(rest);
-                //st_rest.updateRestaurantInfo(rest);
+                //db_rest.updateRestaurantInfo(rest);
+                st_rest.updateRestaurantInfo(rest);
             }
         }
 

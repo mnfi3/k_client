@@ -29,7 +29,7 @@ namespace Kiosk.control
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             string curDir = Directory.GetCurrentDirectory();
-            webview.Source = new Uri(String.Format("file:///{0}/zz.html", curDir));
+            webview.Source = new Uri(String.Format("file:///{0}/zzz.html", curDir));
         }
 
         private void webview_LoadCompleted(object sender, NavigationEventArgs e)

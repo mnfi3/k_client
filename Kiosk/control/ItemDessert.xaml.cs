@@ -41,7 +41,7 @@ namespace Kiosk.control
         {
             txt_name.Text = dessert.name;
             img_dessert.ImageUrl = dessert.image;
-            txt_price.Text = Utils.persian_split(dessert.price_small) + " تومان ";
+            txt_price.Text = Utils.persian_split(dessert.price) + " تومان ";
         }
 
 

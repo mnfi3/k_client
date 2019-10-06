@@ -13,9 +13,7 @@ namespace Kiosk.model
         public int  product_id { get; set; }
         public string name { get; set; }
         public string type { get; set; }
-        public int price_small { get; set; }
-        public int price_medium { get; set; }
-        public int price_large { get; set; }
+        public int price { get; set; }
         public string image { get; set; }
 
 
@@ -25,9 +23,7 @@ namespace Kiosk.model
             dessert.id = obj["id"].Value<Int32>();
             dessert.name = obj["name"].Value<string>();
             dessert.type = obj["type"].Value<string>();
-            dessert.price_small = obj["price_small"].Value<Int32>();
-            dessert.price_medium = obj["price_medium"].Value<Int32>();
-            dessert.price_large = obj["price_large"].Value<Int32>();
+            dessert.price = obj["price"].Value<Int32>();
             dessert.image = obj["image"].Value<string>();
 
             return dessert;

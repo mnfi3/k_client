@@ -67,7 +67,7 @@ namespace Kiosk
             lst_cart.Items.Clear();
             foreach (CartItem i in G.cart.items)
             {
-                _item = new ItemCart(i, refreshCartViewEvent);
+                _item = new ItemCart(i, refreshCartViewEvent, itemRemoveHandler);
                 lst_cart.Items.Add(_item);
                 await Task.Delay(200);
             }
@@ -153,8 +153,9 @@ namespace Kiosk
             //dialog.ShowDialog();
             if (dialog.ShowDialog() == true)
             {
-                DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
-                dialog2.ShowDialog();
+                handleShop(new BuyResponse());
+                //DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+                //dialog2.ShowDialog();
             }
             else
             {
@@ -197,6 +198,14 @@ namespace Kiosk
             txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
         }
 
+        private void itemRemoveHandler(object sender, EventArgs e)
+        {
+            lst_cart.Items.Clear();
+            loadCartView();
+            txt_cost.Text = Utils.persian_split(G.cart.cost) + " تومان ";
+            txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
+        }
+
 
 
 
@@ -206,6 +215,11 @@ namespace Kiosk
             db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
             db_order.saveReceipt(G.cart);
             printReceipt();
+            //test printer
+            grd_main.Effect = null;
+            grd_pay.Effect = null;
+            return;
+
             G.cart.clear();
             loadCartView();
             G.syncOrders();
@@ -257,8 +271,14 @@ namespace Kiosk
             //print test
             PrinterSettings setting;
             StiReport report = new StiReport();
+            Stimulsoft.Report.Print.StiPrintProvider.SetPaperSource = false;
             report.Load("Report.mrt");
+            //report.Render();
+            report.Pages[0].PaperSize = System.Drawing.Printing.PaperKind.Custom;
+            int item_count = new DBOrder().getReceiptItemCount();
+            report.Pages[0].Height = 3.2 + item_count * 0.3;//0.34
             report.Compile();
+            
             report["restaurant"] = G.restaurant.name;
             report["cost"] = Utils.persian_split(G.cart.cost) + " تومان ";
             report["d_cost"] = Utils.persian_split(G.cart.d_cost) + " تومان ";

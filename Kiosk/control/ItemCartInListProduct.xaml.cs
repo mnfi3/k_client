@@ -46,7 +46,7 @@ namespace Kiosk.control
         {
             txt_product.Text = cartItem.product.name;
             txt_count.Text = Utils.toPersianNum(cartItem.count);
-            txt_price.Text = Utils.persian_split(cartItem.product.d_price) + " تومان ";
+            txt_price.Text = Utils.persian_split(cartItem.cost) + " تومان ";
             img_product.Source = null;
             img_product.ImageUrl = cartItem.product.image;
         }
@@ -59,6 +59,7 @@ namespace Kiosk.control
                 {
                     item.count++;
                     txt_count.Text = Utils.toPersianNum(item.count);
+                    txt_price.Text = Utils.persian_split(cartItem.cost) + " تومان ";
                     costChangeHandler(new object(), new EventArgs());
                     break;
                 }
@@ -75,6 +76,7 @@ namespace Kiosk.control
                     {
                         item.count--;
                         txt_count.Text = Utils.toPersianNum(item.count);
+                        txt_price.Text = Utils.persian_split(cartItem.cost) + " تومان ";
                         costChangeHandler(new object(), new EventArgs());
                         break;
                     }

@@ -84,15 +84,12 @@
                     <Grid Grid.Column="2" Margin="5">
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0" Margin="10 2" HorizontalAlignment="Right">
-                            <TextBlock Foreground="#121c1b" VerticalAlignment="Center" HorizontalAlignment="Center" Text="تعداد" FontSize="20"/>
-                        </Grid>
 
-                        <Grid Grid.Column="1" Margin="2 50" HorizontalAlignment="Left">
+                        <Grid Grid.Column="0" Margin="2 50" HorizontalAlignment="Left">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="16*"/>
                                 <RowDefinition Height="11*"/>
@@ -107,6 +104,11 @@
                             <Button x:Name="btn_down" Click="btn_down_Click" Width="90" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
                                 <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="90" Height="70" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
                             </Button>
+                        </Grid>
+
+
+                        <Grid Grid.Column="1" Margin="10 2" HorizontalAlignment="Left">
+                            <TextBlock Foreground="#121c1b" VerticalAlignment="Center" HorizontalAlignment="Center" Text="تعداد" FontSize="20"/>
                         </Grid>
                     </Grid>
 

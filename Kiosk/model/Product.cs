@@ -18,6 +18,7 @@ namespace Kiosk.model
         public string name { set; get; }
         public int price { set; get; }
         public int d_price { set; get; }
+        public int discount_percent { set; get; }
         public string description { set; get; }
         public string image { set; get; }
         public List<Dessert> desserts { set; get; }
@@ -36,7 +37,8 @@ namespace Kiosk.model
             product.id = obj["id"].Value<Int32>();
             product.name = obj["name"].Value<string>();
             product.price = obj["price"].Value<Int32>();
-            product.d_price = obj["d_price"].Value<Int32>();
+            product.discount_percent = obj["discount_percent"].Value<Int32>();
+            product.d_price = product.price - ((product.price * product.discount_percent) / 100);
             product.description = obj["description"].Value<string>();
             product.image = obj["image"].Value<string>();
 

@@ -142,13 +142,13 @@ namespace Kiosk
 
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            DialogPublic _dialog = new DialogPublic("آیا میخواهید به لیست رستوران ها برگردید؟ (سبد خرید شما خالی خواهد شد)");
-            if (_dialog.ShowDialog() == true)
-            {
-                ListRestaurant _list = new ListRestaurant();
+            //DialogPublic _dialog = new DialogPublic("آیا میخواهید به لیست رستوران ها برگردید؟ (سبد خرید شما خالی خواهد شد)");
+            //if (_dialog.ShowDialog() == true)
+            //{
+                ListRestaurant _list = new ListRestaurant(true);
                 _list.Show();
                 this.Close();
-            }
+            //}
         }
 
         private void lst_categories_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -336,6 +336,14 @@ namespace Kiosk
                     _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
                     lst_cart.Items.Add(_item);
                 }
+            }
+
+
+            //reload cart items price and count
+            foreach (ItemCartInListProduct ic in lst_cart.Items)
+            {
+                ic.txt_price.Text = Utils.persian_split(ic.cartItem.cost) + " تومان ";
+                ic.txt_count.Text = Utils.toPersianNum(ic.cartItem.count);
             }
         }
 

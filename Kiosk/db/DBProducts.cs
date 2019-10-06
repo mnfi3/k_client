@@ -36,11 +36,12 @@ namespace Kiosk.db
                     values.Add("@category_id", c.id.ToString());
                     values.Add("@name", p.name);
                     values.Add("@price", p.price.ToString());
+                    values.Add("@discount_percent", p.discount_percent.ToString());
                     values.Add("@d_price", p.d_price.ToString());
                     values.Add("@description", p.description);
                     values.Add("@image", p.image);
-                    db.insert("insert into products (id, restaurant_id, category_id, name, price, d_price, description, image) "
-                        + "values (@id, @restaurant_id, @category_id, @name, @price, @d_price, @description, @image)", values);
+                    db.insert("insert into products (id, restaurant_id, category_id, name, price, discount_percent, d_price, description, image) "
+                        + "values (@id, @restaurant_id, @category_id, @name, @price, @discount_percent, @d_price, @description, @image)", values);
 
                     foreach (Dessert d in p.desserts)
                     {
@@ -49,12 +50,10 @@ namespace Kiosk.db
                         values.Add("@product_id", p.id.ToString());
                         values.Add("@name", d.name.ToString());
                         values.Add("@type", d.type.ToString());
-                        values.Add("@price_small", d.price_small.ToString());
-                        values.Add("@price_medium", d.price_medium.ToString());
-                        values.Add("@price_large", d.price_large.ToString());
+                        values.Add("@price", d.price.ToString());
                         values.Add("@image", d.image.ToString());
-                        db.insert("insert into desserts (id, product_id, name, type, price_small, price_medium, price_large, image) "
-                            + "values (@id, @product_id, @name, @type, @price_small, @price_medium, @price_large, @image)", values);
+                        db.insert("insert into desserts (id, product_id, name, type, price, image) "
+                            + "values (@id, @product_id, @name, @type, @price, @image)", values);
                     }
                 }
             }
@@ -127,6 +126,7 @@ namespace Kiosk.db
                         product.category_id = dataReader.GetInt32(dataReader.GetOrdinal("category_id"));
                         product.name = dataReader.GetString(dataReader.GetOrdinal("name"));
                         product.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
+                        product.discount_percent = dataReader.GetInt32(dataReader.GetOrdinal("discount_percent"));
                         product.d_price = dataReader.GetInt32(dataReader.GetOrdinal("d_price"));
                         product.description = dataReader.GetString(dataReader.GetOrdinal("description"));
                         product.image = dataReader.GetString(dataReader.GetOrdinal("image"));
@@ -154,9 +154,7 @@ namespace Kiosk.db
                             dessert.product_id = dataReader.GetInt32(dataReader.GetOrdinal("product_id"));
                             dessert.name = dataReader.GetString(dataReader.GetOrdinal("name"));
                             dessert.type = dataReader.GetString(dataReader.GetOrdinal("type"));
-                            dessert.price_small = dataReader.GetInt32(dataReader.GetOrdinal("price_small"));
-                            dessert.price_medium = dataReader.GetInt32(dataReader.GetOrdinal("price_medium"));
-                            dessert.price_large = dataReader.GetInt32(dataReader.GetOrdinal("price_large"));
+                            dessert.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
                             dessert.image = dataReader.GetString(dataReader.GetOrdinal("image"));
 
                             p.desserts.Add(dessert);

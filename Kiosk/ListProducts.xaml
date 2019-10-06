@@ -106,18 +106,20 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
                     <ColumnDefinition Width="150"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
 
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="txt_category_name" Grid.Column="1" Width="Auto"  Foreground="#444444" FontWeight="ExtraBold" Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
-                <Button x:Name="btn_back_to_restaurants" Visibility="Hidden" Grid.Column="0"  Click="btn_back_to_restaurants_Click"  FontSize="15" Height="40"  Foreground="White" Background="#ff1269" BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="5 -4" Text=" رستوران ها"/>
-                        <materialDesign:PackIcon Kind="ArrowBack"/>
-                    </StackPanel>
-                </Button>
+                <TextBlock x:Name="txt_category_name" Grid.Column="2" Width="Auto"  Foreground="#444444" FontWeight="ExtraBold" Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
+                
+                <Button x:Name="btn_back_to_restaurants" Visibility="Visible" Grid.Column="1"  Click="btn_back_to_restaurants_Click"  FontSize="15" Height="40"  Foreground="White" Background="{x:Null}"  BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="DarkGray"  FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="5" Text="بازگشت"/>
+                            <materialDesign:PackIcon Foreground="DarkGray" VerticalAlignment="Center" Kind="KeyboardArrowRight" Width="40" Height="40"/>
+                        </StackPanel>
+                    </Button>
             </Grid>
             <ListView Grid.Row="1" Margin="10" HorizontalContentAlignment="Right" HorizontalAlignment="Stretch" ScrollViewer.PanningMode="Both" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lst_products" SelectionChanged="lst_products_SelectionChanged"  >
                 <ListView.ItemsPanel>

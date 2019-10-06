@@ -38,8 +38,10 @@ namespace Kiosk.control
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            if (product.discount_percent == 0) txt_product_d_price.Visibility = Visibility.Collapsed;
             txt_product.Text = product.name;
-            txt_product_price.Text = Utils.persian_split(product.d_price) + " تومان ";
+            txt_product_d_price.Text = Utils.persian_split(product.d_price) + " تومان ";
+            txt_product_price.Text = Utils.persian_split(product.price) + " تومان ";
             //BitmapImage b = new BitmapImage();
             //b.BeginInit();
             //b.UriSource = new Uri("B:\\programing\\C#\\Kiosk\\Kiosk\\img\\ic_pasta.jpg");
@@ -49,9 +51,8 @@ namespace Kiosk.control
             if (product.d_price < product.price)
             {
                 lbl_discount.Visibility = Visibility.Visible;
-                float price = product.price;
-                float d_price = product.d_price;
-                string discount = ((int)(((price - d_price) / price) * 100)).ToString() + "%";
+               
+                string discount = (product.discount_percent).ToString() + "%";
                 lbl_discount.Text = Utils.toPersianNum(discount);
             }
             else
@@ -60,8 +61,7 @@ namespace Kiosk.control
             }
 
 
-
-            double height = G.height / 3;
+            double height = G.height / 2.5;
             double img_height = (height / 7) * 5;
             this.Height = height;
             grd_main.RowDefinitions[0].Height = new GridLength(img_height); ;
