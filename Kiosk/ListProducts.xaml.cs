@@ -80,6 +80,12 @@ namespace Kiosk
         }
 
 
+        private void Window_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+
        
       
 
@@ -260,16 +266,22 @@ namespace Kiosk
             //if connection was fail
             if (categories.Count == 0)
             {
-                categories = db_products.getProducts(this.restaurant);
-                loadCategories(categories);
+                Task.Run(() =>{
+                    List<Category> categories2 = db_products.getProducts(this.restaurant);
+                    this.Dispatcher.Invoke((Action)(() =>
+                    {
+                        loadCategories(categories2);
+                    }));
+                });
             }
             else
             {
                 loadCategories(categories);
                 //save new products to local db
                 Task.Run(() =>
-                    db_products.resetProducts(categories, this.restaurant)
-                    );
+                {
+                    db_products.resetProducts(categories, this.restaurant);
+                });
                
             }
 
@@ -493,6 +505,8 @@ namespace Kiosk
             _cartView.Show();
             this.Close();
         }
+
+       
 
     }
 }

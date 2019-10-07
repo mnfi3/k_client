@@ -1,4 +1,5 @@
 ﻿using Kiosk.model;
+using Kiosk.pos.model;
 using Kiosk.system;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Kiosk.db
 {
     class DBOrder:DBModel
     {
-        public int saveOrder(Restaurant restaurant, Cart cart, string payment_receipt)
+        public int saveOrder(Restaurant restaurant, Cart cart, BuyResponse response)
         {
 
             //find id to order
@@ -37,12 +38,21 @@ namespace Kiosk.db
             values.Add("@cost", cart.cost.ToString());
             values.Add("@d_cost", cart.d_cost.ToString());
             values.Add("@discount_id", cart.discount.id.ToString());
-            values.Add("@payment_receipt", payment_receipt);
             DateTime datetime = DateTime.Now;
             values.Add("@time", datetime.ToString("yyyyMMddHHmmss"));
-            db.insert("insert into orders (id, restaurant_id, cost, d_cost, discount_id, payment_receipt, time)"
+
+            //payment details
+            values.Add("@pan", response.PAN);
+            values.Add("@req_id", response.ReqID);
+            values.Add("@serial_transaction", response.SerialTransaction);
+            values.Add("@terminal_no", response.TerminalNo);
+            values.Add("@trace_number", response.TraceNumber);
+            values.Add("@transaction_date", response.TransactionDate);
+            values.Add("@transaction_time", response.TransactionTime);
+
+            db.insert("insert into orders (id, restaurant_id, cost, d_cost, discount_id, time, pan, req_id, serial_transaction, terminal_no, trace_number, transaction_date, transaction_time)"
                 + " values"
-                + " (@id, @restaurant_id, @cost, @d_cost, @discount_id, @payment_receipt, @time)", values);
+                + " (@id, @restaurant_id, @cost, @d_cost, @discount_id, @time, @pan, @req_id, @serial_transaction, @terminal_no, @trace_number, @transaction_date, @transaction_time)", values);
 
 
             //find id to order_content
@@ -133,8 +143,14 @@ namespace Kiosk.db
                     order.cost = dataReader.GetInt32(dataReader.GetOrdinal("cost"));
                     order.d_cost = dataReader.GetInt32(dataReader.GetOrdinal("d_cost"));
                     order.discount_id = dataReader.GetInt32(dataReader.GetOrdinal("discount_id"));
-                    order.payment_receipt = dataReader.GetString(dataReader.GetOrdinal("payment_receipt"));
                     order.time = dataReader.GetString(dataReader.GetOrdinal("time"));
+                    order.pan = dataReader.GetString(dataReader.GetOrdinal("pan"));
+                    order.req_id = dataReader.GetString(dataReader.GetOrdinal("req_id"));
+                    order.serial_transaction = dataReader.GetString(dataReader.GetOrdinal("serial_transaction"));
+                    order.terminal_no = dataReader.GetString(dataReader.GetOrdinal("terminal_no"));
+                    order.trace_number = dataReader.GetString(dataReader.GetOrdinal("trace_number"));
+                    order.transaction_date = dataReader.GetString(dataReader.GetOrdinal("transaction_date"));
+                    order.transaction_time = dataReader.GetString(dataReader.GetOrdinal("transaction_time"));
                     break;
                 }
             }

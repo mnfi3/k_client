@@ -60,7 +60,7 @@ namespace Kiosk
                 
             }
 
-            
+
 
             //this.Close();
         }

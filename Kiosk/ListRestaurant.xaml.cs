@@ -77,6 +77,15 @@ namespace Kiosk
            
             
         }
+
+        private void Window_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+
+
+
         private void animHandler(object sender,EventArgs e)
         {
 
@@ -154,6 +163,8 @@ namespace Kiosk
             }
 
         }
+
+        
 
         
 

@@ -37,7 +37,7 @@ namespace Kiosk.control
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            doPayment();
+            //doPayment();
         }
 
 
@@ -48,7 +48,7 @@ namespace Kiosk.control
             buyRequest.Amount = amount.ToString(); ;
             buyRequest.PcID = G.client_key;
             //buyRequest.PayerId = "user_" + G.restaurant.id.ToString();
-            buyRequest.MerchantMsg = "ARTA_KIOSK";
+            buyRequest.MerchantMsg = "digiarta.com";
 
             pos.requestBuy(buyRequest);
         }

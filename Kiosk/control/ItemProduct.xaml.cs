@@ -38,7 +38,7 @@ namespace Kiosk.control
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (product.discount_percent == 0) txt_product_d_price.Visibility = Visibility.Collapsed;
+            if (product.discount_percent == 0) txt_product_price.Visibility = Visibility.Collapsed;
             txt_product.Text = product.name;
             txt_product_d_price.Text = Utils.persian_split(product.d_price) + " تومان ";
             txt_product_price.Text = Utils.persian_split(product.price) + " تومان ";

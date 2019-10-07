@@ -61,11 +61,11 @@
                 </Grid>
 
                 <Grid Grid.Row="2">
-                    <TextBlock x:Name="txt_product_d_price" TextDecorations="Strikethrough" Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#f44336"/>
+                    <TextBlock x:Name="txt_product_price" TextDecorations="Strikethrough" Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#f44336"/>
                 </Grid>
 
                 <Grid Grid.Row="3">
-                    <TextBlock x:Name="txt_product_price"  Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#00b356"/>
+                    <TextBlock x:Name="txt_product_d_price"  Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#00b356"/>
                 </Grid>
 
 

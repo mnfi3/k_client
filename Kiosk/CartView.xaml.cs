@@ -56,6 +56,11 @@ namespace Kiosk
             fadeIn();
         }
 
+        private void Window_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         
 
 
@@ -150,12 +155,10 @@ namespace Kiosk
             grd_pay.Effect = blur;
             Task.Delay(100);
             DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
-            //dialog.ShowDialog();
             if (dialog.ShowDialog() == true)
             {
-                handleShop(new BuyResponse());
-                //DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
-                //dialog2.ShowDialog();
+                DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+                dialog2.ShowDialog();
             }
             else
             {
@@ -212,17 +215,16 @@ namespace Kiosk
         public void handleShop(BuyResponse response)
         {
             DBOrder db_order = new DBOrder();
-            db_order.saveOrder(G.restaurant, G.cart, "pay_receipt");
+            db_order.saveOrder(G.restaurant, G.cart, response);
             db_order.saveReceipt(G.cart);
             printReceipt();
-            //test printer
-            grd_main.Effect = null;
-            grd_pay.Effect = null;
-            return;
-
             G.cart.clear();
             loadCartView();
-            G.syncOrders();
+
+            Task.Run(() =>
+            {
+                G.syncOrders();
+            });
         }
 
 
@@ -352,6 +354,8 @@ namespace Kiosk
             _list.Show();
             this.Close();
         }
+
+       
 
         
        

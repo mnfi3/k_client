@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Kiosk.api;
+using Kiosk.db;
+using Kiosk.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +31,14 @@ namespace Kiosk
             this.Height = G.height;
             this.Width = G.width;
             
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Task.Run(() => {
+                G.syncOrders();
+            });
+           
         }
 
         public ClickToOrder(EventHandler handler)
@@ -60,10 +71,11 @@ namespace Kiosk
             this.Close();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-    
-        }
+       
+
+
+
+       
     }
 
 }

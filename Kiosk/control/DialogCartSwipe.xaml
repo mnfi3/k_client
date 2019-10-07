@@ -3,21 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		xmlns:local="clr-namespace:Kiosk.control"
-		Background="#ffffff"
+		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         WindowStartupLocation="CenterScreen"
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Title="DialogCartSwipe" Height="500" Width="650" AllowsTransparency="False" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize">
-    <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
 
-        <!--<WebBrowser Grid.Row="0"  x:Name="webview" LoadCompleted="webview_LoadCompleted" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="20"  OverridesDefaultStyle="False" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>-->
-        <local:SwipePage Grid.Row="0"  x:Name="webview"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="20"  OverridesDefaultStyle="False" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <TextBlock  Grid.Row="1"  Margin="10" TextWrapping="Wrap"  Height="auto" Width="auto" Foreground="#616161"  Text="لطفا کارت خود را در دستگاه کارت خوان بکشید" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        
-    </Grid>
+    <Border BorderBrush="Black"  CornerRadius="30"  >
+        <Grid  Background="#ffffff">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <local:SwipePage Grid.Row="0"  x:Name="webview"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="20"  OverridesDefaultStyle="False" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.IsDeferredScrollingEnabled="False"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+            <TextBlock  Grid.Row="1"  Margin="10" TextWrapping="Wrap"  Height="auto" Width="auto" Foreground="#414141"  Text="لطفا کارت خود را در دستگاه کارت خوان بکشید" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        </Grid>
+    </Border>
+
+
 </Window>

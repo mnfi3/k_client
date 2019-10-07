@@ -5,7 +5,7 @@
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
-        Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None" >
+        Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None" ManipulationBoundaryFeedback="Window_ManipulationBoundaryFeedback">
 
     <Grid Background="LightGray">
         <Grid Height="50" VerticalAlignment="Top" Margin="0 0 0 0">

@@ -13,6 +13,7 @@ namespace Kiosk.db
     {
 
 
+
         public void  resetProducts(List<Category> categories, Restaurant restaurant )
         {
             //remove old data
@@ -166,7 +167,6 @@ namespace Kiosk.db
 
 
             }
-
             return categories;
         }
     }

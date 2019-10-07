@@ -23,6 +23,7 @@ namespace Kiosk
         public static Restaurant restaurant;
         public static List<Restaurant> restaurants;
         public static System.Timers.Timer timer = new System.Timers.Timer();
+        public static System.Timers.Timer sync_products_timer;
         public static bool isLoggedIn = false;
         public const string PUBLIC_KEY = "kkkF19BEE2EF1yyy";
         public static string PRIVATE_KEY;
@@ -132,6 +133,46 @@ namespace Kiosk
                 DBOrder db_order = new DBOrder();
                 db_order.removeOrders();
             }
+        }
+
+
+
+
+
+
+
+
+
+        //sync products with server
+        public static void syncProducts()
+        {
+            sync_products_timer = new System.Timers.Timer();
+            sync_products_timer.Interval = Config.STAND_BY_TIME;
+            sync_products_timer.Elapsed += on_sync_products_time_finished;
+            sync_products_timer.AutoReset = true;
+            sync_products_timer.Enabled = true;
+        }
+        private static void on_sync_products_time_finished(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            //Task.Run(() =>
+            //{
+                RRestaurant r_rest = new RRestaurant();
+                r_rest.products(G.restaurant, productCallBack);
+            //});
+        }
+        private static void productCallBack(object sender, EventArgs e)
+        {
+             //Task.Run(() =>
+             //{
+                 DBProducts db_products = new DBProducts();
+                 List<Category> categories = sender as List<Category>;
+                 if (categories.Count < 1) return;
+                 Restaurant restaurant = new Restaurant();
+                 restaurant.id = categories[0].restaurant_id;
+
+                 db_products.resetProducts(categories, restaurant);
+             //});
+
         }
        
 

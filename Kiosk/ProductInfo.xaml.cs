@@ -63,7 +63,12 @@ namespace Kiosk
 
             txt_name.Text = product.name;
             txt_count.Text = Utils.toPersianNum(count);
-            txt_price.Text = Utils.persian_split(product.d_price) + " تومان ";
+            txt_d_price.Text = Utils.persian_split(product.d_price) + " تومان ";
+            txt_price.Text = Utils.persian_split(product.price) + " تومان ";
+            if (product.discount_percent == 0)
+            { 
+                txt_price.Visibility = Visibility.Collapsed; 
+            }
             txt_description.Text = product.description;
             img_product.Source = null;
             img_product.ImageUrl = product.image;
@@ -82,6 +87,11 @@ namespace Kiosk
                 txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
             }
             loadDesserts();
+        }
+
+        private void Window_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
+        {
+            e.Handled = true;
         }
 
 
@@ -329,6 +339,8 @@ namespace Kiosk
 
             txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
         }
+
+       
 
 
 

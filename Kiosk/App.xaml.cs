@@ -47,7 +47,6 @@ namespace Kiosk
 
 
 
-
         }
 
         
@@ -103,6 +102,14 @@ namespace Kiosk
             G.height = SystemParameters.PrimaryScreenHeight;
             G.width = SystemParameters.PrimaryScreenWidth;
         }
-        
+
+
+
+
+
+       
+       
+
+
     }
 }

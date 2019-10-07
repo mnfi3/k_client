@@ -6,7 +6,7 @@
 		Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
-        Height="800" Width="1400" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+        Height="900" Width="1400" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" ManipulationBoundaryFeedback="Window_ManipulationBoundaryFeedback">
 
 
     <Grid Background="White" x:Name="grd_main">
@@ -211,7 +211,18 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" FontSize="25" FontWeight="Bold" Margin="5" Grid.Column="0" Foreground="#121c1b" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
+                
+                
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="txt_price" Grid.Row="0" TextDecorations="Strikethrough" FlowDirection="RightToLeft" FontSize="25" FontWeight="Bold" Margin="5"  Foreground="#f44336" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="25000"/>
+                    <TextBlock x:Name="txt_d_price" Grid.Row="1" FlowDirection="RightToLeft" FontSize="25" FontWeight="Bold" Margin="5"  Foreground="#00b356" HorizontalAlignment="Center" VerticalAlignment="Top" Text="25000"/>
+                </Grid>
+                
+                
                 <TextBlock x:Name="txt_name" FontSize="28" FontWeight="Bold" Margin="20 5" Grid.Column="1" Foreground="#121c1b" HorizontalAlignment="Right" VerticalAlignment="Center" Text="جوجه کباب"/>
             </Grid>
 
