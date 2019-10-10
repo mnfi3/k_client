@@ -38,9 +38,9 @@
 
 
             <Grid Grid.Row="1">
-                <Border Name="Mask" Background="#f1f1f1" BorderThickness=".5" CornerRadius="10"/>
+                <Border Name="Mask" Background="White" BorderThickness=".5" CornerRadius="10"/>
                 <StackPanel>
-                    <cachedImage:Image Width="auto" Height="150" x:Name="img_dessert" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <cachedImage:Image Width="auto" Height="190" x:Name="img_dessert" Source="../img/ic_appetizer.jpg" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     <StackPanel.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=Mask}" />
                     </StackPanel.OpacityMask>

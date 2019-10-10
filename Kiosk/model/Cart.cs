@@ -10,6 +10,8 @@ namespace Kiosk.model
     {
 
         public List<CartItem> items { set; get; }
+        public int is_out;
+        public string order_number = "";
 
         public int cost
         {
@@ -50,6 +52,7 @@ namespace Kiosk.model
             discount = new Discount();
             discount.id = 0;
             discount.percent = 0;
+            is_out = 0;
         }
 
 

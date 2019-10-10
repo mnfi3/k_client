@@ -35,6 +35,8 @@ namespace Kiosk.db
             order_id++;
             values.Add("@id", order_id.ToString());
             values.Add("@restaurant_id", restaurant.id.ToString());
+            values.Add("@is_out", cart.is_out.ToString());
+            values.Add("@order_number", cart.order_number.ToString());
             values.Add("@cost", cart.cost.ToString());
             values.Add("@d_cost", cart.d_cost.ToString());
             values.Add("@discount_id", cart.discount.id.ToString());
@@ -50,9 +52,9 @@ namespace Kiosk.db
             values.Add("@transaction_date", response.TransactionDate);
             values.Add("@transaction_time", response.TransactionTime);
 
-            db.insert("insert into orders (id, restaurant_id, cost, d_cost, discount_id, time, pan, req_id, serial_transaction, terminal_no, trace_number, transaction_date, transaction_time)"
+            db.insert("insert into orders (id, restaurant_id, order_number, is_out, cost, d_cost, discount_id, time, pan, req_id, serial_transaction, terminal_no, trace_number, transaction_date, transaction_time)"
                 + " values"
-                + " (@id, @restaurant_id, @cost, @d_cost, @discount_id, @time, @pan, @req_id, @serial_transaction, @terminal_no, @trace_number, @transaction_date, @transaction_time)", values);
+                + " (@id, @restaurant_id, @order_number, @is_out, @cost, @d_cost, @discount_id, @time, @pan, @req_id, @serial_transaction, @terminal_no, @trace_number, @transaction_date, @transaction_time)", values);
 
 
             //find id to order_content
@@ -140,6 +142,8 @@ namespace Kiosk.db
                 {
                     order.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
                     order.restaurant_id = dataReader.GetInt32(dataReader.GetOrdinal("restaurant_id"));
+                    order.order_number = dataReader.GetString(dataReader.GetOrdinal("order_number"));
+                    order.is_out = dataReader.GetInt32(dataReader.GetOrdinal("is_out"));
                     order.cost = dataReader.GetInt32(dataReader.GetOrdinal("cost"));
                     order.d_cost = dataReader.GetInt32(dataReader.GetOrdinal("d_cost"));
                     order.discount_id = dataReader.GetInt32(dataReader.GetOrdinal("discount_id"));

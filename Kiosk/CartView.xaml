@@ -99,9 +99,9 @@
                                     </StackPanel>
                                 </Border>
 
-                                <Border Grid.Row="3" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
+                                <Border x:Name="grd_out" Grid.Row="3" Margin="5" Background="#ECEFF1" CornerRadius="15" BorderThickness="0" BorderBrush="#673AB7">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <CheckBox Margin="10 0"  Foreground="AliceBlue" >
+                                    <CheckBox x:Name="chk_out" Margin="10 0"  Foreground="AliceBlue" IsChecked="False" Checked="chk_out_Checked" >
                                             <CheckBox.LayoutTransform>
                                                 <ScaleTransform ScaleX="2" ScaleY="2" />
                                             </CheckBox.LayoutTransform>

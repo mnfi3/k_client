@@ -106,6 +106,8 @@ namespace Kiosk
             grd_products.Effect = blur;
             grd_price.Effect = blur;
             btn_pay.Effect = blur;
+            btn_discount.Effect = blur;
+            grd_out.Effect = blur;
 
             VKeyboard _keyboard = new VKeyboard(ref txt_discount_code);
             if (_keyboard.ShowDialog() == true)
@@ -113,6 +115,8 @@ namespace Kiosk
                 grd_products.Effect = null;
                 grd_price.Effect = null;
                 btn_pay.Effect = null;
+                btn_discount.Effect = null;
+                grd_out.Effect = null;
             }
         }
 
@@ -153,12 +157,22 @@ namespace Kiosk
             BlurEffect blur = new BlurEffect();
             grd_main.Effect = blur;
             grd_pay.Effect = blur;
+            
             Task.Delay(100);
             DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
             if (dialog.ShowDialog() == true)
             {
-                DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
-                dialog2.ShowDialog();
+                BuyResponse res = new BuyResponse();
+                res.PAN = "";
+                res.ReqID = "";
+                res.SerialTransaction = "564546546";
+                res.TerminalNo = "1234";
+                res.TraceNumber = "564";
+                res.TransactionDate = "1398/01/24";
+                res.TransactionTime = "14:55";
+                handleShop(res);
+                //DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+                //dialog2.ShowDialog();
             }
             else
             {
@@ -214,6 +228,8 @@ namespace Kiosk
 
         public void handleShop(BuyResponse response)
         {
+            DateTime datetime = DateTime.Now;
+            G.cart.order_number = G.restaurant.id.ToString() + datetime.ToString("HHmms");
             DBOrder db_order = new DBOrder();
             db_order.saveOrder(G.restaurant, G.cart, response);
             db_order.saveReceipt(G.cart);
@@ -278,14 +294,15 @@ namespace Kiosk
             //report.Render();
             report.Pages[0].PaperSize = System.Drawing.Printing.PaperKind.Custom;
             int item_count = new DBOrder().getReceiptItemCount();
-            report.Pages[0].Height = 3.2 + item_count * 0.3;//0.34
+            report.Pages[0].Height = 3.2 + item_count * 0.3;
             report.Compile();
             
             report["restaurant"] = G.restaurant.name;
             report["cost"] = Utils.persian_split(G.cart.cost) + " تومان ";
             report["d_cost"] = Utils.persian_split(G.cart.d_cost) + " تومان ";
-            DateTime datetime = DateTime.Now;
-            report["order_number"] = Utils.toPersianNum(G.restaurant.id.ToString() + datetime.ToString("HHmms"));
+            report["order_number"] = Utils.toPersianNum(G.cart.order_number);
+            if (G.cart.is_out == 1) report["is_out"] = "بله";
+            else report["is_out"] = "خیر";
             //report.Printed += Report_Printed;
             //report.Printing += Report_Printing;
             foreach (Printer printer in G.restaurant.printers)
@@ -353,6 +370,17 @@ namespace Kiosk
             ListProducts _list = new ListProducts();
             _list.Show();
             this.Close();
+        }
+
+        private void chk_out_Checked(object sender, RoutedEventArgs e)
+        {
+            if((bool) chk_out.IsChecked){
+                G.cart.is_out = 1;
+            }
+            else
+            {
+                G.cart.is_out = 0;
+            }
         }
 
        
