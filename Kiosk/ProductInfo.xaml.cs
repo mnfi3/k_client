@@ -105,7 +105,7 @@ namespace Kiosk
             slide.To = 1;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
             slide.AccelerationRatio = .5;
-            this.BeginAnimation(OpacityProperty, slide);
+            grd_main.BeginAnimation(OpacityProperty, slide);
         }
 
         private void fadeInFinished(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace Kiosk
             slide.To = 0;
             slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
-            this.BeginAnimation(OpacityProperty, slide);
+            grd_main.BeginAnimation(OpacityProperty, slide);
         }
         private void fadeOutFinished(object sender, EventArgs e)
         {

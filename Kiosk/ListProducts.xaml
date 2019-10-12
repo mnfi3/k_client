@@ -4,7 +4,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
         xmlns:local="clr-namespace:Kiosk.control"
-		Background="{x:Null}"
+		Background="White"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Height="600" Width="1000" Top="0" Left="0" Foreground="White" ResizeMode="NoResize"   AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" ManipulationBoundaryFeedback="Window_ManipulationBoundaryFeedback" >

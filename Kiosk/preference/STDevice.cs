@@ -1,4 +1,5 @@
-﻿//using Kiosk.license;
+﻿using Kiosk.license;
+//using Kiosk.license;
 using Kiosk.model;
 using Newtonsoft.Json;
 using System;
@@ -30,6 +31,7 @@ namespace Kiosk.preference
                 if (JsonConvert.DeserializeObject<Device>(json) != null)
                 {
                     device = JsonConvert.DeserializeObject<Device>(json);
+                    device.token = Crypt.DecryptString(device.token, G.PRIVATE_KEY);
                 }
             }
             catch (JsonException e)
@@ -39,6 +41,7 @@ namespace Kiosk.preference
 
         public void saveDevice(Device device)
         {
+            device.token = Crypt.EncryptString(device.token, G.PRIVATE_KEY);
             string json = JsonConvert.SerializeObject(device);
             //json = Crypt.EncryptString(json, G.PRIVATE_KEY);
             Properties.Settings.Default.device = json;

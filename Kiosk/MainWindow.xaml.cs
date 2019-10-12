@@ -62,7 +62,7 @@ namespace Kiosk
 
 
 
-            //this.Close();
+            this.Close();
         }
 
 
