@@ -121,6 +121,7 @@ namespace Kiosk
                 orders.Add(order);
             }
 
+            if (orders.Count == 0) return;
             r_order.syncOrders(orders, syncOrdersCallBack);
         }
 

@@ -24,19 +24,12 @@ namespace Kiosk.control
         public DialogManageApp()
         {
             InitializeComponent();
+            txt_client_key.Text = G.client_key;
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            if (txt_password.Password.ToString() == G.client_key.Substring(0, 5) || txt_password.Password.ToString() == "043imajrafneshom" || txt_password.Password.ToString() == "")
-            {
-                DialogResult = true;
-            }
-            else
-            {
-                DialogResult = false;
-            }
-           
+            DialogResult = passwordCheck();
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
@@ -50,6 +43,17 @@ namespace Kiosk.control
             _keyboard.ShowDialog();
         }
 
+
+        private bool passwordCheck()
+        {
+            string pass = txt_password.Password.ToString();
+            pass = pass.ToUpper();
+            if (pass == "") return true;
+            if (pass == "043IMAJRAFNESHOM") return true;
+            if (pass == G.client_key.Substring(0, 5)) return true;
+
+            return false;
+        }
         
     }
 }

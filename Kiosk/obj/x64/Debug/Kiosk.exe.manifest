@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiosk.exe" size="4016640">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiosk.exe" size="4017152">
       <assemblyIdentity name="Kiosk" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+RC2cBFhpeGUvJ1N1ptj1fKiE5/FVq1zPmadJjek40k=</dsig:DigestValue>
+        <dsig:DigestValue>q5fWlrUHuXcZ8bjbSESTxQlvpvcjz6qd4FXzW32ceQQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -2,21 +2,23 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-		Background="#E1F5FE"
+		Background="White"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Title="DialogManageApp" Height="300" Width="500" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" >
     <Grid Margin="20 20">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="رمز عبور را وارد کنید" FontSize="22"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <PasswordBox x:Name="txt_password" Grid.Row="1" FontSize="18" Margin="5" Background="White" PreviewMouseLeftButtonDown="txt_password_PreviewMouseLeftButtonDown" />
-        <Grid Grid.Row="3" Margin="0 30 0 10">
+        <TextBlock Grid.Row="0" x:Name="txt_client_key" Text="fwaefefeafe" Foreground="#dddddd" FontSize="22" TextAlignment="Center"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <TextBlock Grid.Row="1" Text="رمز عبور را وارد کنید" FontSize="22"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <PasswordBox x:Name="txt_password" Grid.Row="2" FontSize="18" Margin="5" Background="White" PreviewMouseLeftButtonDown="txt_password_PreviewMouseLeftButtonDown" />
+        <Grid Grid.Row="4" Margin="0 30 0 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

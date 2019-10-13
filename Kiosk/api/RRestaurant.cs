@@ -43,6 +43,7 @@ namespace Kiosk.api
             }
             else
             {
+                MessageBox.Show(res.message);
                 restaurant = new Restaurant();
             }
 

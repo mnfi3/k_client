@@ -21,6 +21,7 @@ namespace Kiosk.model
         public int discount_percent { set; get; }
         public string description { set; get; }
         public string image { set; get; }
+        public int is_available { set; get; }
         public List<Dessert> desserts { set; get; }
 
 
@@ -45,6 +46,7 @@ namespace Kiosk.model
             JArray d = obj["desserts"].Value<JArray>();
             for (int i = 0; i < d.Count; i++)
             {
+                if (d[i]["is_available"].Value<int>() == 0) continue;
                 product.desserts.Add(Dessert.parse((JObject)d[i]));
             }
 

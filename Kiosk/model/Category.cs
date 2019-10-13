@@ -31,6 +31,8 @@ namespace Kiosk.model
             JArray p = obj["products"].Value<JArray>();
             for (int i = 0; i < p.Count; i++)
             {
+                //not add finished products
+                if (p[i]["is_available"].Value<int>() == 0) continue;
                 category.products.Add(Product.parse((JObject)p[i]));
             }
 

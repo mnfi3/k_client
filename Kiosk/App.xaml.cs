@@ -40,7 +40,9 @@ namespace Kiosk
             G.cart = new Cart();
             //G.restaurants = new DBRestaurant().getRestaurants();
             //G.isLoggedIn = db_device.isLoggedIn();
-            G.restaurants = new STRestaurant().getRestaurants();
+            STRestaurant st_restaurant = new STRestaurant();
+            G.restaurants = st_restaurant.getRestaurants();
+
             G.isLoggedIn = st_device.isLoggedIn();
 
             syncRestaurants();
