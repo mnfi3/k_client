@@ -11,6 +11,7 @@ using System.Windows;
 using Newtonsoft.Json;
 using System.Threading;
 using Newtonsoft.Json.Linq;
+using Kiosk.system;
 
 namespace Kiosk.api
 {
@@ -44,6 +45,8 @@ namespace Kiosk.api
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             }
+            //add kiosk version header
+            client.DefaultRequestHeaders.Add("k-version", Config.VERSION);
 
             Response res = new Response();
 
@@ -110,6 +113,8 @@ namespace Kiosk.api
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             }
+            //add kiosk version header
+            client.DefaultRequestHeaders.Add("k-version", Config.VERSION);
 
             var content = new FormUrlEncodedContent(data);
 

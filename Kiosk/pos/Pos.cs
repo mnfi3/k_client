@@ -36,6 +36,7 @@ namespace Kiosk.pos
                 {
                     responseJson = responseJson.Replace("[error]", "");
                     buy_response.error = responseJson;
+                    buy_response.success = false;
                 }
                 else
                 {

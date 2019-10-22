@@ -69,6 +69,7 @@ namespace Kiosk
         {
             Process process = Process.Start(new ProcessStartInfo(
                 ((Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\osk.exe"))));
+
             txt_user_name.Focus();
         }
 

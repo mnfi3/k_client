@@ -24,6 +24,8 @@ namespace Kiosk
         public App()
         {
 
+            
+
             //configuration
             getDisplayHeightAndWidth();
 

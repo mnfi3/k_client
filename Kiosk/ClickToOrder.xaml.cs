@@ -50,7 +50,7 @@ namespace Kiosk
         }
 
 
-        private  void open_list_restaurant(object sender, MouseEventArgs e)
+        private void open_list_restaurant(object sender, MouseEventArgs e)
         {
             DoubleAnimation slideUp = new DoubleAnimation();
             slideUp.Completed += new EventHandler(slideUpFinished);

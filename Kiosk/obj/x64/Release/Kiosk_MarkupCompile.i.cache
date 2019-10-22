@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\
 Kiosk
 none
 false
 TRACE
-B:\programing\C#\Kiosk\Kiosk\App.xaml
-27985805181
+C:\dev\c_charp\Kiosk\Kiosk\App.xaml
+30-966295226
 51001242449
-69345202990
-31-1716116474
-CartView.xaml;ClickToOrder.xaml;control\DialogCartSwipe.xaml;control\DialogManageApp.xaml;control\DialogPaymentAccept.xaml;control\DialogPublic.xaml;control\DialogTest.xaml;control\ItemCart.xaml;control\ItemCartInListProduct.xaml;control\ItemCategory.xaml;control\ItemDessert.xaml;control\ItemDessertInCart.xaml;control\ItemProduct.xaml;control\ItemRestaurant.xaml;control\ItemRestaurantInRegister.xaml;control\MB.xaml;control\Receipt.xaml;control\VKeyboard.xaml;DeviceLogin.xaml;ListProducts.xaml;ListRestaurant.xaml;MainWindow.xaml;PrintReceipt.xaml;ProductInfo.xaml;RegisterRestaurant.xaml;license\LicenseManager.xaml;temp.xaml;
+801636443129
+37-1779950626
+CartView.xaml;ClickToOrder.xaml;control\CircleProgress.xaml;control\DialogCartSwipe.xaml;control\DialogManageApp.xaml;control\DialogPaymentAccept.xaml;control\DialogPublic.xaml;control\DialogTest.xaml;control\ItemCart.xaml;control\ItemCartInListProduct.xaml;control\ItemCategory.xaml;control\ItemDessert.xaml;control\ItemDessertInCart.xaml;control\ItemPrinter.xaml;control\ItemProduct.xaml;control\ItemRestaurant.xaml;control\ItemRestaurantInRegister.xaml;control\MB.xaml;control\SwipePage.xaml;control\Toast.xaml;control\VKeyboard.xaml;DeviceLogin.xaml;fortest.xaml;ListProducts.xaml;ListRestaurant.xaml;MainWindow.xaml;ProductInfo.xaml;RegisterRestaurant.xaml;license\LicenseManager.xaml;RestaurantDetails.xaml;
 
 False
 

@@ -1,9 +1,11 @@
-﻿//using Kiosk.license;
+﻿using Kiosk.license;
+//using Kiosk.license;
 //using Kiosk.license;
 using Kiosk.model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,63 @@ namespace Kiosk.preference
 {
     class STRestaurant
     {
-        public const string KEY_RESTAURANTS = "restaurants";
+        //public const string KEY_RESTAURANTS = "restaurants";
+
+
+
+        private static string json_string = null;
+        private const string FOLDER = @"C:\digiarta\";
+        private const string FILE = @"C:\digiarta\users.ark";
+
+
+
+        public STRestaurant()
+        {
+            if (json_string != null) return;
+            else init();
+        }
+
+        private void init(){
+            if (!Directory.Exists(FOLDER)) System.IO.Directory.CreateDirectory(FOLDER);
+            if (File.Exists(FILE))
+            {
+                read();
+            }
+            else
+            {
+                Device device = new Device();
+                string json = JsonConvert.SerializeObject(device);
+                save(json);
+            }
+            
+        }
+
+        private string read()
+        {
+            string json =  File.ReadAllText(FILE);
+            json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
+            if (json_string.Contains("#fail"))
+            {
+                List<Restaurant> rests = new List<Restaurant>();
+                json = JsonConvert.SerializeObject(rests);
+                save(json);
+            }
+            return json_string;
+        }
+
+        private void save(string json)
+        {
+            json_string = json;
+            json = Crypt.EncryptString(json, G.PUBLIC_KEY);
+            File.WriteAllText(FILE, json);
+        }
+
+
+
+
+
+
+
 
         public void setRestaurant(Restaurant restaurant)
         {
@@ -29,14 +87,9 @@ namespace Kiosk.preference
                     break;
                 }
             }
-            //var rest = restaurants.First(x => x.id == restaurant.id);
-            //if (rest != null) restaurants.Remove(rest);
-            //restaurant.token = Crypt.EncryptString(restaurant.token, G.PRIVATE_KEY);
             restaurants.Add(restaurant);
             string json = JsonConvert.SerializeObject(restaurants);
-            //json = Crypt.EncryptString(json, G.PRIVATE_KEY);
-            Properties.Settings.Default.restaurants = json;
-            Properties.Settings.Default.Save();
+            save(json);
         }
 
 
@@ -54,26 +107,17 @@ namespace Kiosk.preference
             }
             
             string json = JsonConvert.SerializeObject(restaurants);
-            Properties.Settings.Default.restaurants = json;
-            Properties.Settings.Default.Save();
+            save(json);
         }
 
 
         public List<Restaurant> getRestaurants()
         {
-            string json = Properties.Settings.Default.restaurants;
+            string json = read();
             List<Restaurant> restaurants = new List<Restaurant>();
-            //json = Crypt.DecryptString(json, G.PRIVATE_KEY);
             try
             {
-                if (JsonConvert.DeserializeObject<List<Restaurant>>(json) != null && json.Length > 20)
-                {
-                    restaurants = JsonConvert.DeserializeObject<List<Restaurant>>(json);
-                    //foreach (Restaurant rest in restaurants)
-                    //{
-                    //    rest.token = Crypt.DecryptString(rest.token, G.PRIVATE_KEY);
-                    //}
-                }
+                restaurants = JsonConvert.DeserializeObject<List<Restaurant>>(json);
             }
             catch (JsonException e) { }
             return restaurants;
@@ -81,10 +125,7 @@ namespace Kiosk.preference
 
         public void updateRestaurantInfo(Restaurant restaurant)
         {
-            //restaurant.token = Crypt.EncryptString(restaurant.token, G.PRIVATE_KEY);
-
             List<Restaurant> restaurants = this.getRestaurants();
-            //if (restaurants.Count == 0) return;
             foreach (Restaurant rest in restaurants)
             {
                 if (rest.id == restaurant.id)
@@ -96,17 +137,16 @@ namespace Kiosk.preference
             }
             
             string json = JsonConvert.SerializeObject(restaurants);
-            //json = Crypt.EncryptString(json, G.PRIVATE_KEY);
-            Properties.Settings.Default.restaurants = json;
-            Properties.Settings.Default.Save();
+            save(json);
         }
 
 
 
         public void removeAll()
         {
-            Properties.Settings.Default.restaurants = "";
-            Properties.Settings.Default.Save();
+            List<Restaurant> restaurants = new List<Restaurant>();
+            string json = JsonConvert.SerializeObject(restaurants);
+            save(json);
         }
 
     }

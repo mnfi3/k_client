@@ -162,17 +162,8 @@ namespace Kiosk
             DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
             if (dialog.ShowDialog() == true)
             {
-                BuyResponse res = new BuyResponse();
-                res.PAN = "";
-                res.ReqID = "";
-                res.SerialTransaction = "564546546";
-                res.TerminalNo = "1234";
-                res.TraceNumber = "564";
-                res.TransactionDate = "1398/01/24";
-                res.TransactionTime = "14:55";
-                handleShop(res);
-                //DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
-                //dialog2.ShowDialog();
+                DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+                dialog2.ShowDialog();
             }
             else
             {

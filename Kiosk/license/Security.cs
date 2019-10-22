@@ -13,8 +13,8 @@ namespace Kiosk.license
     {
 
         private static String SALT = "15E99F77CA57B6ADE994F3F13C31BB2A";
-        private static String path = @"C:\ezitech\license.key";
-        private static String path2 = @"C:\ezitech\";
+        private static String path = @"C:\digiarta\license.key";
+        private static String path2 = @"C:\digiarta\";
 
 
 
