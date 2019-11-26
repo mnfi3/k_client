@@ -56,25 +56,25 @@ namespace Kiosk.control
 
         public void paymentCallBack(object sender, EventArgs e)
         {
-            //paymentHandler(sender, new EventArgs());
-            //this.Close();
+            paymentHandler(sender, new EventArgs());
+            this.Close();
 
 
 
 
             //fake payment for test
-            BuyResponse res = new BuyResponse();
-            res.success = true;
-            res.PAN = "610433***9896";
-            res.ReqID = "";
-            res.SerialTransaction = "564546546";
-            res.TerminalNo = "1234";
-            res.TraceNumber = "564";
-            res.TransactionDate = "1398/01/24";
-            res.TransactionTime = "14:55";
-            Task.Delay(2000);
-            paymentHandler(res, new EventArgs());
-            this.Close();
+            //BuyResponse res = new BuyResponse();
+            //res.success = true;
+            //res.PAN = "610433***9896";
+            //res.ReqID = "";
+            //res.SerialTransaction = "564546546";
+            //res.TerminalNo = "1234";
+            //res.TraceNumber = "564";
+            //res.TransactionDate = "1398/01/24";
+            //res.TransactionTime = "14:55";
+            //Task.Delay(2000);
+            //paymentHandler(res, new EventArgs());
+            //this.Close();
 
         }
 

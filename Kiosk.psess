@@ -36,7 +36,7 @@
   </PostinstrumentEvent>
   <Binaries>
     <ProjBinary>
-      <Path>Kiosk\obj\x64\Debug\Kiosk.exe</Path>
+      <Path>Kiosk\obj\x64\Release\Kiosk.exe</Path>
       <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
       <Instrument>true</Instrument>
       <Sample>true</Sample>
@@ -48,8 +48,8 @@
       <LaunchProject>true</LaunchProject>
       <OverrideProjectSettings>false</OverrideProjectSettings>
       <LaunchMethod>Executable</LaunchMethod>
-      <ExecutablePath>Kiosk\bin\x64\Debug\Kiosk.exe</ExecutablePath>
-      <StartupDirectory>Kiosk\bin\x64\Debug\</StartupDirectory>
+      <ExecutablePath>Kiosk\bin\x64\Release\Kiosk.exe</ExecutablePath>
+      <StartupDirectory>Kiosk\bin\x64\Release\</StartupDirectory>
       <Arguments>
       </Arguments>
       <NetAppHost>IIS</NetAppHost>

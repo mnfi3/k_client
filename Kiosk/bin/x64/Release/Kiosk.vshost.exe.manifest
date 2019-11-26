@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiosk.exe" size="3980288">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiosk.exe" size="3980800">
       <assemblyIdentity name="Kiosk" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6s4DeXWGT4UKzdjHjcJIjrLPzXgbRxk3W6WdIQK9d5M=</dsig:DigestValue>
+        <dsig:DigestValue>49uR9qN4zEYOcCpzXUCVl4dTu7veePuBepSzcebcbiw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -281,13 +281,22 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Kiosk.exe.config" size="2449">
+  <file name="database\Kiosk.mdf" size="3145728" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>5brAIoUZe4ajv6NT2MWCVCVr/2QOpNlDnUXJ1klf5T0=</dsig:DigestValue>
+      <dsig:DigestValue>Klns9FYjF5l2zHjiWbXx7SIlPVplC9RTBkA5zYPIpiM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Kiosk.exe.config" size="2501">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WILMn94XqxdwY+/NzqueTG+ttSRE82hrvmienRXjQOs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SqlServerTypes\readme.htm" size="2309">
