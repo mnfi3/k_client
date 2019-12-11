@@ -12,6 +12,8 @@ using Kiosk.db;
 using System.Timers;
 using Kiosk.api;
 using Kiosk.preference;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace Kiosk
 {
@@ -23,6 +25,7 @@ namespace Kiosk
 
         public App()
         {
+
 
             
 
@@ -49,6 +52,10 @@ namespace Kiosk
 
             syncRestaurants();
 
+
+
+            //create database in first run
+            //CreateDatabase();
 
 
         }
@@ -108,6 +115,35 @@ namespace Kiosk
         }
 
 
+
+
+
+        private void CreateDatabase()
+        {
+            //create database
+            string connetionString = "server=localhost;Initial Catalog=master;Integrated Security=true;";
+            SqlConnection connection = new SqlConnection(connetionString);
+            string query = File.ReadAllText("database\\create_database.sql");
+            SqlCommand command;
+            try
+            {
+                connection.Open();
+                command = new SqlCommand(query, connection);
+                command.ExecuteReader();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+            }
+            connection.Close();
+
+            //create tables
+            DB db = new DB();
+            query = File.ReadAllText("database\\create_tables.sql");
+            db.update(query);
+            db.close();
+            
+        }
 
 
 

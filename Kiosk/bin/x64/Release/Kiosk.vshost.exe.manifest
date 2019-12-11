@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>49uR9qN4zEYOcCpzXUCVl4dTu7veePuBepSzcebcbiw=</dsig:DigestValue>
+        <dsig:DigestValue>CcmPRh+BuxGQDrkRC2S1XodA6GLeuDze7aHlw/Bll3U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -281,6 +281,33 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="database\create.sql" size="12290">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>87Bt0O8wpwZZDz3cqeO5bG/KV67d7hkbwPktnRcBi2E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="database\create_database.sql" size="4392">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>pQwAhmJPzhzmK1X9doFtDHvyDP+ezj9IMcwahP1KZzc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="database\create_tables.sql" size="7652">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>85kBs793tlnouaKDMf9pSBYgNTGj4V13yGB1NCPa/wQ=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="database\Kiosk.mdf" size="3145728" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
@@ -290,13 +317,13 @@
       <dsig:DigestValue>Klns9FYjF5l2zHjiWbXx7SIlPVplC9RTBkA5zYPIpiM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Kiosk.exe.config" size="2501">
+  <file name="Kiosk.exe.config" size="2960">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WILMn94XqxdwY+/NzqueTG+ttSRE82hrvmienRXjQOs=</dsig:DigestValue>
+      <dsig:DigestValue>LSgmDMv1LnkTn8oIDlKWcNPNsKqv6kl+38hci/hF2xs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SqlServerTypes\readme.htm" size="2309">

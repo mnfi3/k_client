@@ -64,7 +64,6 @@ B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\Kiosk.Properties.Resources.resource
 B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\Kiosk.csproj.GenerateResource.Cache
 B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\RdlCompile.cache
 B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\RdlCompile.compiled
-C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\CartView.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\ClickToOrder.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\CircleProgress.baml
@@ -188,3 +187,4 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csproj.GenerateResource.Cache
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.exe.manifest
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.application
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.exe
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache

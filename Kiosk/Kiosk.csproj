@@ -502,6 +502,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\click_to_order.jpg" />
+    <Content Include="database\create_tables.sql" />
+    <Content Include="database\create_database.sql" />
+    <Content Include="database\create.sql" />
     <Content Include="database\Kiosk.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
