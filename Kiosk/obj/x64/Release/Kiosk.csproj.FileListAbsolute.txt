@@ -137,8 +137,6 @@ C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x64\SqlServerSpatial14
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x86\msvcr120.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\database\Kiosk.mdf
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.exe.manifest
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.application
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.exe
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.pdb
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\CachedImage.dll
@@ -184,7 +182,5 @@ C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Editor.pdb
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Editor.xml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.Properties.Resources.resources
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csproj.GenerateResource.Cache
-C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.exe.manifest
-C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.application
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.exe
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache
