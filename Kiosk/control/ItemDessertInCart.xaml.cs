@@ -21,40 +21,43 @@ namespace Kiosk.control
     /// </summary>
     public partial class ItemDessertInCart : UserControl
     {
-        public Dessert dessert;
+        public Food side;
         private EventHandler removeHandler;
-        public ItemDessertInCart(Dessert d, EventHandler handler)
+        public ItemDessertInCart(Food s, EventHandler handler)
         {
             InitializeComponent();
 
             this.removeHandler += handler;
-            this.dessert = d;
+            this.side = s;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            txt_name.Text = dessert.name;
+            txt_name.Text = side.name;
         }
 
         private void btn_remove_Click(object sender, RoutedEventArgs e)
         {
-            foreach (CartItem item in G.cart.items)
-            {
-                if (item.product.id == this.dessert.product_id)
-                {
-                    for (int i = 0; i < item.desserts.Count; i++)
-                    {
-                        if (item.desserts[i].id == this.dessert.id){
-                            item.desserts.RemoveAt(i);
-                            this.Visibility = Visibility.Collapsed;
-                            break;
-                        }
-                    }
-                        
-                }
-            }
+        //    foreach (CartItem item in G.cart.items)
+        //    {
 
-            removeHandler(dessert.name, new EventArgs());
+
+        //        if (item.food.id == this.side.product_id)
+        //        {
+        //            for (int i = 0; i < item.desserts.Count; i++)
+        //            {
+        //                if (item.desserts[i].id == this.dessert.id)
+        //                {
+        //                    item.desserts.RemoveAt(i);
+        //                    this.Visibility = Visibility.Collapsed;
+        //                    break;
+        //                }
+        //            }
+
+        //        }
+        //    }
+
+        //    removeHandler(dessert.name, new EventArgs());
         }
     }
 }

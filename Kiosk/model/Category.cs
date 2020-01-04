@@ -13,12 +13,12 @@ namespace Kiosk.model
         public int restaurant_id { set; get; }
         public string name { set; get; }
         public string image { set; get; }
-        public List<Product> products { set; get; }
+        public List<Food> foods { set; get; }
 
 
         public Category()
         {
-            products = new List<Product>();
+            foods = new List<Food>();
         }
 
         public static Category parse(JObject obj)
@@ -31,9 +31,9 @@ namespace Kiosk.model
             JArray p = obj["products"].Value<JArray>();
             for (int i = 0; i < p.Count; i++)
             {
-                //not add finished products
+                //not add finished products 
                 if (p[i]["is_available"].Value<int>() == 0) continue;
-                category.products.Add(Product.parse((JObject)p[i]));
+                category.foods.Add(Food.parse((JObject)p[i]));
             }
 
             return category;

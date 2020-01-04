@@ -123,7 +123,7 @@
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
                 <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Right" Text="مخلفات مورد نظر را انتخاب کنید" />
-                <ListView x:Name="lst_dessert1" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_dessert1_SelectionChanged"  >
+                <ListView x:Name="lst_sides" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" FlowDirection="RightToLeft" ScrollViewer.PanningMode="Both" SelectionChanged="lst_sides_SelectionChanged"  >
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid  Rows="1" FlowDirection="RightToLeft" HorizontalAlignment="Left"/>
@@ -155,8 +155,8 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
-                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Right" Text="دسرهای مورد نظر خود را انتخاب کنید"/>
-                <ListView x:Name="lst_dessert2" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ScrollViewer.PanningMode="Both"  SelectionChanged="lst_dessert2_SelectionChanged"  FlowDirection="RightToLeft" >
+                <TextBlock Foreground="#121c1b" FontWeight="Bold" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Right" Text="غذاهای پیشنهادی"/>
+                <ListView x:Name="lst_suggests" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ScrollViewer.PanningMode="Both"  SelectionChanged="lst_suggests_SelectionChanged"  FlowDirection="RightToLeft" >
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Rows="1" FlowDirection="RightToLeft" HorizontalAlignment="Left"/>

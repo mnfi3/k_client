@@ -14,72 +14,70 @@ namespace Kiosk.db
 
 
 
-        public void  resetProducts(List<Category> categories, Restaurant restaurant )
+        public void  resetProducts(AllProduct all_product, Restaurant restaurant )
         {
             //remove old data
-            clearRestaurantProducts(restaurant);
+            clearRestaurantFoods(restaurant);
 
+            List<Category> categories = all_product.categories;
             //save new data
             foreach (Category c in categories)
             {
-
                 values.Clear();
                 values.Add("@id", c.id.ToString());
                 values.Add("@restaurant_id", restaurant.id.ToString());
                 values.Add("@name", c.name);
                 values.Add("@image", c.image);
                 db.insert("insert into categories (id, restaurant_id, name, image) values (@id, @restaurant_id, @name, @image)", values);
-                foreach (Product p in c.products)
+                foreach (Food f in c.foods)
                 {
                     values.Clear();
-                    values.Add("@id", p.id.ToString());
+                    values.Add("@id", f.id.ToString());
                     values.Add("@restaurant_id", restaurant.id.ToString());
                     values.Add("@category_id", c.id.ToString());
-                    values.Add("@name", p.name);
-                    values.Add("@price", p.price.ToString());
-                    values.Add("@discount_percent", p.discount_percent.ToString());
-                    values.Add("@d_price", p.d_price.ToString());
-                    values.Add("@description", p.description);
-                    values.Add("@image", p.image);
-                    db.insert("insert into products (id, restaurant_id, category_id, name, price, discount_percent, d_price, description, image) "
-                        + "values (@id, @restaurant_id, @category_id, @name, @price, @discount_percent, @d_price, @description, @image)", values);
+                    values.Add("@is_side", 0.ToString());
+                    values.Add("@name", f.name);
+                    values.Add("@price", f.price.ToString());
+                    values.Add("@discount_percent", f.discount_percent.ToString());
+                    values.Add("@d_price", f.d_price.ToString());
+                    values.Add("@description", f.description);
+                    values.Add("@image", f.image);
+                    values.Add("@is_suggest", f.is_suggest.ToString());
+                    values.Add("@is_available", f.is_available.ToString());
 
-                    foreach (Dessert d in p.desserts)
-                    {
-                        values.Clear();
-                        values.Add("@id", d.id.ToString());
-                        values.Add("@product_id", p.id.ToString());
-                        values.Add("@name", d.name.ToString());
-                        values.Add("@type", d.type.ToString());
-                        values.Add("@price", d.price.ToString());
-                        values.Add("@image", d.image.ToString());
-                        db.insert("insert into desserts (id, product_id, name, type, price, image) "
-                            + "values (@id, @product_id, @name, @type, @price, @image)", values);
-                    }
+                    db.insert("insert into foods (id, restaurant_id, category_id, is_side, name, price, discount_percent, d_price, description, image, is_suggest, is_available) "
+                    + "values (@id, @restaurant_id, @category_id, @is_side, @name, @price, @discount_percent, @d_price, @description, @image, @is_suggest, @is_available)", values);
                 }
+            }
+
+            foreach(Food f in all_product.sides){
+                values.Clear();
+                values.Add("@id", f.id.ToString());
+                values.Add("@restaurant_id", restaurant.id.ToString());
+                values.Add("@category_id", 0.ToString());
+                values.Add("@is_side", 1.ToString());
+                values.Add("@name", f.name);
+                values.Add("@price", f.price.ToString());
+                values.Add("@discount_percent", f.discount_percent.ToString());
+                values.Add("@d_price", f.d_price.ToString());
+                values.Add("@description", f.description);
+                values.Add("@image", f.image);
+                values.Add("@is_suggest", 0.ToString());
+                values.Add("@is_available", f.is_available.ToString());
+
+                db.insert("insert into foods (id, restaurant_id, category_id, is_side, name, price, discount_percent, d_price, description, image, is_suggest, is_available) "
+                + "values (@id, @restaurant_id, @category_id, @is_side, @name, @price, @discount_percent, @d_price, @description, @image, @is_suggest, @is_available)", values);
             }
 
         }
 
-        private void clearRestaurantProducts(Restaurant rest)
+        private void clearRestaurantFoods(Restaurant rest)
         {
-            List<Category> categories = getProducts(rest);
-            foreach (Category c in categories)
-            {
-                foreach (Product p in c.products)
-                {
-                    values.Clear();
-                    values.Add("@product_id", p.id.ToString());
-                    db.delete("delete from desserts where product_id=@product_id", values);
-                }
-                break;
-
-            }
-
             values.Clear();
             values.Add("@restaurant_id", rest.id.ToString());
-            db.delete("delete from products where restaurant_id=@restaurant_id", values);
+            db.delete("delete from foods where restaurant_id=@restaurant_id", values);
             db.delete("delete from categories where restaurant_id=@restaurant_id", values);
+            db.close();
         }
 
 
@@ -89,10 +87,14 @@ namespace Kiosk.db
 
 
 
-        public List<Category> getProducts(Restaurant rest)
+        public AllProduct getProducts(Restaurant rest)
         {
+            AllProduct all_product = new AllProduct();
             List<Category> categories = new List<Category>();
             Category category;
+            List<Food> sides = new List<Food>();
+            Food side;
+
             values.Clear();
             values.Add("@rest_id", rest.id.ToString());
             SqlDataReader dataReader = db.select("select * from categories where restaurant_id = @rest_id", values);
@@ -113,61 +115,68 @@ namespace Kiosk.db
 
             foreach (Category c in categories)
             {
-                Product product;
+                Food food;
                 values.Clear();
                 values.Add("@category_id", c.id.ToString());
-                dataReader = db.select("select * from products where category_id = @category_id", values);
+                dataReader = db.select("select * from foods where category_id = @category_id and is_side = 0", values);
                 if (dataReader != null)
                 {
                     while (dataReader.Read())
                     {
-                        product = new Product();
-                        product.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                        product.restaurant_id = dataReader.GetInt32(dataReader.GetOrdinal("restaurant_id"));
-                        product.category_id = dataReader.GetInt32(dataReader.GetOrdinal("category_id"));
-                        product.name = dataReader.GetString(dataReader.GetOrdinal("name"));
-                        product.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
-                        product.discount_percent = dataReader.GetInt32(dataReader.GetOrdinal("discount_percent"));
-                        product.d_price = dataReader.GetInt32(dataReader.GetOrdinal("d_price"));
-                        product.description = dataReader.GetString(dataReader.GetOrdinal("description"));
-                        product.image = dataReader.GetString(dataReader.GetOrdinal("image"));
+                        food = new Food();
+                        food.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
+                        food.restaurant_id = dataReader.GetInt32(dataReader.GetOrdinal("restaurant_id"));
+                        food.category_id = dataReader.GetInt32(dataReader.GetOrdinal("category_id"));
+                        food.is_side = dataReader.GetInt32(dataReader.GetOrdinal("is_side"));
+                        food.name = dataReader.GetString(dataReader.GetOrdinal("name"));
+                        food.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
+                        food.discount_percent = dataReader.GetInt32(dataReader.GetOrdinal("discount_percent"));
+                        food.d_price = dataReader.GetInt32(dataReader.GetOrdinal("d_price"));
+                        food.description = dataReader.GetString(dataReader.GetOrdinal("description"));
+                        food.image = dataReader.GetString(dataReader.GetOrdinal("image"));
+                        food.is_suggest = dataReader.GetInt32(dataReader.GetOrdinal("is_suggest"));
+                        food.is_available = dataReader.GetInt32(dataReader.GetOrdinal("is_available"));
 
-                        c.products.Add(product);
+                        c.foods.Add(food);
                     }
                 }
 
                 db.close();
-
-
-
-                foreach (Product p in c.products)
-                {
-                    Dessert dessert;
-                    values.Clear();
-                    values.Add("@product_id", p.id.ToString());
-                    dataReader = db.select("select * from desserts where product_id = @product_id", values);
-                    if (dataReader != null)
-                    {
-                        while (dataReader.Read())
-                        {
-                            dessert = new Dessert();
-                            dessert.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                            dessert.product_id = dataReader.GetInt32(dataReader.GetOrdinal("product_id"));
-                            dessert.name = dataReader.GetString(dataReader.GetOrdinal("name"));
-                            dessert.type = dataReader.GetString(dataReader.GetOrdinal("type"));
-                            dessert.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
-                            dessert.image = dataReader.GetString(dataReader.GetOrdinal("image"));
-
-                            p.desserts.Add(dessert);
-                        }
-                    }
-
-                    db.close();
-                }
-
-
             }
-            return categories;
+
+
+
+
+
+            dataReader = db.select("select * from foods where restaurant_id = @rest_id and is_side = 1", values);
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    side = new Food();
+                    side.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
+                    side.restaurant_id = dataReader.GetInt32(dataReader.GetOrdinal("restaurant_id"));
+                    side.category_id = dataReader.GetInt32(dataReader.GetOrdinal("category_id"));
+                    side.is_side = dataReader.GetInt32(dataReader.GetOrdinal("is_side"));
+                    side.name = dataReader.GetString(dataReader.GetOrdinal("name"));
+                    side.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
+                    side.discount_percent = dataReader.GetInt32(dataReader.GetOrdinal("discount_percent"));
+                    side.d_price = dataReader.GetInt32(dataReader.GetOrdinal("d_price"));
+                    side.description = dataReader.GetString(dataReader.GetOrdinal("description"));
+                    side.image = dataReader.GetString(dataReader.GetOrdinal("image"));
+                    side.is_suggest = dataReader.GetInt32(dataReader.GetOrdinal("is_suggest"));
+                    side.is_available = dataReader.GetInt32(dataReader.GetOrdinal("is_available"));
+
+                    sides.Add(side);
+                }
+            }
+
+            db.close();
+
+            all_product.categories = categories;
+            all_product.sides = sides;
+
+            return all_product;
         }
     }
 }

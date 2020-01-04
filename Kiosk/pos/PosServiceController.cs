@@ -58,6 +58,10 @@ namespace Kiosk.pos
                     {
                         //throw new Exception($"Can not restart the Windows Service {serviceName}", ex);
                     }
+                    //catch (InvalidOperationException ex2)
+                    //{
+
+                    //}
 
                 }
             });

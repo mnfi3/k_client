@@ -88,24 +88,42 @@ namespace Kiosk.api
         private void productsCallBack(object sender, EventArgs e)
         {
             Response res = sender as Response;
+            AllProduct all_products = new AllProduct();
             List<Category> categories = new List<Category>();
             Category category;
+
+            List<Food> sides = new List<Food>();
+            Food side;
             if (res.status == 1)
             {
                 JObject data = res.data;
-                JArray products = data["products"].Value<JArray>();
-                for (int i = 0; i < products.Count; i++)
+                JArray categories1 = data["categories"].Value<JArray>();
+                for (int i = 0; i < categories1.Count; i++)
                 {
-                    category = Category.parse((JObject)products[i]);
+                    category = Category.parse((JObject)categories1[i]);
                     categories.Add(category);
                 }
+
+
+
+                JArray sides1 = data["sides"].Value<JArray>();
+                for (int i = 0; i < sides1.Count; i++)
+                {
+                    side = Food.parse((JObject)sides1[i]);
+                    sides.Add(side);
+                }
+
+
+                all_products.categories = categories;
+                all_products.sides = sides;
 
             }
             else
             {
             }
 
-            eventProducts(categories, new EventArgs());
+            //eventProducts(categories, new EventArgs());
+            eventProducts(all_products, new EventArgs());
         }
 
 

@@ -16,7 +16,6 @@ namespace Kiosk.model
         public int d_cost { set; get; }
         public int discount_id { set; get; }
         public string time { set; get; }
-        public List<OrderContent> items { set; get; }
 
 
 
@@ -30,10 +29,14 @@ namespace Kiosk.model
         public string transaction_time { set; get; }
 
 
+        public List<OrderItem> items;
+
 
         public Order()
         {
             id = -1;
+            discount_id = 0;
+            items = new List<OrderItem>();
         }
     }
 }

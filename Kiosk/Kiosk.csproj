@@ -193,8 +193,8 @@
     <Compile Include="control\ItemCartInListProduct.xaml.cs">
       <DependentUpon>ItemCartInListProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="control\ItemDessert.xaml.cs">
-      <DependentUpon>ItemDessert.xaml</DependentUpon>
+    <Compile Include="control\ItemSide.xaml.cs">
+      <DependentUpon>ItemSide.xaml</DependentUpon>
     </Compile>
     <Compile Include="control\ItemDessertInCart.xaml.cs">
       <DependentUpon>ItemDessertInCart.xaml</DependentUpon>
@@ -230,11 +230,10 @@
       <DependentUpon>fortest.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\CartItem.cs" />
-    <Compile Include="model\Dessert.cs" />
+    <Compile Include="model\AllProduct.cs" />
     <Compile Include="model\Discount.cs" />
     <Compile Include="model\Order.cs" />
-    <Compile Include="model\OrderContent.cs" />
-    <Compile Include="model\OrderContentDessert.cs" />
+    <Compile Include="model\OrderItem.cs" />
     <Compile Include="model\Payment.cs" />
     <Compile Include="model\Printer.cs" />
     <Compile Include="model\ReceiptItem.cs" />
@@ -312,7 +311,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="control\ItemDessert.xaml">
+    <Page Include="control\ItemSide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -421,7 +420,7 @@
   <ItemGroup>
     <Compile Include="model\Cart.cs" />
     <Compile Include="model\Category.cs" />
-    <Compile Include="model\Product.cs" />
+    <Compile Include="model\Food.cs" />
     <Compile Include="model\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

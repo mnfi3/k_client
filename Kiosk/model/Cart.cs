@@ -63,12 +63,12 @@ namespace Kiosk.model
         }
 
 
-        public CartItem findByProduct(Product p)
+        public CartItem findByProduct(Food f)
         {
             CartItem item = new CartItem();
             foreach (CartItem i in this.items)
             {
-                if (p.id == i.product.id)
+                if (f.id == i.food.id)
                 {
                     item = i;
                     break;
@@ -77,11 +77,11 @@ namespace Kiosk.model
             return item;
         }
 
-        public bool isExistInCart(Product p)
+        public bool isExistInCart(Food f)
         {
             foreach (CartItem i in this.items)
             {
-                if (p.id == i.product.id)
+                if (f.id == i.food.id)
                 {
                     return true;
                 }
@@ -96,7 +96,7 @@ namespace Kiosk.model
         {
             for(int i=0 ; i<items.Count ; i++)
             {
-                if (items[i].product.id == item.product.id)
+                if (items[i].food.id == item.food.id)
                 {
                     items.RemoveAt(i);
                     break;

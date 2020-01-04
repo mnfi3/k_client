@@ -34,6 +34,7 @@ namespace Kiosk
     {
 
         private Restaurant restaurant;
+        AllProduct all_product;
         Category active_category;
         System.Timers.Timer timer = new System.Timers.Timer();
         bool is_loaded_data = false;
@@ -59,24 +60,6 @@ namespace Kiosk
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             fadeIn();
-
-           
-           
-
-
-            //print test
-            //StiReport report = new StiReport();
-            //report.Load("Report.mrt");
-            //report.Compile();
-            //report["restaurant"] = G.restaurant.name;
-            //report["cost"] = Utils.persian_split(125000) + " تومان ";
-            //report["d_cost"] = Utils.persian_split(100000) + " تومان ";
-            //report["order_number"] = Utils.toPersianNum("1547");
-            //report.Printed += Report_Printed;
-            //report.Printing += Report_Printing;
-            //PrinterSettings setting = new PrinterSettings();
-            //setting.PrinterName = "ReceiptPrinter";
-            //report.Print(false, setting);
         }
 
 
@@ -91,26 +74,6 @@ namespace Kiosk
 
         
 
-
-        private void Report_Printing(object sender, EventArgs e)
-        {
-            //when printing
-            //MessageBox.Show("printing");
-        }
-
-        private void Report_Printed(object sender, EventArgs e)
-        {
-            //when printed
-            //MessageBox.Show("printed");
-        }
-
-
-
-        //private void animCallback(object sender, EventArgs e)
-        //{
-        //    loadProducts();
-        //    loadCart();
-        //}
 
 
 
@@ -212,7 +175,7 @@ namespace Kiosk
             if ((sender as ListView).SelectedItem == null) return;
 
             ItemProduct _item = (ItemProduct)(sender as ListView).SelectedItem;
-            ProductInfo _info = new ProductInfo(_item.product, addToCartCallBack);
+            ProductInfo _info = new ProductInfo(_item.food, addToCartCallBack);
             _info.Show();
             this.Hide();
 
@@ -232,7 +195,7 @@ namespace Kiosk
                     this.cln_cart.Width = new GridLength(2.5, GridUnitType.Star);
                 }
                 txt_total.Text = Utils.persian_split(G.cart.cost) + " ت ";
-                Toast.success ("به سبد خرید اضافه شد", 1);
+                //Toast.success ("به سبد خرید اضافه شد", 1);
 
             }
             else
@@ -261,16 +224,18 @@ namespace Kiosk
         private void productCallBack(object sender, EventArgs e)
         {
             DBProducts db_products = new DBProducts();
-            List<Category> categories = sender as List<Category>;
+            all_product = sender as AllProduct;
+            List<Category> categories = all_product.categories;
+            List<Food> sides = sender as List<Food>;
 
             //if connection was fail
             if (categories.Count == 0)
             {
                 Task.Run(() =>{
-                    List<Category> categories2 = db_products.getProducts(this.restaurant);
+                    all_product = db_products.getProducts(this.restaurant);
                     this.Dispatcher.Invoke((Action)(() =>
                     {
-                        loadCategories(categories2);
+                        loadCategories(all_product.categories);
                     }));
                 });
             }
@@ -280,10 +245,12 @@ namespace Kiosk
                 //save new products to local db
                 Task.Run(() =>
                 {
-                    db_products.resetProducts(categories, this.restaurant);
+                    db_products.resetProducts(all_product, this.restaurant);
                 });
-               
             }
+
+            G.restaurant.all_product = all_product;
+
 
             grd_main2.Effect = null;
             prg_loading.Stop();
@@ -304,7 +271,7 @@ namespace Kiosk
                 bool is_find = false;
                 foreach (ItemCartInListProduct ic in lst_cart.Items)
                 {
-                    if (i.product.id == ic.cartItem.product.id)
+                    if (i.food.id == ic.cartItem.food.id)
                     {
                         is_find = true;
                         break;
@@ -326,7 +293,7 @@ namespace Kiosk
                 bool is_exist = false;
                 foreach (CartItem i in G.cart.items)
                 {
-                    if (i.product.id == ic.cartItem.product.id)
+                    if (i.food.id == ic.cartItem.food.id)
                     {
                         is_exist = true;
                         break;
@@ -380,7 +347,7 @@ namespace Kiosk
             lst_products.Items.Clear();
             ItemProduct _item;
             int index = 0;
-            foreach (Product p in c.products)
+            foreach (Food p in c.foods)
             {
                 if (c.id != active_category.id) return;
                 _item = new ItemProduct(p);
@@ -454,7 +421,7 @@ namespace Kiosk
             slide.From = 0;
             //slide.To = 0;
             slide.To = 1;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             //this.BeginAnimation(LeftProperty, slide);
             grd_main.BeginAnimation(OpacityProperty, slide);

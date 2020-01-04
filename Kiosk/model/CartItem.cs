@@ -8,58 +8,27 @@ namespace Kiosk.model
 {
     public class CartItem
     {
-        public Product product { set; get; }
+        public Food food { set; get; }
         public int count { set; get; }
-        public List<Dessert> desserts { set; get; }
 
-        public CartItem()
+        public CartItem(Food f)
         {
-            product = new Product();
-            desserts = new List<Dessert>();
+            food = f;
             count = 1;
         }
 
-
-        //public int getCost(string size)
-        //{
-        //    desserts_size = size;
-        //    int s = 0;
-        //    foreach (Dessert d in desserts)
-        //    {
-        //        if (desserts_size == "small")
-        //        {
-        //            s += d.price_small;
-        //        }
-        //        else if (desserts_size == "medium")
-        //        {
-        //            s += d.price_medium;
-        //        }
-        //        else if (desserts_size == "large")
-        //        {
-        //            s += d.price_large;
-        //        }
-        //    }
-
-        //    s += product.d_price;
-
-        //    return s * count;
-        //}
-
+        public CartItem()
+        {
+            food = new Food();
+            count = 1;
+        }
 
 
         public int cost
         {
             get
             {
-                int s = 0;
-                foreach (Dessert d in desserts)
-                {
-                    s += d.price;
-                }
-
-                s += product.d_price;
-
-                return s * count;
+                return food.d_price * count;
             }
         }
     }

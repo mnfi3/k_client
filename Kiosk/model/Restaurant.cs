@@ -16,7 +16,7 @@ namespace Kiosk.model
         public string image { set; get; }
         public string token { set; get; }
 
-        public List<Category> categories { set; get; }
+        public AllProduct all_product { set; get; }
 
         public List<Printer> printers
         {
@@ -38,7 +38,7 @@ namespace Kiosk.model
             name = "";
             image = "";
             token = "";
-            categories = new List<Category>();
+            all_product = new AllProduct();
         }
 
         public static Restaurant parse(JObject user)

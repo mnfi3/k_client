@@ -54,14 +54,14 @@
                         <StackPanel Grid.Column="3" VerticalAlignment="Center" Orientation="Vertical" >
                             <TextBlock x:Name="txt_product"  Foreground="#121c1b" Text="جوجه کباب" FontWeight="Bold" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                            <ListView x:Name="lst_desserts" Height="170" Width="auto" Margin="0 10 0 0" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
+                            <!--<ListView x:Name="lst_desserts" Height="170" Width="auto" Margin="0 10 0 0" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <UniformGrid Columns="1" VerticalAlignment="Top" HorizontalAlignment="Right" FlowDirection="RightToLeft"/>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
 
-                                <!--disable hilight-->
+                                --><!--disable hilight--><!--
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListViewItem}">
                                         <Setter Property="Background" Value="Transparent" />
@@ -74,9 +74,9 @@
                                         </Setter>
                                     </Style>
                                 </ListView.ItemContainerStyle>
-                                <!--disable hilight-->
+                                --><!--disable hilight--><!--
 
-                            </ListView>
+                            </ListView>-->
 
                         </StackPanel>
                     </Grid>
@@ -120,7 +120,8 @@
 
                     <Grid Grid.Column="0" Margin="5">
                         <Button x:Name="btn_remove" Click="btn_remove_Click" Height="85" Width="85" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Height="50" Width="50" Kind="CloseCircle" Foreground="#BDBDBD" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <!--<materialDesign:PackIcon Height="50" Width="50" Kind="CloseCircle" Foreground="#BDBDBD" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                            <materialDesign:PackIcon Height="50" Width="50" Kind="CloseCircle" Foreground="#ef5350" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Button>
                     </Grid>
 

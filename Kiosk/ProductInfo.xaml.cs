@@ -24,7 +24,10 @@ namespace Kiosk
     /// </summary>
     public partial class ProductInfo : Window
     {
-        private Product product;
+        List<Food> suggests ;
+        List<Food> sides;
+
+        private Food product;
         private CartItem cartItem;
         private int count = 1;
         private bool added = false;
@@ -38,9 +41,17 @@ namespace Kiosk
         //    InitializeComponent();
         //}
 
-        public ProductInfo(Product p, EventHandler handler)
+        public ProductInfo(Food p, EventHandler handler)
         {
             InitializeComponent();
+
+            suggests = G.restaurant.all_product.suggets;
+            sides = G.restaurant.all_product.sides;
+
+            
+
+
+
             this.product = p;
             this.Height = G.height;
             this.Width = G.width;
@@ -48,10 +59,10 @@ namespace Kiosk
 
             addToCartHandler += handler;
             cartItem = new CartItem();
-            
+
         }
 
-       
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -66,13 +77,13 @@ namespace Kiosk
             txt_d_price.Text = Utils.persian_split(product.d_price) + " تومان ";
             txt_price.Text = Utils.persian_split(product.price) + " تومان ";
             if (product.discount_percent == 0)
-            { 
-                txt_price.Visibility = Visibility.Collapsed; 
+            {
+                txt_price.Visibility = Visibility.Collapsed;
             }
             txt_description.Text = product.description;
             img_product.Source = null;
             img_product.ImageUrl = product.image;
-            cartItem.product = this.product;
+            cartItem.food = this.product;
 
 
 
@@ -86,7 +97,7 @@ namespace Kiosk
                 txt_count.Text = Utils.toPersianNum(count);
                 txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
             }
-            loadDesserts();
+            loadSides();
         }
 
         private void Window_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
@@ -103,7 +114,7 @@ namespace Kiosk
             slide.Completed += new EventHandler(fadeInFinished);
             slide.From = 0;
             slide.To = 1;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(800));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(400));
             slide.AccelerationRatio = .5;
             grd_main.BeginAnimation(OpacityProperty, slide);
         }
@@ -135,7 +146,7 @@ namespace Kiosk
 
 
 
-        private void dessertLoadedCallBack(object sender, EventArgs e)
+        private void sidesLoadedCallBack(object sender, EventArgs e)
         {
             loadCartItem();
 
@@ -147,17 +158,17 @@ namespace Kiosk
 
 
 
-        
 
 
 
-       
+
+
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
             if (!desserts_loaded) return;
             added = false;
             fadeOut();
-           
+
         }
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
@@ -173,7 +184,7 @@ namespace Kiosk
             G.cart.items.Add(this.cartItem);
             added = true;
             fadeOut();
-            
+
         }
 
 
@@ -199,112 +210,107 @@ namespace Kiosk
         }
 
 
-       
-
-        private void lst_dessert1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!desserts_loaded) 
-            {
-                lst_dessert1.SelectedItem = null;
-                return; 
-            }
-            if ((sender as ListView).SelectedItem == null) return;
 
 
-            ItemDessert _item = (ItemDessert)(sender as ListView).SelectedItem;
-            if (_item != null)
-            {
-                _item.setSelection();
-            }
-
-            refreshCartItem();
-
-
-
-            lst_dessert1.SelectedItem = null;
-        }
-
-        private void lst_dessert2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lst_sides_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!desserts_loaded)
             {
-                lst_dessert2.SelectedItem = null;
+                lst_sides.SelectedItem = null;
                 return;
             }
             if ((sender as ListView).SelectedItem == null) return;
 
 
-            ItemDessert _item = (ItemDessert)(sender as ListView).SelectedItem;
+            ItemSide _item = (ItemSide)(sender as ListView).SelectedItem;
             if (_item != null)
             {
-                _item.setSelection();
+                CartItem c_item = new CartItem(_item.side);
+                if (_item.setSelection())
+                {
+                    if(!G.cart.isExistInCart(_item.side)) G.cart.items.Add(c_item);
+                }
+                else
+                {
+                    if (G.cart.isExistInCart(_item.side)) G.cart.remove(c_item);
+                }
             }
-            
 
             refreshCartItem();
 
-            lst_dessert2.SelectedItem = null;
+
+
+            lst_sides.SelectedItem = null;
+        }
+
+        private void lst_suggests_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!desserts_loaded)
+            {
+                lst_suggests.SelectedItem = null;
+                return;
+            }
+            if ((sender as ListView).SelectedItem == null) return;
+
+
+            ItemSide _item = (ItemSide)(sender as ListView).SelectedItem;
+            ProductInfo _info = new ProductInfo(_item.side, addToCartHandler);
+            _info.Show();
+            this.Close();
+
+
+            lst_suggests.SelectedItem = null;
         }
 
 
-        private async void loadDesserts()
+        private async void loadSides()
         {
-            lst_dessert1.Items.Clear();
-            lst_dessert2.Items.Clear();
-            ItemDessert _item;
-            foreach (Dessert d in product.desserts)
+            lst_sides.Items.Clear();
+            lst_suggests.Items.Clear();
+            ItemSide _item;
+
+            //add sides
+            foreach (Food f in sides)
             {
-                _item = new ItemDessert(d);
-                if (d.type == "d1")
-                {
-                    lst_dessert1.Items.Add(_item);
-                    await Task.Delay(50);
-                }
-                else if(d.type == "d2")
-                {
-                    lst_dessert2.Items.Add(_item);
-                    await Task.Delay(50);
-                }
+                _item = new ItemSide(f);
+                lst_sides.Items.Add(_item);
+                await Task.Delay(30);
             }
 
-            dessertLoadedCallBack(new object(), new EventArgs());
+            //add suggests
+            foreach (Food f in suggests)
+            {
+                _item = new ItemSide(f);
+                lst_suggests.Items.Add(_item);
+                await Task.Delay(30);
+            }
+
+            sidesLoadedCallBack(new object(), new EventArgs());
 
         }
 
 
 
 
-        
+
 
 
 
         private void loadCartItem()
         {
+
             count = cartItem.count;
             txt_count.Text = Utils.toPersianNum(count);
             txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
 
-            foreach (ItemDessert _item1 in lst_dessert1.Items)
+            foreach (ItemSide _item1 in lst_sides.Items)
             {
-                foreach (Dessert d in cartItem.desserts)
+                foreach (CartItem ci in G.cart.items)
                 {
-                    if (d.id == _item1.dessert.id)
+                    if (ci.food.id == _item1.side.id)
                     {
                         _item1.is_selected = true;
                         _item1.PulseBox.Background = Brushes.White;
-                        break;
-                    }
-                }
-            }
-
-            foreach (ItemDessert _item2 in lst_dessert2.Items)
-            {
-                foreach (Dessert d in cartItem.desserts)
-                {
-                    if (d.id == _item2.dessert.id)
-                    {
-                        _item2.is_selected = true;
-                        _item2.PulseBox.Background = Brushes.White;
                         break;
                     }
                 }
@@ -316,39 +322,20 @@ namespace Kiosk
 
         private void refreshCartItem()
         {
-            cartItem.desserts.Clear();
 
-            foreach (ItemDessert item in lst_dessert1.Items)
-            {
-                if (item.is_selected == true)
-                {
-                    item.dessert.product_id = this.product.id;
-                    cartItem.desserts.Add(item.dessert);
-                }
-            }
-
-            foreach (ItemDessert item in lst_dessert2.Items)
-            {
-                if (item.is_selected == true)
-                {
-                    item.dessert.product_id = this.product.id;
-                    cartItem.desserts.Add(item.dessert);
-                }
-            }
-
+            //foreach (ItemSide item in lst_sides.Items)
+            //{
+            //    if (item.is_selected == true)
+            //    {
+            //        item.dessert.product_id = this.product.id;
+            //        cartItem.desserts.Add(item.dessert);
+            //    }
+            //}
 
             txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
         }
 
-       
 
 
-
-
-        
-
-       
-        
-        
-        }
+    }
 }

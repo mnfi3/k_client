@@ -57,47 +57,34 @@ namespace Kiosk.db
                 + " (@id, @restaurant_id, @order_number, @is_out, @cost, @d_cost, @discount_id, @time, @pan, @req_id, @serial_transaction, @terminal_no, @trace_number, @transaction_date, @transaction_time)", values);
 
 
-            //find id to order_content
+            //find id to order_item
             values.Clear();
-            dataReader = db.select("select top 1 * from orders_content order by id desc");
-            int order_content_id = 0;
+            dataReader = db.select("select top 1 * from order_items order by id desc");
+            int order_item_id = 0;
             if (dataReader != null)
             {
                 while (dataReader.Read())
                 {
                     int columnIndex;
                     columnIndex = dataReader.GetOrdinal("id");
-                    order_content_id = dataReader.GetInt32(columnIndex);
+                    order_item_id = dataReader.GetInt32(columnIndex);
                 }
             }
             db.close();
 
-            //save orders_content
+            //save order_item
             values.Clear();
             foreach (CartItem item in cart.items)
             {
-                order_content_id++;
-                values.Add("@id", order_content_id.ToString());
-                values.Add("@product_id", item.product.id.ToString());
+                order_item_id++;
+                values.Add("@id", order_item_id.ToString());
+                values.Add("@food_id", item.food.id.ToString());
                 values.Add("@order_id", order_id.ToString());
                 values.Add("@cost", item.cost.ToString());
                 values.Add("@count", item.count.ToString());
-                db.insert("insert into orders_content (id, product_id, order_id, cost, count)"
+                db.insert("insert into order_items (id, food_id, order_id, cost, count)"
                     + " values"
-                    + " (@id, @product_id, @order_id, @cost, @count)", values);
-                //save order_content_desserts
-                values.Clear();
-                foreach (Dessert dessert in item.desserts)
-                {
-                    values.Clear();
-                    values.Add("@order_content_id", order_content_id.ToString());
-                    values.Add("@dessert_id", dessert.id.ToString());
-                    values.Add("@price", dessert.price.ToString());
-
-                    db.insert("insert into order_content_desserts (order_content_id, dessert_id, price)"
-                    + " values"
-                    + " (@order_content_id, @dessert_id, @price)", values);
-                }
+                    + " (@id, @food_id, @order_id, @cost, @count)", values);
             }
 
 
@@ -167,57 +154,26 @@ namespace Kiosk.db
             //get order items
             values.Clear();
             values.Add("@order_id", order_id.ToString());
-            dataReader = db.select("select  * from orders_content where order_id=@order_id", values);
-            order.items = new List<OrderContent>();
-            OrderContent content;
+            dataReader = db.select("select  * from order_items where order_id=@order_id", values);
+            order.items = new List<OrderItem>();
+            OrderItem order_item;
             if (dataReader != null)
             {
                 while (dataReader.Read())
                 {
-                    content = new OrderContent();
-                    content.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                    content.order_id = dataReader.GetInt32(dataReader.GetOrdinal("order_id"));
-                    content.product_id = dataReader.GetInt32(dataReader.GetOrdinal("product_id"));
-                    content.cost = dataReader.GetInt32(dataReader.GetOrdinal("cost"));
-                    content.count = dataReader.GetInt32(dataReader.GetOrdinal("count"));
-                    order.items.Add(content);
+                    order_item = new OrderItem();
+                    order_item.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
+                    order_item.order_id = dataReader.GetInt32(dataReader.GetOrdinal("order_id"));
+                    order_item.food_id = dataReader.GetInt32(dataReader.GetOrdinal("food_id"));
+                    order_item.cost = dataReader.GetInt32(dataReader.GetOrdinal("cost"));
+                    order_item.count = dataReader.GetInt32(dataReader.GetOrdinal("count"));
+
+                    order.items.Add(order_item);
                 }
             }
             db.close();
 
 
-            foreach (OrderContent item in order.items)
-            {
-                //get order items desserts
-                values.Clear();
-                values.Add("@order_content_id", item.id.ToString());
-                dataReader = db.select("select  * from order_content_desserts where order_content_id=@order_content_id", values);
-                item.desserts = new List<OrderContentDessert>();
-                OrderContentDessert dessert;
-                if (dataReader != null)
-                {
-                    while (dataReader.Read())
-                    {
-                        dessert = new OrderContentDessert();
-                        dessert.order_content_id = dataReader.GetInt32(dataReader.GetOrdinal("order_content_id"));
-                        dessert.dessert_id = dataReader.GetInt32(dataReader.GetOrdinal("dessert_id"));
-                        dessert.price = dataReader.GetInt32(dataReader.GetOrdinal("price"));
-                        item.desserts.Add(dessert);
-                    }
-                }
-
-                db.close();
-            }
-
-            //var dataTable = new DataTable();
-            //dataTable.Load(dataReader);
-            //string JSONString = string.Empty;
-            //JSONString = JsonConvert.SerializeObject(dataTable);
-            //JObject obj = new JObject();
-            //obj.Add("order", "");
-            //db.close();
-            //new DialogTest(JSONString).ShowDialog();
-            //MessageBox.Show(JSONString);
             return order;
         }
 
@@ -226,16 +182,10 @@ namespace Kiosk.db
         public void removeOrder(int id)
         {
             Order order = getOrder(id);
-            foreach (OrderContent oc in order.items)
-            {
-                values.Clear();
-                values.Add("@order_content_id", oc.id.ToString());
-                db.delete("delete from order_content_desserts where order_content_id=@order_content_id", values);
-            }
 
             values.Clear();
             values.Add("@order_id", id.ToString());
-            db.delete("delete from orders_content where order_id=@order_id", values);
+            db.delete("delete from order_items where order_id=@order_id", values);
 
             values.Clear();
             values.Add("@id", id.ToString());
@@ -252,23 +202,12 @@ namespace Kiosk.db
             {
                 values.Clear();
                 values.Add("@num", Utils.toPersianNum(num));
-                values.Add("@name", item.product.name);
-                values.Add("@price", Utils.persian_split(item.product.d_price));
+                values.Add("@name", item.food.name);
+                values.Add("@price", Utils.persian_split(item.food.d_price));
                 values.Add("@count", Utils.toPersianNum(item.count));
-                values.Add("@cost", Utils.persian_split((item.count * item.product.d_price)));
+                values.Add("@cost", Utils.persian_split((item.count * item.food.d_price)));
                 db.insert("insert into receipt (num, name, price, count, cost) values (@num, @name, @price, @count, @cost)", values);
                 num++;
-                foreach (Dessert dessert in item.desserts)
-                {
-                    values.Clear();
-                    values.Add("@num", Utils.toPersianNum(num));
-                    values.Add("@name", dessert.name);
-                    values.Add("@price", Utils.persian_split(dessert.price));
-                    values.Add("@count", Utils.toPersianNum(item.count));
-                    values.Add("@cost", Utils.persian_split((item.count * dessert.price)));
-                    db.insert("insert into receipt (num, name, price, count, cost) values (@num, @name, @price, @count, @cost)", values);
-                    num++;
-                }
             }
         }
 
@@ -295,8 +234,7 @@ namespace Kiosk.db
         public void removeOrders()
         {
             db.delete("truncate table orders");
-            db.delete("truncate table orders_content");
-            db.delete("truncate table order_content_desserts");
+            db.delete("truncate table order_items");
         }
 
     }

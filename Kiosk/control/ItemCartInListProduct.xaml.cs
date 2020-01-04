@@ -44,18 +44,18 @@ namespace Kiosk.control
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            txt_product.Text = cartItem.product.name;
+            txt_product.Text = cartItem.food.name;
             txt_count.Text = Utils.toPersianNum(cartItem.count);
             txt_price.Text = Utils.persian_split(cartItem.cost) + " تومان ";
             img_product.Source = null;
-            img_product.ImageUrl = cartItem.product.image;
+            img_product.ImageUrl = cartItem.food.image;
         }
 
         private void btn_up_Click(object sender, RoutedEventArgs e)
         {
             foreach (CartItem item in G.cart.items)
             {
-                if (item.product.id == this.cartItem.product.id)
+                if (item.food.id == this.cartItem.food.id)
                 {
                     item.count++;
                     txt_count.Text = Utils.toPersianNum(item.count);
@@ -70,7 +70,7 @@ namespace Kiosk.control
         {
             foreach (CartItem item in G.cart.items)
             {
-                if (item.product.id == this.cartItem.product.id)
+                if (item.food.id == this.cartItem.food.id)
                 {
                     if (item.count > 1)
                     {
@@ -88,16 +88,16 @@ namespace Kiosk.control
 
         private void btn_remove_Click(object sender, RoutedEventArgs e)
         {
-            DialogPublic _d = new DialogPublic("آیا می خواهید " + cartItem.product.name + " را از سبد خرید حذف کنید؟");
+            DialogPublic _d = new DialogPublic("آیا می خواهید " + cartItem.food.name + " را از سبد خرید حذف کنید؟");
             if (_d.ShowDialog() == true)
             {
                 for (int i = 0; i < G.cart.items.Count; i++)
                 {
-                    if (this.cartItem.product.id == G.cart.items[i].product.id)
+                    if (this.cartItem.food.id == G.cart.items[i].food.id)
                     {
                         G.cart.items.RemoveAt(i);
                         this.Visibility = Visibility.Collapsed;
-                        removedHandler(cartItem.product.name, new EventArgs());
+                        removedHandler(cartItem.food.name, new EventArgs());
                         break;
                     }
                 }

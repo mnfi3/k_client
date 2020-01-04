@@ -21,37 +21,38 @@ namespace Kiosk.control
     /// <summary>
     /// Interaction logic for ItemDessert.xaml
     /// </summary>
-    public partial class ItemDessert : UserControl
+    public partial class ItemSide : UserControl
     {
-        public Dessert dessert;
+        public Food side;
         public bool is_selected;
-        public ItemDessert()
+        public ItemSide()
         {
             InitializeComponent();
         }
 
-        public ItemDessert(Dessert d)
+        public ItemSide(Food s)
         {
             InitializeComponent();
             is_selected = false;
-            this.dessert = d;
+            this.side = s;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            txt_name.Text = dessert.name;
-            img_dessert.ImageUrl = dessert.image;
-            txt_price.Text = Utils.persian_split(dessert.price) + " تومان ";
+            txt_name.Text = side.name;
+            img_dessert.ImageUrl = side.image;
+            txt_price.Text = Utils.persian_split(side.d_price) + " تومان ";
         }
 
 
-        public void setSelection()
+        public bool setSelection()
         {
             if (is_selected == true)
             {
                PulseBox.Background = Brushes.Transparent;
                PulseBox.Effect = null;
                is_selected = false;
+               return false;
             }
             else
             {
@@ -62,6 +63,7 @@ namespace Kiosk.control
                 effect.Opacity = 0.5;
                 PulseBox.Effect = effect;
                 is_selected = true;
+                return true;
             }
         }
     }
