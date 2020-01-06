@@ -29,7 +29,7 @@
     <UpdateUrl>http://google.com/</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -456,7 +456,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Kiosk_TemporaryKey.pfx" />
-    <None Include="Report.mrt" />
     <Resource Include="fonts\vazir\Vazir-Black.ttf" />
     <Resource Include="fonts\vazir\Vazir-Bold.ttf" />
     <Resource Include="fonts\vazir\Vazir-Light.ttf" />
@@ -559,11 +558,6 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.SqlServer.Express.10.5">
-      <Visible>False</Visible>
-      <ProductName>SQL Server 2008 R2 Express</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
       <Visible>False</Visible>

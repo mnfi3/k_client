@@ -285,7 +285,7 @@ namespace Kiosk
 
 
 
-        private void printReceipt()
+        private async void printReceipt()
         {
             //print test
             PrinterSettings setting;
@@ -306,19 +306,21 @@ namespace Kiosk
             else report["is_out"] = "خیر";
             //report.Printed += Report_Printed;
             //report.Printing += Report_Printing;
-            foreach (Printer printer in G.restaurant.printers)
-            {
-                try
-                {
-                    setting = new PrinterSettings();
-                    setting.PrinterName = printer.name;
-                    report.Print(false, setting);
-                }
-                catch (Exception e)
-                {
 
+            await Task.Run(() =>
+            {
+                foreach (Printer printer in G.restaurant.printers)
+                {
+                    try
+                    {
+                        setting = new PrinterSettings();
+                        setting.PrinterName = printer.name;
+                        report.Print(false, setting);
+                    }
+                    catch (Exception e)
+                    { }
                 }
-            }
+            });
         }
 
         //private void Report_Printing(object sender, EventArgs e)

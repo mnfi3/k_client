@@ -22,6 +22,7 @@ using Kiosk.api;
 using Kiosk.model;
 using Newtonsoft.Json;
 using Kiosk.preference;
+using System.Net;
 
 
 namespace Kiosk
@@ -38,6 +39,9 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+            checkForUpdate();
+
 
             if (!Security.licenceChecker())
             {
@@ -78,6 +82,48 @@ namespace Kiosk
         private void btn_close_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+
+        private void checkForUpdate()
+        {
+            var webRequest = WebRequest.Create(@"" + Urls.UPDATE_URL);
+
+            string str_update = Config.VERSION;
+            try
+            {
+                using (var response = webRequest.GetResponse())
+                using (var content = response.GetResponseStream())
+                using (var reader = new StreamReader(content))
+                {
+                    str_update = reader.ReadToEnd();
+                }
+
+            }
+            catch (Exception e1) { }
+
+
+
+            //application is latest version
+            if (str_update.Contains(Config.VERSION)) return;
+
+
+            DialogPublic _dialog = new DialogPublic("نسخه ی جدید برنامه منتشر شده است.آیا میخواهید آپدیت کنید؟");
+            if (_dialog.ShowDialog() == true)
+            {
+                string updater_path = AppDomain.CurrentDomain.BaseDirectory + "updater.exe";
+                Process updater_app = new Process();
+                updater_app.StartInfo.FileName = updater_path;
+                try
+                {
+                    updater_app.Start();
+                    System.Windows.Application.Current.Shutdown();
+                }
+                catch (Exception ex) { }
+            }
+
+
+            return;
         }
 
 

@@ -4,7 +4,7 @@
     <PublishUrlHistory>C:\Users\Mohsen\Desktop\kiosk\|publish\</PublishUrlHistory>
     <InstallUrlHistory>http://google.com/</InstallUrlHistory>
     <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>http://google.com/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
