@@ -11,6 +11,7 @@
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              Height="450"
+             Margin="35"
              >
 
     <Grid>
@@ -24,13 +25,12 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <Grid Margin="20" x:Name="grd_main">
+            <Grid Margin="10" x:Name="grd_main">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="220"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -61,17 +61,42 @@
                 </Grid>
 
                 <Grid Grid.Row="2">
-                    <TextBlock x:Name="txt_product_price" TextDecorations="Strikethrough" Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#f44336"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1.3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock x:Name="txt_product_price" TextDecorations="Strikethrough" Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="15" FontWeight="Light" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Foreground="#FF575252" />
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <TextBlock x:Name="txt_product_d_price"  Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="#00b356"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Button x:Name="btn_add_to_cart" Click="btn_add_to_cart_Click" Height="auto" Width="auto"  Margin="2" FlowDirection="RightToLeft" Background="#FF0B9117"  FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}"  Foreground="White" >
+                            <materialDesign:PackIcon   Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Kind="AddShoppingCart" Width="40" Height="40"/>
+                        </Button>
+
+                    </Grid>
                 </Grid>
 
-                <Grid Grid.Row="3">
-                    <TextBlock x:Name="txt_product_d_price"  Margin="2" FlowDirection="RightToLeft" Text="25,000  تومان" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#00b356"/>
-                </Grid>
+
+
+
+
 
 
             </Grid>
         </Border>
-        
+
     </Grid>
     <UserControl.Resources>
         <Storyboard x:Key="FadeInUp" >
@@ -111,7 +136,7 @@
 
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
-            
+
             <BeginStoryboard Storyboard="{StaticResource bounce}"/>
 
         </EventTrigger>

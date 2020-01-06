@@ -24,16 +24,20 @@ namespace Kiosk.control
     {
 
         public Food food;
+        private CartItem cartItem;
+        private EventHandler addToCartHandler;
         public ItemProduct()
         {
             InitializeComponent();
         }
 
-        public ItemProduct(Food p)
+        public ItemProduct(Food p, EventHandler handler)
         {
             InitializeComponent();
 
             this.food = p;
+            cartItem = new CartItem(food);
+            addToCartHandler += handler;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -67,6 +71,19 @@ namespace Kiosk.control
             grd_main.RowDefinitions[0].Height = new GridLength(img_height); ;
             this.img_product.Height = img_height;
 
+        }
+
+
+
+        private void btn_add_to_cart_Click(object sender, RoutedEventArgs e)
+        {
+            if (G.cart.isExistInCart(this.food) == true)
+            {
+                G.cart.remove(cartItem);
+            }
+
+            G.cart.items.Add(this.cartItem);
+            addToCartHandler(true, new EventArgs());
         }
 
 

@@ -13,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -30,15 +31,6 @@ namespace Kiosk
             InitializeComponent();
             this.Height = G.height;
             this.Width = G.width;
-            
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Task.Run(() => {
-                G.syncOrders();
-            });
-           
         }
 
         public ClickToOrder(EventHandler handler)
@@ -48,6 +40,35 @@ namespace Kiosk
             this.Height = G.height;
             this.Width = G.width;
         }
+
+
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            renderViews();
+
+
+            Task.Run(() => {
+                G.syncOrders();
+            });
+        }
+
+
+        private void renderViews()
+        {
+            //brdr_description.Effect = new BlurEffect();
+            if (G.restaurants.Count > 0)
+            {
+                txt_description.Text = G.restaurants[0].description;
+                img_splash.ImageUrl = G.restaurants[0].image;
+            }
+
+            
+        }
+
+
+        
 
 
         private void open_list_restaurant(object sender, MouseEventArgs e)
@@ -60,14 +81,10 @@ namespace Kiosk
             slideUp.Duration = new Duration(TimeSpan.FromMilliseconds(350));
             slideUp.AccelerationRatio = .5;
             this.BeginAnimation(TopProperty, slideUp);
-
-
-            
         }
 
         private void slideUpFinished(object sender,EventArgs e)
         {
-            
             this.Close();
         }
 

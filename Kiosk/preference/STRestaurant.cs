@@ -126,14 +126,23 @@ namespace Kiosk.preference
         public void updateRestaurantInfo(Restaurant restaurant)
         {
             List<Restaurant> restaurants = this.getRestaurants();
+            int i = 0;
             foreach (Restaurant rest in restaurants)
             {
                 if (rest.id == restaurant.id)
                 {
-                    var rest2 = restaurants.First(x => x.id == restaurant.id);
-                    if (rest2 != null) rest2 = restaurant;
+                    Restaurant rest1 = restaurants[i];
+                    restaurants.RemoveAt(i);
+                    rest1.name = restaurant.name;
+                    rest1.image = restaurant.image;
+                    rest1.description = restaurant.description;
+                    restaurants.Add(rest1);
                     break;
+                    //var rest2 = restaurants.First(x => x.id == restaurant.id);
+                    //if (rest2 != null) rest2 = restaurant;
+                    //break;
                 }
+                i++;
             }
             
             string json = JsonConvert.SerializeObject(restaurants);

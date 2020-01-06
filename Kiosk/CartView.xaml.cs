@@ -109,7 +109,7 @@ namespace Kiosk
             btn_discount.Effect = blur;
             grd_out.Effect = blur;
 
-            VKeyboard _keyboard = new VKeyboard(ref txt_discount_code);
+            VKeyboardNum _keyboard = new VKeyboardNum(ref txt_discount_code);
             if (_keyboard.ShowDialog() == true)
             {
                 grd_products.Effect = null;
@@ -163,7 +163,17 @@ namespace Kiosk
             if (dialog.ShowDialog() == true)
             {
                 DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
-                dialog2.ShowDialog();
+                try
+                {
+                    dialog2.ShowDialog();
+                }
+                catch (Exception ex1) 
+                {
+                    dialog2.Close();
+                    grd_main.Effect = null;
+                    grd_pay.Effect = null;
+                    Toast.error("مهلت پرداخت تمام شده است");
+                }
             }
             else
             {
@@ -371,6 +381,18 @@ namespace Kiosk
             else
             {
                 G.cart.is_out = 0;
+            }
+        }
+
+        private void grd_out_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if ((bool)chk_out.IsChecked)
+            {
+                chk_out.IsChecked = false;
+            }
+            else
+            {
+                chk_out.IsChecked = true;
             }
         }
 

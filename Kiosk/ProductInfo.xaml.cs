@@ -274,7 +274,7 @@ namespace Kiosk
             {
                 _item = new ItemSide(f);
                 lst_sides.Items.Add(_item);
-                await Task.Delay(30);
+                await Task.Delay(10);
             }
 
             //add suggests
@@ -282,7 +282,7 @@ namespace Kiosk
             {
                 _item = new ItemSide(f);
                 lst_suggests.Items.Add(_item);
-                await Task.Delay(30);
+                await Task.Delay(10);
             }
 
             sidesLoadedCallBack(new object(), new EventArgs());

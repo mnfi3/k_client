@@ -14,6 +14,7 @@ namespace Kiosk.model
         public string user_name { set; get; }
         public string name { set; get; }
         public string image { set; get; }
+        public string description { set; get; }
         public string token { set; get; }
 
         public AllProduct all_product { set; get; }
@@ -37,6 +38,7 @@ namespace Kiosk.model
             user_name = "";
             name = "";
             image = "";
+            description = "";
             token = "";
             all_product = new AllProduct();
         }
@@ -50,6 +52,7 @@ namespace Kiosk.model
                 restaurant.name = user["name"].Value<string>();
                 restaurant.user_name = user["email"].Value<string>();
                 restaurant.image = user["image"].Value<string>();
+                restaurant.description = user["description"].Value<string>();
             }
             catch (ArgumentNullException e)
             {

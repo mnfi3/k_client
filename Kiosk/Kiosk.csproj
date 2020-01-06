@@ -85,11 +85,15 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationIcon>icon_arta.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CachedImage, Version=0.1.8.0, Culture=neutral, processorArchitecture=MSIL">
@@ -216,6 +220,9 @@
     </Compile>
     <Compile Include="control\VKeyboard.xaml.cs">
       <DependentUpon>VKeyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="control\VKeyboardNum.xaml.cs">
+      <DependentUpon>VKeyboardNum.xaml</DependentUpon>
     </Compile>
     <Compile Include="db\DB.cs" />
     <Compile Include="db\DBDevice.cs" />
@@ -348,6 +355,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\VKeyboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\VKeyboardNum.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -518,6 +529,7 @@
     <Content Include="database\Kiosk.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="icon_arta.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

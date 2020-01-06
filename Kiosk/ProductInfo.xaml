@@ -289,7 +289,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#BDBDBD" Content="بازگشت"/>
+                <Button x:Name="btn_cancel" FontSize="20" FontWeight="Normal" Click="btn_cancel_Click"  Margin="10" Height="auto" Grid.Column="0" BorderBrush="{x:Null}" Background="#FFFD1E1E" Content="بازگشت"/>
                 <Button x:Name="btn_add" FontSize="20" Click="btn_add_Click"  FontWeight="Normal" Margin="10" Height="auto" Grid.Column="1" BorderBrush="{x:Null}" Background="#00b356" Content="افزودن به سبد خرید"/>
 
             </Grid>

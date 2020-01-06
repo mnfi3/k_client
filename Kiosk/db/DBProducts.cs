@@ -147,7 +147,8 @@ namespace Kiosk.db
 
 
 
-
+            values.Clear();
+            values.Add("@rest_id", rest.id.ToString());
             dataReader = db.select("select * from foods where restaurant_id = @rest_id and is_side = 1", values);
             if (dataReader != null)
             {

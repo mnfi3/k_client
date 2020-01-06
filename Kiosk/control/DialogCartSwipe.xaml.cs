@@ -25,6 +25,7 @@ namespace Kiosk.control
     {
         private int amount;
         private EventHandler paymentHandler;
+        private bool paymentDone = false;
         public DialogCartSwipe(int amount, EventHandler handler)
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace Kiosk.control
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             doPayment();
+            secondCounter();
         }
 
 
@@ -56,6 +58,7 @@ namespace Kiosk.control
 
         public void paymentCallBack(object sender, EventArgs e)
         {
+            paymentDone = true;
             paymentHandler(sender, new EventArgs());
             this.Close();
 
@@ -78,6 +81,26 @@ namespace Kiosk.control
 
         }
 
+
+
+
+        private async void secondCounter()
+        {
+            for (int i = 30; i >= 0; i --)
+            {
+                txt_second.Text = i.ToString();
+                await Task.Delay(950);
+            }
+
+            if (paymentDone) return;
+
+            BuyResponse res = new BuyResponse();
+            res.success = false;
+            res.error = "مهلت پرداخت تمام شده است";
+            paymentHandler(res, new EventArgs());
+
+            this.Close();
+        }
        
 
         

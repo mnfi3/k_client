@@ -184,3 +184,5 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.exe
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\ItemSide.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\ItemSide.g.cs
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\VKeyboardNum.baml
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\VKeyboardNum.g.cs

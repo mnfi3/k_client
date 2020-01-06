@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
         Title="ClickToOrder"  Top="0" Left="0" ResizeMode="NoResize" Loaded="Window_Loaded"  AllowsTransparency="True" WindowStyle="None" FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium">
-    <Grid >
+    <Grid MouseDown="open_list_restaurant">
         
+        
+
         <Grid.Resources>
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="Foreground" Value="White"/>
@@ -33,7 +35,18 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </Border>
+           
+
+
         </Border>
+
+        <Border x:Name="brdr_description"  Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top" CornerRadius="20" Background="#af000000">
+            <TextBlock x:Name="txt_description" HorizontalAlignment="Center" VerticalAlignment="Top" Text="خوش آمدید" FontSize="20"/>
+        </Border>
+
+
+      
+        
     </Grid>
 
 

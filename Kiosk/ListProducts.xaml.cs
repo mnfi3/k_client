@@ -178,7 +178,6 @@ namespace Kiosk
             ProductInfo _info = new ProductInfo(_item.food, addToCartCallBack);
             _info.Show();
             this.Hide();
-
             lst_products.SelectedItem = null;
 
         }
@@ -229,8 +228,8 @@ namespace Kiosk
             List<Food> sides = sender as List<Food>;
 
             //if connection was fail
-            if (categories.Count == 0)
-            {
+            //if (categories.Count == 0)
+            //{
                 Task.Run(() =>{
                     all_product = db_products.getProducts(this.restaurant);
                     this.Dispatcher.Invoke((Action)(() =>
@@ -238,16 +237,16 @@ namespace Kiosk
                         loadCategories(all_product.categories);
                     }));
                 });
-            }
-            else
-            {
-                loadCategories(categories);
-                //save new products to local db
-                Task.Run(() =>
-                {
-                    db_products.resetProducts(all_product, this.restaurant);
-                });
-            }
+            //}
+            //else
+            //{
+            //    loadCategories(categories);
+            //    //save new products to local db
+            //    Task.Run(() =>
+            //    {
+            //        db_products.resetProducts(all_product, this.restaurant);
+            //    });
+            //}
 
             G.restaurant.all_product = all_product;
 
@@ -350,7 +349,7 @@ namespace Kiosk
             foreach (Food p in c.foods)
             {
                 if (c.id != active_category.id) return;
-                _item = new ItemProduct(p);
+                _item = new ItemProduct(p, addToCartCallBack);
                 lst_products.Items.Add(_item);
                 await Task.Delay(70);
                 if (index == 0) lst_products.ScrollIntoView(lst_products.Items[0]);

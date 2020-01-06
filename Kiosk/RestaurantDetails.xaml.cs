@@ -39,9 +39,17 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            getAllPrinters();
-            renderPrinters();
             txt_restaurant.Text = restaurant.name;
+            Task.Run(() =>
+            {
+                
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    getAllPrinters();
+                    renderPrinters();
+                }));
+            });
+            
         }
 
 
