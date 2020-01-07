@@ -8,9 +8,9 @@ namespace Kiosk.api
 {
     class Urls
     {
-        public const string BASE_URL = "http://localhost:8080/kiosk/api";
-        //public const string BASE_URL = "https://easybazi.ir/public/kiosk/public/api";
-        public const string UPDATE_URL = "http://localhost:8080/kiosk/download/updates.txt";
+        //public const string BASE_URL = "http://localhost:8080/kiosk/api";
+        public const string BASE_URL = "https://easybazi.ir/public/kiosk/public/api";
+        public const string UPDATE_INFO_URL = "http://localhost:8080/kiosk/download/updates.txt";
 
 
         public const string DEVICE_LOGIN = BASE_URL + "/v1/kiosk/login";

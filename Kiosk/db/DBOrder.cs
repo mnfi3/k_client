@@ -73,10 +73,10 @@ namespace Kiosk.db
             db.close();
 
             //save order_item
-            values.Clear();
             foreach (CartItem item in cart.items)
             {
                 order_item_id++;
+                values.Clear();
                 values.Add("@id", order_item_id.ToString());
                 values.Add("@food_id", item.food.id.ToString());
                 values.Add("@order_id", order_id.ToString());
@@ -85,6 +85,7 @@ namespace Kiosk.db
                 db.insert("insert into order_items (id, food_id, order_id, cost, count)"
                     + " values"
                     + " (@id, @food_id, @order_id, @cost, @count)", values);
+                
             }
 
 

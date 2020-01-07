@@ -19,6 +19,13 @@ namespace Kiosk.control
     /// </summary>
     public partial class DialogTest : Window
     {
+        
+        public DialogTest()
+        {
+            InitializeComponent();
+            
+        }
+
         public DialogTest(string text)
         {
             InitializeComponent();

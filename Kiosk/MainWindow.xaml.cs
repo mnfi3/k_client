@@ -39,7 +39,7 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            G.syncOrders();
             checkForUpdate();
 
 
@@ -87,7 +87,7 @@ namespace Kiosk
 
         private void checkForUpdate()
         {
-            var webRequest = WebRequest.Create(@"" + Urls.UPDATE_URL);
+            var webRequest = WebRequest.Create(@"" + Urls.UPDATE_INFO_URL);
 
             string str_update = Config.VERSION;
             try

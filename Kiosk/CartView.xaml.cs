@@ -291,11 +291,13 @@ namespace Kiosk
             PrinterSettings setting;
             StiReport report = new StiReport();
             Stimulsoft.Report.Print.StiPrintProvider.SetPaperSource = false;
-            report.Load("Report.mrt");
+            //report.Load("Report.mrt");
+            report.Load("Report2.mrt");
             //report.Render();
             report.Pages[0].PaperSize = System.Drawing.Printing.PaperKind.Custom;
             int item_count = new DBOrder().getReceiptItemCount();
-            report.Pages[0].Height = 3.2 + item_count * 0.3;
+            //report.Pages[0].Height = 3.2 + item_count * 0.3;
+            report.Pages[0].Height = 4.1 + item_count * 0.3;
             report.Compile();
             
             report["restaurant"] = G.restaurant.name;
