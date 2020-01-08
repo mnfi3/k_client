@@ -31,18 +31,22 @@ namespace Kiosk.model
         public static Food parse(JObject obj)
         {
             Food food = new Food();
-            food.id = obj["id"].Value<Int32>();
-            food.restaurant_id = obj["user_id"].Value<Int32>();
-            food.category_id = obj["category_id"].Value<Int32>();
-            food.is_side = obj["is_side"].Value<Int32>();
-            food.name = obj["name"].Value<string>();
-            food.price = obj["price"].Value<Int32>();
-            food.discount_percent = obj["discount_percent"].Value<Int32>();
-            food.d_price = food.price - ((food.price * food.discount_percent) / 100);
-            food.description = obj["description"].Value<string>();
-            food.image = obj["image"].Value<string>();
-            food.is_available = obj["is_available"].Value<int>();
-            food.is_suggest = obj["is_suggest"].Value<int>();
+            try
+            {
+                food.id = obj["id"].Value<Int32>();
+                food.restaurant_id = obj["user_id"].Value<Int32>();
+                food.category_id = obj["category_id"].Value<Int32>();
+                food.is_side = obj["is_side"].Value<Int32>();
+                food.name = obj["name"].Value<string>();
+                food.price = obj["price"].Value<Int32>();
+                food.discount_percent = obj["discount_percent"].Value<Int32>();
+                food.d_price = food.price - ((food.price * food.discount_percent) / 100);
+                food.description = obj["description"].Value<string>();
+                food.image = obj["image"].Value<string>();
+                food.is_available = obj["is_available"].Value<int>();
+                food.is_suggest = obj["is_suggest"].Value<int>();
+            }
+            catch (Exception e) { }
             return food;
         }
     }

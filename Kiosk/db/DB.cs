@@ -75,6 +75,7 @@ namespace Kiosk.db
             }
             catch (Exception ex)
             {
+                string str = ex.ToString();
                 return -1;
             }
 

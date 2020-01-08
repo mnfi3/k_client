@@ -14,6 +14,7 @@ namespace Kiosk.model
         public string user_name { set; get; }
         public string name { set; get; }
         public string image { set; get; }
+        public string address { set; get; }
         public string description { set; get; }
         public string token { set; get; }
 
@@ -51,10 +52,11 @@ namespace Kiosk.model
                 restaurant.id = user["id"].Value<Int32>();
                 restaurant.name = user["name"].Value<string>();
                 restaurant.user_name = user["email"].Value<string>();
+                restaurant.address = user["address"].Value<string>();
                 restaurant.image = user["image"].Value<string>();
                 restaurant.description = user["description"].Value<string>();
             }
-            catch (ArgumentNullException e)
+            catch (Exception e)
             {
 
             }

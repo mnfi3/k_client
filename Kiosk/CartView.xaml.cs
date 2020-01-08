@@ -172,7 +172,7 @@ namespace Kiosk
                     dialog2.Close();
                     grd_main.Effect = null;
                     grd_pay.Effect = null;
-                    Toast.error("مهلت پرداخت تمام شده است");
+                    //Toast.error("مهلت پرداخت تمام شده است");
                 }
             }
             else
@@ -320,7 +320,9 @@ namespace Kiosk
                         report.Print(false, setting);
                     }
                     catch (Exception e)
-                    { }
+                    {
+                        Toast.error("خطایی در پرینت رسید رخ داده است.لطفا به پرسنل اطلاع دهید", 2);
+                    }
                 }
             });
         }

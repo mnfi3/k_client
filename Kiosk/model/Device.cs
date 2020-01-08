@@ -29,10 +29,14 @@ namespace Kiosk.model
 
         public static Device parse(JObject kiosk){
             Device device = new Device();
-            device.id = kiosk["id"].Value<Int32>();
-            device.name = kiosk["name"].Value<string>();
-            device.user_name = kiosk["user_name"].Value<string>();
-            device.client_key = kiosk["client_key"].Value<string>();
+            try
+            {
+                device.id = kiosk["id"].Value<Int32>();
+                device.name = kiosk["name"].Value<string>();
+                device.user_name = kiosk["user_name"].Value<string>();
+                device.client_key = kiosk["client_key"].Value<string>();
+            }
+            catch (Exception e) { }
             return device;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Kiosk.model
         public int id { set; get; }
         public int restaurant_id { set; get; }
         public string code { set; get; }
-        public int percent { set; get; }
+        public int discount_percent { set; get; }
         public int count { set; get; }
         public string started_at { set; get; }
         public string invoked_at { set; get; }
@@ -21,7 +22,25 @@ namespace Kiosk.model
         public Discount()
         {
             id = 0;
-            percent = 0;
+            discount_percent = 0;
+        }
+
+
+        public static Discount parse(JObject obj)
+        {
+            Discount d = new Discount();
+            try
+            {
+                d.id = obj["id"].Value<Int32>();
+                d.restaurant_id = obj["user_id"].Value<Int32>();
+                d.code = obj["code"].Value<string>();
+                d.discount_percent = obj["percent"].Value<int>();
+                d.count = obj["count"].Value<int>();
+                d.started_at = obj["started_at"].Value<string>();
+                d.invoked_at = obj["invoked_at"].Value<string>();
+            }
+            catch (Exception e) { }
+            return d;
         }
     }
 }

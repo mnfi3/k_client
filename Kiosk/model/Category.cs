@@ -24,17 +24,22 @@ namespace Kiosk.model
         public static Category parse(JObject obj)
         {
             Category category = new Category();
-            category.id = obj["id"].Value<Int32>();
-            category.name = obj["name"].Value<string>();
-            category.image = obj["image"].Value<string>();
-
-            JArray p = obj["products"].Value<JArray>();
-            for (int i = 0; i < p.Count; i++)
+            try
             {
-                //not add finished products 
-                if (p[i]["is_available"].Value<int>() == 0) continue;
-                category.foods.Add(Food.parse((JObject)p[i]));
+                category.id = obj["id"].Value<Int32>();
+                category.restaurant_id = obj["user_id"].Value<Int32>();
+                category.name = obj["name"].Value<string>();
+                category.image = obj["image"].Value<string>();
+
+                JArray p = obj["products"].Value<JArray>();
+                for (int i = 0; i < p.Count; i++)
+                {
+                    //not add finished products 
+                    if (p[i]["is_available"].Value<int>() == 0) continue;
+                    category.foods.Add(Food.parse((JObject)p[i]));
+                }
             }
+            catch (Exception e) { }
 
             return category;
         }

@@ -8,8 +8,8 @@ namespace Kiosk.api
 {
     class Urls
     {
-        //public const string BASE_URL = "http://localhost:8080/kiosk/api";
-        public const string BASE_URL = "https://easybazi.ir/public/kiosk/public/api";
+        public const string BASE_URL = "http://localhost:8080/kiosk/api";
+        //public const string BASE_URL = "https://easybazi.ir/public/kiosk/public/api";
         public const string UPDATE_INFO_URL = "http://localhost:8080/kiosk/download/updates.txt";
 
 
@@ -24,6 +24,7 @@ namespace Kiosk.api
 
 
         public const string RESTAURANT_PRODUCTS = BASE_URL + "/v1/restaurant/products";
+        public const string RESTAURANT_DISCOUNTS = BASE_URL + "/v1/restaurant/discounts";
         public const string RESTAURANT_DISCOUNT_VALIDATE = BASE_URL + "/v1/restaurant/discount-validate";
         public const string RESTAURANT_ORDER = BASE_URL + "/v1/restaurant/order";
         public const string RESTAURANT_ORDERS = BASE_URL + "/v1/restaurant/orders";

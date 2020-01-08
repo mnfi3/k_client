@@ -167,6 +167,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="api\DataSync.cs" />
     <Compile Include="api\RDevice.cs" />
     <Compile Include="api\Request.cs" />
     <Compile Include="api\Response.cs" />
@@ -241,7 +242,6 @@
     <Compile Include="model\Discount.cs" />
     <Compile Include="model\Order.cs" />
     <Compile Include="model\OrderItem.cs" />
-    <Compile Include="model\Payment.cs" />
     <Compile Include="model\Printer.cs" />
     <Compile Include="model\ReceiptItem.cs" />
     <Compile Include="pos\model\BuyRequest.cs" />

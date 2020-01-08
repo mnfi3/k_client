@@ -33,7 +33,7 @@ namespace Kiosk.model
             {
                 int s = 0;
                 float c = cost;
-                float p = discount.percent;
+                float p = discount.discount_percent;
                 s = (int)(c - ((c * p) / 100.0f));
                 return s;
             }
@@ -51,7 +51,7 @@ namespace Kiosk.model
             items = new List<CartItem>();
             discount = new Discount();
             discount.id = 0;
-            discount.percent = 0;
+            discount.discount_percent = 0;
             is_out = 0;
         }
 

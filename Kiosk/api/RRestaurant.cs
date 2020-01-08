@@ -15,7 +15,8 @@ namespace Kiosk.api
         private EventHandler eventLogin = null;
         private EventHandler eventLogout = null;
         private EventHandler eventProducts = null;
-        private EventHandler eventDiscount = null;
+        private EventHandler eventDiscounts = null;
+        private EventHandler eventDiscountValidate = null;
 
 
 
@@ -129,10 +130,50 @@ namespace Kiosk.api
 
 
 
+
+
+        public void discounts(Restaurant restaurant, EventHandler handler)
+        {
+            Request request = new Request();
+            eventDiscounts += handler;
+
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token } };
+            request.get(Urls.RESTAURANT_DISCOUNTS, data, headers, discountsCallBack);
+        }
+        private void discountsCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            List<Discount> discounts = new List<Discount>();
+            Discount d;
+            if (res.status == 1)
+            {
+                JObject data = res.data;
+                JArray discounts_obj = data["discounts"].Value<JArray>();
+                for (int i = 0; i < discounts_obj.Count; i++)
+                {
+                    d = Discount.parse((JObject)discounts_obj[i]);
+                    discounts.Add(d);
+                }
+            }
+            else
+            {
+                discounts.Add(new Discount());
+            }
+            eventDiscounts(discounts, new EventArgs());
+        }
+
+
+
+
+
+
+
+
         public void checkDiscount(Restaurant restaurant, string discount_code, EventHandler handler)
         {
             Request request = new Request();
-            eventDiscount += handler;
+            eventDiscountValidate += handler;
 
             Dictionary<string, string> data = new Dictionary<string, string> { { "discount_code", discount_code } };
             Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token } };
@@ -147,7 +188,7 @@ namespace Kiosk.api
             {
                 JObject data = res.data;
                 discount.id = data["id"].Value<int>();
-                discount.percent = data["percent"].Value<int>();
+                discount.discount_percent = data["percent"].Value<int>();
                 discount.code = data["code"].Value<string>();
                 discount.is_valid = true;
             }
@@ -157,7 +198,7 @@ namespace Kiosk.api
                 discount.id = 0;
             }
 
-            eventDiscount(discount, new EventArgs());
+            eventDiscountValidate(discount, new EventArgs());
         }
 
 

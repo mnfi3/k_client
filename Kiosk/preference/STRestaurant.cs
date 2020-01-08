@@ -135,6 +135,7 @@ namespace Kiosk.preference
                     restaurants.RemoveAt(i);
                     rest1.name = restaurant.name;
                     rest1.image = restaurant.image;
+                    rest1.address = restaurant.address;
                     rest1.description = restaurant.description;
                     restaurants.Add(rest1);
                     break;

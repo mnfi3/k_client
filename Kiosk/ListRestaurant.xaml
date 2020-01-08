@@ -7,7 +7,7 @@
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
         Height="600" Width="1000" Foreground="White" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None" ManipulationBoundaryFeedback="Window_ManipulationBoundaryFeedback">
 
-    <Grid Background="LightGray">
+    <Grid Background="White">
         <Grid Height="50" VerticalAlignment="Top" Margin="0 0 0 0">
             <materialDesign:PopupBox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
                 <StackPanel Width="150">

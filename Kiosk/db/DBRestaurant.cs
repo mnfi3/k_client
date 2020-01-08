@@ -97,7 +97,6 @@ namespace Kiosk.db
                     printer = new Printer();
                     printer.name = dataReader.GetString(dataReader.GetOrdinal("name"));
                     printers.Add(printer);
-                    break;
                 }
             }
 
@@ -144,6 +143,39 @@ namespace Kiosk.db
             db.close();
 
             return restaurant;
+        }
+
+
+
+
+        public void updateDiscounts(Restaurant rest, List<Discount> discounts)
+        {
+            values.Clear();
+            values.Add("@restaurant_id", rest.id.ToString());
+            db.delete("delete from discounts where restaurant_id=@restaurant_id", values);
+            foreach (Discount d in discounts)
+            {
+                values.Clear();
+                values.Add("@id", d.id.ToString());
+                values.Add("@restaurant_id", rest.id.ToString());
+                values.Add("@code", d.code.ToString());
+                values.Add("@discount_percent", d.discount_percent.ToString());
+                values.Add("@count", d.count.ToString());
+                values.Add("@started_at", d.started_at.ToString());
+                values.Add("@invoked_at", d.invoked_at.ToString());
+
+                //db.insert("insert into discounts (id, restaurant_id, code, discount_percent, count) values (@id, @restaurant_id, @code, @discount_percent, @count)", values);
+
+                db.insert("insert into discounts (id, restaurant_id, code, discount_percent, count, started_at, invoked_at)" +
+                   " values (@id, @restaurant_id, @code, @discount_percent, @count, @started_at, @invoked_at)", values);
+            }
+        }
+
+
+        public void removeDiscounts(Restaurant rest){
+            values.Clear();
+            values.Add("@restaurant_id", rest.id.ToString());
+            db.delete("delete from discounts where restaurant_id=@restaurant_id", values);
         }
 
         

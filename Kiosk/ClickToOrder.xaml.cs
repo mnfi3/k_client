@@ -1,11 +1,14 @@
 ﻿using Kiosk.api;
 using Kiosk.db;
 using Kiosk.model;
+using Kiosk.preference;
+using Kiosk.system;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -25,13 +28,14 @@ namespace Kiosk
     public partial class ClickToOrder : Window
     {
         EventHandler handler;
+
         
-        public ClickToOrder()
-        {
-            InitializeComponent();
-            this.Height = G.height;
-            this.Width = G.width;
-        }
+        //public ClickToOrder()
+        //{
+        //    InitializeComponent();
+        //    this.Height = G.height;
+        //    this.Width = G.width;
+        //}
 
         public ClickToOrder(EventHandler handler)
         {
@@ -39,6 +43,9 @@ namespace Kiosk
             this.handler += handler;
             this.Height = G.height;
             this.Width = G.width;
+
+           
+
         }
 
 
@@ -48,11 +55,10 @@ namespace Kiosk
         {
             renderViews();
 
-
-            Task.Run(() => {
-                G.syncOrders();
-            });
+            syncData();
         }
+
+
 
 
         private void renderViews()
@@ -68,7 +74,13 @@ namespace Kiosk
         }
 
 
+
+
         
+
+
+
+
 
 
         private void open_list_restaurant(object sender, MouseEventArgs e)
@@ -88,9 +100,22 @@ namespace Kiosk
             this.Close();
         }
 
-       
 
 
+
+
+
+
+
+        private async void syncData()
+        {
+            DataSync syncer = new DataSync();
+            await Task.Run(() => {
+                syncer.syncAllData();
+            });
+           
+
+        }
 
        
     }

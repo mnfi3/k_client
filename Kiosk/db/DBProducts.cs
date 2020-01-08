@@ -16,6 +16,7 @@ namespace Kiosk.db
 
         public void  resetProducts(AllProduct all_product, Restaurant restaurant )
         {
+            if (restaurant.id == 0) return;
             //remove old data
             clearRestaurantFoods(restaurant);
 
