@@ -44,22 +44,31 @@ namespace Kiosk.preference
 
         private string read()
         {
-            string json =  File.ReadAllText(FILE);
-            json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
-            if (json_string.Contains("#fail"))
+            try
             {
-                Device device = new Device();
-                json = JsonConvert.SerializeObject(device);
-                save(json);
+                string json = File.ReadAllText(FILE);
+                json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
+                if (json_string.Contains("#fail"))
+                {
+                    Device device = new Device();
+                    json = JsonConvert.SerializeObject(device);
+                    save(json);
+                }
+                return json_string;
             }
-            return json_string;
+            catch (Exception e) { }
+            return "";
         }
 
         private void save(string json)
         {
-            json_string = json;
-            json = Crypt.EncryptString(json, G.PUBLIC_KEY);
-            File.WriteAllText(FILE, json);
+            try
+            {
+                json_string = json;
+                json = Crypt.EncryptString(json, G.PUBLIC_KEY);
+                File.WriteAllText(FILE, json);
+            }
+            catch (Exception e) { }
         }
 
 

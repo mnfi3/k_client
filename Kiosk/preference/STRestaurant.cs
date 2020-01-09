@@ -48,7 +48,7 @@ namespace Kiosk.preference
 
         private string read()
         {
-            string json =  File.ReadAllText(FILE);
+            string json = File.ReadAllText(FILE);
             json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
             if (json_string.Contains("#fail"))
             {
@@ -61,9 +61,13 @@ namespace Kiosk.preference
 
         private void save(string json)
         {
-            json_string = json;
-            json = Crypt.EncryptString(json, G.PUBLIC_KEY);
-            File.WriteAllText(FILE, json);
+            try
+            {
+                json_string = json;
+                json = Crypt.EncryptString(json, G.PUBLIC_KEY);
+                File.WriteAllText(FILE, json);
+            }
+            catch (Exception e) { }
         }
 
 

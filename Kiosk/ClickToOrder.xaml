@@ -28,7 +28,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <Border BorderBrush="white" BorderThickness="4" CornerRadius="30" VerticalAlignment="center" HorizontalAlignment="Center" MouseDown="open_list_restaurant">
+            <Border x:Name="brdr_click_to_order" BorderBrush="white" BorderThickness="4" CornerRadius="30" VerticalAlignment="center" HorizontalAlignment="Center" MouseDown="open_list_restaurant">
                 <TextBlock Foreground="white" >
                     <TextBlock.Effect>
                         <DropShadowEffect ShadowDepth="0" Color="Black" BlurRadius="10" />

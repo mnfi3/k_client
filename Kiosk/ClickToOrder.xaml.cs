@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -28,6 +29,7 @@ namespace Kiosk
     public partial class ClickToOrder : Window
     {
         EventHandler handler;
+        Thread thread;
 
         
         //public ClickToOrder()
@@ -53,9 +55,13 @@ namespace Kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+            fadeInBorder();
             renderViews();
 
-            syncData();
+            thread = new Thread(syncData);
+            thread.Start();
+            //syncData();
         }
 
 
@@ -73,6 +79,17 @@ namespace Kiosk
             
         }
 
+
+        private void fadeInBorder()
+        {
+            DoubleAnimation slide = new DoubleAnimation();
+            //slide.Completed += new EventHandler(fadeInFinished);
+            slide.From = 0;
+            slide.To = 1;
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(2000));
+            slide.AccelerationRatio = .5;
+            brdr_click_to_order.BeginAnimation(OpacityProperty, slide);
+        }
 
 
 
@@ -97,6 +114,7 @@ namespace Kiosk
 
         private void slideUpFinished(object sender,EventArgs e)
         {
+            thread.Abort();
             this.Close();
         }
 
@@ -107,14 +125,14 @@ namespace Kiosk
 
 
 
-        private async void syncData()
+        private void syncData()
         {
             DataSync syncer = new DataSync();
-            await Task.Run(() => {
+            while (true)
+            {
                 syncer.syncAllData();
-            });
-           
-
+                Thread.Sleep(Config.SYNC_DATA_TIME);
+            }
         }
 
        

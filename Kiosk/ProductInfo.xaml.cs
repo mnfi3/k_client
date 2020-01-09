@@ -33,6 +33,7 @@ namespace Kiosk
         private bool added = false;
         private EventHandler addToCartHandler;
         private bool desserts_loaded = false;
+        private System.Timers.Timer timer;
 
 
 
@@ -59,6 +60,8 @@ namespace Kiosk
 
             addToCartHandler += handler;
             cartItem = new CartItem();
+
+            resetTimer();
 
         }
 
@@ -107,6 +110,43 @@ namespace Kiosk
 
 
 
+        private void resetTimer()
+        {
+            if (timer != null)
+            {
+                resetTimer();
+            }
+            timer = G.getTimer(timeFinished);
+        }
+
+        private void timeFinished(object sender, EventArgs e)
+        {
+            disableTimer();
+
+            this.Dispatcher.Invoke(() => {
+                added = false;
+                fadeOut();
+            });
+            
+
+           
+        }
+
+        private void disableTimer()
+        {
+            try
+            {
+                timer.AutoReset = false;
+                timer.Stop();
+                timer.Enabled = false;
+                timer = null;
+            }
+            catch(Exception e){}
+        }
+
+
+
+
 
         private void fadeIn()
         {
@@ -125,6 +165,8 @@ namespace Kiosk
 
         private void fadeOut()
         {
+            disableTimer();
+
             DoubleAnimation slide = new DoubleAnimation();
             slide.Completed += new EventHandler(fadeOutFinished);
             slide.From = 1;
@@ -252,6 +294,7 @@ namespace Kiosk
             }
             if ((sender as ListView).SelectedItem == null) return;
 
+            disableTimer();
 
             ItemSide _item = (ItemSide)(sender as ListView).SelectedItem;
             ProductInfo _info = new ProductInfo(_item.side, addToCartHandler);

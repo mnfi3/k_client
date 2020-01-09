@@ -39,12 +39,16 @@ namespace Kiosk
 
 
 
+        System.Timers.Timer timer;
+
         public CartView()
         {
             InitializeComponent();
 
             this.Height = G.height;
             this.Width = G.width;
+
+            resetTimer();
 
         }
 
@@ -59,6 +63,42 @@ namespace Kiosk
         private void Window_ManipulationBoundaryFeedback(object sender, ManipulationBoundaryFeedbackEventArgs e)
         {
             e.Handled = true;
+        }
+
+
+
+
+        private void resetTimer()
+        {
+            if (timer != null)
+            {
+                disableTimer();
+            }
+            timer = G.getTimer(timeFinished);
+        }
+
+        private void timeFinished(object sender, EventArgs e)
+        {
+            disableTimer();
+
+            this.Dispatcher.Invoke(() =>
+            {
+                ListRestaurant _list = new ListRestaurant(true);
+                _list.Show();
+                this.Close();
+            });
+        }
+
+        private void disableTimer()
+        {
+            try
+            {
+                timer.AutoReset = false;
+                timer.Stop();
+                timer.Enabled = false;
+                timer = null;
+            }
+            catch (Exception e) { }
         }
 
         
@@ -93,6 +133,7 @@ namespace Kiosk
        
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
+            disableTimer();
             //slideOutLeft();
             ListProducts _list = new ListProducts();
             _list.Show();
@@ -147,6 +188,8 @@ namespace Kiosk
 
         private void btn_pay_Click(object sender, RoutedEventArgs e) 
         {
+            disableTimer();
+
             if (G.cart.items.Count == 0)
             {
                 Toast.error("هیچ محصولی در سبد خرید شما وجود ندارد");
@@ -177,6 +220,7 @@ namespace Kiosk
             }
             else
             {
+                resetTimer();
                 grd_main.Effect = null;
                 grd_pay.Effect = null;
             }
@@ -185,16 +229,21 @@ namespace Kiosk
 
         private void paymentCallBack(object sender, EventArgs e)
         {
+            resetTimer();
+
             grd_main.Effect = null;
             grd_pay.Effect = null;
 
             BuyResponse response = sender as BuyResponse;
             if (!response.success)
             {
+                
                 Toast.error(response.error, 5);
             }
             else
             {
+                disableTimer();
+
                 handleShop(response);
                 Toast.success("پرداخت با موفقیت انجام شد.لطفا رسیدهای خود را دریافت نمایید", 4);
 

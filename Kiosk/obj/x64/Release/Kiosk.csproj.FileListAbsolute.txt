@@ -185,3 +185,4 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.Properties.Resources.resources
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csproj.GenerateResource.Cache
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.exe
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.pdb
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache

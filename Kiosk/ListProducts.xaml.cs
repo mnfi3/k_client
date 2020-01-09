@@ -36,8 +36,8 @@ namespace Kiosk
         private Restaurant restaurant;
         AllProduct all_product;
         Category active_category;
-        System.Timers.Timer timer = new System.Timers.Timer();
         bool is_loaded_data = false;
+        System.Timers.Timer timer;
 
 
 
@@ -51,7 +51,11 @@ namespace Kiosk
             this.Width = G.width;
             this.cln_cart.Width =new  GridLength(0, GridUnitType.Star);
             this.restaurant = G.restaurant;
+            resetTimer();
+
         }
+
+
 
 
 
@@ -68,6 +72,42 @@ namespace Kiosk
             e.Handled = true;
         }
 
+        private void resetTimer()
+        {
+            if (timer != null)
+            {
+                disableTimer();
+            }
+            timer = G.getTimer(timeFinished);
+        }
+
+        private void timeFinished(object sender, EventArgs e)
+        {
+            disableTimer();
+
+            this.Dispatcher.Invoke(() =>
+            {
+                ListRestaurant _list = new ListRestaurant(true);
+                _list.Show();
+                this.Close();
+            });
+        }
+
+        private void disableTimer()
+        {
+            try
+            {
+                timer.AutoReset = false;
+                timer.Stop();
+                timer.Enabled = false;
+                timer = null;
+            }
+            catch (Exception e) { }
+        }
+
+
+
+        
 
        
       
@@ -79,45 +119,23 @@ namespace Kiosk
 
         private void btn_exit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            disableTimer();
+
+            System.Windows.Application.Current.Shutdown();
         }
 
 
-        private void btn_cart_Click(object sender, RoutedEventArgs e)
-        {
-            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
-            {
-                App.Current.Windows[intCounter].Close();
-            }
-            ListRestaurant _window = new ListRestaurant(true);
-            _window.Show();
-
-            //CartView _cartView = new CartView();
-            //_cartView.Show();
-            //this.Close();
-
-            //if (_cartView.ShowDialog() == true)
-            //{
-            //    //PrintReceipt print = new PrintReceipt();
-            //    //print.ShowDialog();
-
-            //    //G.cart.clear();
-            //    //G.syncOrders();
-            //}
-        }
+      
 
 
 
 
         private void btn_back_to_restaurants_Click(object sender, RoutedEventArgs e)
         {
-            //DialogPublic _dialog = new DialogPublic("آیا میخواهید به لیست رستوران ها برگردید؟ (سبد خرید شما خالی خواهد شد)");
-            //if (_dialog.ShowDialog() == true)
-            //{
-                ListRestaurant _list = new ListRestaurant(true);
-                _list.Show();
-                this.Close();
-            //}
+            disableTimer();
+            ListRestaurant _list = new ListRestaurant(true);
+            _list.Show();
+            this.Close();
         }
 
         private void lst_categories_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -174,6 +192,8 @@ namespace Kiosk
         {
             if ((sender as ListView).SelectedItem == null) return;
 
+            disableTimer();
+
             ItemProduct _item = (ItemProduct)(sender as ListView).SelectedItem;
             ProductInfo _info = new ProductInfo(_item.food, addToCartCallBack);
             _info.Show();
@@ -184,6 +204,7 @@ namespace Kiosk
 
         private void addToCartCallBack(object sender, EventArgs e)
         {
+            resetTimer();
 
             this.Show();
             if ((bool)sender == true)
@@ -368,6 +389,8 @@ namespace Kiosk
             DialogManageApp _dialog = new DialogManageApp();
             if (_dialog.ShowDialog() == true)
             {
+                disableTimer();
+
                 DeviceLogin _login = new DeviceLogin();
                 _login.Show();
                 this.Close();
@@ -376,7 +399,8 @@ namespace Kiosk
 
         private void btn_checkout_Click(object sender, RoutedEventArgs e)
         {
-            //slideOutLeft();
+            disableTimer();
+
             CartView _cartView = new CartView();
             _cartView.Show();
             this.Close();

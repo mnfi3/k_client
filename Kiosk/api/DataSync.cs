@@ -24,11 +24,11 @@ namespace Kiosk.api
 
 
 
-        public async void syncAllData()
+        public  void syncAllData()
         {
             G.restaurants = new STRestaurant().getRestaurants();
-            await Task.Run(() =>
-            {
+            //await Task.Run(() =>
+            //{
                
                 //sync orders
                 syncOrders();
@@ -43,7 +43,7 @@ namespace Kiosk.api
 
                 //sync restaurants data
                 r_device.getRestaurants(restaurantCallBack);
-            });
+            //});
         }
 
         private void restaurantCallBack(object sender, EventArgs e)

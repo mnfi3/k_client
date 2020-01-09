@@ -10,7 +10,6 @@ using Kiosk.db;
 using Kiosk.system;
 using Kiosk.license;
 using Kiosk.api;
-using System.Threading;
 using Kiosk.preference;
 
 namespace Kiosk
@@ -22,8 +21,6 @@ namespace Kiosk
         public static Device device;
         public static Restaurant restaurant;
         public static List<Restaurant> restaurants;
-        //public static System.Timers.Timer timer = new System.Timers.Timer();
-        //public static System.Timers.Timer sync_products_timer;
         public static bool isLoggedIn = false;
         public const string PUBLIC_KEY = "kkkF19BEE2EF1yyy";
         public static string PRIVATE_KEY;
@@ -38,28 +35,20 @@ namespace Kiosk
 
 
 
-       
+        public static System.Timers.Timer getTimer(EventHandler handler, double time = Config.STAND_BY_TIME)
+        {
+            Timer timer = new Timer();
+            timer.Interval = time;
+            timer.Elapsed += new ElapsedEventHandler(handler);
+            timer.AutoReset = true;
+            timer.Enabled = true;
+            timer.Start();
+            return timer;
+        }
+
+
+
         
-        //public static void setupTimer(ElapsedEventHandler handler, bool remove_old_timer = true)
-        //{
-        //    //remove old timer
-        //    if(remove_old_timer) disableTimer();
-
-        //    //config new timer
-        //    timer = new System.Timers.Timer();
-        //    timer.Interval = Config.STAND_BY_TIME;
-        //    timer.Elapsed += new ElapsedEventHandler(handler);
-        //    timer.AutoReset = false;
-        //    timer.Enabled = true;
-        //}
-
-        //public static void disableTimer()
-        //{
-        //    timer.Stop();
-        //    timer.Enabled = false;
-        //    timer.Dispose();
-        //    timer = null;
-        //}
 
 
 
