@@ -141,6 +141,12 @@ namespace Kiosk.preference
                     rest1.image = restaurant.image;
                     rest1.address = restaurant.address;
                     rest1.description = restaurant.description;
+                    //update kiosk info
+                    rest1.is_use_table_number = restaurant.is_use_table_number;
+                    rest1.table_count = restaurant.table_count;
+                    rest1.order_number_start = restaurant.order_number_start;
+                    rest1.order_number_step = restaurant.order_number_step;
+
                     restaurants.Add(rest1);
                     break;
                     //var rest2 = restaurants.First(x => x.id == restaurant.id);

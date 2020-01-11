@@ -242,6 +242,7 @@
     <Compile Include="model\Discount.cs" />
     <Compile Include="model\Order.cs" />
     <Compile Include="model\OrderItem.cs" />
+    <Compile Include="model\OrderNumber.cs" />
     <Compile Include="model\Printer.cs" />
     <Compile Include="model\ReceiptItem.cs" />
     <Compile Include="pos\model\BuyRequest.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="pos\PosServiceController.cs" />
     <Compile Include="preference\STDevice.cs" />
     <Compile Include="preference\Storage.cs" />
+    <Compile Include="preference\STOrder.cs" />
     <Compile Include="preference\STRestaurant.cs" />
     <Compile Include="ProductInfo.xaml.cs">
       <DependentUpon>ProductInfo.xaml</DependentUpon>

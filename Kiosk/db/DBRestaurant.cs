@@ -178,6 +178,44 @@ namespace Kiosk.db
             db.delete("delete from discounts where restaurant_id=@restaurant_id", values);
         }
 
+
+
+        public Discount getDiscount(Restaurant rest, string code)
+        {
+            Discount discount = null;
+            DateTime datetime = DateTime.Now;
+            string now = datetime.ToString("yyyy-MM-dd HH:mm:ss");
+            values.Clear();
+            values.Add("@restaurant_id", rest.id.ToString());
+            values.Add("@code", code);
+            values.Add("@now", now);
+            SqlDataReader dataReader = db.select("select top 1 * from discounts where restaurant_id=@restaurant_id and code like @code and @now >= started_at and @now <= invoked_at and count > 0", values);
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    discount = new Discount();
+                    discount.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
+                    discount.restaurant_id = dataReader.GetInt32(dataReader.GetOrdinal("restaurant_id"));
+                    discount.code = dataReader.GetString(dataReader.GetOrdinal("code"));
+                    discount.discount_percent = dataReader.GetInt32(dataReader.GetOrdinal("discount_percent"));
+                    discount.count = dataReader.GetInt32(dataReader.GetOrdinal("count"));
+                    discount.started_at = dataReader.GetDateTime(dataReader.GetOrdinal("started_at")).ToString("yyyy-MM-dd HH:mm:ss");
+                    discount.invoked_at = dataReader.GetDateTime(dataReader.GetOrdinal("invoked_at")).ToString("yyyy-MM-dd HH:mm:ss");
+                    discount.is_valid = true;
+                    return discount ;
+                }
+            }
+            db.close();
+            return discount;
+        }
+
+        public void setDiscountUse(int id)
+        {
+            values.Clear();
+            values.Add("@id", id.ToString());
+            db.update("update discounts set count=count-1 where id=@id", values);
+        }
         
     }
 

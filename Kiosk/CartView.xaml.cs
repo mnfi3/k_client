@@ -28,6 +28,7 @@ using System.IO;
 using Stimulsoft.Report;
 using Kiosk.pos.model;
 using System.Windows.Media.Animation;
+using Kiosk.preference;
 
 namespace Kiosk
 {
@@ -40,6 +41,7 @@ namespace Kiosk
 
 
         System.Timers.Timer timer;
+        bool is_closed_window = false;
 
         public CartView()
         {
@@ -65,6 +67,12 @@ namespace Kiosk
             e.Handled = true;
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            is_closed_window = true;
+            disableTimer();
+        }
+
 
 
 
@@ -80,6 +88,8 @@ namespace Kiosk
         private void timeFinished(object sender, EventArgs e)
         {
             disableTimer();
+
+            if (is_closed_window) return;
 
             this.Dispatcher.Invoke(() =>
             {
@@ -164,31 +174,33 @@ namespace Kiosk
         private void btn_discount_Click(object sender, RoutedEventArgs e)
         {
             string discount_code = txt_discount_code.Text.ToString();
-            RRestaurant r_rest = new RRestaurant();
-            r_rest.checkDiscount(G.restaurant, discount_code, checkDiscountCodeComplete);
-        }
-
-        private void checkDiscountCodeComplete(object sender, EventArgs e)
-        {
-            Discount d = sender as Discount;
-            if (d.is_valid)
+            if (discount_code.Length == 0)
             {
-                G.cart.discount = d;
-                txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
-                Toast.success("کد تخفیف با موفقیت اعمال شد");
+                Toast.error("لطفا کد تخفیف را وارد کنید");
+                return;
             }
-            else
+
+            DBRestaurant db_rest = new DBRestaurant();
+            Discount discount = db_rest.getDiscount(G.restaurant, discount_code);
+            if (discount == null)
             {
                 Toast.error("کد تخفیف معتبر نمی باشد");
+                return;
             }
+            G.cart.discount = discount;
+            txt_d_cost.Text = Utils.persian_split(G.cart.d_cost) + " تومان ";
+            Toast.success("کد تخفیف با موفقیت اعمال شد");
         }
 
+
+       
 
 
 
         private void btn_pay_Click(object sender, RoutedEventArgs e) 
         {
             disableTimer();
+           
 
             if (G.cart.items.Count == 0)
             {
@@ -243,6 +255,7 @@ namespace Kiosk
             else
             {
                 disableTimer();
+                
 
                 handleShop(response);
                 Toast.success("پرداخت با موفقیت انجام شد.لطفا رسیدهای خود را دریافت نمایید", 4);
@@ -278,12 +291,14 @@ namespace Kiosk
 
         public void handleShop(BuyResponse response)
         {
-            DateTime datetime = DateTime.Now;
-            G.cart.order_number = G.restaurant.id.ToString() + datetime.ToString("HHmms");
+            //DateTime datetime = DateTime.Now;
+            //G.cart.order_number = G.restaurant.id.ToString() + datetime.ToString("HHmms");
+            G.cart.order_number = new STOrder().generateOrderNumber(G.restaurant).ToString();
             DBOrder db_order = new DBOrder();
             db_order.saveOrder(G.restaurant, G.cart, response);
             db_order.saveReceipt(G.cart);
             printReceipt();
+            new DBRestaurant().setDiscountUse(G.cart.discount.id);
             G.cart.clear();
             loadCartView();
 
@@ -450,6 +465,8 @@ namespace Kiosk
                 chk_out.IsChecked = true;
             }
         }
+
+       
 
        
 

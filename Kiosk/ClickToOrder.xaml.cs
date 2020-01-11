@@ -86,7 +86,7 @@ namespace Kiosk
             //slide.Completed += new EventHandler(fadeInFinished);
             slide.From = 0;
             slide.To = 1;
-            slide.Duration = new Duration(TimeSpan.FromMilliseconds(2000));
+            slide.Duration = new Duration(TimeSpan.FromMilliseconds(1000));
             slide.AccelerationRatio = .5;
             brdr_click_to_order.BeginAnimation(OpacityProperty, slide);
         }

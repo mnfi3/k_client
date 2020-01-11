@@ -18,6 +18,12 @@ namespace Kiosk.model
         public string description { set; get; }
         public string token { set; get; }
 
+        //kiosk info
+        public int is_use_table_number { set; get; }
+        public int table_count { set; get; }
+        public int order_number_start { set; get; }
+        public int order_number_step { set; get; }
+
         public AllProduct all_product { set; get; }
 
         public List<Printer> printers
@@ -41,6 +47,10 @@ namespace Kiosk.model
             image = "";
             description = "";
             token = "";
+            is_use_table_number = 0;
+            table_count = 0;
+            order_number_start = 1;
+            order_number_step = 1;
             all_product = new AllProduct();
         }
 
@@ -55,6 +65,12 @@ namespace Kiosk.model
                 restaurant.address = user["address"].Value<string>();
                 restaurant.image = user["image"].Value<string>();
                 restaurant.description = user["description"].Value<string>();
+                //get kiosk info
+                JObject kiosk_info = user["kiosk_info"].Value<JObject>();
+                restaurant.is_use_table_number = kiosk_info["is_use_table_number"].Value<Int32>();
+                restaurant.table_count = kiosk_info["table_count"].Value<Int32>();
+                restaurant.order_number_start = kiosk_info["order_number_start"].Value<Int32>();
+                restaurant.order_number_step = kiosk_info["order_number_step"].Value<Int32>();
             }
             catch (Exception e)
             {

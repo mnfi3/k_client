@@ -34,6 +34,7 @@ namespace Kiosk
         private EventHandler addToCartHandler;
         private bool desserts_loaded = false;
         private System.Timers.Timer timer;
+        bool is_closed_window = false;
 
 
 
@@ -107,6 +108,12 @@ namespace Kiosk
         {
             e.Handled = true;
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            is_closed_window = true;
+            disableTimer();
+        }
+
 
 
 
@@ -122,7 +129,7 @@ namespace Kiosk
         private void timeFinished(object sender, EventArgs e)
         {
             disableTimer();
-
+            if (is_closed_window) return;
             this.Dispatcher.Invoke(() => {
                 added = false;
                 fadeOut();
@@ -377,6 +384,8 @@ namespace Kiosk
 
             txt_total.Text = Utils.persian_split(cartItem.cost) + " تومان ";
         }
+
+       
 
 
 

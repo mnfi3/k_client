@@ -22,9 +22,25 @@ namespace Kiosk.pos
             if (ReturnCode == 109)
             {
                 initReasonCodeMessages();
-                this.message =  reasons[reason_code];
-            }else{
-                this.message = returns[return_code];
+                if (reasons.ContainsKey(reason_code))
+                {
+                    this.message = reasons[reason_code];
+                }
+                else
+                {
+                    this.message = "خطا در پرداخت";
+                }
+            }
+            else
+            {
+                if (returns.ContainsKey(return_code))
+                {
+                    this.message = returns[return_code];
+                }
+                else
+                {
+                    this.message = "خطا در پرداخت";
+                }
             }
         }
 

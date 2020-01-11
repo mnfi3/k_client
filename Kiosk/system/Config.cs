@@ -8,7 +8,7 @@ namespace Kiosk.system
 {
     class Config
     {
-        public const bool DEBUG = false;
+        public const bool DEBUG = true;
         const string quote = "\"";  
         //public const string DB_CONNECTION = "server=localhost;AttachDbFilename=|DataDirectory|"+quote+"database"+quote+"Kiosk.mdf;database=Kiosk;Integrated Security=true;";
         public const string DB_CONNECTION = "server=localhost;database=Kiosk;Integrated Security=true;";

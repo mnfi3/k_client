@@ -38,6 +38,7 @@ namespace Kiosk
         Category active_category;
         bool is_loaded_data = false;
         System.Timers.Timer timer;
+        bool is_closed_window = false;
 
 
 
@@ -71,6 +72,11 @@ namespace Kiosk
         {
             e.Handled = true;
         }
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            is_closed_window = true;
+            disableTimer();
+        }
 
         private void resetTimer()
         {
@@ -85,6 +91,7 @@ namespace Kiosk
         {
             disableTimer();
 
+            if (is_closed_window) return;
             this.Dispatcher.Invoke(() =>
             {
                 ListRestaurant _list = new ListRestaurant(true);
@@ -495,6 +502,8 @@ namespace Kiosk
             _cartView.Show();
             this.Close();
         }
+
+       
 
        
 
