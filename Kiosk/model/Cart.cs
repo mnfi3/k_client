@@ -12,6 +12,7 @@ namespace Kiosk.model
         public List<CartItem> items { set; get; }
         public int is_out;
         public string order_number = "";
+        public int table_number = 0;
 
         public int cost
         {

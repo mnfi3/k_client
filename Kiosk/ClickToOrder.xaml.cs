@@ -61,7 +61,7 @@ namespace Kiosk
 
             thread = new Thread(syncData);
             thread.Start();
-            //syncData();
+            //syncData2();
         }
 
 
@@ -82,6 +82,7 @@ namespace Kiosk
 
         private void fadeInBorder()
         {
+            
             DoubleAnimation slide = new DoubleAnimation();
             //slide.Completed += new EventHandler(fadeInFinished);
             slide.From = 0;
@@ -130,10 +131,26 @@ namespace Kiosk
             DataSync syncer = new DataSync();
             while (true)
             {
+                Thread.Sleep(5000);
                 syncer.syncAllData();
                 Thread.Sleep(Config.SYNC_DATA_TIME);
             }
         }
+
+        //private async void syncData2()
+        //{
+        //    DataSync syncer = new DataSync();
+        //    await Task.Run(() =>
+        //    {
+        //        while (true)
+        //        {
+        //            is_sync_task_running = true;
+        //            syncer.syncAllData();
+        //            is_sync_task_running = false;
+        //            Task.Delay(Config.SYNC_DATA_TIME);
+        //        }
+        //    });
+        //}
 
        
     }

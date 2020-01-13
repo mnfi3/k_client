@@ -8,7 +8,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         WindowStartupLocation="CenterOwner"
         Padding="20"
-        Width="400" Height="250" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+        Width="800" Height="500" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
     <Grid>
         <Grid Background="#AA535755">
             <Grid.RowDefinitions>
@@ -29,13 +29,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_7" Tag="7" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_7" Tag="7" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number7" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_8" Tag="8" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_8" Tag="8" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number8" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_9" Tag="9" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_9" Tag="9" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number9" Width="auto" Height="auto"/>
                 </Button>
             </Grid>
@@ -50,13 +50,13 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_4" Tag="4" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_4" Tag="4" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number4" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_5" Tag="5" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_5" Tag="5" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number5" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_6" Tag="6" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_6" Tag="6" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number6" Width="auto" Height="auto"/>
                 </Button>
             </Grid>
@@ -71,13 +71,13 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_1" Tag="1" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_1" Tag="1" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number1" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_2" Tag="2" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_2" Tag="2" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number2" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_3" Tag="3" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_3" Tag="3" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number3" Width="auto" Height="auto"/>
                 </Button>
             </Grid>
@@ -96,7 +96,7 @@
                     <materialDesign:PackIcon Kind="TickOutline" Width="auto" Height="auto"/>
                 </Button>
 
-                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_0" Tag="0" BorderBrush="{x:Null}" Background="#2962ff" Height="auto" Width="auto" Margin="5">
+                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_0" Tag="0" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
                     <materialDesign:PackIcon Kind="Number0" Width="auto" Height="auto"/>
                 </Button>
                 <Button  Grid.Column="2" x:Name="btn_backspace" BorderBrush="{x:Null}" Background="#FFFD1E1E" Margin="5" Width="auto" Height="auto" Click="btn_backspace_Click" TouchDown="btn_backspace_TouchDown">

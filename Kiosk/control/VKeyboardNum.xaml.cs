@@ -87,7 +87,7 @@ namespace Kiosk.control
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
-            //if (!Config.DEBUG) return;
+            if (!Config.DEBUG) return;
             opacityOut();
         }
 

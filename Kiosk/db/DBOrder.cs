@@ -37,6 +37,7 @@ namespace Kiosk.db
             values.Add("@restaurant_id", restaurant.id.ToString());
             values.Add("@is_out", cart.is_out.ToString());
             values.Add("@order_number", cart.order_number.ToString());
+            values.Add("@table_number", cart.table_number.ToString());
             values.Add("@cost", cart.cost.ToString());
             values.Add("@d_cost", cart.d_cost.ToString());
             values.Add("@discount_id", cart.discount.id.ToString());
@@ -52,9 +53,9 @@ namespace Kiosk.db
             values.Add("@transaction_date", response.TransactionDate);
             values.Add("@transaction_time", response.TransactionTime);
 
-            db.insert("insert into orders (id, restaurant_id, order_number, is_out, cost, d_cost, discount_id, time, pan, req_id, serial_transaction, terminal_no, trace_number, transaction_date, transaction_time)"
+            db.insert("insert into orders (id, restaurant_id, order_number, table_number, is_out, cost, d_cost, discount_id, time, pan, req_id, serial_transaction, terminal_no, trace_number, transaction_date, transaction_time)"
                 + " values"
-                + " (@id, @restaurant_id, @order_number, @is_out, @cost, @d_cost, @discount_id, @time, @pan, @req_id, @serial_transaction, @terminal_no, @trace_number, @transaction_date, @transaction_time)", values);
+                + " (@id, @restaurant_id, @order_number, @table_number, @is_out, @cost, @d_cost, @discount_id, @time, @pan, @req_id, @serial_transaction, @terminal_no, @trace_number, @transaction_date, @transaction_time)", values);
 
 
             //find id to order_item

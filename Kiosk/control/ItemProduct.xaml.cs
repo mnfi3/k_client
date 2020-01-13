@@ -77,13 +77,18 @@ namespace Kiosk.control
 
         private void btn_add_to_cart_Click(object sender, RoutedEventArgs e)
         {
-            if (G.cart.isExistInCart(this.food) == true)
+            if (G.cart.isExistInCart(this.food) == false)
             {
-                G.cart.remove(cartItem);
+                G.cart.items.Add(this.cartItem);
+                addToCartHandler(true, new EventArgs());
+            }
+            else
+            {
+                //addToCartHandler(false, new EventArgs());
             }
 
-            G.cart.items.Add(this.cartItem);
-            addToCartHandler(true, new EventArgs());
+            //G.cart.items.Add(this.cartItem);
+            //addToCartHandler(true, new EventArgs());
         }
 
 

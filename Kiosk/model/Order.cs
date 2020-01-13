@@ -11,6 +11,7 @@ namespace Kiosk.model
         public int id { set; get; }
         public int restaurant_id { set; get; }
         public string order_number { set; get; }
+        public int table_number { set; get; }
         public int is_out { set; get; }
         public int cost { set; get; }
         public int d_cost { set; get; }

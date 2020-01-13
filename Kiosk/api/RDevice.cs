@@ -44,6 +44,7 @@ namespace Kiosk.api
             }
             else
             {
+                MessageBox.Show(res.full_response);
                 device = new Device();
             }
 

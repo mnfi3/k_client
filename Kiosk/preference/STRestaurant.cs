@@ -48,14 +48,24 @@ namespace Kiosk.preference
 
         private string read()
         {
-            string json = File.ReadAllText(FILE);
-            json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
-            if (json_string.Contains("#fail"))
+            try
             {
-                List<Restaurant> rests = new List<Restaurant>();
-                json = JsonConvert.SerializeObject(rests);
-                save(json);
+                string json = File.ReadAllText(FILE);
+                json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
+                if (json_string.Contains("#fail"))
+                {
+                    List<Restaurant> rests = new List<Restaurant>();
+                    json = JsonConvert.SerializeObject(rests);
+                    save(json);
+                }
             }
+            catch 
+            {
+                //List<Restaurant> rests = new List<Restaurant>();
+                //string json = JsonConvert.SerializeObject(rests);
+                //save(json);
+            }
+           
             return json_string;
         }
 

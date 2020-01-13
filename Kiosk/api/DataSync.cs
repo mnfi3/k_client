@@ -27,23 +27,18 @@ namespace Kiosk.api
         public  void syncAllData()
         {
             G.restaurants = new STRestaurant().getRestaurants();
-            //await Task.Run(() =>
-            //{
-               
-                //sync orders
-                syncOrders();
-                foreach (Restaurant rest in G.restaurants)
-                {
-                    //sync products
-                    r_restaurant.products(rest, syncProductsCallBack);
-                    //sync discounts
-                    r_restaurant.discounts(rest, discountsCallBack);
-                }
 
+            //sync orders
+            syncOrders();
+            Task.Delay(200);
 
-                //sync restaurants data
-                r_device.getRestaurants(restaurantCallBack);
-            //});
+            //sync restaurants data
+            r_device.getRestaurants(restaurantCallBack);
+            Task.Delay(200);
+
+           
+
+            
         }
 
         private void restaurantCallBack(object sender, EventArgs e)
@@ -57,6 +52,22 @@ namespace Kiosk.api
             }
 
             G.restaurants = st_rest.getRestaurants();
+
+
+
+            //sync products
+            foreach (Restaurant rest in G.restaurants)
+            {
+                //sync products
+                r_restaurant.products(rest, syncProductsCallBack);
+                Task.Delay(200);
+
+                //sync discounts
+                r_restaurant.discounts(rest, discountsCallBack);
+                Task.Delay(200);
+            }
+
+
         }
 
 
@@ -143,7 +154,17 @@ namespace Kiosk.api
                 DBOrder db_order = new DBOrder();
                 db_order.removeOrders();
             }
+
+
+
+
+           
         }
+
+
+
+
+
 
 
 

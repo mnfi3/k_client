@@ -54,6 +54,7 @@ namespace Kiosk
             this.restaurant = G.restaurant;
             resetTimer();
 
+
         }
 
 
@@ -243,40 +244,20 @@ namespace Kiosk
 
         private void loadProducts()
         {
-            //load from server
-            RRestaurant r_rest = new RRestaurant();
-            r_rest.products(G.restaurant, productCallBack);
-        }
-
-        private void productCallBack(object sender, EventArgs e)
-        {
             DBProducts db_products = new DBProducts();
-            all_product = sender as AllProduct;
-            List<Category> categories = all_product.categories;
-            List<Food> sides = sender as List<Food>;
-
-            //if connection was fail
-            //if (categories.Count == 0)
-            //{
-                Task.Run(() =>{
-                    all_product = db_products.getProducts(this.restaurant);
-                    this.Dispatcher.Invoke((Action)(() =>
-                    {
-                        loadCategories(all_product.categories);
-                    }));
-                });
-            //}
-            //else
-            //{
-            //    loadCategories(categories);
-            //    //save new products to local db
-            //    Task.Run(() =>
-            //    {
-            //        db_products.resetProducts(all_product, this.restaurant);
-            //    });
-            //}
-
+            //List<Category> categories = all_product.categories;
+            all_product = db_products.getProducts(this.restaurant);
             G.restaurant.all_product = all_product;
+            Task.Run(() =>
+            {
+                
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    loadCategories(all_product.categories);
+                }));
+            });
+
+           
 
 
             grd_main2.Effect = null;
@@ -284,73 +265,79 @@ namespace Kiosk
             prg_loading.Visibility = Visibility.Collapsed;
             is_loaded_data = true;
 
-           
         }
+
+      
 
 
         private async void loadCart()
         {
-            ItemCartInListProduct _item;
-
-            //add new items to listview
-            foreach (CartItem i in G.cart.items)
+            try
             {
-                bool is_find = false;
+                ItemCartInListProduct _item;
+
+                //add new items to listview
+                foreach (CartItem i in G.cart.items)
+                {
+                    bool is_find = false;
+                    foreach (ItemCartInListProduct ic in lst_cart.Items)
+                    {
+                        if (i.food.id == ic.cartItem.food.id)
+                        {
+                            is_find = true;
+                            break;
+                        }
+                    }
+
+                    if (!is_find)
+                    {
+                        _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
+                        lst_cart.Items.Add(_item);
+                        await Task.Delay(200);
+                    }
+                }
+
+                //remove old item from listview
+                bool is_reload = false;
                 foreach (ItemCartInListProduct ic in lst_cart.Items)
                 {
-                    if (i.food.id == ic.cartItem.food.id)
+                    bool is_exist = false;
+                    foreach (CartItem i in G.cart.items)
                     {
-                        is_find = true;
+                        if (i.food.id == ic.cartItem.food.id)
+                        {
+                            is_exist = true;
+                            break;
+                        }
+                    }
+
+                    if (!is_exist)
+                    {
+                        is_reload = true;
                         break;
                     }
                 }
 
-                if (!is_find)
+                if (is_reload)
                 {
-                    _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
-                    lst_cart.Items.Add(_item);
-                    await Task.Delay(200);
-                }
-            }
-
-            //remove old item from listview
-            bool is_reload = false;
-            foreach (ItemCartInListProduct ic in lst_cart.Items)
-            {
-                bool is_exist = false;
-                foreach (CartItem i in G.cart.items)
-                {
-                    if (i.food.id == ic.cartItem.food.id)
+                    lst_cart.Items.Clear();
+                    foreach (CartItem i in G.cart.items)
                     {
-                        is_exist = true;
-                        break;
+                        _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
+                        lst_cart.Items.Add(_item);
                     }
                 }
 
-                if (!is_exist)
+
+                //reload cart items price and count
+                foreach (ItemCartInListProduct ic in lst_cart.Items)
                 {
-                    is_reload = true;
-                    break;
+                    ic.txt_price.Text = Utils.persian_split(ic.cartItem.cost) + " تومان ";
+                    ic.txt_count.Text = Utils.toPersianNum(ic.cartItem.count);
                 }
             }
-
-            if (is_reload)
-            {
-                lst_cart.Items.Clear();
-                foreach (CartItem i in G.cart.items)
-                {
-                    _item = new ItemCartInListProduct(i, on_cost_changed_handler, on_cart_item_removed_handler);
-                    lst_cart.Items.Add(_item);
-                }
-            }
-
-
-            //reload cart items price and count
-            foreach (ItemCartInListProduct ic in lst_cart.Items)
-            {
-                ic.txt_price.Text = Utils.persian_split(ic.cartItem.cost) + " تومان ";
-                ic.txt_count.Text = Utils.toPersianNum(ic.cartItem.count);
-            }
+            
+            catch (Exception e2) { }
         }
 
       

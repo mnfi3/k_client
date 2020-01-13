@@ -23,11 +23,13 @@ namespace Kiosk
     public partial class App : Application
     {
 
+        private void Application_Exit(object sender, ExitEventArgs e) {}
+
+
+
         public App()
         {
 
-
-            
 
             //configuration
             getDisplayHeightAndWidth();
@@ -115,6 +117,8 @@ namespace Kiosk
             G.height = SystemParameters.PrimaryScreenHeight;
             G.width = SystemParameters.PrimaryScreenWidth;
         }
+
+       
 
 
 

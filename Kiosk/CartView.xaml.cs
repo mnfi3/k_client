@@ -29,6 +29,7 @@ using Stimulsoft.Report;
 using Kiosk.pos.model;
 using System.Windows.Media.Animation;
 using Kiosk.preference;
+using System.Globalization;
 
 namespace Kiosk
 {
@@ -42,6 +43,7 @@ namespace Kiosk
 
         System.Timers.Timer timer;
         bool is_closed_window = false;
+
 
         public CartView()
         {
@@ -200,7 +202,8 @@ namespace Kiosk
         private void btn_pay_Click(object sender, RoutedEventArgs e) 
         {
             disableTimer();
-           
+
+            
 
             if (G.cart.items.Count == 0)
             {
@@ -212,23 +215,37 @@ namespace Kiosk
             BlurEffect blur = new BlurEffect();
             grd_main.Effect = blur;
             grd_pay.Effect = blur;
-            
+
+
+           
+
             Task.Delay(100);
             DialogPaymentAccept dialog = new DialogPaymentAccept(G.cart.d_cost);
             if (dialog.ShowDialog() == true)
             {
-                DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
-                try
+                if (G.restaurant.is_use_table_number == 1 && G.restaurant.table_count > 0)
                 {
-                    dialog2.ShowDialog();
+                    DialogTableSelect _dialog = new DialogTableSelect(table_select_callback);
+                    _dialog.ShowDialog();
                 }
-                catch (Exception ex1) 
+                else
                 {
-                    dialog2.Close();
-                    grd_main.Effect = null;
-                    grd_pay.Effect = null;
-                    //Toast.error("مهلت پرداخت تمام شده است");
+                    DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+                    try
+                    {
+                        dialog2.ShowDialog();
+                    }
+                    catch (Exception ex1)
+                    {
+                        dialog2.Close();
+                        grd_main.Effect = null;
+                        grd_pay.Effect = null;
+                        //Toast.error("مهلت پرداخت تمام شده است");
+                    }
                 }
+
+
+               
             }
             else
             {
@@ -238,6 +255,23 @@ namespace Kiosk
             }
         }
 
+
+        private void table_select_callback(object sender, EventArgs e)
+        {
+            G.cart.table_number = (int)sender;
+            DialogCartSwipe dialog2 = new DialogCartSwipe(G.cart.d_cost, paymentCallBack);
+            try
+            {
+                dialog2.ShowDialog();
+            }
+            catch (Exception ex1)
+            {
+                dialog2.Close();
+                grd_main.Effect = null;
+                grd_pay.Effect = null;
+                //Toast.error("مهلت پرداخت تمام شده است");
+            }
+        }
 
         private void paymentCallBack(object sender, EventArgs e)
         {
@@ -356,20 +390,25 @@ namespace Kiosk
             StiReport report = new StiReport();
             Stimulsoft.Report.Print.StiPrintProvider.SetPaperSource = false;
             //report.Load("Report.mrt");
-            report.Load("Report2.mrt");
+            report.Load("ReportFinal.mrt");
             //report.Render();
             report.Pages[0].PaperSize = System.Drawing.Printing.PaperKind.Custom;
             int item_count = new DBOrder().getReceiptItemCount();
             //report.Pages[0].Height = 3.2 + item_count * 0.3;
-            report.Pages[0].Height = 4.1 + item_count * 0.3;
+            report.Pages[0].Height = 4.2 + item_count * 0.3;
             report.Compile();
-            
+
+           
+
+
             report["restaurant"] = G.restaurant.name;
-            report["cost"] = Utils.persian_split(G.cart.cost) + " تومان ";
-            report["d_cost"] = Utils.persian_split(G.cart.d_cost) + " تومان ";
             report["order_number"] = Utils.toPersianNum(G.cart.order_number);
+            report["table_number"] = Utils.toPersianNum(G.cart.table_number);
+            report["time"] = Utils.getPersianDateTimeString();
+            report["d_cost"] =  " تومان " + Utils.persian_split(G.cart.d_cost);
             if (G.cart.is_out == 1) report["is_out"] = "بله";
             else report["is_out"] = "خیر";
+            report["address"] = G.restaurant.address;
             //report.Printed += Report_Printed;
             //report.Printing += Report_Printing;
 

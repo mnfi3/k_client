@@ -54,10 +54,15 @@ namespace Kiosk.preference
                     json = JsonConvert.SerializeObject(device);
                     save(json);
                 }
-                return json_string;
+                
             }
-            catch (Exception e) { }
-            return "";
+            catch (Exception e)
+            {
+            //    Device device = new Device();
+            //    string json = JsonConvert.SerializeObject(device);
+            //    save(json);
+            }
+            return json_string;
         }
 
         private void save(string json)

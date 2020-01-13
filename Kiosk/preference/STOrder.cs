@@ -48,14 +48,23 @@ namespace Kiosk.preference
 
         private string read()
         {
-            string json = File.ReadAllText(FILE);
-            json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
-            if (json_string.Contains("#fail"))
+            try
             {
-                List<OrderNumber> order_numbers = new List<OrderNumber>();
-                json = JsonConvert.SerializeObject(order_numbers);
-                save(json);
-            }  
+                string json = File.ReadAllText(FILE);
+                json_string = Crypt.DecryptString(json, G.PUBLIC_KEY);
+                if (json_string.Contains("#fail"))
+                {
+                    List<OrderNumber> order_numbers = new List<OrderNumber>();
+                    json = JsonConvert.SerializeObject(order_numbers);
+                    save(json);
+                }
+            }
+            catch(Exception e)
+            {
+                //List<OrderNumber> order_numbers = new List<OrderNumber>();
+                //string json = JsonConvert.SerializeObject(order_numbers);
+                //save(json);
+            }
 
             return json_string;
         }
@@ -113,51 +122,59 @@ namespace Kiosk.preference
 
         public int generateOrderNumber(Restaurant restaurant)
         {
-            List<OrderNumber> order_numbers = getOrderNumbers();
-            string now = DateTime.Now.ToString("yyyyMMdd");
-            foreach (OrderNumber num in order_numbers)
+            try
             {
-                if (num.restaurant_id == restaurant.id)
+                List<OrderNumber> order_numbers = getOrderNumbers();
+                string now = DateTime.Now.ToString("yyyyMMdd");
+                foreach (OrderNumber num in order_numbers)
                 {
-                    if (num.date == now)
+                    if (num.restaurant_id == restaurant.id)
                     {
-                        if (num.start_number != restaurant.order_number_start)
+                        if (num.date == now)
                         {
-                            num.start_number = restaurant.order_number_start;
-                            num.last_number = restaurant.order_number_start;
+                            if (num.start_number != restaurant.order_number_start)
+                            {
+                                num.start_number = restaurant.order_number_start;
+                                num.last_number = restaurant.order_number_start;
+                            }
+                            else
+                            {
+                                num.last_number += restaurant.order_number_step;
+                            }
+
+                            string json = JsonConvert.SerializeObject(order_numbers);
+                            save(json);
+                            return num.last_number;
                         }
                         else
                         {
-                            num.last_number += restaurant.order_number_step;
+                            num.date = now;
+                            num.start_number = restaurant.order_number_start;
+                            num.last_number = restaurant.order_number_start;
+                            string json = JsonConvert.SerializeObject(order_numbers);
+                            save(json);
+                            return num.last_number;
                         }
-                        
-                        string json = JsonConvert.SerializeObject(order_numbers);
-                        save(json);
-                        return num.last_number;
-                    }
-                    else
-                    {
-                        num.date = now;
-                        num.start_number = restaurant.order_number_start;
-                        num.last_number = restaurant.order_number_start;
-                        string json = JsonConvert.SerializeObject(order_numbers);
-                        save(json);
-                        return num.last_number;
                     }
                 }
+
+
+                //first save
+                OrderNumber order_number = new OrderNumber();
+                order_number.restaurant_id = restaurant.id;
+                order_number.date = now;
+                order_number.start_number = restaurant.order_number_start;
+                order_number.last_number = restaurant.order_number_start;
+                setOrderNumber(order_number);
+
+
+                return order_number.last_number;
             }
-
-
-            //first save
-            OrderNumber order_number = new OrderNumber();
-            order_number.restaurant_id = restaurant.id;
-            order_number.date = now;
-            order_number.start_number = restaurant.order_number_start;
-            order_number.last_number = restaurant.order_number_start;
-            setOrderNumber(order_number);
-
-
-            return order_number.last_number;
+            catch (Exception e)
+            {
+                return 1;
+            }
+        
         }
 
        

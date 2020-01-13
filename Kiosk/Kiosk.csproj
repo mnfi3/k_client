@@ -192,6 +192,9 @@
     <Compile Include="control\DialogPublic.xaml.cs">
       <DependentUpon>DialogPublic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\DialogTableSelect.xaml.cs">
+      <DependentUpon>DialogTableSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\DialogTest.xaml.cs">
       <DependentUpon>DialogTest.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,9 @@
     </Compile>
     <Compile Include="control\ItemRestaurantInRegister.xaml.cs">
       <DependentUpon>ItemRestaurantInRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="control\ItemTable.xaml.cs">
+      <DependentUpon>ItemTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="control\MB.xaml.cs">
       <DependentUpon>MB.xaml</DependentUpon>
@@ -304,6 +310,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="control\DialogTableSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="control\DialogTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -341,6 +351,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\ItemRestaurantInRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\ItemTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

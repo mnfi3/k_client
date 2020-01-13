@@ -134,6 +134,11 @@ namespace Kiosk
                 G.device = G.getDevice();
                 btn_logout.Visibility = Visibility.Visible;
                 grd_login.Visibility = Visibility.Collapsed;
+
+
+                txt_client_key.Text = "client_key : " + G.client_key;
+                txt_device_name.Text = "name : " + G.device.name;
+                txt_device_user_name.Text = "user_name : " + G.device.user_name;
             }
             else
             {

@@ -117,7 +117,7 @@
 
                 <TextBlock x:Name="txt_category_name" Grid.Column="2" Width="Auto"  Foreground="#444444" FontWeight="ExtraBold" Text="" FlowDirection="RightToLeft" Margin="0 20 25 10" FontSize="25"></TextBlock>
                 
-                <Button x:Name="btn_back_to_restaurants" Visibility="Visible" Grid.Column="1"  Click="btn_back_to_restaurants_Click"  FontSize="15" Height="40"  Foreground="White" Background="#FFFD1E1E"  BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Button x:Name="btn_back_to_restaurants" Visibility="Visible" Grid.Column="1"  Click="btn_back_to_restaurants_Click"  FontSize="15" Height="50"  Foreground="White" Background="#FFFD1E1E"  BorderBrush="{x:Null}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Kind="KeyboardArrowLeft" Width="40" Height="40"/>
                             <TextBlock Foreground="White"  FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="5" Text="بازگشت"/>
@@ -279,7 +279,7 @@
         <!--progress-->
         <Viewbox  Width="150" Height="150"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center" Visibility="Collapsed">
             
             <local:CircleProgress x:Name="prg_loading"  Visibility="Collapsed" />
         </Viewbox>
