@@ -1,6 +1,7 @@
-﻿using Kiosk.db;
+﻿using Kiosk.db_lite;
 using Kiosk.model;
 using Kiosk.preference;
+using Kiosk.system;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace Kiosk.api
             }
 
             G.restaurants = st_rest.getRestaurants();
+
 
 
 
@@ -113,7 +115,10 @@ namespace Kiosk.api
 
             restaurant_id = discounts[0].restaurant_id;
             if (findResturantWithId(restaurant_id) != null)
+            {
                 db_rest.updateDiscounts(findResturantWithId(restaurant_id), discounts);
+            }
+
         }
 
 
@@ -144,7 +149,7 @@ namespace Kiosk.api
             if (orders.Count == 0) return;
             r_order.syncOrders(orders, syncOrdersCallBack);
         }
-
+        
 
         private void syncOrdersCallBack(object sender, EventArgs e)
         {
@@ -154,11 +159,6 @@ namespace Kiosk.api
                 DBOrder db_order = new DBOrder();
                 db_order.removeOrders();
             }
-
-
-
-
-           
         }
 
 

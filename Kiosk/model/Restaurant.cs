@@ -1,4 +1,5 @@
-﻿using Kiosk.db;
+﻿using Kiosk.db_lite;
+using Kiosk.system;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -54,19 +55,19 @@ namespace Kiosk.model
             all_product = new AllProduct();
         }
 
-        public static Restaurant parse(JObject user)
+        public static Restaurant parse(JObject obj)
         {
             Restaurant restaurant = new Restaurant();
             try
             {
-                restaurant.id = user["id"].Value<Int32>();
-                restaurant.name = user["name"].Value<string>();
-                restaurant.user_name = user["email"].Value<string>();
-                restaurant.address = user["address"].Value<string>();
-                restaurant.image = user["image"].Value<string>();
-                restaurant.description = user["description"].Value<string>();
+                restaurant.id = obj["id"].Value<Int32>();
+                restaurant.name = obj["name"].Value<string>();
+                restaurant.user_name = obj["email"].Value<string>();
+                restaurant.address = obj["address"].Value<string>();
+                restaurant.image = obj["image"].Value<string>();
+                restaurant.description = obj["description"].Value<string>();
                 //get kiosk info
-                JObject kiosk_info = user["kiosk_info"].Value<JObject>();
+                JObject kiosk_info = obj["kiosk_info"].Value<JObject>();
                 restaurant.is_use_table_number = kiosk_info["is_use_table_number"].Value<Int32>();
                 restaurant.table_count = kiosk_info["table_count"].Value<Int32>();
                 restaurant.order_number_start = kiosk_info["order_number_start"].Value<Int32>();
@@ -74,7 +75,7 @@ namespace Kiosk.model
             }
             catch (Exception e)
             {
-
+                Log.e("json parsing error. json_text=" + obj.ToString() + "\terror=" + e.ToString(), "Restaurant", "parse");
             }
             return restaurant;
         }

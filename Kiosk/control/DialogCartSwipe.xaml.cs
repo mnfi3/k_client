@@ -1,5 +1,6 @@
 ﻿using Kiosk.pos;
 using Kiosk.pos.model;
+using Kiosk.system;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,17 +55,19 @@ namespace Kiosk.control
             buyRequest.Amount = amount.ToString(); ;
             buyRequest.PcID = G.client_key;
             //buyRequest.PayerId = "user_" + G.restaurant.id.ToString();
-            buyRequest.MerchantMsg = "digiarta.com";
+            buyRequest.MerchantMsg = Config.APPLICATION_SITE;
 
             pos.requestBuy(buyRequest);
+            Log.i("pos request started with amount=" + amount.ToString(), "DialogCartSwipe");
         }
 
 
         public void paymentCallBack(object sender, EventArgs e)
         {
             paymentDone = true;
-            paymentHandler(sender, new EventArgs());
             this.Close();
+            paymentHandler(sender, new EventArgs());
+            Log.i("pos request finished with amount=" + amount.ToString(), "DialogCartSwipe");
 
 
 
@@ -79,9 +82,9 @@ namespace Kiosk.control
             //res.TraceNumber = "564";
             //res.TransactionDate = "1398/01/24";
             //res.TransactionTime = "14:55";
-            //Task.Delay(2000);
-            //paymentHandler(res, new EventArgs());
+            //Task.Delay(1000);
             //this.Close();
+            //paymentHandler(res, new EventArgs());
 
         }
 
@@ -90,10 +93,10 @@ namespace Kiosk.control
 
         private async void secondCounter()
         {
-            for (int i = 30; i >= 0; i --)
+            for (int i = 60; i >= 0; i --)
             {
                 txt_second.Text = i.ToString();
-                await Task.Delay(950);
+                await Task.Delay(1000);
             }
 
             if (paymentDone) return;
@@ -101,9 +104,10 @@ namespace Kiosk.control
             BuyResponse res = new BuyResponse();
             res.success = false;
             res.error = "مهلت پرداخت تمام شده است";
-            paymentHandler(res, new EventArgs());
-
             this.Close();
+            paymentHandler(res, new EventArgs());
+            Log.e("pos request timeout finished with amount=" + amount.ToString(), "DialogCartSwipe");
+
         }
        
 

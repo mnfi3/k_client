@@ -1,6 +1,7 @@
 ﻿using Kiosk.license;
 //using Kiosk.license;
 using Kiosk.model;
+using Kiosk.system;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,7 @@ namespace Kiosk.preference
             }
             catch (Exception e)
             {
+                Log.e("read device data from file failed. error=" + e.ToString(), "STDevice", "read");
             //    Device device = new Device();
             //    string json = JsonConvert.SerializeObject(device);
             //    save(json);
@@ -73,7 +75,10 @@ namespace Kiosk.preference
                 json = Crypt.EncryptString(json, G.PUBLIC_KEY);
                 File.WriteAllText(FILE, json);
             }
-            catch (Exception e) { }
+            catch (Exception e) 
+            {
+                Log.e("save device data to file failed. error=" + e.ToString(), "STDevice", "save");
+            }
         }
 
 
@@ -102,7 +107,9 @@ namespace Kiosk.preference
                 }
             }
             catch (JsonException e)
-            {}
+            {
+                Log.e("json parsing error. error=" + e.ToString(), "STDevice", "getDevice");
+            }
             return device;
         }
 

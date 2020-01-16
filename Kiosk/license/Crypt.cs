@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
+using Kiosk.system;
 
 namespace Kiosk.license
 {
@@ -37,6 +38,7 @@ namespace Kiosk.license
             }
             catch
             {
+                Log.e("decryption error.cipher_text=" + cipherText, "Crypt", "DecryptString");
                 return "#fail";
             }
 
@@ -65,6 +67,7 @@ namespace Kiosk.license
             }
             catch
             {
+                Log.e("encryption error.text=" + plainText, "Crypt", "EncryptString");
                 return "#fail";
             }
         }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kiosk.system;
 
 namespace Kiosk.pos
 {
@@ -40,6 +41,7 @@ namespace Kiosk.pos
                 {
                     try
                     {
+                        Log.i("restarting pos service...", "PosServiceController", "restart");
                         if (
                             (service.Status.Equals(ServiceControllerStatus.Running)) ||
                             (service.Status.Equals(ServiceControllerStatus.StartPending)) ||
@@ -53,9 +55,12 @@ namespace Kiosk.pos
                         service.WaitForStatus(ServiceControllerStatus.Stopped);
                         service.Start();
                         service.WaitForStatus(ServiceControllerStatus.Running);
+
+                        Log.i("pos service restarted successfully", "PosServiceController", "restart");
                     }
                     catch (Exception ex)
                     {
+                        Log.i("pos service restarting fail. error=" + ex.ToString(), "PosServiceController", "restart");
                         //throw new Exception($"Can not restart the Windows Service {serviceName}", ex);
                     }
                     //catch (InvalidOperationException ex2)

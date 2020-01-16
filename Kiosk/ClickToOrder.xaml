@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
         Title="ClickToOrder"  Top="0" Left="0" ResizeMode="NoResize" Loaded="Window_Loaded"  AllowsTransparency="True" WindowStyle="None" FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium">
-    <Grid MouseDown="open_list_restaurant">
+    <Grid MouseDown="open_list_restaurant" TouchDown="open_list_restaurant2">
         
         
 
@@ -17,7 +17,7 @@
                 <Setter Property="Text" Value="برای سفارش لمس کنید"/>
             </Style>
         </Grid.Resources>
-        <cachedImage:Image  RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" x:Name="img_splash" Width="auto" Margin="0" Height="auto" Grid.Row="1" Source="/img/click_to_order.jpg" MouseDown="open_list_restaurant"/>
+        <cachedImage:Image  RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" x:Name="img_splash" Width="auto" Margin="0" Height="auto" Grid.Row="1" Source="/img/click_to_order.jpg" MouseDown="open_list_restaurant" TouchDown="open_list_restaurant2"/>
         <Border  x:Name="PulseBox"
                         Background="Transparent" RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
@@ -28,7 +28,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <Border x:Name="brdr_click_to_order" BorderBrush="white" BorderThickness="4" CornerRadius="30" VerticalAlignment="center" HorizontalAlignment="Center" MouseDown="open_list_restaurant">
+            <Border x:Name="brdr_click_to_order" BorderBrush="white" BorderThickness="4" CornerRadius="30" VerticalAlignment="center" HorizontalAlignment="Center" MouseDown="open_list_restaurant" TouchDown="open_list_restaurant2">
                 <TextBlock Foreground="white" >
                     <TextBlock.Effect>
                         <DropShadowEffect ShadowDepth="0" Color="Black" BlurRadius="10" />

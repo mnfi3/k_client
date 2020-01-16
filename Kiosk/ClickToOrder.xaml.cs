@@ -1,5 +1,5 @@
 ﻿using Kiosk.api;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Kiosk.model;
 using Kiosk.preference;
 using Kiosk.system;
@@ -30,6 +30,7 @@ namespace Kiosk
     {
         EventHandler handler;
         Thread thread;
+        bool is_closing_windows = false;
 
         
         //public ClickToOrder()
@@ -94,15 +95,15 @@ namespace Kiosk
 
 
 
-        
-
-
-
 
 
 
         private void open_list_restaurant(object sender, MouseEventArgs e)
         {
+            Task.Delay(50);
+            if (is_closing_windows) return;
+            is_closing_windows = true;
+
             DoubleAnimation slideUp = new DoubleAnimation();
             slideUp.Completed += new EventHandler(slideUpFinished);
             slideUp.Completed += this.handler;
@@ -112,6 +113,29 @@ namespace Kiosk
             slideUp.AccelerationRatio = .5;
             this.BeginAnimation(TopProperty, slideUp);
         }
+
+
+        private void open_list_restaurant2(object sender, TouchEventArgs e)
+        {
+            if (is_closing_windows) return;
+            is_closing_windows = true;
+
+            DoubleAnimation slideUp = new DoubleAnimation();
+            slideUp.Completed += new EventHandler(slideUpFinished);
+            slideUp.Completed += this.handler;
+            slideUp.From = 0;
+            slideUp.To = -G.height;
+            slideUp.Duration = new Duration(TimeSpan.FromMilliseconds(350));
+            slideUp.AccelerationRatio = .5;
+            this.BeginAnimation(TopProperty, slideUp);
+        }
+
+
+
+
+
+
+        
 
         private void slideUpFinished(object sender,EventArgs e)
         {
@@ -131,11 +155,14 @@ namespace Kiosk
             DataSync syncer = new DataSync();
             while (true)
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 syncer.syncAllData();
                 Thread.Sleep(Config.SYNC_DATA_TIME);
             }
         }
+
+     
+       
 
         //private async void syncData2()
         //{

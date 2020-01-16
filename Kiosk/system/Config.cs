@@ -9,13 +9,12 @@ namespace Kiosk.system
     class Config
     {
         public const bool DEBUG = false;
-        const string quote = "\"";  
-        //public const string DB_CONNECTION = "server=localhost;AttachDbFilename=|DataDirectory|"+quote+"database"+quote+"Kiosk.mdf;database=Kiosk;Integrated Security=true;";
-        public const string DB_CONNECTION = "server=localhost;database=Kiosk;Integrated Security=true;";
+        //public const string DB_CONNECTION = "server=localhost;database=Kiosk;Integrated Security=true;";
+        public const string SQLITE_DB_CONNECTION = "Data Source=kiosk_db.db;Version=3;New=True;Compress=True;";
         public const double STAND_BY_TIME = 120000;//2 minute
-        //public const double STAND_BY_TIME = 10000;
         public const int SYNC_DATA_TIME = 120000;//2 minute
-        //public const double SYNC_PRODUCTS_TIME = 2000;
         public const string VERSION = "1.0.0.0";
+        public const string APPLICATION_NAME = "KIOSK";
+        public const string APPLICATION_SITE = "www.digiarta.com";
     }
 }

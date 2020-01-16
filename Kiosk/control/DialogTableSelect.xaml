@@ -7,7 +7,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         WindowStartupLocation="CenterScreen"
         FontFamily="/Kiosk;component/fonts/iransans/#IRANSans(FaNum) Medium"
-        Title="table select" Height="500" Width="650" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="table select" Height="650" Width="650" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize">
 
     <Border CornerRadius="20"  Background="#FF2251FF">
     <Grid >

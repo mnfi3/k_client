@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using Kiosk.model;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Kiosk.system;
 using Kiosk.license;
 using Kiosk.api;

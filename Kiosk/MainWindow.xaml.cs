@@ -16,13 +16,14 @@ using System.Windows.Navigation;
 using Kiosk.control;
 using Kiosk.system;
 using Kiosk.license;
-using Kiosk.db;
+using Kiosk.db_lite;
 using System.Data.SqlClient;
 using Kiosk.api;
 using Kiosk.model;
 using Newtonsoft.Json;
 using Kiosk.preference;
 using System.Net;
+using System.Reflection;
 
 
 namespace Kiosk

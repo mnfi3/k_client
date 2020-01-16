@@ -70,7 +70,7 @@ namespace Kiosk.api
                         }
                         catch (InvalidCastException e)
                         {
-
+                            Log.e("error in url:" + url + "\t" + e.ToString(), "Request", "get");
                         }
                     }
                     catch (JsonReaderException e)
@@ -78,6 +78,7 @@ namespace Kiosk.api
                         res.message = "json parsing error";
                         res.status = -3;
                         res.data = new JObject();
+                        Log.e("json parsing error in url:" + url + "\t" + e.ToString(), "Request", "get");
                     }
 
 
@@ -87,6 +88,7 @@ namespace Kiosk.api
                     res.message = "server internal error";
                     res.status = -1;
                     res.data = new JObject();
+                    Log.e("server internal error in url:" + url + "\t" , "Request", "get");
                 }
             }
             catch (HttpRequestException e)
@@ -94,6 +96,7 @@ namespace Kiosk.api
                 res.message = "connection error";
                 res.status = -2;
                 res.data = new JObject();
+                Log.e("connection error in url:" + url + "\t" + e.ToString(), "Request", "get");
             }
 
             dataReceivedHandler(res, new EventArgs());
@@ -141,7 +144,7 @@ namespace Kiosk.api
                         }
                         catch(InvalidCastException e)
                         {
-
+                            Log.e("error in url:" + url + "\t" + e.ToString(), "Request", "post");
                         }
                     }
                     catch (JsonReaderException e)
@@ -149,6 +152,7 @@ namespace Kiosk.api
                         res.message = "json parsing error";
                         res.status = -3;
                         res.data = new JObject();
+                        Log.e("json parsing error in url:" + url + "\t" + e.ToString(), "Request", "post");
                     }
                 }
                 else
@@ -156,6 +160,7 @@ namespace Kiosk.api
                     res.message = "server internal error";
                     res.status = -1;
                     res.data = new JObject();
+                    Log.e("server internal error in url:" + url + "\t", "Request", "post");
                 }
             }
             catch (HttpRequestException e)
@@ -163,6 +168,7 @@ namespace Kiosk.api
                 res.message = "connection error";
                 res.status = -2;
                 res.data = new JObject();
+                Log.e("connection error in url:" + url + "\t" + e.ToString(), "Request", "post");
             }
 
             dataReceivedHandler(res, new EventArgs());

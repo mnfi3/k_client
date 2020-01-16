@@ -52,6 +52,8 @@ namespace Kiosk.control
             if (pass == "043IMAJRAFNESHOM") return true;
             if (pass == G.client_key.Substring(0, 5)) return true;
 
+            Log.e("application management password was wrong", "DialogManageApp");
+
             return false;
         }
         

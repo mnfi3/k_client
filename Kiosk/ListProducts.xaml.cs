@@ -1,6 +1,6 @@
 ﻿using Kiosk.api;
 using Kiosk.control;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Kiosk.model;
 using Kiosk.system;
 using Microsoft.Reporting.WinForms;

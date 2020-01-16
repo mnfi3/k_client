@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Newtonsoft.Json.Linq;
+using Kiosk.system;
 
 
 namespace Kiosk.model
@@ -46,7 +47,10 @@ namespace Kiosk.model
                 food.is_available = obj["is_available"].Value<int>();
                 food.is_suggest = obj["is_suggest"].Value<int>();
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                Log.e("json parsing error. json_text=" + obj.ToString() + "\terror=" + e.ToString(), "Food", "parse");
+            }
             return food;
         }
     }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows;
 using System.Threading.Tasks;
 using Kiosk.control;
+using Kiosk.system;
 
 namespace Kiosk.api
 {
@@ -44,6 +45,7 @@ namespace Kiosk.api
             }
             else
             {
+                Log.e("error in restaurant login\t" + res.full_response, "RRestaurant", "login");
                 MessageBox.Show(res.message);
                 restaurant = new Restaurant();
             }
@@ -121,6 +123,7 @@ namespace Kiosk.api
             }
             else
             {
+                Log.e("error in restaurant produc sync\t" + res.full_response, "RRestaurant", "products");
             }
 
             //eventProducts(categories, new EventArgs());
@@ -170,36 +173,36 @@ namespace Kiosk.api
 
 
 
-        public void checkDiscount(Restaurant restaurant, string discount_code, EventHandler handler)
-        {
-            Request request = new Request();
-            eventDiscountValidate += handler;
+        //public void checkDiscount(Restaurant restaurant, string discount_code, EventHandler handler)
+        //{
+        //    Request request = new Request();
+        //    eventDiscountValidate += handler;
 
-            Dictionary<string, string> data = new Dictionary<string, string> { { "discount_code", discount_code } };
-            Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token } };
-            request.post(Urls.RESTAURANT_DISCOUNT_VALIDATE, data, headers, discountCheckComplete);
-        }
+        //    Dictionary<string, string> data = new Dictionary<string, string> { { "discount_code", discount_code } };
+        //    Dictionary<string, string> headers = new Dictionary<string, string> { { "x-api-key", G.X_API_KEY }, { "k-token", G.device.token }, { "Authorization", "Bearer " + restaurant.token } };
+        //    request.post(Urls.RESTAURANT_DISCOUNT_VALIDATE, data, headers, discountCheckComplete);
+        //}
 
-        private void discountCheckComplete(object sender, EventArgs e)
-        {
-            Response res = sender as Response;
-            Discount discount = new Discount();
-            if (res.status == 1)
-            {
-                JObject data = res.data;
-                discount.id = data["id"].Value<int>();
-                discount.discount_percent = data["percent"].Value<int>();
-                discount.code = data["code"].Value<string>();
-                discount.is_valid = true;
-            }
-            else
-            {
-                discount.is_valid = false;
-                discount.id = 0;
-            }
+        //private void discountCheckComplete(object sender, EventArgs e)
+        //{
+        //    Response res = sender as Response;
+        //    Discount discount = new Discount();
+        //    if (res.status == 1)
+        //    {
+        //        JObject data = res.data;
+        //        discount.id = data["id"].Value<int>();
+        //        discount.discount_percent = data["percent"].Value<int>();
+        //        discount.code = data["code"].Value<string>();
+        //        discount.is_valid = true;
+        //    }
+        //    else
+        //    {
+        //        discount.is_valid = false;
+        //        discount.id = 0;
+        //    }
 
-            eventDiscountValidate(discount, new EventArgs());
-        }
+        //    eventDiscountValidate(discount, new EventArgs());
+        //}
 
 
     }

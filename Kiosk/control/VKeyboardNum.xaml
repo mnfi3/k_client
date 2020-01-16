@@ -22,6 +22,10 @@
 
 
 
+      
+
+
+
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -29,19 +33,20 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_7" Tag="7" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
-                    <materialDesign:PackIcon Kind="Number7" Width="auto" Height="auto"/>
+
+                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_1" Tag="1" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="Number1" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_8" Tag="8" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
-                    <materialDesign:PackIcon Kind="Number8" Width="auto" Height="auto"/>
+                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_2" Tag="2" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="Number2" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_9" Tag="9" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
-                    <materialDesign:PackIcon Kind="Number9" Width="auto" Height="auto"/>
+                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_3" Tag="3" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="Number3" Width="auto" Height="auto"/>
                 </Button>
             </Grid>
-            
-            
-            
+
+
+
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -60,9 +65,8 @@
                     <materialDesign:PackIcon Kind="Number6" Width="auto" Height="auto"/>
                 </Button>
             </Grid>
-            
-            
-            
+
+
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -70,20 +74,22 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-
-                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_1" Tag="1" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
-                    <materialDesign:PackIcon Kind="Number1" Width="auto" Height="auto"/>
+                <Button Grid.Column="0" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_7" Tag="7" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="Number7" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_2" Tag="2" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
-                    <materialDesign:PackIcon Kind="Number2" Width="auto" Height="auto"/>
+                <Button Grid.Column="1" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_8" Tag="8" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="Number8" Width="auto" Height="auto"/>
                 </Button>
-                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_3" Tag="3" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
-                    <materialDesign:PackIcon Kind="Number3" Width="auto" Height="auto"/>
+                <Button Grid.Column="2" Click="buttonClick" TouchDown="btnTouchDown"  x:Name="btn_9" Tag="9" BorderBrush="{x:Null}" Background="#FF2251FF" Height="auto" Width="auto" Margin="5">
+                    <materialDesign:PackIcon Kind="Number9" Width="auto" Height="auto"/>
                 </Button>
             </Grid>
             
-            
-            
+
+
+
+
+
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

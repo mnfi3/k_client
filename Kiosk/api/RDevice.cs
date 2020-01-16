@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Kiosk.model;
 using Kiosk.control;
+using Kiosk.system;
 
 namespace Kiosk.api
 {
@@ -41,11 +42,13 @@ namespace Kiosk.api
                 device = Device.parse(kiosk);
                 string token = data["token"].Value<string>();
                 device.token = token;
+                Log.i("kiosk login was successfull", "RDevice" , "login");
             }
             else
             {
                 MessageBox.Show(res.full_response);
                 device = new Device();
+                Log.e(res.full_response, "RDevice", "login");
             }
 
             eventLogin(device, new EventArgs());
@@ -65,6 +68,7 @@ namespace Kiosk.api
         {
             Response res = sender as Response;
             eventLoginCheck(res, new EventArgs());
+            Log.i(res.full_response, "RDevice", "loginCheck");
         }
 
 
@@ -119,9 +123,12 @@ namespace Kiosk.api
                     restaurant = Restaurant.parse((JObject)kiosks[i]);
                     restaurants.Add(restaurant);
                 }
+
+                Log.i("restaurants received", "RDevice", "getRestaurants");
             }
             else
             {
+                Log.e(res.full_response, "RDevice", "getRestaurants");
             }
 
             eventRestaurants(restaurants, new EventArgs());

@@ -2,6 +2,7 @@
 //using Kiosk.license;
 //using Kiosk.license;
 using Kiosk.model;
+using Kiosk.system;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,7 @@ namespace Kiosk.preference
             }
             catch(Exception e)
             {
+                Log.e("read order data from file failed. error=" + e.ToString(), "STOrder", "read");
                 //List<OrderNumber> order_numbers = new List<OrderNumber>();
                 //string json = JsonConvert.SerializeObject(order_numbers);
                 //save(json);
@@ -77,7 +79,10 @@ namespace Kiosk.preference
                 json = Crypt.EncryptString(json, G.PUBLIC_KEY);
                 File.WriteAllText(FILE, json);
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                Log.e("save order data to file failed. error=" + e.ToString(), "STOrder", "save");
+            }
         }
 
 
@@ -115,7 +120,10 @@ namespace Kiosk.preference
             {
                 order_numbers = JsonConvert.DeserializeObject<List<OrderNumber>>(json);
             }
-            catch (JsonException e) { }
+            catch (JsonException e) 
+            {
+                Log.e("get order data from file json parsing error=" + e.ToString(), "STOrder", "getOrderNumbers");
+            }
             return order_numbers;
         }
 
@@ -172,6 +180,7 @@ namespace Kiosk.preference
             }
             catch (Exception e)
             {
+                Log.e("geenerate order number failed. error=" + e.ToString(), "STOrder", "generateOrderNumber");
                 return 1;
             }
         

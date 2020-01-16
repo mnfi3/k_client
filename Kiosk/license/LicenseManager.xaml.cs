@@ -39,6 +39,7 @@ namespace Kiosk.system
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             tbx_client_key.Text = G.client_key;
+            Log.i("application license incorrect. client_key=" + G.client_key, "LicenseManager");
         }
     }
 }

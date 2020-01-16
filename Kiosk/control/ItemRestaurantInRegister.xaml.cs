@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Kiosk.model;
 using Kiosk.api;
 using ToastNotifications;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Kiosk.preference;
 
 namespace Kiosk.control

@@ -1,4 +1,5 @@
 ﻿using Kiosk.pos.model;
+using Kiosk.system;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -33,6 +34,7 @@ namespace Kiosk.pos
             string requestJosn = JsonConvert.SerializeObject(buy);
             //async
             string responseJson = await socketRequest(requestJosn);
+            Log.i("pos request started with data=" + requestJosn, "Pos", "requestBuy");
 
             //sync
             //string responseJson = socketRequest2(requestJosn);
@@ -41,6 +43,7 @@ namespace Kiosk.pos
                 responseJson = responseJson.Replace("[error]", "");
                 buy_response.error = responseJson;
                 buy_response.success = false;
+                Log.e("pos request finished with error=" + responseJson, "Pos", "requestBuy");
             }
             else
             {
@@ -50,23 +53,28 @@ namespace Kiosk.pos
                     PosMessage mes = new PosMessage(buy_response.ReturnCode, buy_response.ReasonCode);
                     buy_response.error = mes.getMessage();
                     buy_response.success = false;
+                    Log.e("pos request finished with error=" + mes.getMessage() + "\tdata=" + responseJson, "Pos", "requestBuy");
                 }
                 else
                 {
                     buy_response.error = "";
                     buy_response.success = true;
+                    Log.i("pos request finished successfully", "Pos", "requestBuy");
                 }
             }
 
 
 
 
+            
             //second try with restart pos service
 
             if (connection_try == 1 && !buy_response.success && responseJson.Contains("[socket]"))
             {
+                Log.i("pos service restarting started", "Pos", "requestBuy");
                 PosServiceController s_controller = new PosServiceController();
                 await s_controller.restart();
+                Log.i("pos request started with data=" + requestJosn, "Pos", "requestBuy");
                 responseJson = await socketRequest(requestJosn);
 
 
@@ -76,6 +84,7 @@ namespace Kiosk.pos
                     responseJson = responseJson.Replace("[socket]", "");
                     buy_response.error = responseJson;
                     buy_response.success = false;
+                    Log.e("pos request finished with error=" + responseJson, "Pos", "requestBuy");
                 }
                 else
                 {
@@ -85,11 +94,13 @@ namespace Kiosk.pos
                         PosMessage mes = new PosMessage(buy_response.ReturnCode, buy_response.ReasonCode);
                         buy_response.error = mes.getMessage();
                         buy_response.success = false;
+                        Log.e("pos request finished with error=" + mes.getMessage() + "\tdata=" + responseJson, "Pos", "requestBuy");
                     }
                     else
                     {
                         buy_response.error = "";
                         buy_response.success = true;
+                        Log.i("pos request finished successfully", "Pos", "requestBuy");
                     }
                 }
             }
@@ -137,7 +148,7 @@ namespace Kiosk.pos
                 }
                 catch (Exception ex)
                 {
-
+                    Log.e("socket request error=" + ex.ToString(), "Pos", "socketRequest");
                     try
                     {
                         client.Close();

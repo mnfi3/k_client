@@ -11,7 +11,7 @@
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
              Height="320" 
              >
-    <Grid Margin="30 15" >
+    <Grid Margin="5 5" >
         <Border  x:Name="PulseBox"
                         Background="Transparent" RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
@@ -26,20 +26,20 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="15*"/>
                     <RowDefinition Height="5*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.2*"/>
                 </Grid.RowDefinitions>
 
 
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.2*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="1"  Margin="2" Height="200" VerticalAlignment="Stretch">
-                        <Border Name="Mask" Background="#ECEFF1" BorderThickness="0" CornerRadius="10" Height="200" />
+                    <Grid Grid.Column="1"  Margin="2" Height="180" VerticalAlignment="Stretch">
+                        <Border Name="Mask" Background="#ECEFF1" BorderThickness="0" CornerRadius="10" Height="180" />
                         <StackPanel>
-                            <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="200" Stretch="Uniform" HorizontalAlignment="Right" Source="../img/ic_chicken_and_ribs.jpg"  VerticalAlignment="Center" />
+                            <cachedImage:Image x:Name="img_product" RenderOptions.BitmapScalingMode="Fant"  Width="auto" Height="180" Stretch="Uniform" HorizontalAlignment="Right" Source="../img/ic_chicken_and_ribs.jpg"  VerticalAlignment="Center" />
                             <StackPanel.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=Mask}" />
                             </StackPanel.OpacityMask>
@@ -48,7 +48,7 @@
 
 
 
-                    <Grid Grid.Column="0" Margin="2">
+                    <Grid Grid.Column="0" Margin="0">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -56,10 +56,10 @@
 
 
 
-                        <Grid Grid.Column="0" Margin="2 20" HorizontalAlignment="Left">
+                        <Grid Grid.Column="0" Margin="2 5" HorizontalAlignment="Left">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="4*"/>
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
@@ -68,20 +68,20 @@
                                 </Grid>
                             </Grid>
 
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="1" HorizontalAlignment="Left">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="16*"/>
-                                    <RowDefinition Height="18*"/>
                                     <RowDefinition Height="5*"/>
+                                    <RowDefinition Height="0*"/>
                                     <RowDefinition Height="16*"/>
                                 </Grid.RowDefinitions>
 
-                                <Button x:Name="btn_up" Click="btn_up_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
-                                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="50"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0"/>
+                                <Button x:Name="btn_up" Click="btn_up_Click" Width="auto" Height="auto" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="0">
+                                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="70"  Kind="KeyboardArrowUp" Foreground="Black" Margin="0"/>
                                 </Button>
-                                <TextBlock x:Name="txt_count" FontSize="24" FontWeight="Bold" Foreground="#00b356" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="0" Grid.RowSpan="2"/>
-                                <Button x:Name="btn_down" Click="btn_down_Click" Width="70" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
-                                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="50" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
+                                <TextBlock x:Name="txt_count" FontSize="26" FontWeight="Bold" Foreground="#00b356" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="1" Margin="0" Grid.RowSpan="2"/>
+                                <Button x:Name="btn_down" Click="btn_down_Click" Width="auto" Height="auto" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"   Grid.Row="3">
+                                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center"  Width="70" Height="70" Kind="KeyboardArrowDown" Foreground="Black" Margin="0,6"/>
                                 </Button>
                             </Grid>
                         </Grid>
@@ -91,11 +91,11 @@
 
 
                 <Grid Grid.Row="1" Margin="5">
-                    <Button x:Name="btn_remove" Click="btn_remove_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0" Height="70" Width="70" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button x:Name="btn_remove" Click="btn_remove_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10 0 0 0" Height="70" Width="70" Background="{x:Null}" BorderBrush="{x:Null}">
                         <materialDesign:PackIcon Height="auto" Width="auto"  Kind="CloseCircle" Foreground="#ef5350" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Button>
                     
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="70 0 0 0">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="80 0 0 0">
                         <TextBlock x:Name="txt_product" Foreground="#121c1b" Text="جوجه کباب" FontWeight="SemiBold" FontSize="18" HorizontalAlignment="Right" TextAlignment="Right"  VerticalAlignment="Center"/>
                         <TextBlock x:Name="txt_price" FlowDirection="RightToLeft" Foreground="#121c1b" Text="4545" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Center"/>
                     </StackPanel>

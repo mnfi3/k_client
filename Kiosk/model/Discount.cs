@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Kiosk.system;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,10 @@ namespace Kiosk.model
                 d.started_at = obj["started_at"].Value<string>();
                 d.invoked_at = obj["invoked_at"].Value<string>();
             }
-            catch (Exception e) { }
+            catch (Exception e) 
+            {
+                Log.e("json parsing error. json_text=" + obj.ToString() + "\terror=" + e.ToString(), "Discount", "parse");
+            }
             return d;
         }
     }

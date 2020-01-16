@@ -63,11 +63,6 @@ B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\Kiosk.Properties.Resources.resource
 B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\Kiosk.csproj.GenerateResource.Cache
 B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\RdlCompile.cache
 B:\programing\C#\Kiosk\Kiosk\obj\x64\Release\RdlCompile.compiled
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x64\msvcr120.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x64\SqlServerSpatial140.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x86\msvcr120.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\SqlServerTypes\x86\SqlServerSpatial140.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\database\Kiosk.mdf
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.exe.config
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.exe
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.pdb
@@ -174,7 +169,6 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\RegisterRestaurant.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\license\LicenseManager.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\RestaurantDetails.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\App.g.cs
-C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk_Content.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\GeneratedInternalTypeHelper.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk_MarkupCompile.cache
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk_MarkupCompile.lref
@@ -190,3 +184,5 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\ItemTable.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\DialogTableSelect.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\ItemTable.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache
+C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\System.Data.SQLite.dll
+C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\System.Data.SQLite.xml

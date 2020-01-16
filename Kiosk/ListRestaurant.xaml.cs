@@ -19,7 +19,7 @@ using System.IO;
 using System.Timers;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Kiosk.model;
 using Kiosk.system;
 using System.Windows.Media.Animation;

@@ -2,6 +2,7 @@
 //using Kiosk.license;
 //using Kiosk.license;
 using Kiosk.model;
+using Kiosk.system;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -59,8 +60,9 @@ namespace Kiosk.preference
                     save(json);
                 }
             }
-            catch 
+            catch (Exception e)
             {
+                Log.e("read resaturants data from file failed. error=" + e.ToString(), "STRestaurant", "read");
                 //List<Restaurant> rests = new List<Restaurant>();
                 //string json = JsonConvert.SerializeObject(rests);
                 //save(json);
@@ -77,7 +79,10 @@ namespace Kiosk.preference
                 json = Crypt.EncryptString(json, G.PUBLIC_KEY);
                 File.WriteAllText(FILE, json);
             }
-            catch (Exception e) { }
+            catch (Exception e) 
+            {
+                Log.e("save restaurants data to file failed. error=" + e.ToString(), "STRestaurant", "save");
+            }
         }
 
 
@@ -133,7 +138,10 @@ namespace Kiosk.preference
             {
                 restaurants = JsonConvert.DeserializeObject<List<Restaurant>>(json);
             }
-            catch (JsonException e) { }
+            catch (JsonException e) 
+            {
+                Log.e("get restaurants data from file have json parsing error=" + e.ToString(), "STRestaurant", "getRestaurants");
+            }
             return restaurants;
         }
 

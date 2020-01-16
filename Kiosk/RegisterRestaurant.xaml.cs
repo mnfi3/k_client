@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Kiosk.control;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Kiosk.model;
 using System.Diagnostics;
 using Kiosk.api;

@@ -20,7 +20,7 @@ using System.Windows.Media.Effects;
 using Kiosk.model;
 using Kiosk.system;
 using Kiosk.api;
-using Kiosk.db;
+using Kiosk.db_lite;
 using Newtonsoft.Json;
 using Microsoft.Reporting.WinForms;
 using System.Drawing.Printing;
@@ -30,6 +30,9 @@ using Kiosk.pos.model;
 using System.Windows.Media.Animation;
 using Kiosk.preference;
 using System.Globalization;
+using System.Data.SQLite;
+using System.Data;
+using Stimulsoft.Report.Dictionary;
 
 namespace Kiosk
 {
@@ -385,12 +388,26 @@ namespace Kiosk
 
         private async void printReceipt()
         {
+
+            string connString = Config.SQLITE_DB_CONNECTION;
+            var con = new SQLiteConnection(connString);
+            con.Open();
+            string query = "select * from receipt";
+            SQLiteDataAdapter ad = new SQLiteDataAdapter(query, con);
+            DataSet ds = new DataSet();
+            ds.DataSetName = "receipt";
+            ds.Tables.Add("receipt");
+            ad.Fill(ds, "receipt");
+
+
             //print test
             PrinterSettings setting;
             StiReport report = new StiReport();
             Stimulsoft.Report.Print.StiPrintProvider.SetPaperSource = false;
-            //report.Load("Report.mrt");
             report.Load("ReportFinal.mrt");
+
+            
+
             //report.Render();
             report.Pages[0].PaperSize = System.Drawing.Printing.PaperKind.Custom;
             int item_count = new DBOrder().getReceiptItemCount();
@@ -398,8 +415,13 @@ namespace Kiosk
             report.Pages[0].Height = 4.2 + item_count * 0.3;
             report.Compile();
 
-           
 
+            report.Dictionary.Clear();
+            report.Dictionary.Databases.Add(new StiSQLiteDatabase("Connection", connString));
+            report.RegData("receipt", ds);
+            report.Dictionary.Synchronize();
+
+            
 
             report["restaurant"] = G.restaurant.name;
             report["order_number"] = Utils.toPersianNum(G.cart.order_number);
@@ -409,8 +431,7 @@ namespace Kiosk
             if (G.cart.is_out == 1) report["is_out"] = "بله";
             else report["is_out"] = "خیر";
             report["address"] = G.restaurant.address;
-            //report.Printed += Report_Printed;
-            //report.Printing += Report_Printing;
+
 
             await Task.Run(() =>
             {
@@ -430,17 +451,6 @@ namespace Kiosk
             });
         }
 
-        //private void Report_Printing(object sender, EventArgs e)
-        //{
-        //    //when printing
-        //    //MessageBox.Show("printing");
-        //}
-
-        //private void Report_Printed(object sender, EventArgs e)
-        //{
-        //    //when printed
-        //    //MessageBox.Show("printed");
-        //}
 
 
 

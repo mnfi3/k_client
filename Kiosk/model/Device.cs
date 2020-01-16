@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Kiosk.system;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -27,16 +28,19 @@ namespace Kiosk.model
             client_key = "";
         }
 
-        public static Device parse(JObject kiosk){
+        public static Device parse(JObject obj){
             Device device = new Device();
             try
             {
-                device.id = kiosk["id"].Value<Int32>();
-                device.name = kiosk["name"].Value<string>();
-                device.user_name = kiosk["user_name"].Value<string>();
-                device.client_key = kiosk["client_key"].Value<string>();
+                device.id = obj["id"].Value<Int32>();
+                device.name = obj["name"].Value<string>();
+                device.user_name = obj["user_name"].Value<string>();
+                device.client_key = obj["client_key"].Value<string>();
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                Log.e("json parsing error. json_text=" + obj.ToString() + "\terror=" + e.ToString(), "Device", "parse");
+            }
             return device;
         }
     }

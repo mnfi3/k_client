@@ -1,5 +1,6 @@
 ﻿using Kiosk.control;
 using Kiosk.model;
+using Kiosk.system;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

@@ -8,7 +8,7 @@ using System.Windows;
 using Kiosk.system;
 using Kiosk.license;
 using Kiosk.model;
-using Kiosk.db;
+using Kiosk.db_lite;
 using System.Timers;
 using Kiosk.api;
 using Kiosk.preference;
@@ -41,6 +41,9 @@ namespace Kiosk
             //G.device = db_device.getDevice();
             STDevice st_device = new STDevice();
             G.device = st_device.getDevice();
+
+
+            DBCreator creator = new DBCreator();
             
             loginCheck();
 

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing.Printing;
 using Kiosk.control;
-using Kiosk.db;
+using Kiosk.db_lite;
 
 namespace Kiosk
 {

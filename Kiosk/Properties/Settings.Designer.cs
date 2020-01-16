@@ -26,34 +26,10 @@ namespace Kiosk.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Kiosk;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=kiosk_db.db;Version=3;New=True;Compress=True;")]
         public string KioskConnectionString {
             get {
                 return ((string)(this["KioskConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string device {
-            get {
-                return ((string)(this["device"]));
-            }
-            set {
-                this["device"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string restaurants {
-            get {
-                return ((string)(this["restaurants"]));
-            }
-            set {
-                this["restaurants"] = value;
             }
         }
     }
