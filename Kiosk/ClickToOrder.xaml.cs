@@ -32,6 +32,9 @@ namespace Kiosk
         Thread thread;
         bool is_closing_windows = false;
 
+        bool is_syncing_data = false;
+        bool is_request_to_open_restaurants = false;
+
         
         //public ClickToOrder()
         //{
@@ -59,6 +62,7 @@ namespace Kiosk
 
             fadeInBorder();
             renderViews();
+            prg_wait.Visibility = Visibility.Collapsed;
 
             thread = new Thread(syncData);
             thread.Start();
@@ -100,18 +104,11 @@ namespace Kiosk
 
         private void open_list_restaurant(object sender, MouseEventArgs e)
         {
-            Task.Delay(50);
+            Task.Delay(200);
             if (is_closing_windows) return;
             is_closing_windows = true;
 
-            DoubleAnimation slideUp = new DoubleAnimation();
-            slideUp.Completed += new EventHandler(slideUpFinished);
-            slideUp.Completed += this.handler;
-            slideUp.From = 0;
-            slideUp.To = -G.height;
-            slideUp.Duration = new Duration(TimeSpan.FromMilliseconds(350));
-            slideUp.AccelerationRatio = .5;
-            this.BeginAnimation(TopProperty, slideUp);
+            openRestaurants();
         }
 
 
@@ -120,6 +117,23 @@ namespace Kiosk
             if (is_closing_windows) return;
             is_closing_windows = true;
 
+            openRestaurants();
+        }
+
+
+        private void openRestaurants()
+        {
+            if(is_syncing_data)
+            {
+                is_request_to_open_restaurants = true;
+                //BlurEffect ef = new BlurEffect();
+                //this.Effect = ef;
+                windowEffect();
+                return;
+            }
+
+            thread.Abort();
+
             DoubleAnimation slideUp = new DoubleAnimation();
             slideUp.Completed += new EventHandler(slideUpFinished);
             slideUp.Completed += this.handler;
@@ -133,8 +147,21 @@ namespace Kiosk
 
 
 
+        private void windowEffect()
+        {
+            BlurEffect blur = new BlurEffect();
+            PulseBox.Effect = blur;
+            prg_wait.Visibility = Visibility.Visible;
 
-
+            //BlurEffect blur = new BlurEffect();
+            //while (is_syncing_data)
+            //{
+            //    this.Effect = blur;
+            //    await Task.Delay(20);
+            //    this.Effect = null;
+            //    await Task.Delay(20);
+            //}
+        }
         
 
         private void slideUpFinished(object sender,EventArgs e)
@@ -155,14 +182,52 @@ namespace Kiosk
             DataSync syncer = new DataSync();
             while (true)
             {
-                Thread.Sleep(3000);
-                syncer.syncAllData();
+                Thread.Sleep(1000);
+
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    txt_description.Text = "task started";
+                }));
+
+                is_syncing_data = true;
+                syncer.syncAllData(onSyncFinished);
+
+
                 Thread.Sleep(Config.SYNC_DATA_TIME);
+                //Thread.Sleep(10000);
+
+
+                
             }
         }
 
-     
-       
+
+
+        private void onSyncFinished(object sender, EventArgs e)
+        {
+            is_syncing_data = false;
+
+            this.Dispatcher.Invoke((Action)(() =>
+            {
+                txt_description.Text = "task finished";
+            }));
+
+
+            if (is_request_to_open_restaurants)
+            {
+                thread.Abort();
+
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    this.Effect = null;
+                    openRestaurants();
+                }));
+            }
+
+
+           
+        }
+
 
         //private async void syncData2()
         //{

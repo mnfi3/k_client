@@ -3,7 +3,6 @@ using Kiosk.control;
 using Kiosk.db_lite;
 using Kiosk.model;
 using Kiosk.system;
-using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

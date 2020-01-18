@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,6 +17,9 @@ namespace Kiosk.api
         RRestaurant r_restaurant;
         RDevice r_device;
 
+        EventHandler onSyncFinishedHandler;
+        int restaurant_counter = 0;
+
 
         public DataSync()
         {
@@ -25,17 +29,20 @@ namespace Kiosk.api
 
 
 
-        public  void syncAllData()
+        public void syncAllData(EventHandler handler)
         {
+            onSyncFinishedHandler += handler;
+            restaurant_counter = 0;
+
+
             G.restaurants = new STRestaurant().getRestaurants();
 
             //sync orders
             syncOrders();
-            Task.Delay(200);
+            Thread.Sleep(1000);
 
             //sync restaurants data
             r_device.getRestaurants(restaurantCallBack);
-            Task.Delay(200);
 
            
 
@@ -60,13 +67,13 @@ namespace Kiosk.api
             //sync products
             foreach (Restaurant rest in G.restaurants)
             {
-                //sync products
-                r_restaurant.products(rest, syncProductsCallBack);
-                Task.Delay(200);
-
                 //sync discounts
                 r_restaurant.discounts(rest, discountsCallBack);
-                Task.Delay(200);
+                Thread.Sleep(200);
+
+                //sync products
+                r_restaurant.products(rest, syncProductsCallBack);
+                Thread.Sleep(1000);
             }
 
 
@@ -88,6 +95,14 @@ namespace Kiosk.api
                 //save new products to local db
                 if(findResturantWithId(restaurant_id) != null)
                     db_products.resetProducts(all_product, findResturantWithId(restaurant_id));
+            }
+
+
+            //sync data finished
+            restaurant_counter++;
+            if (G.restaurants.Count == restaurant_counter)
+            {
+                onSyncFinishedHandler(new object(), new EventArgs());
             }
         }
 

@@ -16,7 +16,6 @@ using Kiosk.db_lite;
 using Kiosk.model;
 using System.Diagnostics;
 using Kiosk.api;
-using ToastNotifications;
 using Kiosk.system;
 using Kiosk.preference;
 

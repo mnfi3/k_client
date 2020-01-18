@@ -69,9 +69,6 @@ C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Kiosk.pdb
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\CachedImage.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\MaterialDesignColors.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\MaterialDesignThemes.Wpf.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Microsoft.ReportViewer.Common.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Microsoft.ReportViewer.WinForms.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Microsoft.SqlServer.Types.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Newtonsoft.Json.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Base.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Controls.dll
@@ -81,8 +78,6 @@ C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Report.Design.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Report.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\System.Net.Http.Formatting.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\System.Web.Http.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\ToastNotifications.dll
-C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\ToastNotifications.Messages.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Report.Helper.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\Stimulsoft.Editor.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\MaterialDesignColors.pdb
@@ -183,6 +178,6 @@ C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\DialogTableSelect.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\ItemTable.g.cs
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\DialogTableSelect.baml
 C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\control\ItemTable.baml
-C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\System.Data.SQLite.dll
 C:\dev\c_charp\Kiosk\Kiosk\bin\x64\Release\System.Data.SQLite.xml
+C:\dev\c_charp\Kiosk\Kiosk\obj\x64\Release\Kiosk.csprojResolveAssemblyReference.cache

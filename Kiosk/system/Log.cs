@@ -81,7 +81,7 @@ namespace Kiosk.system
 
 
 
-            removeOldLogs();
+            //removeOldLogs();
             
         }
 
@@ -90,7 +90,7 @@ namespace Kiosk.system
 
 
 
-        private static void removeOldLogs()
+        public static void removeOldLogs()
         {
             DateTime datetime;
 

@@ -70,7 +70,8 @@ namespace Kiosk.db_lite
 
             SQLiteConnection sqlite_conn;
             // Create a new database connection:
-            sqlite_conn = new SQLiteConnection("Data Source=kiosk_db.db;Version=3;New=True;Compress=True;");
+            sqlite_conn = new SQLiteConnection("Data Source=kiosk_db.db;Version=3;UTF8Encoding=True;New=True;Compress=True;");
+            sqlite_conn.SetPassword(G.PUBLIC_KEY);
             // Open the connection:
             try
             {

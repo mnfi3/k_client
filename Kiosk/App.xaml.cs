@@ -43,7 +43,6 @@ namespace Kiosk
             G.device = st_device.getDevice();
 
 
-            DBCreator creator = new DBCreator();
             
             loginCheck();
 
@@ -58,10 +57,8 @@ namespace Kiosk
             syncRestaurants();
 
 
-
-            //create database in first run
-            //CreateDatabase();
-
+            DBCreator creator = new DBCreator();
+            Log.removeOldLogs();
 
         }
 
